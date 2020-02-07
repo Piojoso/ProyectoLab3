@@ -70,6 +70,7 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void modificarCliente(object sender, EventArgs e)
         {
+            // ERROR AL USAR si no hay una fila seleccionada
             DataGridViewRow fila = ucBG.getSelectedItem();
 
             using (MABEntities db = new MABEntities())
@@ -87,7 +88,7 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void cerrarVentana(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
