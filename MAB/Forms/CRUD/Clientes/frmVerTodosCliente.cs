@@ -13,7 +13,7 @@ namespace MAB.Forms.CRUD.Clientes
 {
     public partial class frmVerTodosCliente : Form
     {
-        public frmVerTodosCliente(List<int> idClientes = null)
+        public frmVerTodosCliente()
         {
             InitializeComponent();
 
@@ -27,7 +27,7 @@ namespace MAB.Forms.CRUD.Clientes
             ucBG.evAccion2 += modificarCliente;
             ucBG.evAccion3 += cerrarVentana;
 
-            cargarDGV(idClientes);
+            cargarDGV();
         }
 
         private void cargarDGV(List<int> idCliente = null)
@@ -59,12 +59,30 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void buscarCliente(object sender, EventArgs e)
         {
+            frmBuscarCliente frm = new frmBuscarCliente();
+            frm.ShowDialog();
 
+            if(frm.DialogResult != DialogResult.Cancel)
+            {
+                cargarDGV(frm.idClientes);
+            }
         }
 
         private void modificarCliente(object sender, EventArgs e)
         {
+            DataGridViewRow fila = ucBG.getSelectedItem();
 
+            using (MABEntities db = new MABEntities())
+            {
+                // ATENTO A ESTO... CREO QUE DEBERIA CONVERTIR EL VALUE A INT PARA EL FIND()
+                // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
+                Models.Clientes cliente = db.Clientes.Find(fila.Cells[0].Value);
+
+                frmModificarCliente frm = new frmModificarCliente(cliente.Id);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
         }
 
         private void cerrarVentana(object sender, EventArgs e)

@@ -51,7 +51,6 @@ namespace MAB.Forms.CRUD.Clientes
 
                 cargarDGV();
             }
-
         }
 
         void btnVerTodos(object sender, EventArgs e)
