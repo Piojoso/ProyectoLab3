@@ -15,7 +15,7 @@ namespace MAB.Models
     public partial class Entregas
     {
         public int Id { get; set; }
-        public System.TimeSpan fecha { get; set; }
+        public System.DateTime fecha { get; set; }
         public double monto { get; set; }
         public int ReparacionesId { get; set; }
         public int ClientesId { get; set; }

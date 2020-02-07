@@ -70,8 +70,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fechaIngreso" Type="time" Nullable="false" />
-    <Property Name="fechaEgreso" Type="time" Nullable="true" />
+    <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+    <Property Name="fechaEgreso" Type="datetime" Nullable="true" />
     <Property Name="errorAReparar" Type="nvarchar(max)" Nullable="false" />
     <Property Name="estadoReparacion" Type="int" Nullable="false" />
     <Property Name="mesesGarantia" Type="nvarchar(max)" Nullable="true" />
@@ -96,7 +96,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fecha" Type="time" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="monto" Type="float" Nullable="false" />
     <Property Name="ReparacionesId" Type="int" Nullable="false" />
     <Property Name="ClientesId" Type="int" Nullable="false" />
@@ -272,8 +272,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaIngreso" Type="Time" Nullable="false" />
-          <Property Name="fechaEgreso" Type="Time" Nullable="true" />
+          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" />
+          <Property Name="fechaEgreso" Type="DateTime" Nullable="true" />
           <Property Name="errorAReparar" Type="String" Nullable="false" />
           <Property Name="estadoReparacion" Type="MABModel.estadosReparacion" Nullable="false" />
           <Property Name="mesesGarantia" Type="String" Nullable="true" />
@@ -331,7 +331,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="Time" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="monto" Type="Double" Nullable="false" />
           <NavigationProperty Name="Reparaciones" Relationship="MABModel.ReparacionesEntregas" FromRole="Entregas" ToRole="Reparaciones" />
           <Property Name="ReparacionesId" Type="Int32" Nullable="false" />

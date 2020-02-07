@@ -22,8 +22,8 @@ namespace MAB.Models
         }
     
         public int Id { get; set; }
-        public System.TimeSpan fechaIngreso { get; set; }
-        public Nullable<System.TimeSpan> fechaEgreso { get; set; }
+        public System.DateTime fechaIngreso { get; set; }
+        public Nullable<System.DateTime> fechaEgreso { get; set; }
         public string errorAReparar { get; set; }
         public estadosReparacion estadoReparacion { get; set; }
         public string mesesGarantia { get; set; }

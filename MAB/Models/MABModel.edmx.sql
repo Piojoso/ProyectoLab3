@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/27/2020 17:22:11
+-- Date Created: 02/07/2020 15:25:12
 -- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 4\MAB\Models\MABModel.edmx
 -- --------------------------------------------------
 
@@ -93,8 +93,8 @@ GO
 -- Creating table 'Reparaciones'
 CREATE TABLE [dbo].[Reparaciones] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [fechaIngreso] time  NOT NULL,
-    [fechaEgreso] time  NULL,
+    [fechaIngreso] datetime  NOT NULL,
+    [fechaEgreso] datetime  NULL,
     [errorAReparar] nvarchar(max)  NOT NULL,
     [estadoReparacion] int  NOT NULL,
     [mesesGarantia] nvarchar(max)  NULL,
@@ -119,7 +119,7 @@ GO
 -- Creating table 'Entregas'
 CREATE TABLE [dbo].[Entregas] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [fecha] time  NOT NULL,
+    [fecha] datetime  NOT NULL,
     [monto] float  NOT NULL,
     [ReparacionesId] int  NOT NULL,
     [ClientesId] int  NOT NULL
