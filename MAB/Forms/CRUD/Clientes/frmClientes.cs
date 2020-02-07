@@ -55,7 +55,8 @@ namespace MAB.Forms.CRUD.Clientes
 
         void btnVerTodos(object sender, EventArgs e)
         {
-            MessageBox.Show("Aun te falta este Formulario");
+            frmVerTodosCliente frm = new frmVerTodosCliente();
+            frm.ShowDialog();
         }
 
         private void cargarDGV()
