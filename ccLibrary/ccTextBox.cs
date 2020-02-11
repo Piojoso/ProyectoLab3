@@ -20,10 +20,5 @@ namespace ccLibrary
             Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             Size = new System.Drawing.Size(231, 20);
         }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
-        }
     }
 }

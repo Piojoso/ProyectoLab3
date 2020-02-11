@@ -22,12 +22,5 @@ namespace ccLibrary
             Name = "lblEtiqueta";
             Size = new System.Drawing.Size(100, 23);
         }
-
-        /*
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
-        }
-        */
     }
 }
