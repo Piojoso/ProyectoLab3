@@ -74,7 +74,7 @@
     <Property Name="fechaEgreso" Type="datetime" Nullable="true" />
     <Property Name="errorAReparar" Type="nvarchar(max)" Nullable="false" />
     <Property Name="estadoReparacion" Type="int" Nullable="false" />
-    <Property Name="mesesGarantia" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="mesesGarantia" Type="int" Nullable="true" />
     <Property Name="reparacionRealizada" Type="nvarchar(max)" Nullable="false" />
     <Property Name="manoDeObra" Type="float" Nullable="false" />
     <Property Name="totalRepuestos" Type="float" Nullable="false" />
@@ -276,7 +276,7 @@
           <Property Name="fechaEgreso" Type="DateTime" Nullable="true" />
           <Property Name="errorAReparar" Type="String" Nullable="false" />
           <Property Name="estadoReparacion" Type="MABModel.estadosReparacion" Nullable="false" />
-          <Property Name="mesesGarantia" Type="String" Nullable="true" />
+          <Property Name="mesesGarantia" Type="Int32" Nullable="true" />
           <Property Name="reparacionRealizada" Type="String" Nullable="false" />
           <Property Name="manoDeObra" Type="Double" Nullable="false" />
           <Property Name="totalRepuestos" Type="Double" Nullable="false" />

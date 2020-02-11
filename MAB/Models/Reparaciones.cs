@@ -26,7 +26,7 @@ namespace MAB.Models
         public Nullable<System.DateTime> fechaEgreso { get; set; }
         public string errorAReparar { get; set; }
         public estadosReparacion estadoReparacion { get; set; }
-        public string mesesGarantia { get; set; }
+        public Nullable<int> mesesGarantia { get; set; }
         public string reparacionRealizada { get; set; }
         public double manoDeObra { get; set; }
         public double totalRepuestos { get; set; }

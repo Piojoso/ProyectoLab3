@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/07/2020 15:25:12
+-- Date Created: 02/08/2020 20:23:02
 -- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 4\MAB\Models\MABModel.edmx
 -- --------------------------------------------------
 
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Reparaciones] (
     [fechaEgreso] datetime  NULL,
     [errorAReparar] nvarchar(max)  NOT NULL,
     [estadoReparacion] int  NOT NULL,
-    [mesesGarantia] nvarchar(max)  NULL,
+    [mesesGarantia] int  NULL,
     [reparacionRealizada] nvarchar(max)  NOT NULL,
     [manoDeObra] float  NOT NULL,
     [totalRepuestos] float  NOT NULL,
