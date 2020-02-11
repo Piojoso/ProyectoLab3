@@ -33,6 +33,10 @@ namespace MAB.Forms.CRUD.Reparaciones
         {
             throw new Exception("No listo para su uso");
 
+            /**
+             * TODO: Tengo que sacar esa extension cuando ya tenga todo listo.
+             */
+
             using (MABEntities db = new MABEntities())
             {
                 Models.Reparaciones reparacion = new Models.Reparaciones();
@@ -45,9 +49,15 @@ namespace MAB.Forms.CRUD.Reparaciones
                 reparacion.reparacionRealizada = "";
                 reparacion.manoDeObra = 0;
                 reparacion.totalRepuestos = 0;
-                //SOSPECHO QUE ESTO VA A TIRAR ERROR, POSIBLE PROBLEMA: 
-                // mi idea es que aparezca la marca y modelo del lavarropa del cliente.
-                // si pudiera hacer algo como en html, que el value sea el id y el texto sea la marca y el modelo, seria FANTASTICO
+                /**
+                 * TODO: Tratar de hacer algo como en HTML, poner value y enseñar otra cosa.
+                 * Para asi poder tener acceso rapido al id.
+                 * 
+                 * Antigua nota:
+                 * //SOSPECHO QUE ESTO VA A TIRAR ERROR, POSIBLE PROBLEMA: 
+                 * // mi idea es que aparezca la marca y modelo del lavarropa del cliente.
+                 * // si pudiera hacer algo como en html, que el value sea el id y el texto sea la marca y el modelo, seria FANTASTICO
+                 */
                 reparacion.LavarropasId = Convert.ToInt32(cboLavarropas.SelectedItem);
 
                 db.Reparaciones.Add(reparacion);
@@ -87,7 +97,11 @@ namespace MAB.Forms.CRUD.Reparaciones
 
                             cclblNombreCliente.Text = cliente.nombre + " " + cliente.apellido;
 
-                            // REVISAR COMO SE VE ESTO, SI NO ME GUSTA (SOLO ID) TENDRE QUE VER COMO HACER PARA ENSEÑAR NOMBRE
+                            /**
+                             * TODO: Revisar esto. Muy probablemente se vea el id, y tengo que hacer que se vea la marca y modelo.
+                             * Pero tengo que guardar el id del lavarropas en algun lado. De ahi el objetivo de hacerlo como en HTML, con value y texto
+                             * por lados separados. 
+                             */
                             cboLavarropas.DataSource = cliente.Lavarropas;
                         }
                     }
@@ -98,8 +112,8 @@ namespace MAB.Forms.CRUD.Reparaciones
         private void btnNuevoLavarropas_Click(object sender, EventArgs e)
         {
             /**
-             * Aca mi idea es iniciar el formulario de agregar Lavarropas (Aun no existe)
-             * Luego de que se cierre el formulario debo Refrescar el cbo.
+             * TODO: Debo iniciar el formulario de Agregar Lavarropas.
+             * NO OLVIDA: Luego de que se cierre el formulario debo refrescar el cbo.
              */
             throw new NotImplementedException();
         }
@@ -107,7 +121,7 @@ namespace MAB.Forms.CRUD.Reparaciones
         private void cboLavarropas_SelectedIndexChanged(object sender, EventArgs e)
         {
             /**
-             * Esto fue creado para hacer algo del estilo de...
+             * TODO: Esto fue creado para hacer algo del estilo de...
              * Al seleccionar un item, tomo el id, y busco el lavarropas, y lo asigno al objeto que luego sera la reparacion.
              */
             throw new NotImplementedException();

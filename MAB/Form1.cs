@@ -46,6 +46,9 @@ namespace MAB
 
         void btnLavarropas(object sender, EventArgs e)
         {
+            /**
+             * TODO: Crear formulario de CRUD de lavarropas
+             */
             MessageBox.Show("Aun te falta este Formulario");
         }
     }

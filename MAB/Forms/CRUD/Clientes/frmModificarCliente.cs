@@ -53,6 +53,12 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void confirmarCambios(object sender, EventArgs e)
         {
+            /**
+             * TODO: Esta funcion no funciona:
+             * Va a guardar la misma informacion del cliente que se recupero al inicio del formulario.
+             * Porque no hice en ningun lado una modificacion de los datos.
+             */
+
             DialogResult resp = MessageBox.Show("¿Desea continuar con la modificacion?" + Environment.NewLine +
                 "Tenga en cuenta que perdera la informacion anterior", "Modificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 

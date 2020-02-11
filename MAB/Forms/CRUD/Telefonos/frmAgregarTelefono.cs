@@ -41,7 +41,10 @@ namespace MAB.Forms.CRUD.Telefonos
 
         private void agregarTelefono(object sender, EventArgs e)
         {
-            // TENGO QUE AGREGARLE EL CONTROL PARA SI EL TELEFONO YA EXISTE, NO AGREGARLO DE NUEVO, SOLO CAMBIARLE EL ESTADO
+            /**
+             * TODO: Tengo que agregarle un control, para que si el telefono ya existe, no agregarlo de nuevo, solamente cambiarle el estado.
+             * NOTA: El telefono se deberia de estar queriendo agregar al mismo cliente, Ya que en ese caso, si volviera a agregarlo se repetirian claves. Malo Malo.
+             */
 
             if(tbTelefono.Text != string.Empty)
             {

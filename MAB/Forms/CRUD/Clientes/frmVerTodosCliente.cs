@@ -32,7 +32,7 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void cargarDGV(List<int> idCliente = null)
         {
-            if(idCliente == null)
+            if(idCliente == null) // Significa que se quiere ver todos los clientes
             {
                 using (MABEntities db = new MABEntities())
                 {
@@ -43,7 +43,7 @@ namespace MAB.Forms.CRUD.Clientes
             }
             else
             {
-                foreach(int id in idCliente)
+                foreach(int id in idCliente) // Significa que se quiere ver el resultado de una busqueda
                 {
                     using (MABEntities db = new MABEntities())
                     {
@@ -70,13 +70,18 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void modificarCliente(object sender, EventArgs e)
         {
-            // ERROR AL USAR si no hay una fila seleccionada
+            /**
+             * TODO: Arreglar Error de null al no seleccionar una fila
+             */
             DataGridViewRow fila = ucBG.getSelectedItem();
 
             using (MABEntities db = new MABEntities())
             {
-                // ATENTO A ESTO... CREO QUE DEBERIA CONVERTIR EL VALUE A INT PARA EL FIND()
-                // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
+                /**
+                 * TODO: Revisar el funcionamiento de esta funcion.
+                 * Puede que al mandarle un object, la funcion find, realize otra cosa que no sea la que yo deseo.
+                 * En tal caso, la posible solucion seria convetir el value a int.Para que asi busque por id.
+                 */
                 Models.Clientes cliente = db.Clientes.Find(fila.Cells[0].Value);
 
                 frmModificarCliente frm = new frmModificarCliente(cliente.Id);

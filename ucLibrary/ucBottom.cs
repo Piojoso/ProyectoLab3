@@ -26,9 +26,12 @@ namespace ucLibrary
          * necesarias para la cantidad de botones que 
          * sean requeridos.
          */
-
         public int NumButtons
         {
+            /** 
+             * TODO: Hacer que los paneles ocupen todo el ancho disponible.
+             * En el caso de 2 botones, que se divida a la mitad el ancho del form.
+             */ 
             get { return numButtons; }
             set
             {

@@ -42,8 +42,16 @@ namespace MAB.Forms.CRUD.Clientes
 
             using (MABEntities db = new MABEntities())
             {
-                // ATENTO A ESTO... CREO QUE DEBERIA CONVERTIR EL VALUE A INT PARA EL FIND()
-                // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
+                /**
+                 * TODO: Revisar el funcionamiento de esta funcion.
+                 * Puede que al mandarle un object, la funcion find, realize otra cosa que no sea la que yo deseo.
+                 * En tal caso, la posible solucion seria convetir el value a int. Para que asi busque por id.
+                 * 
+                 * -------------------------------------------------------------------------------------------------
+                 * // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
+                 * Ese comentario lo puse hace un tiempo y no logro entender donde estaria el problema con el value. Luego debo revisarlo.
+                 * 
+                 */ 
                 Models.Clientes cliente = db.Clientes.Find(fila.Cells[0].Value);
 
                 frmModificarCliente frm = new frmModificarCliente(cliente.Id);

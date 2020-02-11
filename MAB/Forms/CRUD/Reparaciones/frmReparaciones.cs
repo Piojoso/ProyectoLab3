@@ -33,6 +33,9 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void cargarDGV()
         {
+            /**
+             * TODO: Revisar esta funcion... Puede que el || no funcione. No lo se
+             */
             using (MABEntities db = new MABEntities())
             {
                 var data = from reparaciones in db.Reparaciones

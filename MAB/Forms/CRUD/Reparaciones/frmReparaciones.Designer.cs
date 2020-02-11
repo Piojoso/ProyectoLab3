@@ -59,7 +59,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reparaciones";
-            this.Load += new System.EventHandler(this.frmReparaciones_Load);
             this.ResumeLayout(false);
 
         }

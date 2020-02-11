@@ -42,7 +42,9 @@ namespace MAB.Forms.CRUD.Telefonos
         
         private void eliminarSeleccionado(object sender, EventArgs e)
         {
-            //PROBAR LA OPCION DE NULL CUANDO NO HAY FILA SELECCIONADA
+            /**
+             * TODO: Provar si al no tener nada seleccionado fila es null o explota algo.
+             */
 
             DataGridViewRow fila =  ucBackGround.getSelectedItem();
             
