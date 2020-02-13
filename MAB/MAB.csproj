@@ -100,6 +100,12 @@
     <Compile Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.Designer.cs">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmModificarReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmModificarReparacion.Designer.cs">
+      <DependentUpon>frmModificarReparacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CRUD\Reparaciones\frmReparaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.resx">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmModificarReparacion.resx">
+      <DependentUpon>frmModificarReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmReparaciones.resx">
       <DependentUpon>frmReparaciones.cs</DependentUpon>
