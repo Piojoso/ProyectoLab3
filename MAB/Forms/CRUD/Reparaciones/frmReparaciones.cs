@@ -56,7 +56,21 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         void btnModificar(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello World");
+            DataGridViewRow fila = ucBG.getSelectedItem();
+
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * TODO: Revisar si tengo que castear value (yo me la juego que si)
+                 */
+                Models.Reparaciones reparacion = db.Reparaciones.Find(fila.Cells[0].Value);
+
+                /**
+                 * TODO: Tratar de forzar un reparacion == null. Solo para ver que ocurre aca.
+                 */
+                frmModificarReparacion frm = new frmModificarReparacion(reparacion.Id);
+                frm.ShowDialog();
+            }
         }
 
         private void verTodosReparacion(object sender, EventArgs e)
