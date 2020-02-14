@@ -81,7 +81,9 @@ namespace MAB.UC
         public DataGridViewRow getSelectedItem()
         {
 
-            //PROBAR LA OPCION DE NULL CUANDO NO HAY FILA SELECCIONADA
+            /**
+             * TODO: Cuando no hay una fila seleccionada, debo devolver null.
+             */
             return dgvPrincipal.Rows[dgvPrincipal.CurrentRow.Index];
         }
         

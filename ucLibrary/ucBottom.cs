@@ -31,6 +31,7 @@ namespace ucLibrary
             /** 
              * TODO: Hacer que los paneles ocupen todo el ancho disponible.
              * En el caso de 2 botones, que se divida a la mitad el ancho del form.
+             * TODO: Probar a hacer la solucion al problema usando un TableLayoutPanel.
              */ 
             get { return numButtons; }
             set
