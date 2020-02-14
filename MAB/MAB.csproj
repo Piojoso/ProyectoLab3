@@ -100,6 +100,12 @@
     <Compile Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.Designer.cs">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.Designer.cs">
+      <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CRUD\Reparaciones\frmModificarReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,12 @@
     </Compile>
     <Compile Include="Forms\CRUD\Reparaciones\frmReparaciones.Designer.cs">
       <DependentUpon>frmReparaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.Designer.cs">
+      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CRUD\Telefonos\frmAgregarTelefono.cs">
       <SubType>Form</SubType>
@@ -190,11 +202,17 @@
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.resx">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.resx">
+      <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmModificarReparacion.resx">
       <DependentUpon>frmModificarReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmReparaciones.resx">
       <DependentUpon>frmReparaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.resx">
+      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Telefonos\frmAgregarTelefono.resx">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>

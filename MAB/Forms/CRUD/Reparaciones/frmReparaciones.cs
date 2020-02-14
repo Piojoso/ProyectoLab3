@@ -34,13 +34,13 @@ namespace MAB.Forms.CRUD.Reparaciones
         private void cargarDGV()
         {
             /**
-             * TODO: Revisar esta funcion... Puede que el || no funcione. No lo se
+             * TODO: Revisar esta funcion... Parece que el || no funciona. Debo revisarlo bien
              */
             using (MABEntities db = new MABEntities())
             {
                 var data = from reparaciones in db.Reparaciones
-                           where ((DateTime.Now - reparaciones.fechaIngreso).Days > 30) 
-                           || reparaciones.estadoReparacion == estadosReparacion.EnCurso
+                           where (((DateTime.Now - reparaciones.fechaIngreso).Days > 30) 
+                           || reparaciones.estadoReparacion == estadosReparacion.EnCurso)
                            select reparaciones;
 
                 ucBG.cargarDGV(data.ToList());
@@ -75,7 +75,8 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void verTodosReparacion(object sender, EventArgs e)
         {
-            MessageBox.Show("Formulario no Disponible");
+            frmVerTodosReparaciones frm = new frmVerTodosReparaciones();
+            frm.ShowDialog();
         }
     }
 }
