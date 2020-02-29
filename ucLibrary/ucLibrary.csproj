@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.12.0\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ucBotonera.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucBotonera.Designer.cs">
+      <DependentUpon>ucBotonera.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucBottom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,12 +67,24 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ucBotonera.resx">
+      <DependentUpon>ucBotonera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucBottom.resx">
       <DependentUpon>ucBottom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucTop.resx">
       <DependentUpon>ucTop.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ccLibrary\ccLibrary.csproj">
+      <Project>{9F752198-1023-4C1A-9832-0EE8C0802B5B}</Project>
+      <Name>ccLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

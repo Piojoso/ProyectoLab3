@@ -42,6 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.12.0\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -94,6 +97,12 @@
     <Compile Include="Forms\CRUD\Clientes\frmVerTodosCliente.Designer.cs">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CRUD\Lavarropas\frmLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CRUD\Lavarropas\frmLavarropas.Designer.cs">
+      <DependentUpon>frmLavarropas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +144,12 @@
     </Compile>
     <Compile Include="Forms\CRUD\Telefonos\frmTelefonos.Designer.cs">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NuevoFormStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NuevoFormStyle.Designer.cs">
+      <DependentUpon>NuevoFormStyle.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>Models.tt</DependentUpon>
@@ -199,6 +214,9 @@
     <EmbeddedResource Include="Forms\CRUD\Clientes\frmVerTodosCliente.resx">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CRUD\Lavarropas\frmLavarropas.resx">
+      <DependentUpon>frmLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.resx">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUD\Telefonos\frmTelefonos.resx">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NuevoFormStyle.resx">
+      <DependentUpon>NuevoFormStyle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -276,9 +297,7 @@
       <Name>ucLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\CRUD\Lavarropas\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

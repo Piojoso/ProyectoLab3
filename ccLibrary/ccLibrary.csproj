@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.12.0\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ccButtom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ccButtom.Designer.cs">
+      <DependentUpon>ccButtom.cs</DependentUpon>
+    </Compile>
     <Compile Include="ccLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -58,12 +67,18 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ccButtom.resx">
+      <DependentUpon>ccButtom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ccLabel.resx">
       <DependentUpon>ccLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ccTextBox.resx">
       <DependentUpon>ccTextBox.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

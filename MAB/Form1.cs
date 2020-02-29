@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Forms.CRUD.Reparaciones;
 using MAB.Forms.CRUD.Clientes;
+using MAB.Forms;
 
 namespace MAB
 {
@@ -50,6 +51,12 @@ namespace MAB
              * TODO: Crear formulario de CRUD de lavarropas
              */
             MessageBox.Show("Aun te falta este Formulario");
+        }
+
+        private void nuevoStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NuevoFormStyle frm = new NuevoFormStyle();
+            frm.ShowDialog();
         }
     }
 }

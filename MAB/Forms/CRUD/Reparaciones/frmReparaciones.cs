@@ -47,14 +47,13 @@ namespace MAB.Forms.CRUD.Reparaciones
             }
         }
 
-
-        void btnAgregar(object sender, EventArgs e)
+        private void btnAgregar(object sender, EventArgs e)
         {
             frmAgregarReparaciones frm = new frmAgregarReparaciones();
             frm.ShowDialog();
         }
 
-        void btnModificar(object sender, EventArgs e)
+        private void btnModificar(object sender, EventArgs e)
         {
             DataGridViewRow fila = ucBG.getSelectedItem();
 

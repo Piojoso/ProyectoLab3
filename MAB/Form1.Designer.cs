@@ -30,7 +30,11 @@ namespace MAB
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucBG = new ucBackGround();
+            this.components = new System.ComponentModel.Container();
+            this.ucBG = new MAB.UC.ucBackGround();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nuevoStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ucBG
@@ -44,12 +48,28 @@ namespace MAB
             this.ucBG.Size = new System.Drawing.Size(878, 461);
             this.ucBG.TabIndex = 0;
             this.ucBG.Titulo = null;
+            this.ucBG.UseWaitCursor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoStyleToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 26);
+            // 
+            // nuevoStyleToolStripMenuItem
+            // 
+            this.nuevoStyleToolStripMenuItem.Name = "nuevoStyleToolStripMenuItem";
+            this.nuevoStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoStyleToolStripMenuItem.Text = "Nuevo Style";
+            this.nuevoStyleToolStripMenuItem.Click += new System.EventHandler(this.nuevoStyleToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 461);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.ucBG);
             this.Name = "frmMenu";
             this.ShowIcon = false;
@@ -57,6 +77,7 @@ namespace MAB
             this.Text = "Inicio";
             this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -64,6 +85,8 @@ namespace MAB
         #endregion
 
         private ucBackGround ucBG;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem nuevoStyleToolStripMenuItem;
     }
 }
 
