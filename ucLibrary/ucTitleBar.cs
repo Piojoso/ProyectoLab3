@@ -17,6 +17,7 @@ namespace ucLibrary
 
             /**
              * TODO: selector de color de fondo
+             * --- HECHO: en realidad solo acomode los colores del componente (hacerlos transparentes para que se vea el backcolor).
              * 
              * TODO: escribir titulo
              * 
@@ -29,6 +30,10 @@ namespace ucLibrary
              * TODO: Selector de alineacion de Botones (Izq, Der, Centro)
              * 
              * TODO: opcion de agregar imagen de app.
+             * 
+             * TODO: color de fondo de botones, y color de texto de los botones.
+             * 
+             * TODO: color de texto del titulo
              */
 
             InitializeComponent();
