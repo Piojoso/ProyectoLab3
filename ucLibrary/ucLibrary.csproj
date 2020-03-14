@@ -71,6 +71,12 @@
     <Compile Include="ucDGVTabla.Designer.cs">
       <DependentUpon>ucDGVTabla.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucTitleBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTitleBar.Designer.cs">
+      <DependentUpon>ucTitleBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucTop.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDGVTabla.resx">
       <DependentUpon>ucDGVTabla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTitleBar.resx">
+      <DependentUpon>ucTitleBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucTop.resx">
       <DependentUpon>ucTop.cs</DependentUpon>
