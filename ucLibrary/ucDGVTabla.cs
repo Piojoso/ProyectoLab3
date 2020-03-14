@@ -19,16 +19,18 @@ namespace ucLibrary
             /**
              * ----------------------------------------------------------------------------------------------------------------------
              * TODO: Funcion de botones add, modify, see all, search, delete en este codigo, y tratar de que sea generico para todo.
-             * --- Hecho: Masomenos, en realidad lo que luego se me ocurrio fue hacer que cada boton habra una correspondiente ventana,
+             * --- HECHO: Masomenos, en realidad lo que luego se me ocurrio fue hacer que cada boton habra una correspondiente ventana,
              * ---        y ahi se realiza lo que se desee. Agregar, modificar, etc etc.
              * 
+             * ----------------------------------------------------------------------------------------------------------------------
              * TODO: De alguna manera debo hacer que se pueda seleccionar que columnas se quiere enseñar
              * 
              * TODO: Hacer que se pueda cambiar el nombre de las columnas en el DGV
              * 
              * TODO: Hacer que se puedan ocultar columnas en el DGV
-             * 
-             * NOTA: Provablemente para todo esto haga falta hacer uso de reflexion y linq y quien sabe que dios mas.
+             * --- HECHO: Incluso algunas otras funcionabilidades mas. En vez de encapsular las funciones, lo que hice es permitir que
+             * ---        desde el lugar de uso del User Control se pueda tener acceso a las columnas del dgv. Asi de esta forma, pueden
+             * ---        ocultarlos, eliminarlas, cambiarle el nombre, etc etc.
              * ----------------------------------------------------------------------------------------------------------------------
              */
             InitializeComponent();
@@ -218,8 +220,21 @@ namespace ucLibrary
 
         public void dataSource(object data)
         {
+            dgvPrincipal.AutoGenerateColumns = true;
             dgvPrincipal.DataSource = data;
+            this.columns = dgvPrincipal.Columns;
         }
-        
+
+        #region DGVColumns
+
+        private DataGridViewColumnCollection columns;
+
+        public DataGridViewColumnCollection Columns
+        {
+            get { return columns; }
+            set { columns = value; }
+        }
+
+        #endregion
     }
 }
