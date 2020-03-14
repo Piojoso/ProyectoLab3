@@ -20,6 +20,7 @@ namespace ucLibrary
              * --- HECHO: en realidad solo acomode los colores del componente (hacerlos transparentes para que se vea el backcolor).
              * 
              * TODO: escribir titulo
+             * --- HECHO
              * 
              * TODO: selector de iconos (Maximizar, Minimizar, Cerrar). Tambien permitir agregar uno personal.
              * 
@@ -38,5 +39,21 @@ namespace ucLibrary
 
             InitializeComponent();
         }
+        
+        #region Titulo de la Ventana
+
+        private string tituloVentana;
+
+        public string TitleText
+        {
+            get { return tituloVentana; }
+            set
+            {
+                tituloVentana = value;
+                cclblTituloVentana.Text = tituloVentana;
+            }
+        }
+
+        #endregion
     }
 }
