@@ -27,6 +27,7 @@ namespace ucLibrary
              * --- HECHO
              * 
              * TODO: Dar la chance de poder ocultar ciertos botones
+             * --- HECHO
              * 
              * TODO: Selector de alineacion de Titulo (Izq, Der, Centro)
              * 
@@ -93,7 +94,21 @@ namespace ucLibrary
                 iconBtnCerrar.IconChar = iconClose;
             }
         }
-        
+
+        #endregion
+
+        #region Ocultar Maximizar/Minimizar
+
+        public void MaximizeBox(bool value)
+        {
+            iconBtnMaximizar.Visible = value;
+        }
+
+        public void MinimizeBox(bool value)
+        {
+            iconBtnMinimizar.Visible = value;
+        }
+
         #endregion
     }
 }

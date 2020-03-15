@@ -127,14 +127,14 @@
             // 
             // cclblTituloVentana
             // 
-            this.cclblTituloVentana.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cclblTituloVentana.AutoSize = true;
+            this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTituloVentana.Location = new System.Drawing.Point(3, 4);
+            this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
             this.cclblTituloVentana.Name = "cclblTituloVentana";
-            this.cclblTituloVentana.Size = new System.Drawing.Size(40, 16);
+            this.cclblTituloVentana.Size = new System.Drawing.Size(733, 25);
             this.cclblTituloVentana.TabIndex = 0;
             this.cclblTituloVentana.Text = "Titulo";
+            this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ucTitleBar
             // 
@@ -145,7 +145,6 @@
             this.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
