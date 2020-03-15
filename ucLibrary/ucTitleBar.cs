@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace ucLibrary
 {
@@ -22,7 +23,8 @@ namespace ucLibrary
              * TODO: escribir titulo
              * --- HECHO
              * 
-             * TODO: selector de iconos (Maximizar, Minimizar, Cerrar). Tambien permitir agregar uno personal.
+             * TODO: selector de iconos (Maximizar, Minimizar, Cerrar).
+             * --- HECHO
              * 
              * TODO: Dar la chance de poder ocultar ciertos botones
              * 
@@ -54,6 +56,44 @@ namespace ucLibrary
             }
         }
 
+        #endregion
+
+        #region Iconos de botones Max/Min/Close
+
+        private IconChar iconMax;
+        private IconChar iconMin;
+        private IconChar iconClose;
+
+        public IconChar IconMaximize
+        {
+            get { return iconMax; }
+            set
+            {
+                iconMax = value;
+                iconBtnMaximizar.IconChar = iconMax;
+            }
+        }
+
+        public IconChar IconMinimize
+        {
+            get { return iconMin; }
+            set
+            {
+                iconMin = value;
+                iconBtnMinimizar.IconChar = iconMin;
+            }
+        }
+
+        public IconChar IconClose
+        {
+            get { return iconClose; }
+            set
+            {
+                iconClose = value;
+                iconBtnCerrar.IconChar = iconClose;
+            }
+        }
+        
         #endregion
     }
 }
