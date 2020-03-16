@@ -156,8 +156,8 @@
         private FontAwesome.Sharp.IconButton iconBtnCerrar;
         private FontAwesome.Sharp.IconButton iconBtnMaximizar;
         private FontAwesome.Sharp.IconButton iconBtnMinimizar;
-        private ccLibrary.ccLabel cclblTituloVentana;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pnlBotones;
+        private ccLibrary.ccLabel cclblTituloVentana;
     }
 }

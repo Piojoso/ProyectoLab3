@@ -30,6 +30,7 @@ namespace ucLibrary
              * --- HECHO
              * 
              * TODO: Selector de alineacion de Titulo (Izq, Der, Centro)
+             * --- HECHO
              * 
              * TODO: Selector de alineacion de Botones (Izq, Der, Centro)
              * 
@@ -42,7 +43,7 @@ namespace ucLibrary
 
             InitializeComponent();
         }
-        
+
         #region Titulo de la Ventana
 
         private string tituloVentana;
@@ -53,7 +54,11 @@ namespace ucLibrary
             set
             {
                 tituloVentana = value;
-                cclblTituloVentana.Text = tituloVentana;
+
+                if (tituloVentana == string.Empty)
+                    cclblTituloVentana.Text = "Window Title";
+                else
+                    cclblTituloVentana.Text = tituloVentana;
             }
         }
 
@@ -71,7 +76,10 @@ namespace ucLibrary
             set
             {
                 iconMax = value;
-                iconBtnMaximizar.IconChar = iconMax;
+                if (iconMax != IconChar.None)
+                    iconBtnMaximizar.IconChar = iconMax;
+                else
+                    iconBtnMaximizar.IconChar = IconChar.WindowMaximize;
             }
         }
 
@@ -81,7 +89,10 @@ namespace ucLibrary
             set
             {
                 iconMin = value;
-                iconBtnMinimizar.IconChar = iconMin;
+                if (iconMin != IconChar.None)
+                    iconBtnMinimizar.IconChar = iconMin;
+                else
+                    iconBtnMinimizar.IconChar = IconChar.WindowMinimize;
             }
         }
 
@@ -91,7 +102,11 @@ namespace ucLibrary
             set
             {
                 iconClose = value;
-                iconBtnCerrar.IconChar = iconClose;
+
+                if (iconClose != IconChar.None)
+                    iconBtnCerrar.IconChar = iconClose;
+                else
+                    iconBtnCerrar.IconChar = IconChar.TimesCircle;
             }
         }
 
@@ -107,6 +122,26 @@ namespace ucLibrary
         public void MinimizeBox(bool value)
         {
             iconBtnMinimizar.Visible = value;
+        }
+
+        #endregion
+
+        #region Alineacion de Titulo
+
+        private ContentAlignment textAlign;
+
+        public ContentAlignment TitleAlign
+        {
+            get { return textAlign; }
+            set
+            {
+                textAlign = value;
+
+                if (cclblTituloVentana.AutoSize != false)
+                    cclblTituloVentana.AutoSize = false;
+
+                cclblTituloVentana.TextAlign = textAlign;
+            }
         }
 
         #endregion
