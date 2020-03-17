@@ -16,10 +16,8 @@ namespace ucLibrary
         public ucTitleBar()
         {
             /**
-             * TODO: fuente de texto del titulo.
-             * --- HECHO
-             * 
              * TODO: Agregar funcionabilidad a los botones
+             * --- HECHO
              * 
              * TODO: Agregar sistema de drag window
              * 
@@ -50,6 +48,7 @@ namespace ucLibrary
         #region Iconos de botones Max/Min/Close
 
         private IconChar iconMax = IconChar.WindowMaximize;
+        private IconChar iconNormal = IconChar.WindowRestore;
         private IconChar iconMin = IconChar.WindowMinimize;
         private IconChar iconClose = IconChar.TimesCircle;
 
@@ -59,12 +58,25 @@ namespace ucLibrary
             get { return iconMax; }
             set
             {
-                iconMax = value;
-
                 if (iconMax != IconChar.None)
-                    iconBtnMaximizar.IconChar = iconMax;
+                    iconMax = value;
                 else
-                    iconBtnMaximizar.IconChar = IconChar.WindowMaximize;
+                    iconMax = IconChar.WindowMaximize;
+
+                iconBtnMaximizar.IconChar = iconMax;
+            }
+        }
+
+        [DefaultValue(IconChar.WindowRestore)]
+        public IconChar IconNormal
+        {
+            get { return iconNormal; }
+            set
+            {
+                if (iconNormal != IconChar.None)
+                    iconNormal = value;
+                else
+                    iconNormal = IconChar.WindowRestore;
             }
         }
 
@@ -74,12 +86,12 @@ namespace ucLibrary
             get { return iconMin; }
             set
             {
-                iconMin = value;
-
                 if (iconMin != IconChar.None)
-                    iconBtnMinimizar.IconChar = iconMin;
+                    iconMin = value;
                 else
-                    iconBtnMinimizar.IconChar = IconChar.WindowMinimize;
+                    iconMin = IconChar.WindowMinimize;
+
+                iconBtnMinimizar.IconChar = iconMin;
             }
         }
 
@@ -89,12 +101,12 @@ namespace ucLibrary
             get { return iconClose; }
             set
             {
-                iconClose = value;
-
                 if (iconClose != IconChar.None)
-                    iconBtnCerrar.IconChar = iconClose;
+                    iconClose = value;
                 else
-                    iconBtnCerrar.IconChar = IconChar.TimesCircle;
+                    iconClose = IconChar.TimesCircle;
+
+                iconBtnCerrar.IconChar = iconClose;
             }
         }
 
@@ -273,5 +285,46 @@ namespace ucLibrary
         }
 
         #endregion
+
+        #region Funcion de los botones
+
+        private void iconBtnMinimizar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            frm.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconBtnMaximizar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            if (frm.WindowState == FormWindowState.Maximized)
+            {
+                frm.WindowState = FormWindowState.Normal;
+                iconBtnMaximizar.IconChar = iconMax;
+            }
+            else
+            {
+                frm.WindowState = FormWindowState.Maximized;
+                iconBtnMaximizar.IconChar = iconNormal;
+            }
+        }
+
+        private void iconBtnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private Form buscarFormulario(Control objeto)
+        {
+            if (objeto is Form)
+                return (objeto as Form);
+            else
+                return buscarFormulario(objeto.Parent);
+        }
+        
+        #endregion
+
     }
 }
