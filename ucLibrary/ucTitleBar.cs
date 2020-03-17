@@ -32,13 +32,20 @@ namespace ucLibrary
              * TODO: Selector de alineacion de Titulo (Izq, Der, Centro)
              * --- HECHO
              * 
-             * TODO: Selector de alineacion de Botones (Izq, Der, Centro)
+             * TODO: Selector de alineacion de Botones (Izq, Der)
+             * --- HECHO
              * 
              * TODO: opcion de agregar imagen de app.
              * 
              * TODO: color de fondo de botones, y color de texto de los botones.
              * 
              * TODO: color de texto del titulo
+             * 
+             * TODO: Agregar funcionabilidad a los botones
+             * 
+             * TODO: Agregar sistema de drag window
+             * 
+             * TODO: Agregar Click Derecho (Maximizar, Minimizar, Cerrar y si se me ocurre algo mas de 10)
              */
 
             InitializeComponent();
@@ -112,16 +119,56 @@ namespace ucLibrary
 
         #endregion
 
+        #region Posicion de Botones
+
+        private Point primero = new Point(0, 0);
+        private Point segundo = new Point(30, 0);
+        private Point tercero = new Point(60, 0);
+
+        #endregion
+
         #region Ocultar Maximizar/Minimizar
 
-        public void MaximizeBox(bool value)
+        private bool maximizeButton;
+
+        private bool minimizeButton;
+
+        public bool MaximizeBox
         {
-            iconBtnMaximizar.Visible = value;
+            get { return maximizeButton; }
+            set
+            {
+                maximizeButton = value;
+
+                iconBtnMaximizar.Visible = maximizeButton;
+
+                if (pnlBotones.Dock == DockStyle.Right)
+                {
+                    if (iconBtnMaximizar.Visible == false)
+                        acomodarBotones(Maximizar: primero, Minimizar: segundo, Cerrar: tercero);
+                    else
+                        acomodarBotones(Minimizar: primero, Maximizar: segundo, Cerrar: tercero);
+                }
+
+            }
         }
 
-        public void MinimizeBox(bool value)
+        public bool MinimizeBox
         {
-            iconBtnMinimizar.Visible = value;
+            get { return minimizeButton; }
+            set
+            {
+                minimizeButton = value;
+                iconBtnMinimizar.Visible = minimizeButton;
+
+                if(pnlBotones.Dock == DockStyle.Left)
+                {
+                    if (iconBtnMinimizar.Visible == false)
+                        acomodarBotones(Cerrar: primero, Maximizar: segundo, Minimizar: tercero);
+                    else
+                        acomodarBotones(Cerrar: primero, Minimizar: segundo, Maximizar: tercero);
+                }
+            }
         }
 
         #endregion
@@ -142,6 +189,47 @@ namespace ucLibrary
 
                 cclblTituloVentana.TextAlign = textAlign;
             }
+        }
+
+        #endregion
+
+        #region Alineacion de Botones
+
+        private DockStyle buttonsAlign;
+
+        public DockStyle ButtonsAlign
+        {
+            get { return buttonsAlign; }
+            set
+            {
+                if (buttonsAlign == DockStyle.None)
+                {
+                    buttonsAlign = DockStyle.Right;
+                    ButtonsAlign = buttonsAlign;
+                }
+                else
+                {
+                    if ((value != DockStyle.Bottom) && (value != DockStyle.Top) && (value != DockStyle.Fill) && (value != DockStyle.None))
+                    {
+                        buttonsAlign = value;
+                        pnlBotones.Dock = buttonsAlign;
+                        if (pnlBotones.Dock == DockStyle.Right)
+                            acomodarBotones(Minimizar: primero, Maximizar: segundo, Cerrar: tercero);
+                        else
+                            acomodarBotones(Cerrar: primero, Minimizar: segundo, Maximizar: tercero);
+                    }
+                    else
+                        MessageBox.Show("Propiedad Invalida " + Environment.NewLine +
+                            "Solo se permiten Right o Left", "Propiedad Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void acomodarBotones(Point Minimizar, Point Maximizar, Point Cerrar)
+        {
+            iconBtnMinimizar.Location = Minimizar;
+            iconBtnMaximizar.Location = Maximizar;
+            iconBtnCerrar.Location = Cerrar;
         }
 
         #endregion

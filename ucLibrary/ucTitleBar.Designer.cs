@@ -63,8 +63,8 @@
             // pnlBotones
             // 
             this.pnlBotones.Controls.Add(this.iconBtnMaximizar);
-            this.pnlBotones.Controls.Add(this.iconBtnMinimizar);
             this.pnlBotones.Controls.Add(this.iconBtnCerrar);
+            this.pnlBotones.Controls.Add(this.iconBtnMinimizar);
             this.pnlBotones.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlBotones.Location = new System.Drawing.Point(733, 0);
             this.pnlBotones.Name = "pnlBotones";
@@ -82,10 +82,10 @@
             this.iconBtnMaximizar.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconBtnMaximizar.IconSize = 20;
             this.iconBtnMaximizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconBtnMaximizar.Location = new System.Drawing.Point(31, 0);
+            this.iconBtnMaximizar.Location = new System.Drawing.Point(30, 0);
             this.iconBtnMaximizar.Name = "iconBtnMaximizar";
             this.iconBtnMaximizar.Rotation = 0D;
-            this.iconBtnMaximizar.Size = new System.Drawing.Size(28, 24);
+            this.iconBtnMaximizar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnMaximizar.TabIndex = 2;
             this.iconBtnMaximizar.UseVisualStyleBackColor = false;
             // 
@@ -100,10 +100,10 @@
             this.iconBtnMinimizar.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconBtnMinimizar.IconSize = 20;
             this.iconBtnMinimizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconBtnMinimizar.Location = new System.Drawing.Point(3, 0);
+            this.iconBtnMinimizar.Location = new System.Drawing.Point(0, 0);
             this.iconBtnMinimizar.Name = "iconBtnMinimizar";
             this.iconBtnMinimizar.Rotation = 0D;
-            this.iconBtnMinimizar.Size = new System.Drawing.Size(28, 24);
+            this.iconBtnMinimizar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnMinimizar.TabIndex = 1;
             this.iconBtnMinimizar.UseVisualStyleBackColor = false;
             // 
@@ -118,20 +118,21 @@
             this.iconBtnCerrar.IconColor = System.Drawing.SystemColors.ControlText;
             this.iconBtnCerrar.IconSize = 20;
             this.iconBtnCerrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconBtnCerrar.Location = new System.Drawing.Point(59, 0);
+            this.iconBtnCerrar.Location = new System.Drawing.Point(60, 0);
             this.iconBtnCerrar.Name = "iconBtnCerrar";
             this.iconBtnCerrar.Rotation = 0D;
-            this.iconBtnCerrar.Size = new System.Drawing.Size(28, 24);
+            this.iconBtnCerrar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnCerrar.TabIndex = 3;
             this.iconBtnCerrar.UseVisualStyleBackColor = false;
             // 
             // cclblTituloVentana
             // 
+            this.cclblTituloVentana.AutoSize = true;
             this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
             this.cclblTituloVentana.Name = "cclblTituloVentana";
-            this.cclblTituloVentana.Size = new System.Drawing.Size(733, 25);
+            this.cclblTituloVentana.Size = new System.Drawing.Size(40, 16);
             this.cclblTituloVentana.TabIndex = 0;
             this.cclblTituloVentana.Text = "Titulo";
             this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,6 +146,7 @@
             this.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
