@@ -30,11 +30,11 @@
         {
             this.pnlBG = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cclblTituloVentana = new ccLibrary.ccLabel();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.iconBtnMaximizar = new FontAwesome.Sharp.IconButton();
             this.iconBtnCerrar = new FontAwesome.Sharp.IconButton();
             this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
+            this.cclblTituloVentana = new ccLibrary.ccLabel();
             this.pnlBG.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlBotones.SuspendLayout();
@@ -59,18 +59,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 25);
             this.panel2.TabIndex = 5;
-            // 
-            // cclblTituloVentana
-            // 
-            this.cclblTituloVentana.AutoSize = true;
-            this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
-            this.cclblTituloVentana.Name = "cclblTituloVentana";
-            this.cclblTituloVentana.Size = new System.Drawing.Size(83, 16);
-            this.cclblTituloVentana.TabIndex = 0;
-            this.cclblTituloVentana.Text = "Window Title";
-            this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlBotones
             // 
@@ -137,6 +125,17 @@
             this.iconBtnMinimizar.TabIndex = 1;
             this.iconBtnMinimizar.UseVisualStyleBackColor = false;
             // 
+            // cclblTituloVentana
+            // 
+            this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
+            this.cclblTituloVentana.Name = "cclblTituloVentana";
+            this.cclblTituloVentana.Size = new System.Drawing.Size(733, 25);
+            this.cclblTituloVentana.TabIndex = 0;
+            this.cclblTituloVentana.Text = "Window Title";
+            this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ucTitleBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,7 +146,6 @@
             this.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 

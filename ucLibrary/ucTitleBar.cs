@@ -16,10 +16,8 @@ namespace ucLibrary
         public ucTitleBar()
         {
             /**
-             * TODO: color de fondo de botones, y color de texto de los botones.
+             * TODO: fuente de texto del titulo.
              * --- HECHO
-             * 
-             * TODO: fuente de texto del titulo, y color de texto de los botones.
              * 
              * TODO: Agregar funcionabilidad a los botones
              * 
@@ -265,21 +263,15 @@ namespace ucLibrary
 
         #endregion
 
-        //#region Font y ForeColor de Titulo
+        #region Font del Titulo
 
-        //private Font titleFont;
-        
-        //public Font TitleFont
-        //{
-        //    get { return titleFont; }
-        //    set
-        //    {
+        [DisplayName("Title Font")]
+        public override Font Font
+        {
+            get { return cclblTituloVentana.Font; }
+            set { cclblTituloVentana.Font = value; }
+        }
 
-        //    }
-        //}
-
-        //private Color titleFore;
-
-        //#endregion
+        #endregion
     }
 }
