@@ -30,11 +30,11 @@
         {
             this.pnlBG = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cclblTituloVentana = new ccLibrary.ccLabel();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.iconBtnMaximizar = new FontAwesome.Sharp.IconButton();
-            this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
             this.iconBtnCerrar = new FontAwesome.Sharp.IconButton();
-            this.cclblTituloVentana = new ccLibrary.ccLabel();
+            this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
             this.pnlBG.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlBotones.SuspendLayout();
@@ -59,6 +59,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 25);
             this.panel2.TabIndex = 5;
+            // 
+            // cclblTituloVentana
+            // 
+            this.cclblTituloVentana.AutoSize = true;
+            this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
+            this.cclblTituloVentana.Name = "cclblTituloVentana";
+            this.cclblTituloVentana.Size = new System.Drawing.Size(83, 16);
+            this.cclblTituloVentana.TabIndex = 0;
+            this.cclblTituloVentana.Text = "Window Title";
+            this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlBotones
             // 
@@ -89,24 +101,6 @@
             this.iconBtnMaximizar.TabIndex = 2;
             this.iconBtnMaximizar.UseVisualStyleBackColor = false;
             // 
-            // iconBtnMinimizar
-            // 
-            this.iconBtnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconBtnMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.iconBtnMinimizar.FlatAppearance.BorderSize = 0;
-            this.iconBtnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconBtnMinimizar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconBtnMinimizar.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
-            this.iconBtnMinimizar.IconColor = System.Drawing.SystemColors.ControlText;
-            this.iconBtnMinimizar.IconSize = 20;
-            this.iconBtnMinimizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconBtnMinimizar.Location = new System.Drawing.Point(0, 0);
-            this.iconBtnMinimizar.Name = "iconBtnMinimizar";
-            this.iconBtnMinimizar.Rotation = 0D;
-            this.iconBtnMinimizar.Size = new System.Drawing.Size(30, 25);
-            this.iconBtnMinimizar.TabIndex = 1;
-            this.iconBtnMinimizar.UseVisualStyleBackColor = false;
-            // 
             // iconBtnCerrar
             // 
             this.iconBtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -125,23 +119,30 @@
             this.iconBtnCerrar.TabIndex = 3;
             this.iconBtnCerrar.UseVisualStyleBackColor = false;
             // 
-            // cclblTituloVentana
+            // iconBtnMinimizar
             // 
-            this.cclblTituloVentana.AutoSize = true;
-            this.cclblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cclblTituloVentana.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTituloVentana.Location = new System.Drawing.Point(0, 0);
-            this.cclblTituloVentana.Name = "cclblTituloVentana";
-            this.cclblTituloVentana.Size = new System.Drawing.Size(40, 16);
-            this.cclblTituloVentana.TabIndex = 0;
-            this.cclblTituloVentana.Text = "Titulo";
-            this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconBtnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconBtnMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.iconBtnMinimizar.FlatAppearance.BorderSize = 0;
+            this.iconBtnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconBtnMinimizar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconBtnMinimizar.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.iconBtnMinimizar.IconColor = System.Drawing.SystemColors.ControlText;
+            this.iconBtnMinimizar.IconSize = 20;
+            this.iconBtnMinimizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconBtnMinimizar.Location = new System.Drawing.Point(0, 0);
+            this.iconBtnMinimizar.Name = "iconBtnMinimizar";
+            this.iconBtnMinimizar.Rotation = 0D;
+            this.iconBtnMinimizar.Size = new System.Drawing.Size(30, 25);
+            this.iconBtnMinimizar.TabIndex = 1;
+            this.iconBtnMinimizar.UseVisualStyleBackColor = false;
             // 
             // ucTitleBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlBG);
+            this.MinimumSize = new System.Drawing.Size(180, 25);
             this.Name = "ucTitleBar";
             this.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.ResumeLayout(false);

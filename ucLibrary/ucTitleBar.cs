@@ -15,12 +15,11 @@ namespace ucLibrary
     {
         public ucTitleBar()
         {
-
             /**
              * TODO: color de fondo de botones, y color de texto de los botones.
              * --- HECHO
              * 
-             * TODO: fuente de texto del titulo
+             * TODO: fuente de texto del titulo, y color de texto de los botones.
              * 
              * TODO: Agregar funcionabilidad a los botones
              * 
@@ -34,8 +33,9 @@ namespace ucLibrary
 
         #region Titulo de la Ventana
 
-        private string tituloVentana;
+        private string tituloVentana = "Window Title";
 
+        [DefaultValue("Window Title")]
         public string TitleText
         {
             get { return tituloVentana; }
@@ -43,10 +43,7 @@ namespace ucLibrary
             {
                 tituloVentana = value;
 
-                if (tituloVentana == string.Empty)
-                    cclblTituloVentana.Text = "Window Title";
-                else
-                    cclblTituloVentana.Text = tituloVentana;
+                cclblTituloVentana.Text = tituloVentana;
             }
         }
 
@@ -54,16 +51,18 @@ namespace ucLibrary
 
         #region Iconos de botones Max/Min/Close
 
-        private IconChar iconMax;
-        private IconChar iconMin;
-        private IconChar iconClose;
+        private IconChar iconMax = IconChar.WindowMaximize;
+        private IconChar iconMin = IconChar.WindowMinimize;
+        private IconChar iconClose = IconChar.TimesCircle;
 
+        [DefaultValue(IconChar.WindowMaximize)]
         public IconChar IconMaximize
         {
             get { return iconMax; }
             set
             {
                 iconMax = value;
+
                 if (iconMax != IconChar.None)
                     iconBtnMaximizar.IconChar = iconMax;
                 else
@@ -71,12 +70,14 @@ namespace ucLibrary
             }
         }
 
+        [DefaultValue(IconChar.WindowMinimize)]
         public IconChar IconMinimize
         {
             get { return iconMin; }
             set
             {
                 iconMin = value;
+
                 if (iconMin != IconChar.None)
                     iconBtnMinimizar.IconChar = iconMin;
                 else
@@ -84,6 +85,7 @@ namespace ucLibrary
             }
         }
 
+        [DefaultValue(IconChar.TimesCircle)]
         public IconChar IconClose
         {
             get { return iconClose; }
@@ -107,13 +109,34 @@ namespace ucLibrary
         private Point tercero = new Point(60, 0);
 
         #endregion
+        
+        #region Alineacion de Titulo
+
+        private ContentAlignment textAlign;
+        
+        public ContentAlignment TitleAlign
+        {
+            get { return textAlign; }
+            set
+            {
+                textAlign = value;
+
+                if (cclblTituloVentana.AutoSize != false)
+                    cclblTituloVentana.AutoSize = false;
+
+                cclblTituloVentana.TextAlign = textAlign;
+            }
+        }
+
+        #endregion
 
         #region Ocultar Maximizar/Minimizar
 
-        private bool maximizeButton;
+        private bool maximizeButton = true;
 
-        private bool minimizeButton;
+        private bool minimizeButton = true;
 
+        [DefaultValue(true)]
         public bool MaximizeBox
         {
             get { return maximizeButton; }
@@ -134,6 +157,7 @@ namespace ucLibrary
             }
         }
 
+        [DefaultValue(true)]
         public bool MinimizeBox
         {
             get { return minimizeButton; }
@@ -154,73 +178,48 @@ namespace ucLibrary
 
         #endregion
 
-        #region Alineacion de Titulo
-
-        private ContentAlignment textAlign;
-
-        public ContentAlignment TitleAlign
-        {
-            get { return textAlign; }
-            set
-            {
-                textAlign = value;
-
-                if (cclblTituloVentana.AutoSize != false)
-                    cclblTituloVentana.AutoSize = false;
-
-                cclblTituloVentana.TextAlign = textAlign;
-            }
-        }
-
-        #endregion
-
-        #region Alineacion de Botones
-
-        private DockStyle buttonsAlign;
-
-        public DockStyle ButtonsAlign
-        {
-            get { return buttonsAlign; }
-            set
-            {
-                if (buttonsAlign == DockStyle.None)
-                {
-                    buttonsAlign = DockStyle.Right;
-                    ButtonsAlign = buttonsAlign;
-                }
-                else
-                {
-                    if ((value != DockStyle.Bottom) && (value != DockStyle.Top) && (value != DockStyle.Fill) && (value != DockStyle.None))
-                    {
-                        buttonsAlign = value;
-                        pnlBotones.Dock = buttonsAlign;
-                        if (pnlBotones.Dock == DockStyle.Right)
-                            acomodarBotones(Minimizar: primero, Maximizar: segundo, Cerrar: tercero);
-                        else
-                            acomodarBotones(Cerrar: primero, Minimizar: segundo, Maximizar: tercero);
-                    }
-                    else
-                        MessageBox.Show("Propiedad Invalida " + Environment.NewLine +
-                            "Solo se permiten Right o Left", "Propiedad Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void acomodarBotones(Point Minimizar, Point Maximizar, Point Cerrar)
         {
             iconBtnMinimizar.Location = Minimizar;
             iconBtnMaximizar.Location = Maximizar;
             iconBtnCerrar.Location = Cerrar;
         }
+        
+        #region Alineacion de Botones
+
+        private DockStyle buttonsAlign = DockStyle.Right;
+
+        [DefaultValue(DockStyle.Right)]
+        public DockStyle ButtonsAlign
+        {
+            get { return buttonsAlign; }
+            set
+            {
+                buttonsAlign = value;
+
+                if (buttonsAlign != DockStyle.Bottom && buttonsAlign != DockStyle.Top && buttonsAlign != DockStyle.Fill && buttonsAlign != DockStyle.None)
+                {
+                    pnlBotones.Dock = buttonsAlign;
+
+                    if (pnlBotones.Dock == DockStyle.Right)
+                        acomodarBotones(Minimizar: primero, Maximizar: segundo, Cerrar: tercero);
+                    else
+                        acomodarBotones(Cerrar: primero, Minimizar: segundo, Maximizar: tercero);
+                }
+                else
+                    MessageBox.Show("Propiedad Invalida " + Environment.NewLine + 
+                        "Solo se permiten Right o Left", "Propiedad Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
 
-        #region Back y Fore Color
+        #region Back y Fore Color de Botones
 
         private Color buttonsBackColor;
 
         private Color buttonsForeColor;
-
+        
         public Color ButtonsBackColor
         {
             get { return buttonsBackColor; }
@@ -265,5 +264,22 @@ namespace ucLibrary
         }
 
         #endregion
+
+        //#region Font y ForeColor de Titulo
+
+        //private Font titleFont;
+        
+        //public Font TitleFont
+        //{
+        //    get { return titleFont; }
+        //    set
+        //    {
+
+        //    }
+        //}
+
+        //private Color titleFore;
+
+        //#endregion
     }
 }
