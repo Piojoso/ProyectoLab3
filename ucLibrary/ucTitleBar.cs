@@ -17,29 +17,10 @@ namespace ucLibrary
         {
 
             /**
-             * TODO: selector de color de fondo
-             * --- HECHO: en realidad solo acomode los colores del componente (hacerlos transparentes para que se vea el backcolor).
-             * 
-             * TODO: escribir titulo
-             * --- HECHO
-             * 
-             * TODO: selector de iconos (Maximizar, Minimizar, Cerrar).
-             * --- HECHO
-             * 
-             * TODO: Dar la chance de poder ocultar ciertos botones
-             * --- HECHO
-             * 
-             * TODO: Selector de alineacion de Titulo (Izq, Der, Centro)
-             * --- HECHO
-             * 
-             * TODO: Selector de alineacion de Botones (Izq, Der)
-             * --- HECHO
-             * 
-             * TODO: opcion de agregar imagen de app.
-             * 
              * TODO: color de fondo de botones, y color de texto de los botones.
+             * --- HECHO
              * 
-             * TODO: color de texto del titulo
+             * TODO: fuente de texto del titulo
              * 
              * TODO: Agregar funcionabilidad a los botones
              * 
@@ -230,6 +211,57 @@ namespace ucLibrary
             iconBtnMinimizar.Location = Minimizar;
             iconBtnMaximizar.Location = Maximizar;
             iconBtnCerrar.Location = Cerrar;
+        }
+
+        #endregion
+
+        #region Back y Fore Color
+
+        private Color buttonsBackColor;
+
+        private Color buttonsForeColor;
+
+        public Color ButtonsBackColor
+        {
+            get { return buttonsBackColor; }
+            set
+            {
+                buttonsBackColor = value;
+
+                if (buttonsBackColor.IsEmpty)
+                    backColorBTN(BackColor);
+                else
+                    backColorBTN(buttonsBackColor);
+            }
+        }
+
+        public Color ButtonsForeColor
+        {
+            get { return buttonsForeColor; }
+            set
+            {
+                buttonsForeColor = value;
+
+                if (buttonsForeColor.IsEmpty)
+                    foreColorBTN(DefaultForeColor);
+                else
+                    foreColorBTN(buttonsForeColor);
+                    
+            }
+        }
+
+        private void backColorBTN(Color color)
+        {
+            iconBtnMinimizar.BackColor = color;
+            iconBtnMaximizar.BackColor = color;
+            iconBtnCerrar.BackColor = color;
+        }
+
+        private void foreColorBTN(Color color)
+        {
+            iconBtnMinimizar.IconColor = color;
+            iconBtnMaximizar.IconColor = color;
+            iconBtnCerrar.IconColor = color;
         }
 
         #endregion
