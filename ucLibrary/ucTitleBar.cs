@@ -17,16 +17,19 @@ namespace ucLibrary
         public ucTitleBar()
         {
             /**
-             * TODO: Agregar sistema de drag window
-             * --- HECHO
-             * 
              * TODO: Agregar Click Derecho (Maximizar, Minimizar, Cerrar y si se me ocurre algo mas de 10)
-             * 
-             * TODO: Selector para saber si la ventana es principal o secundaria. 
-             *          Asi se modificara el boton cerrar y no cerrara toda la app al clickearlo
+             * --- HECHO
              */
 
             InitializeComponent();
+        }
+
+        private Form buscarFormulario(Control objeto)
+        {
+            if (objeto is Form)
+                return (objeto as Form);
+            else
+                return buscarFormulario(objeto.Parent);
         }
 
         #region Titulo de la Ventana
@@ -315,19 +318,13 @@ namespace ucLibrary
 
         private void iconBtnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form frm = buscarFormulario(this);
+
+            frm.Close();
         }
         
         #endregion
-
-        private Form buscarFormulario(Control objeto)
-        {
-            if (objeto is Form)
-                return (objeto as Form);
-            else
-                return buscarFormulario(objeto.Parent);
-        }
-
+        
         #region Arrastrar ventana
 
         [DllImport("User32.DLL", EntryPoint = "ReleaseCapture")]
@@ -339,9 +336,47 @@ namespace ucLibrary
         private void MoveWindow_MouseDown(object sender, MouseEventArgs e)
         {
             Form frm = buscarFormulario(this);
-            
+
             ReleaseCapture();
             SendMessage(frm.Handle, 0x112, 0xf012, 0);
+        }
+
+        #endregion
+
+        #region cmsItems
+
+        private void cmsiRestaurar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            frm.WindowState = FormWindowState.Normal;
+
+            cmsiRestaurar.Enabled = false;
+            cmsiMaximizar.Enabled = true;
+        }
+
+        private void cmsiMinimizar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            frm.WindowState = FormWindowState.Minimized;
+        }
+
+        private void cmsiMaximizar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            frm.WindowState = FormWindowState.Maximized;
+
+            cmsiRestaurar.Enabled = true;
+            cmsiMaximizar.Enabled = false;
+        }
+
+        private void cmsiCerrar_Click(object sender, EventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+
+            frm.Close();
         }
 
         #endregion
