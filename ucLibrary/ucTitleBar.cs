@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using System.Runtime.InteropServices;
 
 namespace ucLibrary
 {
@@ -16,12 +17,13 @@ namespace ucLibrary
         public ucTitleBar()
         {
             /**
-             * TODO: Agregar funcionabilidad a los botones
+             * TODO: Agregar sistema de drag window
              * --- HECHO
              * 
-             * TODO: Agregar sistema de drag window
-             * 
              * TODO: Agregar Click Derecho (Maximizar, Minimizar, Cerrar y si se me ocurre algo mas de 10)
+             * 
+             * TODO: Selector para saber si la ventana es principal o secundaria. 
+             *          Asi se modificara el boton cerrar y no cerrara toda la app al clickearlo
              */
 
             InitializeComponent();
@@ -315,6 +317,8 @@ namespace ucLibrary
         {
             Application.Exit();
         }
+        
+        #endregion
 
         private Form buscarFormulario(Control objeto)
         {
@@ -323,8 +327,23 @@ namespace ucLibrary
             else
                 return buscarFormulario(objeto.Parent);
         }
-        
-        #endregion
 
+        #region Arrastrar ventana
+
+        [DllImport("User32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("User32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void MoveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            Form frm = buscarFormulario(this);
+            
+            ReleaseCapture();
+            SendMessage(frm.Handle, 0x112, 0xf012, 0);
+        }
+
+        #endregion
     }
 }

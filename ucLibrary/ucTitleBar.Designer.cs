@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.pnlBG = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlTitle = new System.Windows.Forms.Panel();
             this.cclblTituloVentana = new ccLibrary.ccLabel();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.iconBtnMaximizar = new FontAwesome.Sharp.IconButton();
             this.iconBtnCerrar = new FontAwesome.Sharp.IconButton();
             this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
             this.pnlBG.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlTitle.SuspendLayout();
             this.pnlBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBG
             // 
             this.pnlBG.BackColor = System.Drawing.Color.Transparent;
-            this.pnlBG.Controls.Add(this.panel2);
+            this.pnlBG.Controls.Add(this.pnlTitle);
             this.pnlBG.Controls.Add(this.pnlBotones);
             this.pnlBG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBG.Location = new System.Drawing.Point(0, 0);
@@ -51,14 +51,15 @@
             this.pnlBG.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.TabIndex = 1;
             // 
-            // panel2
+            // pnlTitle
             // 
-            this.panel2.Controls.Add(this.cclblTituloVentana);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(733, 25);
-            this.panel2.TabIndex = 5;
+            this.pnlTitle.Controls.Add(this.cclblTituloVentana);
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.Size = new System.Drawing.Size(733, 25);
+            this.pnlTitle.TabIndex = 5;
+            this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveWindow_MouseDown);
             // 
             // cclblTituloVentana
             // 
@@ -71,6 +72,7 @@
             this.cclblTituloVentana.TabIndex = 0;
             this.cclblTituloVentana.Text = "Window Title";
             this.cclblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cclblTituloVentana.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveWindow_MouseDown);
             // 
             // pnlBotones
             // 
@@ -149,8 +151,8 @@
             this.Name = "ucTitleBar";
             this.Size = new System.Drawing.Size(823, 25);
             this.pnlBG.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlTitle.ResumeLayout(false);
+            this.pnlTitle.PerformLayout();
             this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -162,7 +164,7 @@
         private FontAwesome.Sharp.IconButton iconBtnCerrar;
         private FontAwesome.Sharp.IconButton iconBtnMaximizar;
         private FontAwesome.Sharp.IconButton iconBtnMinimizar;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlTitle;
         private System.Windows.Forms.Panel pnlBotones;
         private ccLibrary.ccLabel cclblTituloVentana;
     }
