@@ -38,12 +38,12 @@ namespace MAB.Forms.CRUD.Reparaciones
              */
             using (MABEntities db = new MABEntities())
             {
-                var data = from reparaciones in db.Reparaciones
-                           where (((DateTime.Now - reparaciones.fechaIngreso).Days > 30) 
-                           || reparaciones.estadoReparacion == estadosReparacion.EnCurso)
-                           select reparaciones;
+                //var data = from reparaciones in db.Reparaciones
+                //           where (((DateTime.Now - reparaciones.fechaIngreso).Days > 30) 
+                //           || reparaciones.estadoReparacion == estadosReparacion.EnCurso)
+                //           select reparaciones;
 
-                ucBG.cargarDGV(data.ToList());
+                //ucBG.cargarDGV(data.ToList());
             }
         }
 

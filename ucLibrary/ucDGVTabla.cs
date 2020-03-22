@@ -15,24 +15,6 @@ namespace ucLibrary
     {
         public ucDGVTabla()
         {
-
-            /**
-             * ----------------------------------------------------------------------------------------------------------------------
-             * TODO: Funcion de botones add, modify, see all, search, delete en este codigo, y tratar de que sea generico para todo.
-             * --- HECHO: Masomenos, en realidad lo que luego se me ocurrio fue hacer que cada boton habra una correspondiente ventana,
-             * ---        y ahi se realiza lo que se desee. Agregar, modificar, etc etc.
-             * 
-             * ----------------------------------------------------------------------------------------------------------------------
-             * TODO: De alguna manera debo hacer que se pueda seleccionar que columnas se quiere enseñar
-             * 
-             * TODO: Hacer que se pueda cambiar el nombre de las columnas en el DGV
-             * 
-             * TODO: Hacer que se puedan ocultar columnas en el DGV
-             * --- HECHO: Incluso algunas otras funcionabilidades mas. En vez de encapsular las funciones, lo que hice es permitir que
-             * ---        desde el lugar de uso del User Control se pueda tener acceso a las columnas del dgv. Asi de esta forma, pueden
-             * ---        ocultarlos, eliminarlas, cambiarle el nombre, etc etc.
-             * ----------------------------------------------------------------------------------------------------------------------
-             */
             InitializeComponent();
         }
 

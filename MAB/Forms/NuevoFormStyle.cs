@@ -12,6 +12,7 @@ using FontAwesome.Sharp;
 using ccLibrary;
 using System.Runtime.InteropServices;
 using MAB.Forms.CRUD.Clientes;
+using MAB.Models;
 
 
 namespace MAB.Forms
@@ -25,6 +26,10 @@ namespace MAB.Forms
              * TODO: Analizar la posibilidad de colocar en el titulo de la ventana el estado de la conexion con la DB = {Conectada, Conectando, No Conectada};
              * 
              * TODO: Analizar la posibilidad de colocar un mini reloj con la hora actual. ¿para que?: nose, solo por hacerlo.
+             * 
+             * TODO: Capturar posible error de la DB para enseñarlo si es oportuno, o realizar un segundo intento, si se puede
+             * 
+             * TODO: Hacer que la barra superior, de control de la ventana, sea un User Control separado. Para reutilizar
              */
             InitializeComponent();
 
@@ -46,7 +51,6 @@ namespace MAB.Forms
             ucBotonera.evClickAccion2 += verReparaciones;
             ucBotonera.evClickAccion3 += verLavarropas;
             ucBotonera.evClickAccion4 += verStock;
-
         }
 
         #region Acciones Botones
@@ -81,42 +85,7 @@ namespace MAB.Forms
         }
 
         #endregion
-
-        #region Mover Ventana
-
-        [DllImport("User32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("User32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         
-        private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        #endregion
-
-        #region Maximizar, Minimizar, Cerrar Ventana
-
-        private void iconBtnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void iconBtnMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = this.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-        }
-
-        private void iconBtnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        #endregion
-
         #region Formulario Hijo
 
         //Campos
@@ -137,7 +106,7 @@ namespace MAB.Forms
             hijo.BringToFront();
             hijo.Show();
 
-            cclblTituloVentana.Text = "MAB - " + hijo.Text;
+            ucTitleBar.TitleText = "MAB - " + hijo.Text;
         }
 
         #endregion
