@@ -15,6 +15,14 @@ namespace ucLibrary
     {
         public ucDGVTabla()
         {
+            /**
+             * TODO: opcion para sacar boton DELETE
+             * --- HECHO
+             * 
+             * TODO: Revisar temita con buscar, y modificar, ya que los frm de busqueda van a devolver objetos, y debo enseñarlos
+             * 
+             * TODO: obtener fila seleccionada en DGV
+             */
             InitializeComponent();
         }
 
@@ -215,6 +223,24 @@ namespace ucLibrary
         {
             get { return columns; }
             set { columns = value; }
+        }
+
+        #endregion
+
+        #region Delete Button
+
+        private bool deleteVisibility = true;
+
+        [DefaultValue(true)]
+        public bool DeleteVisibility
+        {
+            get { return deleteVisibility; }
+            set
+            {
+                deleteVisibility = value;
+
+                btnDelete.Visible = deleteVisibility;
+            }
         }
 
         #endregion
