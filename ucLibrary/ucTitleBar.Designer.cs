@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             this.pnlBG = new System.Windows.Forms.Panel();
             this.pnlTitle = new System.Windows.Forms.Panel();
-            this.cclblTituloVentana = new ccLibrary.ccLabel();
-            this.pnlBotones = new System.Windows.Forms.Panel();
-            this.iconBtnMaximizar = new FontAwesome.Sharp.IconButton();
-            this.iconBtnCerrar = new FontAwesome.Sharp.IconButton();
-            this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
             this.cmsClickDerecho = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsiRestaurar = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsiMinimizar = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsiMaximizar = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsiCerrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cclblTituloVentana = new ccLibrary.ccLabel();
+            this.pnlBotones = new System.Windows.Forms.Panel();
+            this.iconBtnMaximizar = new FontAwesome.Sharp.IconButton();
+            this.iconBtnCerrar = new FontAwesome.Sharp.IconButton();
+            this.iconBtnMinimizar = new FontAwesome.Sharp.IconButton();
             this.pnlBG.SuspendLayout();
             this.pnlTitle.SuspendLayout();
-            this.pnlBotones.SuspendLayout();
             this.cmsClickDerecho.SuspendLayout();
+            this.pnlBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBG
@@ -69,6 +69,54 @@
             this.pnlTitle.Size = new System.Drawing.Size(733, 25);
             this.pnlTitle.TabIndex = 5;
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveWindow_MouseDown);
+            // 
+            // cmsClickDerecho
+            // 
+            this.cmsClickDerecho.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsiRestaurar,
+            this.cmsiMinimizar,
+            this.cmsiMaximizar,
+            this.toolStripSeparator1,
+            this.cmsiCerrar});
+            this.cmsClickDerecho.Name = "cmsClickDerecho";
+            this.cmsClickDerecho.Size = new System.Drawing.Size(149, 98);
+            // 
+            // cmsiRestaurar
+            // 
+            this.cmsiRestaurar.Enabled = false;
+            this.cmsiRestaurar.Name = "cmsiRestaurar";
+            this.cmsiRestaurar.Size = new System.Drawing.Size(148, 22);
+            this.cmsiRestaurar.Text = "Restaurar";
+            this.cmsiRestaurar.Click += new System.EventHandler(this.cmsiRestaurar_Click);
+            // 
+            // cmsiMinimizar
+            // 
+            this.cmsiMinimizar.Name = "cmsiMinimizar";
+            this.cmsiMinimizar.Size = new System.Drawing.Size(148, 22);
+            this.cmsiMinimizar.Text = "Minimizar";
+            this.cmsiMinimizar.Click += new System.EventHandler(this.cmsiMinimizar_Click);
+            // 
+            // cmsiMaximizar
+            // 
+            this.cmsiMaximizar.Name = "cmsiMaximizar";
+            this.cmsiMaximizar.Size = new System.Drawing.Size(148, 22);
+            this.cmsiMaximizar.Text = "Maximizar";
+            this.cmsiMaximizar.Click += new System.EventHandler(this.cmsiMaximizar_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
+            // 
+            // cmsiCerrar
+            // 
+            this.cmsiCerrar.Name = "cmsiCerrar";
+            this.cmsiCerrar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.cmsiCerrar.Size = new System.Drawing.Size(148, 22);
+            this.cmsiCerrar.Text = "Cerrar";
+            this.cmsiCerrar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.cmsiCerrar.ToolTipText = "asdasdas";
+            this.cmsiCerrar.Click += new System.EventHandler(this.cmsiCerrar_Click);
             // 
             // cclblTituloVentana
             // 
@@ -155,54 +203,6 @@
             this.iconBtnMinimizar.UseVisualStyleBackColor = false;
             this.iconBtnMinimizar.Click += new System.EventHandler(this.iconBtnMinimizar_Click);
             // 
-            // cmsClickDerecho
-            // 
-            this.cmsClickDerecho.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsiRestaurar,
-            this.cmsiMinimizar,
-            this.cmsiMaximizar,
-            this.toolStripSeparator1,
-            this.cmsiCerrar});
-            this.cmsClickDerecho.Name = "cmsClickDerecho";
-            this.cmsClickDerecho.Size = new System.Drawing.Size(149, 98);
-            // 
-            // cmsiRestaurar
-            // 
-            this.cmsiRestaurar.Enabled = false;
-            this.cmsiRestaurar.Name = "cmsiRestaurar";
-            this.cmsiRestaurar.Size = new System.Drawing.Size(148, 22);
-            this.cmsiRestaurar.Text = "Restaurar";
-            this.cmsiRestaurar.Click += new System.EventHandler(this.cmsiRestaurar_Click);
-            // 
-            // cmsiMinimizar
-            // 
-            this.cmsiMinimizar.Name = "cmsiMinimizar";
-            this.cmsiMinimizar.Size = new System.Drawing.Size(148, 22);
-            this.cmsiMinimizar.Text = "Minimizar";
-            this.cmsiMinimizar.Click += new System.EventHandler(this.cmsiMinimizar_Click);
-            // 
-            // cmsiMaximizar
-            // 
-            this.cmsiMaximizar.Name = "cmsiMaximizar";
-            this.cmsiMaximizar.Size = new System.Drawing.Size(148, 22);
-            this.cmsiMaximizar.Text = "Maximizar";
-            this.cmsiMaximizar.Click += new System.EventHandler(this.cmsiMaximizar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
-            // 
-            // cmsiCerrar
-            // 
-            this.cmsiCerrar.Name = "cmsiCerrar";
-            this.cmsiCerrar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.cmsiCerrar.Size = new System.Drawing.Size(148, 22);
-            this.cmsiCerrar.Text = "Cerrar";
-            this.cmsiCerrar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.cmsiCerrar.ToolTipText = "asdasdas";
-            this.cmsiCerrar.Click += new System.EventHandler(this.cmsiCerrar_Click);
-            // 
             // ucTitleBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,8 +214,8 @@
             this.pnlBG.ResumeLayout(false);
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
-            this.pnlBotones.ResumeLayout(false);
             this.cmsClickDerecho.ResumeLayout(false);
+            this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

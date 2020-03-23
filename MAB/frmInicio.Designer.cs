@@ -131,7 +131,6 @@
             this.Controls.Add(this.pnlBG);
             this.DoubleBuffered = true;
             this.Name = "NuevoFormStyle";
-            this.Text = "NuevoFormStyle";
             this.pnlBG.ResumeLayout(false);
             this.pnlBody.ResumeLayout(false);
             this.pnlNavBar.ResumeLayout(false);

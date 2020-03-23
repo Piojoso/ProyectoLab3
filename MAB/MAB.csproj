@@ -145,11 +145,11 @@
     <Compile Include="Forms\CRUD\Telefonos\frmTelefonos.Designer.cs">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NuevoFormStyle.cs">
+    <Compile Include="FormInicial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NuevoFormStyle.Designer.cs">
-      <DependentUpon>NuevoFormStyle.cs</DependentUpon>
+    <Compile Include="FormInicial.Designer.cs">
+      <DependentUpon>FormInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>Models.tt</DependentUpon>
@@ -238,8 +238,8 @@
     <EmbeddedResource Include="Forms\CRUD\Telefonos\frmTelefonos.resx">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NuevoFormStyle.resx">
-      <DependentUpon>NuevoFormStyle.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicial.resx">
+      <DependentUpon>FormInicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
