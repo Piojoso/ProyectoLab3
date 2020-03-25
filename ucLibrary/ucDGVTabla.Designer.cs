@@ -196,7 +196,7 @@
             this.btnSeeAll.FlatAppearance.BorderSize = 0;
             this.btnSeeAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeeAll.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSeeAll.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.btnSeeAll.IconChar = FontAwesome.Sharp.IconChar.Bars;
             this.btnSeeAll.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnSeeAll.IconSize = 25;
             this.btnSeeAll.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;

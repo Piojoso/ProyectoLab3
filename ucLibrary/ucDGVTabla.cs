@@ -16,15 +16,46 @@ namespace ucLibrary
         public ucDGVTabla()
         {
             /**
-             * TODO: opcion para sacar boton DELETE
+             * TODO: Revisar temita con buscar, ya que los frm de busqueda van a devolver objetos, y debo enseñarlos
              * --- HECHO
              * 
-             * TODO: Revisar temita con buscar, y modificar, ya que los frm de busqueda van a devolver objetos, y debo enseñarlos
-             * 
              * TODO: obtener fila seleccionada en DGV
+             * --- HECHO
+             * 
+             * TODO: Hacer un selector de iconos, Sinceramente creiria que no se van a cambiar, por mas que sea tampoco hay muchas opciones
+             * 
+             * TODO: Agregar un titulo para ver que se esta enseñando en el DGV.
+             * 
+             * TODO: Agregar evento para que al hacer doble click sobre una fila en el DGV abra un formulario con esa info.
+             * 
+             * TODO: See All no abrira un formulario, sera un boton que alternara el listado en el DGV
+             * 
+             * TODO: Al clickear Minus, se enseñara la "lista corta", y el boton cambiara a Bars, al clickearlo enseñara la lista completa
+             * 
+             * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
              */
             InitializeComponent();
         }
+
+        #region Eventos de cerrado de formularios
+
+        public event EventHandler ModificacionFinalizada;
+
+        private void frmModifyClose(object sender, EventArgs e)
+        {
+            ModificacionFinalizada?.Invoke(sender, e);
+
+        }
+
+        public event EventHandler BusquedaFinalizada;
+
+        private void frmSearchClose(object sender, EventArgs e)
+        {
+            BusquedaFinalizada?.Invoke(sender, e);
+            
+        }
+
+        #endregion
 
         #region Colors of Button
 
@@ -160,7 +191,13 @@ namespace ucLibrary
         public Form FrmModify
         {
             get { return forms.frmModify; }
-            set { forms.frmModify = value; }
+            set
+            {
+                forms.frmModify = value;
+
+                if (forms.frmModify != null)
+                    forms.frmModify.FormClosed += frmModifyClose;
+            }
         }
 
         public Form FrmSeeAll
@@ -172,7 +209,13 @@ namespace ucLibrary
         public Form FrmSearch
         {
             get { return forms.frmSearch; }
-            set { forms.frmSearch = value; }
+            set
+            {
+                forms.frmSearch = value;
+
+                if (forms.frmSearch != null)
+                    forms.frmSearch.FormClosed += frmSearchClose;
+            }
         }
 
         public Form FrmDelete
@@ -244,5 +287,10 @@ namespace ucLibrary
         }
 
         #endregion
+        
+        public DataGridViewRow selectedRow()
+        {
+            return dgvPrincipal.Rows[dgvPrincipal.CurrentRow.Index];
+        }
     }
 }
