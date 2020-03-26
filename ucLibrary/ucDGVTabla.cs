@@ -20,9 +20,10 @@ namespace ucLibrary
              * --- HECHO: parcialmente ya que dado la nueva idea de que el seeAll no muestre otro form, sino una "lista completa" 
              * directamente en el mismo DGV, entonces tengo pensado hacer varias cosillas mas, y luego tendre que volver a esta parte.
              * 
-             * TODO: Agregar un titulo para ver que se esta enseñando en el DGV.
-             * 
              * TODO: Agregar evento para que al hacer doble click sobre una fila en el DGV abra el formulario Modify con esa info
+             * --- HECHO: Aunque diferente. Debido a que no se como sera programado el formulario "frmModify", no sabria como pasarle la 
+             *              info para que el formulario luego se abra. La unica opcion que tengo, es brindar el evento doble click al 
+             *              usuario y que este luego decida que hacer.
              * 
              * TODO: See All no abrira un formulario, sera un boton que alternara el listado en el DGV
              * 
@@ -31,8 +32,12 @@ namespace ucLibrary
              * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
              * 
              * TODO: Evento click del boton seeAll
+             * 
+             * TODO: Permitir cargar un contextMenuStrip al DGV para que este aparezca al hacer click derecho sobre el componente
              */
             InitializeComponent();
+
+            dgvPrincipal.CellDoubleClick += dobleClickSobreItemDGV;
         }
 
         #region Eventos de cerrado de formularios
@@ -53,6 +58,18 @@ namespace ucLibrary
 
         }
 
+        #endregion
+
+        #region Evento de DobleClik sobre una item en el DGV
+
+        public event EventHandler CellDoubleClick;
+        
+        private void dobleClickSobreItemDGV(object sender, EventArgs e)
+        {
+            CellDoubleClick?.Invoke(sender, e);
+
+        }
+        
         #endregion
 
         #region Colors of Button
@@ -373,5 +390,6 @@ namespace ucLibrary
         }
 
         #endregion
+        
     }
 }
