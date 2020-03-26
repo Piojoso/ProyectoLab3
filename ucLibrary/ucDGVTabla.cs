@@ -16,23 +16,21 @@ namespace ucLibrary
         public ucDGVTabla()
         {
             /**
-             * TODO: Revisar temita con buscar, ya que los frm de busqueda van a devolver objetos, y debo enseñarlos
-             * --- HECHO
-             * 
-             * TODO: obtener fila seleccionada en DGV
-             * --- HECHO
-             * 
              * TODO: Hacer un selector de iconos, Sinceramente creiria que no se van a cambiar, por mas que sea tampoco hay muchas opciones
+             * --- HECHO: parcialmente ya que dado la nueva idea de que el seeAll no muestre otro form, sino una "lista completa" 
+             * directamente en el mismo DGV, entonces tengo pensado hacer varias cosillas mas, y luego tendre que volver a esta parte.
              * 
              * TODO: Agregar un titulo para ver que se esta enseñando en el DGV.
              * 
-             * TODO: Agregar evento para que al hacer doble click sobre una fila en el DGV abra un formulario con esa info.
+             * TODO: Agregar evento para que al hacer doble click sobre una fila en el DGV abra el formulario Modify con esa info
              * 
              * TODO: See All no abrira un formulario, sera un boton que alternara el listado en el DGV
              * 
              * TODO: Al clickear Minus, se enseñara la "lista corta", y el boton cambiara a Bars, al clickearlo enseñara la lista completa
              * 
              * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
+             * 
+             * TODO: Evento click del boton seeAll
              */
             InitializeComponent();
         }
@@ -52,7 +50,7 @@ namespace ucLibrary
         private void frmSearchClose(object sender, EventArgs e)
         {
             BusquedaFinalizada?.Invoke(sender, e);
-            
+
         }
 
         #endregion
@@ -60,7 +58,7 @@ namespace ucLibrary
         #region Colors of Button
 
         private Color fondoBotones;
-        
+
         public Color FondoBotones
         {
             get { return fondoBotones; }
@@ -128,7 +126,7 @@ namespace ucLibrary
         #endregion
 
         #region DGVStyle
-        
+
         private DataGridViewCellStyle columnHeaders;
         private DataGridViewCellStyle rowsHeaders;
         private DataGridViewCellStyle rowsCells;
@@ -140,7 +138,7 @@ namespace ucLibrary
             {
                 columnHeaders = value;
 
-                if(columnHeaders != null)
+                if (columnHeaders != null)
                     dgvPrincipal.ColumnHeadersDefaultCellStyle = columnHeaders;
             }
         }
@@ -287,10 +285,93 @@ namespace ucLibrary
         }
 
         #endregion
-        
+
         public DataGridViewRow selectedRow()
         {
             return dgvPrincipal.Rows[dgvPrincipal.CurrentRow.Index];
         }
+
+        #region Iconos de Botones
+
+        private IconChar iconBtnAdd = IconChar.Plus;
+        private IconChar iconBtnModify = IconChar.Edit;
+        private IconChar iconBtnSeeAll = IconChar.Bars;
+        private IconChar iconBtnSeeShort = IconChar.Minus;
+        private IconChar iconBtnSearh = IconChar.Search;
+        private IconChar iconBtnDelete = IconChar.Trash;
+
+        [DefaultValue(IconChar.Plus)]
+        public IconChar IconBtnAdd
+        {
+            get { return IconBtnAdd; }
+            set
+            {
+                iconBtnAdd = value;
+
+                btnAdd.IconChar = iconBtnAdd;
+            }
+        }
+
+        [DefaultValue(IconChar.Edit)]
+        public IconChar IconBtnModify
+        {
+            get { return iconBtnModify; }
+            set
+            {
+                iconBtnModify = value;
+
+                btnModify.IconChar = iconBtnModify;
+            }
+        }
+
+        [DefaultValue(IconChar.Bars)]
+        public IconChar IconBtnSeeAll
+        {
+            get { return iconBtnSeeAll; }
+            set
+            {
+                iconBtnSeeAll = value;
+
+                // TODO: Control para asignarlo al boton si se esta viendo la lista completa
+            }
+        }
+
+        [DefaultValue(IconChar.Minus)]
+        public IconChar IconBtnSeeShort
+        {
+            get { return iconBtnSeeShort; }
+            set
+            {
+                iconBtnSeeShort = value;
+
+                // TODO: Control para asignarlo al boton si se esta viendo la lista corta
+            }
+        }
+
+        [DefaultValue(IconChar.Search)]
+        public IconChar IconBtnSearch
+        {
+            get { return iconBtnSearh; }
+            set
+            {
+                iconBtnSearh = value;
+
+                btnSearch.IconChar = iconBtnSearh;
+            }
+        }
+
+        [DefaultValue(IconChar.Trash)]
+        public IconChar IconBtnDelete
+        {
+            get { return iconBtnDelete; }
+            set
+            {
+                iconBtnDelete = value;
+
+                btnDelete.IconChar = iconBtnDelete;
+            }
+        }
+
+        #endregion
     }
 }
