@@ -27,10 +27,14 @@ namespace ucLibrary
              *              o la lista larga (bars)
              * 
              * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
+             * --- HECHO: en realidad no, pero es innecesario, el creador del frm que se abre tiene una referencia al objeto, asique puede
+             *              obtener los resultados desde ahi.
              * 
              * TODO: Evento click del boton seeAll
+             * --- HECHO EN EL COMMIT ANTERIOR, olvide anotarlo.
              * 
              * TODO: Permitir cargar un contextMenuStrip al DGV para que este aparezca al hacer click derecho sobre el componente
+             * --- HECHO
              */
             InitializeComponent();
 
@@ -434,6 +438,22 @@ namespace ucLibrary
                     btnSeeAll.IconChar = IconBtnSeeShort;
                     cargadoShortList = true;
                 }
+            }
+        }
+
+        #endregion
+
+        #region ContextMenuStrip (cms) para el DGV
+
+        private ContextMenuStrip cms;
+
+        public ContextMenuStrip cargarCMS
+        {
+            get { return cms; }
+            set
+            {
+                cms = value;
+                dgvPrincipal.ContextMenuStrip = cms;
             }
         }
 
