@@ -16,24 +16,8 @@ namespace ucLibrary
         public ucDGVTabla()
         {
             /**
-             * TODO: Hacer un selector de iconos, Sinceramente creiria que no se van a cambiar, por mas que sea tampoco hay muchas opciones
-             * --- HECHO
-             * 
-             * TODO: See All no abrira un formulario, sera un boton que alternara el listado en el DGV
-             * --- HECHO
-             * 
-             * TODO: Al clickear Minus, se enseñara la "lista corta", y el boton cambiara a Bars, al clickearlo enseñara la lista completa
-             * --- HECHO: Aunque cambio algo, ahora no se cambia el boton, sino que muestra que se esta lista, si la lista corta (minus)
-             *              o la lista larga (bars)
-             * 
-             * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
-             * --- HECHO: en realidad no, pero es innecesario, el creador del frm que se abre tiene una referencia al objeto, asique puede
-             *              obtener los resultados desde ahi.
-             * 
-             * TODO: Evento click del boton seeAll
-             * --- HECHO EN EL COMMIT ANTERIOR, olvide anotarlo.
-             * 
-             * TODO: Permitir cargar un contextMenuStrip al DGV para que este aparezca al hacer click derecho sobre el componente
+             * TODO: Dado que realmente, el usuario del ucDGVTabla podria querer hacer otra cosa diferente que la de abrir un form,
+             *      voy a crear los eventos click para cada boton.
              * --- HECHO
              */
             InitializeComponent();
@@ -187,70 +171,31 @@ namespace ucLibrary
 
         #endregion
 
-        #region Botones y sus Forms
+        #region Eventos de Botones
 
-        private struct forms
-        {
-            public static Form frmAdd;
-            public static Form frmModify;
-            public static Form frmSearch;
-            public static Form frmDelete;
-        }
-
-        public Form FrmAdd
-        {
-            get { return forms.frmAdd; }
-            set { forms.frmAdd = value; }
-        }
-
-        public Form FrmModify
-        {
-            get { return forms.frmModify; }
-            set
-            {
-                forms.frmModify = value;
-
-                if (forms.frmModify != null)
-                    forms.frmModify.FormClosed += frmModifyClose;
-            }
-        }
-
-        public Form FrmSearch
-        {
-            get { return forms.frmSearch; }
-            set
-            {
-                forms.frmSearch = value;
-
-                if (forms.frmSearch != null)
-                    forms.frmSearch.FormClosed += frmSearchClose;
-            }
-        }
-
-        public Form FrmDelete
-        {
-            get { return forms.frmDelete; }
-            set { forms.frmDelete = value; }
-        }
+        public event EventHandler click_btnAdd;
+        public event EventHandler click_btnModify;
+        public event EventHandler click_btnSearch;
+        public event EventHandler click_btnDelete;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            forms.frmAdd?.ShowDialog();
+            click_btnAdd?.Invoke(sender, e);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            forms.frmModify?.ShowDialog();
+            click_btnModify?.Invoke(sender, e);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            forms.frmSearch?.ShowDialog();
+            click_btnSearch?.Invoke(sender, e);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            forms.frmDelete?.ShowDialog();
+            click_btnDelete?.Invoke(sender, e);
         }
 
         #endregion
