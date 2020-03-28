@@ -17,17 +17,14 @@ namespace ucLibrary
         {
             /**
              * TODO: Hacer un selector de iconos, Sinceramente creiria que no se van a cambiar, por mas que sea tampoco hay muchas opciones
-             * --- HECHO: parcialmente ya que dado la nueva idea de que el seeAll no muestre otro form, sino una "lista completa" 
-             * directamente en el mismo DGV, entonces tengo pensado hacer varias cosillas mas, y luego tendre que volver a esta parte.
-             * 
-             * TODO: Agregar evento para que al hacer doble click sobre una fila en el DGV abra el formulario Modify con esa info
-             * --- HECHO: Aunque diferente. Debido a que no se como sera programado el formulario "frmModify", no sabria como pasarle la 
-             *              info para que el formulario luego se abra. La unica opcion que tengo, es brindar el evento doble click al 
-             *              usuario y que este luego decida que hacer.
+             * --- HECHO
              * 
              * TODO: See All no abrira un formulario, sera un boton que alternara el listado en el DGV
+             * --- HECHO
              * 
              * TODO: Al clickear Minus, se enseñara la "lista corta", y el boton cambiara a Bars, al clickearlo enseñara la lista completa
+             * --- HECHO: Aunque cambio algo, ahora no se cambia el boton, sino que muestra que se esta lista, si la lista corta (minus)
+             *              o la lista larga (bars)
              * 
              * TODO: ofrecer metodos get para devolver todos los contactos encontrados.
              * 
@@ -192,7 +189,6 @@ namespace ucLibrary
         {
             public static Form frmAdd;
             public static Form frmModify;
-            public static Form frmSeeAll;
             public static Form frmSearch;
             public static Form frmDelete;
         }
@@ -213,12 +209,6 @@ namespace ucLibrary
                 if (forms.frmModify != null)
                     forms.frmModify.FormClosed += frmModifyClose;
             }
-        }
-
-        public Form FrmSeeAll
-        {
-            get { return forms.frmSeeAll; }
-            set { forms.frmSeeAll = value; }
         }
 
         public Form FrmSearch
@@ -249,11 +239,6 @@ namespace ucLibrary
             forms.frmModify?.ShowDialog();
         }
 
-        private void btnSeeAll_Click(object sender, EventArgs e)
-        {
-            forms.frmSeeAll?.ShowDialog();
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             forms.frmSearch?.ShowDialog();
@@ -266,11 +251,25 @@ namespace ucLibrary
 
         #endregion
 
-        public void dataSource(object data)
+        public void dataSource(object data, bool shortList = true)
         {
             dgvPrincipal.AutoGenerateColumns = true;
             dgvPrincipal.DataSource = data;
             this.columns = dgvPrincipal.Columns;
+
+            if (!shortList)
+            {
+                all = data;
+
+                btnSeeAll.IconChar = IconBtnSeeAll;
+            }
+            else
+            {
+                this.shortList = data;
+
+                btnSeeAll.IconChar = IconBtnSeeShort;
+            }
+            
         }
 
         #region DGVColumns
@@ -349,7 +348,10 @@ namespace ucLibrary
             {
                 iconBtnSeeAll = value;
 
-                // TODO: Control para asignarlo al boton si se esta viendo la lista completa
+                if (!cargadoShortList)
+                {
+                    btnSeeAll.IconChar = iconBtnSeeAll;
+                }
             }
         }
 
@@ -361,7 +363,8 @@ namespace ucLibrary
             {
                 iconBtnSeeShort = value;
 
-                // TODO: Control para asignarlo al boton si se esta viendo la lista corta
+                if (cargadoShortList)
+                    btnSeeAll.IconChar = iconBtnSeeShort;
             }
         }
 
@@ -390,6 +393,50 @@ namespace ucLibrary
         }
 
         #endregion
+
+        #region btnSeeAll
         
+        private object all;
+        private object shortList;
+
+        public object FullListData
+        {
+            get { return all; }
+            set { all = value; }
+        }
+
+        public object ShortListData
+        {
+            get { return shortList; }
+            set { shortList = value; }
+        }
+
+        private bool cargadoShortList = true;
+
+        private void btnSeeAll_Click(object sender, EventArgs e)
+        {
+            alternarDatosDGV();
+        }
+
+        private void alternarDatosDGV()
+        {
+            if(all != null && shortList != null)
+            {
+                if (cargadoShortList)
+                {
+                    dataSource(all);
+                    btnSeeAll.IconChar = IconBtnSeeAll;
+                    cargadoShortList = false;
+                }
+                else
+                {
+                    dataSource(shortList);
+                    btnSeeAll.IconChar = IconBtnSeeShort;
+                    cargadoShortList = true;
+                }
+            }
+        }
+
+        #endregion
     }
 }
