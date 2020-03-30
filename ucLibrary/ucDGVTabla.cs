@@ -25,26 +25,6 @@ namespace ucLibrary
             dgvPrincipal.CellDoubleClick += dobleClickSobreItemDGV;
         }
 
-        #region Eventos de cerrado de formularios
-
-        public event EventHandler ModificacionFinalizada;
-
-        private void frmModifyClose(object sender, EventArgs e)
-        {
-            ModificacionFinalizada?.Invoke(sender, e);
-
-        }
-
-        public event EventHandler BusquedaFinalizada;
-
-        private void frmSearchClose(object sender, EventArgs e)
-        {
-            BusquedaFinalizada?.Invoke(sender, e);
-
-        }
-
-        #endregion
-
         #region Evento de DobleClik sobre una item en el DGV
 
         public event EventHandler CellDoubleClick;
@@ -253,7 +233,10 @@ namespace ucLibrary
 
         public DataGridViewRow selectedRow()
         {
-            return dgvPrincipal.Rows[dgvPrincipal.CurrentRow.Index];
+            if (dgvPrincipal.CurrentRow != null)
+                return dgvPrincipal.Rows[dgvPrincipal.CurrentRow.Index];
+            else
+                return null;
         }
 
         #region Iconos de Botones
