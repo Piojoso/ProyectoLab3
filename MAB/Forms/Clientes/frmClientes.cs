@@ -17,75 +17,91 @@ namespace MAB.Forms.CRUD.Clientes
         {
             InitializeComponent();
 
-            ucBG.Titulo = "Ultimos Clientes";
+            ucDGVTabla.click_btnAdd += btnAdd;
+            ucDGVTabla.click_btnModify += btnModificar;
+            ucDGVTabla.click_btnSearch += btnSearch;
 
-            ucBG.Accion1 = "Agregar";
-            ucBG.Accion2 = "Modificar";
-            ucBG.Accion3 = "Ver Todos";
-
-            ucBG.evAccion1 += btnAgregar;
-            ucBG.evAccion2 += btnModificar;
-            ucBG.evAccion3 += btnVerTodos;
-
+            ucDGVTabla.DeleteVisibility = false;
+            
             cargarDGV();
         }
 
-        void btnAgregar(object sender, EventArgs e)
+        #region eventos de los botones;
+
+        private void btnAdd(object sender, EventArgs e)
         {
             frmAgregarCliente frm = new frmAgregarCliente();
             frm.ShowDialog();
         }
 
-        void btnModificar(object sender, EventArgs e)
+        private void btnModificar(object sender, EventArgs e)
         {
-            DataGridViewRow fila = ucBG.getSelectedItem();
-
             using (MABEntities db = new MABEntities())
             {
-                /**
-                 * TODO: Revisar el funcionamiento de esta funcion.
-                 * Puede que al mandarle un object, la funcion find, realize otra cosa que no sea la que yo deseo.
-                 * En tal caso, la posible solucion seria convetir el value a int. Para que asi busque por id.
-                 * 
-                 * -------------------------------------------------------------------------------------------------
-                 * // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
-                 * Ese comentario lo puse hace un tiempo y no logro entender donde estaria el problema con el value. Luego debo revisarlo.
-                 * 
-                 */ 
-                Models.Clientes cliente = db.Clientes.Find(fila.Cells[0].Value);
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
 
-                frmModificarCliente frm = new frmModificarCliente(cliente.Id);
+                frmModificarCliente frm = new frmModificarCliente(idCliente);
                 frm.ShowDialog();
 
                 cargarDGV();
+
             }
         }
 
-        void btnVerTodos(object sender, EventArgs e)
+        private void btnSearch(object sender, EventArgs e)
         {
-            frmVerTodosCliente frm = new frmVerTodosCliente();
+            frmBuscarCliente frm = new frmBuscarCliente();
             frm.ShowDialog();
+
+            if(frm.DialogResult != DialogResult.Cancel)
+            {
+                if(frm.idClientes != null && frm.idClientes.Count != 0)
+                {
+                    using(MABEntities db = new MABEntities())
+                    {
+                        List<Models.Clientes> c = new List<Models.Clientes>();
+
+                        foreach (int id in frm.idClientes)
+                        {
+                            c.Add(db.Clientes.Find(id));
+                        }
+
+                        ucDGVTabla.dataSource(c);
+
+                        Text = "Clientes - Resultado de Busqueda";
+                    }
+                }
+            }
+
         }
+
+        #endregion
 
         private void cargarDGV()
         {
             using (MABEntities db = new MABEntities())
             {
                 var clientes = db.Clientes;
-
                 var ultimo = clientes.ToList().LastOrDefault();
 
                 if(ultimo != null)
                 {
+                    /**
+                     * TODO: Probar si funciona cuando la DB tenga Clientes guardados
+                     */
                     var data = from cliente in db.Clientes
-                           where cliente.Id < (ultimo.Id - 10)
+                           where cliente.Id > (ultimo.Id - 10)
                            select cliente;
 
-                    ucBG.cargarDGV(data.ToList());
+                    ucDGVTabla.ShortListData = clientes.ToList();
+
+                    this.Text = "Clientes - Ultimos 10 Clientes agregados";
                 }
                 else
                 {
-                    ucBG.cargarDGV(clientes.ToList());
+                    ucDGVTabla.FullListData =  clientes.ToList();
+
+                    this.Text = "Clientes - Todos los Clientes";
                 }
             }
         }

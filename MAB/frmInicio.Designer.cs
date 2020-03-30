@@ -110,7 +110,7 @@
             // ucTitleBar
             // 
             this.ucTitleBar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ucTitleBar.ButtonsBackColor = System.Drawing.Color.Transparent;
+            this.ucTitleBar.ButtonsBackColor = System.Drawing.Color.DeepSkyBlue;
             this.ucTitleBar.ButtonsForeColor = System.Drawing.Color.WhiteSmoke;
             this.ucTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTitleBar.ForeColor = System.Drawing.SystemColors.ControlText;
