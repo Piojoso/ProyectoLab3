@@ -180,25 +180,11 @@ namespace ucLibrary
 
         #endregion
 
-        public void dataSource(object data, bool shortList = true)
+        public void dataSource(object data)
         {
             dgvPrincipal.AutoGenerateColumns = true;
             dgvPrincipal.DataSource = data;
             this.columns = dgvPrincipal.Columns;
-
-            if (!shortList)
-            {
-                all = data;
-
-                btnSeeAll.IconChar = IconBtnSeeAll;
-            }
-            else
-            {
-                this.shortList = data;
-
-                btnSeeAll.IconChar = IconBtnSeeShort;
-            }
-            
         }
 
         #region DGVColumns
@@ -334,13 +320,23 @@ namespace ucLibrary
         public object FullListData
         {
             get { return all; }
-            set { all = value; }
+            set
+            {
+                all = value;
+
+                dataSource(all);
+            }
         }
 
         public object ShortListData
         {
             get { return shortList; }
-            set { shortList = value; }
+            set
+            {
+                shortList = value;
+
+                dataSource(shortList);
+            }
         }
 
         private bool cargadoShortList = true;
