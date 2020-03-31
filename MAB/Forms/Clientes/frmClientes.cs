@@ -21,9 +21,16 @@ namespace MAB.Forms.CRUD.Clientes
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnSearch;
 
+            ucDGVTabla.CellDoubleClick += dobleClick;
+
             ucDGVTabla.DeleteVisibility = false;
-            
+
             cargarDGV();
+            
+            ucDGVTabla.Columns["Telefonos"].Visible = false;
+            ucDGVTabla.Columns["Lavarropas"].Visible = false;
+            ucDGVTabla.Columns["Entregas"].Visible = false;
+
         }
 
         #region eventos de los botones;
@@ -36,16 +43,12 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void btnModificar(object sender, EventArgs e)
         {
-            using (MABEntities db = new MABEntities())
-            {
-                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
+            int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
 
-                frmModificarCliente frm = new frmModificarCliente(idCliente);
-                frm.ShowDialog();
+            frmModificarCliente frm = new frmModificarCliente(idCliente);
+            frm.ShowDialog();
 
-                cargarDGV();
-
-            }
+            cargarDGV();
         }
 
         private void btnSearch(object sender, EventArgs e)
@@ -53,11 +56,11 @@ namespace MAB.Forms.CRUD.Clientes
             frmBuscarCliente frm = new frmBuscarCliente();
             frm.ShowDialog();
 
-            if(frm.DialogResult != DialogResult.Cancel)
+            if (frm.DialogResult != DialogResult.Cancel)
             {
-                if(frm.idClientes != null && frm.idClientes.Count != 0)
+                if (frm.idClientes != null && frm.idClientes.Count != 0)
                 {
-                    using(MABEntities db = new MABEntities())
+                    using (MABEntities db = new MABEntities())
                     {
                         List<Models.Clientes> c = new List<Models.Clientes>();
 
@@ -84,14 +87,14 @@ namespace MAB.Forms.CRUD.Clientes
                 var clientes = db.Clientes;
                 var ultimo = clientes.ToList().LastOrDefault();
 
-                if(ultimo != null)
+                if (ultimo != null)
                 {
                     /**
                      * TODO: Probar si funciona cuando la DB tenga Clientes guardados
                      */
                     var data = from cliente in db.Clientes
-                           where cliente.Id > (ultimo.Id - 10)
-                           select cliente;
+                               where cliente.Id > (ultimo.Id - 10)
+                               select cliente;
 
                     ucDGVTabla.ShortListData = clientes.ToList();
 
@@ -99,11 +102,26 @@ namespace MAB.Forms.CRUD.Clientes
                 }
                 else
                 {
-                    ucDGVTabla.FullListData =  clientes.ToList();
+                    ucDGVTabla.FullListData = clientes.ToList();
 
                     this.Text = "Clientes - Todos los Clientes";
                 }
             }
         }
+
+        #region DobleClick sobre una celda en DGV
+
+        private void dobleClick(object sender, EventArgs e)
+        {
+            int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
+
+            frmModificarCliente frm = new frmModificarCliente(idCliente);
+            frm.ShowDialog();
+
+            cargarDGV();
+        }
+
+        #endregion
+
     }
 }
