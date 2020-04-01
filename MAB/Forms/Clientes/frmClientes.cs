@@ -33,7 +33,6 @@ namespace MAB.Forms.CRUD.Clientes
             ucDGVTabla.Columns["Entregas"].Visible = false;
 
             creacionCMS();
-
         }
 
         #region eventos de los botones;

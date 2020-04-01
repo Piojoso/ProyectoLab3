@@ -46,7 +46,7 @@ namespace MAB.Forms.CRUD.Clientes
             this.ucTop.Location = new System.Drawing.Point(0, 0);
             this.ucTop.MaximumSize = new System.Drawing.Size(3840, 82);
             this.ucTop.Name = "ucTop";
-            this.ucTop.Size = new System.Drawing.Size(814, 82);
+            this.ucTop.Size = new System.Drawing.Size(632, 82);
             this.ucTop.TabIndex = 13;
             this.ucTop.Titulo = null;
             // 
@@ -60,7 +60,7 @@ namespace MAB.Forms.CRUD.Clientes
             this.ucBottom.MaximumSize = new System.Drawing.Size(3840, 82);
             this.ucBottom.Name = "ucBottom";
             this.ucBottom.NumButtons = 0;
-            this.ucBottom.Size = new System.Drawing.Size(814, 82);
+            this.ucBottom.Size = new System.Drawing.Size(632, 82);
             this.ucBottom.TabIndex = 14;
             // 
             // ccLblApellido
@@ -68,7 +68,7 @@ namespace MAB.Forms.CRUD.Clientes
             this.ccLblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ccLblApellido.AutoSize = true;
             this.ccLblApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLblApellido.Location = new System.Drawing.Point(234, 186);
+            this.ccLblApellido.Location = new System.Drawing.Point(143, 186);
             this.ccLblApellido.Name = "ccLblApellido";
             this.ccLblApellido.Size = new System.Drawing.Size(56, 16);
             this.ccLblApellido.TabIndex = 0;
@@ -79,7 +79,7 @@ namespace MAB.Forms.CRUD.Clientes
             this.cclblDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblDireccion.AutoSize = true;
             this.cclblDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblDireccion.Location = new System.Drawing.Point(234, 235);
+            this.cclblDireccion.Location = new System.Drawing.Point(143, 235);
             this.cclblDireccion.Name = "cclblDireccion";
             this.cclblDireccion.Size = new System.Drawing.Size(62, 16);
             this.cclblDireccion.TabIndex = 0;
@@ -90,7 +90,7 @@ namespace MAB.Forms.CRUD.Clientes
             this.cclblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombre.AutoSize = true;
             this.cclblNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblNombre.Location = new System.Drawing.Point(234, 135);
+            this.cclblNombre.Location = new System.Drawing.Point(143, 135);
             this.cclblNombre.Name = "cclblNombre";
             this.cclblNombre.Size = new System.Drawing.Size(57, 16);
             this.cclblNombre.TabIndex = 0;
@@ -100,7 +100,7 @@ namespace MAB.Forms.CRUD.Clientes
             // 
             this.cctbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbNombre.Location = new System.Drawing.Point(350, 132);
+            this.cctbNombre.Location = new System.Drawing.Point(259, 132);
             this.cctbNombre.Name = "cctbNombre";
             this.cctbNombre.Size = new System.Drawing.Size(231, 24);
             this.cctbNombre.TabIndex = 15;
@@ -109,7 +109,7 @@ namespace MAB.Forms.CRUD.Clientes
             // 
             this.cctbApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbApellido.Location = new System.Drawing.Point(350, 183);
+            this.cctbApellido.Location = new System.Drawing.Point(259, 183);
             this.cctbApellido.Name = "cctbApellido";
             this.cctbApellido.Size = new System.Drawing.Size(231, 24);
             this.cctbApellido.TabIndex = 16;
@@ -118,7 +118,7 @@ namespace MAB.Forms.CRUD.Clientes
             // 
             this.cctbDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbDireccion.Location = new System.Drawing.Point(350, 232);
+            this.cctbDireccion.Location = new System.Drawing.Point(259, 232);
             this.cctbDireccion.Name = "cctbDireccion";
             this.cctbDireccion.Size = new System.Drawing.Size(231, 24);
             this.cctbDireccion.TabIndex = 17;
@@ -127,7 +127,7 @@ namespace MAB.Forms.CRUD.Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 389);
+            this.ClientSize = new System.Drawing.Size(632, 389);
             this.Controls.Add(this.cctbDireccion);
             this.Controls.Add(this.cctbApellido);
             this.Controls.Add(this.cctbNombre);
