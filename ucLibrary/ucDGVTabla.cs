@@ -16,8 +16,7 @@ namespace ucLibrary
         public ucDGVTabla()
         {
             /**
-             * TODO: Dado que realmente, el usuario del ucDGVTabla podria querer hacer otra cosa diferente que la de abrir un form,
-             *      voy a crear los eventos click para cada boton.
+             * TODO: Que la botonera se pueda ocultar.
              * --- HECHO
              */
             InitializeComponent();
@@ -237,7 +236,7 @@ namespace ucLibrary
         [DefaultValue(IconChar.Plus)]
         public IconChar IconBtnAdd
         {
-            get { return IconBtnAdd; }
+            get { return iconBtnAdd; }
             set
             {
                 iconBtnAdd = value;
@@ -378,6 +377,33 @@ namespace ucLibrary
             {
                 cms = value;
                 dgvPrincipal.ContextMenuStrip = cms;
+            }
+        }
+
+        #endregion
+
+        #region ocultar/mostrar Botonera
+
+        private bool botonera = true;
+
+        [DefaultValue(true)]
+        public bool ButtonPadVisibility
+        {
+            get { return botonera; }
+            set
+            {
+                botonera = value;
+
+                if(botonera)
+                {
+                    pnlAside.Visible = true;
+                    pnlAside.Width = 200;
+                }
+                else
+                {
+                    pnlAside.Visible = false;
+                    pnlAside.Width = 0;
+                }
             }
         }
 

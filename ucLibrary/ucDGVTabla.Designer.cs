@@ -62,6 +62,7 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.BackColor = System.Drawing.SystemColors.Control;
             this.pnlContent.Controls.Add(this.dgvPrincipal);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
