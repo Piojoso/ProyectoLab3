@@ -63,6 +63,9 @@ namespace MAB.Forms.CRUD.Clientes
         {
             using (MABEntities db = new MABEntities())
             {
+                /**
+                 * Guarda incluso si no hay info, hay que arreglarlo.
+                 */
                 cliente = new Models.Clientes();
 
                 cliente.nombre = cctbNombre.Text;

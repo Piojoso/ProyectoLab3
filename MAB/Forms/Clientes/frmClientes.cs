@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.CRUD.Telefonos;
 
 namespace MAB.Forms.CRUD.Clientes
 {
@@ -45,12 +46,8 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void btnModificar(object sender, EventArgs e)
         {
-            int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
+            abrirFrmModificar();
 
-            frmModificarCliente frm = new frmModificarCliente(idCliente);
-            frm.ShowDialog();
-
-            cargarDGV();
         }
 
         private void btnSearch(object sender, EventArgs e)
@@ -111,16 +108,24 @@ namespace MAB.Forms.CRUD.Clientes
             }
         }
 
+        private void abrirFrmModificar()
+        {
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
+
+                frmModificarCliente frm = new frmModificarCliente(idCliente);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
+        }
+
         #region DobleClick sobre una celda en DGV
 
         private void dobleClick(object sender, EventArgs e)
         {
-            int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
-
-            frmModificarCliente frm = new frmModificarCliente(idCliente);
-            frm.ShowDialog();
-
-            cargarDGV();
+            abrirFrmModificar();
         }
 
         #endregion
@@ -166,23 +171,39 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void verTelefonos(object sender, EventArgs e)
         {
-            /**
-             * TODO: Realizar la apertura de este Formulario
-             */
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmTelefonos frm = new frmTelefonos(idCliente);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay ningun Item Seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void verLavarropas(object sender, EventArgs e)
         {
-            /**
-             * TODO: Realizar la apertura de este Formulario
-             */
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                /**
+                 * TODO: Aun no tengo ese formulario hecho
+                 */
+            }
         }
 
         private void verDetalle(object sender, EventArgs e)
         {
-            /**
-             * TODO: Realizar la apertura de este Formulario
-             */
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                /**
+                 * TODO: Aun no modifico el formulario seeAll
+                 */
+
+            }
         }
 
         #endregion

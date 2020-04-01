@@ -15,6 +15,10 @@ namespace MAB.Forms.CRUD.Clientes
     {
         public frmVerTodosCliente()
         {
+            /**
+             * TODO: Modificar form para que deje de ser ver todos los clientes y pase a ser un verDetalleCliente para poder ver
+             *      info detallada del cliente. (Todos los lavarropas que tiene, telefonos, etc.);
+             */
             InitializeComponent();
 
             ucBG.Titulo = "Clientes";
