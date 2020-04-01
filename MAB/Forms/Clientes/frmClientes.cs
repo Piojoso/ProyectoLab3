@@ -26,10 +26,12 @@ namespace MAB.Forms.CRUD.Clientes
             ucDGVTabla.DeleteVisibility = false;
 
             cargarDGV();
-            
+
             ucDGVTabla.Columns["Telefonos"].Visible = false;
             ucDGVTabla.Columns["Lavarropas"].Visible = false;
             ucDGVTabla.Columns["Entregas"].Visible = false;
+
+            creacionCMS();
 
         }
 
@@ -123,5 +125,66 @@ namespace MAB.Forms.CRUD.Clientes
 
         #endregion
 
+        private void creacionCMS()
+        {
+            ToolStripMenuItem tsiVerTelefonos = new ToolStripMenuItem();
+            tsiVerTelefonos.Name = "tsiVerTelefono";
+            tsiVerTelefonos.Size = new Size(148, 22);
+            tsiVerTelefonos.Text = "Ver Telefonos";
+            tsiVerTelefonos.Click += verTelefonos;
+
+            ToolStripMenuItem tsiVerLavarropas = new ToolStripMenuItem();
+            tsiVerLavarropas.Name = "tsiVerLavarropas";
+            tsiVerLavarropas.Size = new Size(148, 22);
+            tsiVerLavarropas.Text = "Ver Lavarropas";
+            tsiVerLavarropas.Click += verLavarropas;
+
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsiVerDetalle = new ToolStripMenuItem();
+            tsiVerDetalle.Name = "tsiVerDetalle";
+            tsiVerDetalle.Size = new Size(148, 22);
+            tsiVerDetalle.Text = "Ver Detalle";
+            tsiVerDetalle.Click += verDetalle;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsiVerTelefonos,
+                tsiVerLavarropas,
+                tssSeparador,
+                tsiVerDetalle,
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
+        }
+
+        #region Eventos CMS
+
+        private void verTelefonos(object sender, EventArgs e)
+        {
+            /**
+             * TODO: Realizar la apertura de este Formulario
+             */
+        }
+
+        private void verLavarropas(object sender, EventArgs e)
+        {
+            /**
+             * TODO: Realizar la apertura de este Formulario
+             */
+        }
+
+        private void verDetalle(object sender, EventArgs e)
+        {
+            /**
+             * TODO: Realizar la apertura de este Formulario
+             */
+        }
+
+        #endregion
     }
 }
