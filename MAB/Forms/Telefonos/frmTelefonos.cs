@@ -19,6 +19,7 @@ namespace MAB.Forms.CRUD.Telefonos
         {
             /**
              * TODO: Agregar un ContextMenuStrip para el dgv
+             * --- HECHO
              */
 
             InitializeComponent();
@@ -26,14 +27,16 @@ namespace MAB.Forms.CRUD.Telefonos
             refrescarTelefonos(idCliente);
 
             Text = "Telefonos del Cliente: " + cliente.nombre + " " + cliente.apellido;
-
-            ucBottom.NumButtons = 2;
-
+           
             ucBottom.Accion1 = "Agregar";
+            ucBottom.Accion2 = "Modificar";
             ucBottom.Accion3 = "Eliminar";
 
             ucBottom.evAccion1 += agregarNuevo;
+            ucBottom.evAccion2 += modificarNumero;
             ucBottom.evAccion3 += eliminarSeleccionado;
+
+            creacionCMS();
             
         }
 
@@ -43,6 +46,18 @@ namespace MAB.Forms.CRUD.Telefonos
             frm.ShowDialog();
 
             refrescarTelefonos(cliente.Id);
+        }
+
+        private void modificarNumero(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                /**
+                 * TODO: Tomar el numero y abrir un formulario para modificar el numero. Se me ocurre usar el mismo frmAgregarTelefono
+                 * Pero para ello tendre que modificarlo para que pueda aceptar un numero a modificar. Eso o crear un nuevo frm que reciba
+                 * un numero de telefono y luego permita modificarlo, pero nose, ya vere, parece mas trabajo, pero tambien mas entendible.
+                 */
+            }
         }
         
         private void eliminarSeleccionado(object sender, EventArgs e)
@@ -95,6 +110,43 @@ namespace MAB.Forms.CRUD.Telefonos
                 ucDGVTabla.dataSource(data.ToList());
             }
 
+        }
+
+        private void creacionCMS()
+        {
+            ToolStripMenuItem tsmiAgregar = new ToolStripMenuItem();
+            tsmiAgregar.Name = "tsmiAgregar";
+            tsmiAgregar.Size = new Size(148, 22);
+            tsmiAgregar.Text = "Agregar Nuevo";
+            tsmiAgregar.Click += agregarNuevo;
+
+            ToolStripMenuItem tsmiModificar = new ToolStripMenuItem();
+            tsmiModificar.Name = "tsmiModificar";
+            tsmiModificar.Size = new Size(148, 22);
+            tsmiModificar.Text = "Modificar Numero";
+            tsmiModificar.Click += modificarNumero;
+
+            ToolStripSeparator tssSeparator = new ToolStripSeparator();
+            tssSeparator.Name = "tssSeparator";
+            tssSeparator.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsmiEliminar = new ToolStripMenuItem();
+            tsmiEliminar.Name = "tsmiEliminar";
+            tsmiEliminar.Size = new Size(148, 22);
+            tsmiEliminar.Text = "Eliminar Numero";
+            tsmiEliminar.Click += eliminarSeleccionado;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsmiAgregar,
+                tsmiModificar,
+                tssSeparator,
+                tsmiEliminar
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
         }
     }
 }
