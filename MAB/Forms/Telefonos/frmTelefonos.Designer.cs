@@ -28,27 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucBackGround = new MAB.UC.ucBackGround();
+            this.ucDGVTabla = new ucLibrary.ucDGVTabla();
+            this.ucBottom = new ucLibrary.ucBottom();
             this.SuspendLayout();
             // 
-            // ucBackGround
+            // ucDGVTabla
             // 
-            this.ucBackGround.Accion1 = null;
-            this.ucBackGround.Accion2 = null;
-            this.ucBackGround.Accion3 = null;
-            this.ucBackGround.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucBackGround.Location = new System.Drawing.Point(0, 0);
-            this.ucBackGround.Name = "ucBackGround";
-            this.ucBackGround.Size = new System.Drawing.Size(716, 420);
-            this.ucBackGround.TabIndex = 0;
-            this.ucBackGround.Titulo = null;
+            this.ucDGVTabla.buttonAdd = System.Drawing.Color.ForestGreen;
+            this.ucDGVTabla.buttonDelete = System.Drawing.Color.IndianRed;
+            this.ucDGVTabla.buttonModify = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ucDGVTabla.ButtonPadVisibility = false;
+            this.ucDGVTabla.buttonSearch = System.Drawing.Color.SteelBlue;
+            this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
+            this.ucDGVTabla.cargarCMS = null;
+            this.ucDGVTabla.ColumnHeaderStyle = null;
+            this.ucDGVTabla.DeleteVisibility = false;
+            this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDGVTabla.FondoBotones = System.Drawing.Color.Empty;
+            this.ucDGVTabla.FullListData = null;
+            this.ucDGVTabla.Location = new System.Drawing.Point(0, 0);
+            this.ucDGVTabla.Name = "ucDGVTabla";
+            this.ucDGVTabla.RowsCellStyle = null;
+            this.ucDGVTabla.RowsHeaderStyle = null;
+            this.ucDGVTabla.ShortListData = null;
+            this.ucDGVTabla.Size = new System.Drawing.Size(716, 338);
+            this.ucDGVTabla.TabIndex = 2;
+            // 
+            // ucBottom
+            // 
+            this.ucBottom.Accion1 = null;
+            this.ucBottom.Accion2 = null;
+            this.ucBottom.Accion3 = null;
+            this.ucBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucBottom.Location = new System.Drawing.Point(0, 338);
+            this.ucBottom.MaximumSize = new System.Drawing.Size(3840, 82);
+            this.ucBottom.Name = "ucBottom";
+            this.ucBottom.NumButtons = 0;
+            this.ucBottom.Size = new System.Drawing.Size(716, 82);
+            this.ucBottom.TabIndex = 1;
             // 
             // frmTelefonos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 420);
-            this.Controls.Add(this.ucBackGround);
+            this.Controls.Add(this.ucDGVTabla);
+            this.Controls.Add(this.ucBottom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -63,6 +88,7 @@
 
         #endregion
 
-        private UC.ucBackGround ucBackGround;
+        private ucLibrary.ucBottom ucBottom;
+        private ucLibrary.ucDGVTabla ucDGVTabla;
     }
 }
