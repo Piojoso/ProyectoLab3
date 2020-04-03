@@ -31,20 +31,35 @@ namespace ucLibrary
             /** 
              * TODO: Hacer que los paneles ocupen todo el ancho disponible.
              * En el caso de 2 botones, que se divida a la mitad el ancho del form.
+             * --- HECHO
+             * 
              * TODO: Probar a hacer la solucion al problema usando un TableLayoutPanel.
+             * --- HECHO
              */ 
             get { return numButtons; }
             set
             {
                 numButtons = value;
 
-                if(numButtons == 1)
+                if (numButtons == 1)
                 {
-                    pnlAccion1.Visible = false;
-                    pnlAccion3.Visible = false;
+                    tlpPrincipal.ColumnStyles[0].Width = 100;
+                    tlpPrincipal.ColumnStyles[1].Width = 0;
+                    tlpPrincipal.ColumnStyles[2].Width = 0;
+
                 }
                 else if (numButtons == 2)
-                    pnlAccion2.Visible = false;
+                {
+                    tlpPrincipal.ColumnStyles[0].Width = 50;
+                    tlpPrincipal.ColumnStyles[1].Width = 50;
+                    tlpPrincipal.ColumnStyles[2].Width = 0;
+                }
+                else
+                {
+                    tlpPrincipal.ColumnStyles[0].Width = 33;
+                    tlpPrincipal.ColumnStyles[1].Width = 33;
+                    tlpPrincipal.ColumnStyles[2].Width = 33;
+                }
             }
         }
 
