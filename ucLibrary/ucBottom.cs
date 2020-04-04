@@ -19,23 +19,11 @@ namespace ucLibrary
 
         #region Numero de Botones
 
-        private int numButtons;
-
-        /**
-         * Funcion que se encarga de las modificaciones 
-         * necesarias para la cantidad de botones que 
-         * sean requeridos.
-         */
+        private int numButtons = 3;
+        
+        [DefaultValue(3)]
         public int NumButtons
         {
-            /** 
-             * TODO: Hacer que los paneles ocupen todo el ancho disponible.
-             * En el caso de 2 botones, que se divida a la mitad el ancho del form.
-             * --- HECHO
-             * 
-             * TODO: Probar a hacer la solucion al problema usando un TableLayoutPanel.
-             * --- HECHO
-             */ 
             get { return numButtons; }
             set
             {
@@ -112,32 +100,73 @@ namespace ucLibrary
             evAccion3?.Invoke(sender, e);
         }
         #endregion
-
+        
         private void ucBottom_Resize(object sender, EventArgs e)
         {
-            double widthPanel = this.Size.Width / 3;
-            widthPanel = Math.Round(widthPanel);
-            Size newSize = new Size(Convert.ToInt32(widthPanel), this.Size.Height);
+            /**
+             * TODO:    Que los botones se mantengan centrados y cambien su tamaño segun el tamaño del uc, Si el control es lo 
+             *          suficientemente chiquito, los botones ocuparan todo el espacio disponible, asi sera mas facil clickearles
+             *          Si el control crece los botones iran haciendolo a medida que lo haga el uc.
+             * ---HECHO
+             * 
+             */
 
-            pnlAccion1.Size = newSize;
-            pnlAccion2.Size = newSize;
-            pnlAccion3.Size = newSize;
-
-            btnAccion1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
-
-            if (widthPanel <= 245)
+            if (tlpAccion1.Width >= 100)
             {
                 btnAccion1.Anchor = AnchorStyles.None;
                 btnAccion2.Anchor = AnchorStyles.None;
                 btnAccion3.Anchor = AnchorStyles.None;
             }
-            else
+            
+            if (tlpAccion1.Width > 200)
             {
-                btnAccion1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
-                btnAccion2.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
-                btnAccion3.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
+                tlpAccion1.ColumnStyles[0].Width = 25;
+                tlpAccion1.ColumnStyles[1].Width = 50;
+                tlpAccion1.ColumnStyles[2].Width = 25;
+
+                tlpAccion2.ColumnStyles[0].Width = 25;
+                tlpAccion2.ColumnStyles[1].Width = 50;
+                tlpAccion2.ColumnStyles[2].Width = 25;
+                
+                tlpAccion3.ColumnStyles[0].Width = 25;
+                tlpAccion3.ColumnStyles[1].Width = 50;
+                tlpAccion3.ColumnStyles[2].Width = 25;
             }
+            else if (tlpAccion1.Width <= 200 && tlpAccion1.Width >= 100)
+            {
+                tlpAccion1.ColumnStyles[0].Width = 10;
+                tlpAccion1.ColumnStyles[1].Width = 80;
+                tlpAccion1.ColumnStyles[2].Width = 10;
+
+                tlpAccion2.ColumnStyles[0].Width = 10;
+                tlpAccion2.ColumnStyles[1].Width = 80;
+                tlpAccion2.ColumnStyles[2].Width = 10;
+
+                tlpAccion3.ColumnStyles[0].Width = 10;
+                tlpAccion3.ColumnStyles[1].Width = 80;
+                tlpAccion3.ColumnStyles[2].Width = 10;
+                
+            }
+            else if (tlpAccion1.Width < 100)
+            {
+
+                tlpAccion1.ColumnStyles[0].Width = 3;
+                tlpAccion1.ColumnStyles[1].Width = 94;
+                tlpAccion1.ColumnStyles[2].Width = 3;
+
+                tlpAccion2.ColumnStyles[0].Width = 3;
+                tlpAccion2.ColumnStyles[1].Width = 94;
+                tlpAccion2.ColumnStyles[2].Width = 3;
+
+                tlpAccion3.ColumnStyles[0].Width = 3;
+                tlpAccion3.ColumnStyles[1].Width = 94;
+                tlpAccion3.ColumnStyles[2].Width = 3;
+
+                btnAccion1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                btnAccion2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                btnAccion3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            }
+
         }
-        
     }
 }
