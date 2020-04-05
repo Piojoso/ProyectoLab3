@@ -139,6 +139,12 @@
     <Compile Include="Forms\Telefonos\frmAgregarTelefono.Designer.cs">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Telefonos\frmModificarTelefono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Telefonos\frmModificarTelefono.Designer.cs">
+      <DependentUpon>frmModificarTelefono.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Telefonos\frmTelefonos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Telefonos\frmAgregarTelefono.resx">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Telefonos\frmModificarTelefono.resx">
+      <DependentUpon>frmModificarTelefono.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Telefonos\frmTelefonos.resx">
       <DependentUpon>frmTelefonos.cs</DependentUpon>

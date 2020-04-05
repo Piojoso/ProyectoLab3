@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Telefonos;
 
 namespace MAB.Forms.CRUD.Telefonos
 {
@@ -18,8 +19,7 @@ namespace MAB.Forms.CRUD.Telefonos
         public frmTelefonos(int idCliente)
         {
             /**
-             * TODO: Agregar un ContextMenuStrip para el dgv
-             * --- HECHO
+             * TODO: Probar su correcto funcionamiento cuando ya cree clientes en la DB
              */
 
             InitializeComponent();
@@ -56,16 +56,21 @@ namespace MAB.Forms.CRUD.Telefonos
                  * TODO: Tomar el numero y abrir un formulario para modificar el numero. Se me ocurre usar el mismo frmAgregarTelefono
                  * Pero para ello tendre que modificarlo para que pueda aceptar un numero a modificar. Eso o crear un nuevo frm que reciba
                  * un numero de telefono y luego permita modificarlo, pero nose, ya vere, parece mas trabajo, pero tambien mas entendible.
+                 * --- HECHO
                  */
+
+                long numTelefono = Convert.ToInt64(ucDGVTabla.selectedRow().Cells["telefono"].Value);
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["ClienteId"].Value);
+
+                frmModificarTelefono frm = new frmModificarTelefono(idCliente, numTelefono);
+                frm.ShowDialog();
+
+                refrescarTelefonos(idCliente);
             }
         }
         
         private void eliminarSeleccionado(object sender, EventArgs e)
         {
-            /**
-             * TODO: Probar su correcto funcionamiento
-             */
-
             if (ucDGVTabla.selectedRow() != null)
             {
                 int telefono = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Telefono"].Value);
