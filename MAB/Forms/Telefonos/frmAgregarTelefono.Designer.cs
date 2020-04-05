@@ -30,7 +30,7 @@
         {
             this.ucBottom = new ucLibrary.ucBottom();
             this.cclblCliente = new ccLibrary.ccLabel();
-            this.cclblIdCliente = new ccLibrary.ccLabel();
+            this.cclblNombreCliente = new ccLibrary.ccLabel();
             this.cclblTelefono = new ccLibrary.ccLabel();
             this.cctbTelefono = new ccLibrary.ccTextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
@@ -61,16 +61,16 @@
             this.cclblCliente.TabIndex = 0;
             this.cclblCliente.Text = "Cliente";
             // 
-            // cclblIdCliente
+            // cclblNombreCliente
             // 
-            this.cclblIdCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblIdCliente.AutoSize = true;
-            this.cclblIdCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblIdCliente.Location = new System.Drawing.Point(219, 42);
-            this.cclblIdCliente.Name = "cclblIdCliente";
-            this.cclblIdCliente.Size = new System.Drawing.Size(15, 16);
-            this.cclblIdCliente.TabIndex = 0;
-            this.cclblIdCliente.Text = "0";
+            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblNombreCliente.AutoSize = true;
+            this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblNombreCliente.Location = new System.Drawing.Point(219, 42);
+            this.cclblNombreCliente.Name = "cclblNombreCliente";
+            this.cclblNombreCliente.Size = new System.Drawing.Size(15, 16);
+            this.cclblNombreCliente.TabIndex = 0;
+            this.cclblNombreCliente.Text = "0";
             // 
             // cclblTelefono
             // 
@@ -96,7 +96,7 @@
             // 
             this.pnlBody.Controls.Add(this.cctbTelefono);
             this.pnlBody.Controls.Add(this.cclblCliente);
-            this.pnlBody.Controls.Add(this.cclblIdCliente);
+            this.pnlBody.Controls.Add(this.cclblNombreCliente);
             this.pnlBody.Controls.Add(this.cclblTelefono);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
@@ -127,7 +127,7 @@
         #endregion
         private ucLibrary.ucBottom ucBottom;
         private ccLibrary.ccLabel cclblCliente;
-        private ccLibrary.ccLabel cclblIdCliente;
+        private ccLibrary.ccLabel cclblNombreCliente;
         private ccLibrary.ccLabel cclblTelefono;
         private ccLibrary.ccTextBox cctbTelefono;
         private System.Windows.Forms.Panel pnlBody;
