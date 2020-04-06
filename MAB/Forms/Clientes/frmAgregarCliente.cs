@@ -9,34 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.CRUD.Telefonos;
+using MAB.Forms.Lavarropas;
 
 namespace MAB.Forms.CRUD.Clientes
 {
     public partial class frmAgregarCliente : Form
     {
-        private Models.Clientes cliente;
-
         public frmAgregarCliente()
         {
+            /**
+             * TODO: Revisar el correcto funcionamiento
+             */
+
             InitializeComponent();
             
-            ucTop.Titulo = "Agregar Nuevo Cliente";
-
-            ucBottom.NumButtons = 2;
-
             ucBottom.Accion1 = "Crear";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += crearCliente;
-            ucBottom.evAccion3 += cancelarCreacion;
+            ucBottom.evAccion2 += cancelarCreacion;
         }
 
         private void crearCliente(object sender, EventArgs e)
         {
             /**
-             * TODO: Preguntar por si realmente quiere guardar a este contacto con la info colocada en los textbox. Si lo hago asi
-             * debere controlar que los textbox esten completos, sino.. podria llamar a la funcion guardarCliente y ahi preguntar si
-             * quiere guardar, luego de haber chequeado que los tb sean correctos.
+             * TODO: Preguntar si desea agregarle lavarropas a este Cliente.
              * --- HECHO
              */
 
@@ -48,12 +45,25 @@ namespace MAB.Forms.CRUD.Clientes
                     "¿Desea agregarle telefonos a este cliente?", 
                     "¿Agregar Telefonos?", 
                     MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Question
+                    MessageBoxIcon.Warning
                 );
 
                 if (resp == DialogResult.Yes)
                 {
-                    frmAgregarTelefono frm = new frmAgregarTelefono(cliente.Id);
+                    frmAgregarTelefono frm = new frmAgregarTelefono(idCliente);
+                    frm.ShowDialog();
+                }
+
+                resp = MessageBox.Show(
+                    "¿Desea registrar Lavarropas a este Cliente?", 
+                    "¿Agregar Lavarropas?", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning
+                );
+
+                if(resp == DialogResult.Yes)
+                {
+                    frmAgregarLavarropas frm = new frmAgregarLavarropas(idCliente);
                     frm.ShowDialog();
                 }
             }
@@ -66,12 +76,11 @@ namespace MAB.Forms.CRUD.Clientes
 
         private int guardarCliente()
         {
-            /**
-            * TODO: Guarda incluso si no hay info, hay que arreglarlo.
-            * --- HECHO
-            */
+            Models.Clientes cliente;
+
             if ((cctbNombre.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
+
                 using (MABEntities db = new MABEntities())
                 {
                     DialogResult resp = MessageBox.Show(
