@@ -17,6 +17,9 @@ namespace MAB.Forms.Telefonos
 
         public frmModificarTelefono(int idCliente, long numTelefono)
         {
+            /**
+             * TODO: Probar correcto funcionamiento.
+             */
             InitializeComponent();
 
             Text = "Modificar el Numero: " + Telefono.telefono;

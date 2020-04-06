@@ -97,6 +97,12 @@
     <Compile Include="Forms\Clientes\frmVerTodosCliente.Designer.cs">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.Designer.cs">
+      <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lavarropas\frmLavarropas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes\frmVerTodosCliente.resx">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmAgregarLavarropas.resx">
+      <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmLavarropas.resx">
       <DependentUpon>frmLavarropas.cs</DependentUpon>
