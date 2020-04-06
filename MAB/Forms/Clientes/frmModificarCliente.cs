@@ -18,16 +18,18 @@ namespace MAB.Forms.CRUD.Clientes
 
         public frmModificarCliente(int idCliente)
         {
+            /**
+             * TODO: Revisar el correcto funcionamiento
+             */
+
             InitializeComponent();
 
             cargarCliente(idCliente);
 
-            ucTop.Titulo = "Modificar Cliente";
+            Text = "Modificar al Cliente: " + cliente.nombre + " " + cliente.apellido;
 
-            ucBottom.NumButtons = 2;
-
-            ucBottom.Accion1 = "Confirmar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion1 = "Guardar";
+            ucBottom.Accion3 = "Cerrar";
 
             ucBottom.evAccion1 += confirmarCambios;
             ucBottom.evAccion3 += cancelarModificacion;
@@ -48,7 +50,7 @@ namespace MAB.Forms.CRUD.Clientes
             cctbNombre.Text = cliente.nombre;
             cctbApellido.Text = cliente.apellido;
             cctbDireccion.Text = cliente.direccion;
-            cclblNumTelefonos.Text = cliente.Telefonos.Count.ToString();
+            refreshNumTelefonos();
         }
 
         private void confirmarCambios(object sender, EventArgs e)
@@ -57,19 +59,34 @@ namespace MAB.Forms.CRUD.Clientes
              * TODO: Esta funcion no funciona:
              * Va a guardar la misma informacion del cliente que se recupero al inicio del formulario.
              * Porque no hice en ningun lado una modificacion de los datos.
+             * ---FIXED
              */
 
-            DialogResult resp = MessageBox.Show("¿Desea continuar con la modificacion?" + Environment.NewLine +
-                "Tenga en cuenta que perdera la informacion anterior", "Modificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (resp == DialogResult.Yes)
+            if((cctbDireccion.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
-                using (MABEntities db = new MABEntities())
-                {
-                    db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
+                DialogResult resp = MessageBox.Show(
+                    "¿Desea continuar con la modificacion? \n" +
+                    "Nombre cambiara de: " + cliente.nombre + " a " + cctbNombre.Text + "\n" +
+                    "Apellido cambiara de: " + cliente.apellido + " a " + cctbApellido.Text + "\n" +
+                    "Direccion cambiara de: " + cliente.direccion + " a " + cctbDireccion.Text + "\n" +
+                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    db.SaveChanges();
+                if (resp == DialogResult.Yes)
+                {
+                    cliente.nombre = cctbNombre.Text;
+                    cliente.apellido = cctbApellido.Text;
+                    cliente.direccion = cctbDireccion.Text;
+
+                    using (MABEntities db = new MABEntities())
+                    {
+                        db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Faltan campos por completar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
