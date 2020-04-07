@@ -17,17 +17,19 @@ namespace MAB.Forms.CRUD.Clientes
 
         public frmBuscarCliente()
         {
+            /**
+             * TODO: Revisar el correcto Funcionamiento
+             */
+
             InitializeComponent();
 
-            ucTop.Titulo = "Buscar Cliente";
-
-            ucBottom.NumButtons = 2;
-
+            Text = "Buscar Cliente";
+            
             ucBottom.Accion1 = "Buscar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion3 = "Cerrar";
 
             ucBottom.evAccion1 += buscarCliente;
-            ucBottom.evAccion3 += cancelarBusqueda;
+            ucBottom.evAccion3 += cerrarBusqueda;
         }
         
         private void buscarCliente(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace MAB.Forms.CRUD.Clientes
 
             if (idClientes.Count > 0)
             {
-                respuesta = MessageBox.Show("Se encontraron un total de: " + idClientes.Count + " registros. \n ¿Desea ver los resultados?", "Encontrados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                respuesta = MessageBox.Show("Se encontraron un total de: " + idClientes.Count + " registro/s. \n ¿Desea ver el/los resultado/s?", "Encontrados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (respuesta == DialogResult.Yes)
                 {
@@ -95,9 +97,8 @@ namespace MAB.Forms.CRUD.Clientes
             return resp;
         }
 
-        private void cancelarBusqueda(object sender, EventArgs e)
+        private void cerrarBusqueda(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }
