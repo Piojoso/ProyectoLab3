@@ -109,6 +109,12 @@
     <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.Designer.cs">
       <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Lavarropas\frmBuscarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmBuscarLavarropas.Designer.cs">
+      <DependentUpon>frmBuscarLavarropas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lavarropas\frmLavarropas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmAgregarLavarropas.resx">
       <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmBuscarLavarropas.resx">
+      <DependentUpon>frmBuscarLavarropas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmLavarropas.resx">
       <DependentUpon>frmLavarropas.cs</DependentUpon>
