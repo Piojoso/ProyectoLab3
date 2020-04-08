@@ -13,7 +13,7 @@ namespace MAB.Forms.Lavarropas
 {
     public partial class frmAgregarLavarropas : Form
     {
-        private Clientes Cliente;
+        private Models.Clientes Cliente;
 
         public frmAgregarLavarropas(int idCliente)
         {
