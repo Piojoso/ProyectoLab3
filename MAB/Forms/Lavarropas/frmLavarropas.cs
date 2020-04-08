@@ -51,15 +51,20 @@ namespace MAB.Forms.CRUD.Lavarropas
                 {
                     cliente = null;
 
-                    int ultimoId = db.Lavarropas.LastOrDefault().Id;
-                    var shortList = from lavarropas in db.Lavarropas
-                                    where lavarropas.Id >= (ultimoId - 10)
-                                    select lavarropas;
+                    if(db.Lavarropas.ToList().LastOrDefault() != null)
+                    {
+                        int ultimoId = db.Lavarropas.ToList().LastOrDefault().Id;
 
-                    var fullList = db.Lavarropas;
+                        var shortList = from lavarropas in db.Lavarropas
+                                        where lavarropas.Id >= (ultimoId - 10)
+                                        select lavarropas;
 
-                    ucDGVTabla.ShortListData = shortList;
-                    ucDGVTabla.FullListData = fullList;
+                        ucDGVTabla.ShortListData = shortList.ToList();
+                    }
+
+                    var fullList = db.Lavarropas.ToList();
+
+                    ucDGVTabla.FullListData = fullList.ToList();
 
                     Text = "Lavarropas";
                 }
@@ -70,14 +75,6 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnAdd(object sender, EventArgs e)
         {
-            /**
-             * TODO: estoy pensando en que quizas lo que aca podria hacer para que todo funcione, es abrir una pequeña ventana nueva
-             * donde tenga listados todos los clientes, y 3 botones, uno seleccionar, otro buscar, y otro cerrar. el seleccionar retornara
-             * el id del seleccionado, mientras que buscar abrira el frmBuscarCliente y el cerrar, claramente cerrara la ventana. Esto solo
-             * si no hay un cliente ya en este form.
-             * --- HECHO
-             */
-
             if(cliente != null)
             {
                 frmAgregarLavarropas frm = new frmAgregarLavarropas(cliente.Id);
@@ -109,7 +106,26 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnModify(object sender, EventArgs e)
         {
+            /**
+             * TODO: Abrir formulario frmModificarLavarropas para poder modificar el lavarropas seleccionado
+             * --- HECHO
+             */
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
+                frmModificarLavarropas frm = new frmModificarLavarropas(idLavarropas);
+                frm.ShowDialog();
+
+                if(cliente != null)
+                {
+                    cargarLavarropas(cliente.Id);
+                }
+                else
+                {
+                    cargarLavarropas(null);
+                }
+            }
         }
 
         private void btnSearch(object sender, EventArgs e)
