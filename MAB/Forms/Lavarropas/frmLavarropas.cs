@@ -19,6 +19,9 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         public frmLavarropas(int? idCliente = null)
         {
+            /**
+             * TODO: Analizar si seria conveniente agregar una columna al dgv con el nombre y apellido del dueño del lavarropas
+             */
             InitializeComponent();
 
             cargarLavarropas(idCliente);
@@ -28,6 +31,12 @@ namespace MAB.Forms.CRUD.Lavarropas
             ucDGVTabla.click_btnSearch += btnSearch;
 
             ucDGVTabla.CellDoubleClick += dobleClick;
+
+            ucDGVTabla.Columns["ClienteId"].Visible = false;
+            ucDGVTabla.Columns["Cliente"].Visible = false;
+            ucDGVTabla.Columns["Reparacion"].Visible = false;
+
+            crearCMS();
         }
 
 
@@ -92,6 +101,36 @@ namespace MAB.Forms.CRUD.Lavarropas
                     cargarLavarropas(null);
                 }
             }
+        }
+
+        private void crearCMS()
+        {
+            ToolStripMenuItem tsiVerCliente = new ToolStripMenuItem();
+            tsiVerCliente.Name = "tsiVerCliente";
+            tsiVerCliente.Size = new Size(148, 22);
+            tsiVerCliente.Text = "Ver Cliente";
+            tsiVerCliente.Click += verCliente;
+
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsiVerReparaciones = new ToolStripMenuItem();
+            tsiVerReparaciones.Name = "tsiVerReparaciones";
+            tsiVerReparaciones.Size = new Size(148, 22);
+            tsiVerReparaciones.Text = "Ver Reparaciones";
+            tsiVerReparaciones.Click += verReparaciones;
+            
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsiVerCliente,
+                tssSeparador,
+                tsiVerReparaciones,
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
         }
 
         #region Eventos de Botones
@@ -165,6 +204,24 @@ namespace MAB.Forms.CRUD.Lavarropas
         private void dobleClick(object sender, EventArgs e)
         {
             abrirFormModify();
+        }
+
+        #endregion
+
+        #region EventosCMS
+
+        private void verCliente(object sender, EventArgs e)
+        {
+            /**
+             * TODO: abrir formulario de verDetalleCliente el cual aun no existe
+             */
+        }
+
+        private void verReparaciones(object sender, EventArgs e)
+        {
+            /**
+             * TODO: abrir formulario de verReparaciones, y listar todas las reparaciones de este lavarropas
+             */
         }
 
         #endregion
