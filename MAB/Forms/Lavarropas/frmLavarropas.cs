@@ -106,10 +106,6 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnModify(object sender, EventArgs e)
         {
-            /**
-             * TODO: Abrir formulario frmModificarLavarropas para poder modificar el lavarropas seleccionado
-             * --- HECHO
-             */
             if(ucDGVTabla.selectedRow() != null)
             {
                 int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
@@ -130,7 +126,33 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnSearch(object sender, EventArgs e)
         {
+            /**
+             * TODO: Abrir Formulario frmBuscarLavarropas para realizar la busqueda y luego enseñarlos en el ucDGVTabla.
+             * --- HECHO
+             */
 
+            frmBuscarLavarropas frm = new frmBuscarLavarropas();
+            frm.ShowDialog();
+
+            if(frm.getResultados.Count != 0)
+            {
+                using (MABEntities db = new MABEntities())
+                {
+                    List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
+
+                    foreach(int id in frm.getResultados)
+                    {
+                        lavarropas.Add(db.Lavarropas.Find(id));
+                    }
+
+                    ucDGVTabla.dataSource(lavarropas);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados", 
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         #endregion
