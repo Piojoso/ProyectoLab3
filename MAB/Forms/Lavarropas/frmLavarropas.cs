@@ -26,7 +26,10 @@ namespace MAB.Forms.CRUD.Lavarropas
             ucDGVTabla.click_btnAdd += btnAdd;
             ucDGVTabla.click_btnModify += btnModify;
             ucDGVTabla.click_btnSearch += btnSearch;
+
+            ucDGVTabla.CellDoubleClick += dobleClick;
         }
+
 
         private void cargarLavarropas(int? idCliente)
         {
@@ -71,6 +74,26 @@ namespace MAB.Forms.CRUD.Lavarropas
             }
         }
 
+        private void abrirFormModify()
+        {
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmModificarLavarropas frm = new frmModificarLavarropas(idLavarropas);
+                frm.ShowDialog();
+
+                if (cliente != null)
+                {
+                    cargarLavarropas(cliente.Id);
+                }
+                else
+                {
+                    cargarLavarropas(null);
+                }
+            }
+        }
+
         #region Eventos de Botones
 
         private void btnAdd(object sender, EventArgs e)
@@ -106,31 +129,11 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnModify(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
-            {
-                int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
-
-                frmModificarLavarropas frm = new frmModificarLavarropas(idLavarropas);
-                frm.ShowDialog();
-
-                if(cliente != null)
-                {
-                    cargarLavarropas(cliente.Id);
-                }
-                else
-                {
-                    cargarLavarropas(null);
-                }
-            }
+            abrirFormModify();
         }
 
         private void btnSearch(object sender, EventArgs e)
         {
-            /**
-             * TODO: Abrir Formulario frmBuscarLavarropas para realizar la busqueda y luego enseñarlos en el ucDGVTabla.
-             * --- HECHO
-             */
-
             frmBuscarLavarropas frm = new frmBuscarLavarropas();
             frm.ShowDialog();
 
@@ -153,6 +156,15 @@ namespace MAB.Forms.CRUD.Lavarropas
                 MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados", 
                     "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        #endregion
+
+        #region Cell_DobleClick
+
+        private void dobleClick(object sender, EventArgs e)
+        {
+            abrirFormModify();
         }
 
         #endregion
