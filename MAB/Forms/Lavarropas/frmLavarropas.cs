@@ -21,6 +21,7 @@ namespace MAB.Forms.CRUD.Lavarropas
         {
             /**
              * TODO: Analizar si seria conveniente agregar una columna al dgv con el nombre y apellido del dueño del lavarropas
+             * NOTA: si lo hago, tendre que modificar en el evento verCliente para que haga un refrescar de la info del frm.
              */
             InitializeComponent();
 
@@ -212,9 +213,19 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void verCliente(object sender, EventArgs e)
         {
-            /**
-             * TODO: abrir formulario de verDetalleCliente el cual aun no existe
-             */
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+                frmDetalleCliente frm = new frmDetalleCliente(idCliente);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Debe seleccionar un lavarropas primero para luego poder ver su clientes", 
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
         }
 
         private void verReparaciones(object sender, EventArgs e)
