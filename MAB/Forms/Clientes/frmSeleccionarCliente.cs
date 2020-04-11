@@ -18,16 +18,19 @@ namespace MAB.Forms.Clientes
         {
             /**
              * TODO: revisar el correcto funcionamiento
+             * 
+             * TODO: En vez de cerrar ventana este formulario lo que hara es brindar la opcion de agregar un nuevo cliente
+             * --- HECHO
              */
             InitializeComponent();
 
             ucBottom.Accion1 = "Seleccionar";
             ucBottom.Accion2 = "Buscar";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion3 = "Nuevo";
 
             ucBottom.evAccion1 += seleccionarCliente;
             ucBottom.evAccion2 += buscarCliente;
-            ucBottom.evAccion3 += cerrarVentana;
+            ucBottom.evAccion3 += nuevoCliente;
 
             cargarLista();
         }
@@ -109,9 +112,12 @@ namespace MAB.Forms.Clientes
             }
         }
 
-        private void cerrarVentana(object sender, EventArgs e)
+        private void nuevoCliente(object sender, EventArgs e)
         {
-            this.Close();
+            frmAgregarCliente frm = new frmAgregarCliente();
+            frm.ShowDialog();
+
+            cargarLista();
         }
 
         #endregion
