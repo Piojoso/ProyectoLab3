@@ -31,15 +31,16 @@ namespace MAB.Forms.CRUD.Reparaciones
         private void InitializeComponent()
         {
             this.ucBottom = new ucLibrary.ucBottom();
-            this.ucTop = new ucLibrary.ucTop();
             this.cclblCliente = new ccLibrary.ccLabel();
             this.cclblLavarropas = new ccLibrary.ccLabel();
             this.cclblErrorAReparar = new ccLibrary.ccLabel();
-            this.btnCliente = new System.Windows.Forms.Button();
             this.cctbErrorAReparar = new ccLibrary.ccTextBox();
-            this.cboLavarropas = new System.Windows.Forms.ComboBox();
             this.cclblNombreCliente = new ccLibrary.ccLabel();
-            this.btnNuevoLavarropas = new System.Windows.Forms.Button();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.cclblFechaIngreso = new ccLibrary.ccLabel();
+            this.cclblMarcaLavarropas = new ccLibrary.ccLabel();
+            this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
             // ucBottom
@@ -48,120 +49,120 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.ucBottom.Accion2 = null;
             this.ucBottom.Accion3 = null;
             this.ucBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucBottom.Location = new System.Drawing.Point(0, 300);
+            this.ucBottom.Location = new System.Drawing.Point(0, 222);
             this.ucBottom.MaximumSize = new System.Drawing.Size(3840, 82);
             this.ucBottom.Name = "ucBottom";
-            this.ucBottom.NumButtons = 0;
-            this.ucBottom.Size = new System.Drawing.Size(689, 82);
+            this.ucBottom.NumButtons = 2;
+            this.ucBottom.Size = new System.Drawing.Size(657, 82);
             this.ucBottom.TabIndex = 0;
-            // 
-            // ucTop
-            // 
-            this.ucTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucTop.Location = new System.Drawing.Point(0, 0);
-            this.ucTop.MaximumSize = new System.Drawing.Size(3840, 82);
-            this.ucTop.Name = "ucTop";
-            this.ucTop.Size = new System.Drawing.Size(689, 82);
-            this.ucTop.TabIndex = 1;
-            this.ucTop.Titulo = null;
             // 
             // cclblCliente
             // 
             this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblCliente.Location = new System.Drawing.Point(171, 132);
+            this.cclblCliente.Location = new System.Drawing.Point(141, 30);
             this.cclblCliente.Name = "cclblCliente";
-            this.cclblCliente.Size = new System.Drawing.Size(47, 16);
+            this.cclblCliente.Size = new System.Drawing.Size(50, 16);
             this.cclblCliente.TabIndex = 2;
-            this.cclblCliente.Text = "Cliente";
+            this.cclblCliente.Text = "Cliente:";
+            this.cclblCliente.Click += new System.EventHandler(this.cclblCliente_Click);
             // 
             // cclblLavarropas
             // 
             this.cclblLavarropas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblLavarropas.AutoSize = true;
             this.cclblLavarropas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblLavarropas.Location = new System.Drawing.Point(171, 183);
+            this.cclblLavarropas.Location = new System.Drawing.Point(141, 79);
             this.cclblLavarropas.Name = "cclblLavarropas";
-            this.cclblLavarropas.Size = new System.Drawing.Size(73, 16);
+            this.cclblLavarropas.Size = new System.Drawing.Size(76, 16);
             this.cclblLavarropas.TabIndex = 3;
-            this.cclblLavarropas.Text = "Lavarropas";
+            this.cclblLavarropas.Text = "Lavarropas:";
+            this.cclblLavarropas.Click += new System.EventHandler(this.cclblLavarropas_Click);
             // 
             // cclblErrorAReparar
             // 
             this.cclblErrorAReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblErrorAReparar.AutoSize = true;
             this.cclblErrorAReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblErrorAReparar.Location = new System.Drawing.Point(171, 234);
+            this.cclblErrorAReparar.Location = new System.Drawing.Point(141, 128);
             this.cclblErrorAReparar.Name = "cclblErrorAReparar";
-            this.cclblErrorAReparar.Size = new System.Drawing.Size(101, 16);
+            this.cclblErrorAReparar.Size = new System.Drawing.Size(104, 16);
             this.cclblErrorAReparar.TabIndex = 4;
-            this.cclblErrorAReparar.Text = "Error A Reparar";
-            // 
-            // btnCliente
-            // 
-            this.btnCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCliente.Location = new System.Drawing.Point(287, 128);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(109, 23);
-            this.btnCliente.TabIndex = 5;
-            this.btnCliente.Text = "Buscar o Agregar";
-            this.btnCliente.UseVisualStyleBackColor = true;
-            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+            this.cclblErrorAReparar.Text = "Error A Reparar:";
+            this.cclblErrorAReparar.Click += new System.EventHandler(this.cclblErrorAReparar_Click);
             // 
             // cctbErrorAReparar
             // 
             this.cctbErrorAReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbErrorAReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbErrorAReparar.Location = new System.Drawing.Point(287, 231);
+            this.cctbErrorAReparar.Location = new System.Drawing.Point(278, 125);
             this.cctbErrorAReparar.Name = "cctbErrorAReparar";
             this.cctbErrorAReparar.Size = new System.Drawing.Size(231, 24);
             this.cctbErrorAReparar.TabIndex = 6;
-            // 
-            // cboLavarropas
-            // 
-            this.cboLavarropas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboLavarropas.FormattingEnabled = true;
-            this.cboLavarropas.Location = new System.Drawing.Point(287, 181);
-            this.cboLavarropas.Name = "cboLavarropas";
-            this.cboLavarropas.Size = new System.Drawing.Size(150, 21);
-            this.cboLavarropas.TabIndex = 7;
-            this.cboLavarropas.SelectedIndexChanged += new System.EventHandler(this.cboLavarropas_SelectedIndexChanged);
+            this.cctbErrorAReparar.TextChanged += new System.EventHandler(this.cctbErrorAReparar_TextChanged);
             // 
             // cclblNombreCliente
             // 
             this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombreCliente.AutoSize = true;
             this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblNombreCliente.Location = new System.Drawing.Point(402, 132);
+            this.cclblNombreCliente.Location = new System.Drawing.Point(284, 30);
             this.cclblNombreCliente.Name = "cclblNombreCliente";
             this.cclblNombreCliente.Size = new System.Drawing.Size(0, 16);
             this.cclblNombreCliente.TabIndex = 8;
+            this.cclblNombreCliente.Click += new System.EventHandler(this.cclblNombreCliente_Click);
             // 
-            // btnNuevoLavarropas
+            // pnlBody
             // 
-            this.btnNuevoLavarropas.Location = new System.Drawing.Point(443, 179);
-            this.btnNuevoLavarropas.Name = "btnNuevoLavarropas";
-            this.btnNuevoLavarropas.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevoLavarropas.TabIndex = 9;
-            this.btnNuevoLavarropas.Text = "Nuevo";
-            this.btnNuevoLavarropas.UseVisualStyleBackColor = true;
-            this.btnNuevoLavarropas.Click += new System.EventHandler(this.btnNuevoLavarropas_Click);
+            this.pnlBody.Controls.Add(this.dtpFechaIngreso);
+            this.pnlBody.Controls.Add(this.cclblMarcaLavarropas);
+            this.pnlBody.Controls.Add(this.cclblFechaIngreso);
+            this.pnlBody.Controls.Add(this.cctbErrorAReparar);
+            this.pnlBody.Controls.Add(this.cclblCliente);
+            this.pnlBody.Controls.Add(this.cclblNombreCliente);
+            this.pnlBody.Controls.Add(this.cclblLavarropas);
+            this.pnlBody.Controls.Add(this.cclblErrorAReparar);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(657, 222);
+            this.pnlBody.TabIndex = 10;
+            // 
+            // cclblFechaIngreso
+            // 
+            this.cclblFechaIngreso.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblFechaIngreso.AutoSize = true;
+            this.cclblFechaIngreso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblFechaIngreso.Location = new System.Drawing.Point(141, 177);
+            this.cclblFechaIngreso.Name = "cclblFechaIngreso";
+            this.cclblFechaIngreso.Size = new System.Drawing.Size(111, 16);
+            this.cclblFechaIngreso.TabIndex = 9;
+            this.cclblFechaIngreso.Text = "Fecha de Ingreso:";
+            // 
+            // cclblMarcaLavarropas
+            // 
+            this.cclblMarcaLavarropas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblMarcaLavarropas.AutoSize = true;
+            this.cclblMarcaLavarropas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblMarcaLavarropas.Location = new System.Drawing.Point(284, 79);
+            this.cclblMarcaLavarropas.Name = "cclblMarcaLavarropas";
+            this.cclblMarcaLavarropas.Size = new System.Drawing.Size(0, 16);
+            this.cclblMarcaLavarropas.TabIndex = 10;
+            // 
+            // dtpFechaIngreso
+            // 
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(278, 173);
+            this.dtpFechaIngreso.Name = "dtpFechaIngreso";
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(231, 20);
+            this.dtpFechaIngreso.TabIndex = 11;
             // 
             // frmAgregarReparaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 382);
-            this.Controls.Add(this.btnNuevoLavarropas);
-            this.Controls.Add(this.cclblNombreCliente);
-            this.Controls.Add(this.cboLavarropas);
-            this.Controls.Add(this.cctbErrorAReparar);
-            this.Controls.Add(this.btnCliente);
-            this.Controls.Add(this.cclblErrorAReparar);
-            this.Controls.Add(this.cclblLavarropas);
-            this.Controls.Add(this.cclblCliente);
-            this.Controls.Add(this.ucTop);
+            this.ClientSize = new System.Drawing.Size(657, 304);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.ucBottom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -170,23 +171,23 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmAgregarReparaciones";
+            this.pnlBody.ResumeLayout(false);
+            this.pnlBody.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private ucLibrary.ucBottom ucBottom;
-        private ucLibrary.ucTop ucTop;
         private ccLibrary.ccLabel cclblCliente;
         private ccLibrary.ccLabel cclblLavarropas;
         private ccLibrary.ccLabel cclblErrorAReparar;
-        private System.Windows.Forms.Button btnCliente;
         private ccLibrary.ccTextBox cctbErrorAReparar;
-        private System.Windows.Forms.ComboBox cboLavarropas;
         private ccLibrary.ccLabel cclblNombreCliente;
-        private System.Windows.Forms.Button btnNuevoLavarropas;
+        private System.Windows.Forms.Panel pnlBody;
+        private ccLibrary.ccLabel cclblMarcaLavarropas;
+        private ccLibrary.ccLabel cclblFechaIngreso;
+        private System.Windows.Forms.DateTimePicker dtpFechaIngreso;
     }
 }
