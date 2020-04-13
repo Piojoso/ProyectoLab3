@@ -133,6 +133,12 @@
     <Compile Include="Forms\Lavarropas\frmModificarLavarropas.Designer.cs">
       <DependentUpon>frmModificarLavarropas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Lavarropas\frmSeleccionarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmSeleccionarLavarropas.Designer.cs">
+      <DependentUpon>frmSeleccionarLavarropas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reparaciones\frmAgregarReparaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmModificarLavarropas.resx">
       <DependentUpon>frmModificarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmSeleccionarLavarropas.resx">
+      <DependentUpon>frmSeleccionarLavarropas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmAgregarReparaciones.resx">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
