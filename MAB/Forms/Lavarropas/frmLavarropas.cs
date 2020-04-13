@@ -174,27 +174,57 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnSearch(object sender, EventArgs e)
         {
-            frmBuscarLavarropas frm = new frmBuscarLavarropas();
-            frm.ShowDialog();
+            DialogResult resp = MessageBox.Show(
+                "Existe 2 Maneras de buscar lavarropas. \n" +
+                "1) Ver todos los lavarropas de un cliente en particular \n" +
+                "2) Buscar un lavarropas dado su marca y modelo \n" +
+                "¿Desea ver todos los lavarropas de un cliente en particular? \n" +
+                "Al seleccionar no la busqueda se realizara por el segundo metodo.",
+                "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if(frm.getResultados.Count != 0)
+            if(resp == DialogResult.Yes)
             {
-                using (MABEntities db = new MABEntities())
+                frmSeleccionarCliente frm = new frmSeleccionarCliente();
+                frm.ShowDialog();
+
+                int idCliente = frm.ClienteSeleccionado;
+
+                if(idCliente != -1)
                 {
-                    List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
-
-                    foreach(int id in frm.getResultados)
+                    using(MABEntities db = new MABEntities())
                     {
-                        lavarropas.Add(db.Lavarropas.Find(id));
-                    }
+                        var lavarropas = from lav in db.Lavarropas
+                                         where lav.ClienteId == idCliente
+                                         select lav;
 
-                    ucDGVTabla.dataSource(lavarropas);
+                        ucDGVTabla.dataSource(lavarropas.ToList());
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados", 
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmBuscarLavarropas frm = new frmBuscarLavarropas();
+                frm.ShowDialog();
+
+                if(frm.getResultados.Count != 0)
+                {
+                    using (MABEntities db = new MABEntities())
+                    {
+                        List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
+
+                        foreach(int id in frm.getResultados)
+                        {
+                            lavarropas.Add(db.Lavarropas.Find(id));
+                        }
+
+                        ucDGVTabla.dataSource(lavarropas);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados", 
+                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
