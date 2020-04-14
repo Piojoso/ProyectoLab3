@@ -66,7 +66,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.cclblCliente.Size = new System.Drawing.Size(50, 16);
             this.cclblCliente.TabIndex = 2;
             this.cclblCliente.Text = "Cliente:";
-            this.cclblCliente.Click += new System.EventHandler(this.cclblCliente_Click);
             // 
             // cclblLavarropas
             // 
@@ -78,7 +77,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.cclblLavarropas.Size = new System.Drawing.Size(76, 16);
             this.cclblLavarropas.TabIndex = 3;
             this.cclblLavarropas.Text = "Lavarropas:";
-            this.cclblLavarropas.Click += new System.EventHandler(this.cclblLavarropas_Click);
             // 
             // cclblErrorAReparar
             // 
@@ -90,7 +88,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.cclblErrorAReparar.Size = new System.Drawing.Size(104, 16);
             this.cclblErrorAReparar.TabIndex = 4;
             this.cclblErrorAReparar.Text = "Error A Reparar:";
-            this.cclblErrorAReparar.Click += new System.EventHandler(this.cclblErrorAReparar_Click);
             // 
             // cctbErrorAReparar
             // 
@@ -100,7 +97,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.cctbErrorAReparar.Name = "cctbErrorAReparar";
             this.cctbErrorAReparar.Size = new System.Drawing.Size(231, 24);
             this.cctbErrorAReparar.TabIndex = 6;
-            this.cctbErrorAReparar.TextChanged += new System.EventHandler(this.cctbErrorAReparar_TextChanged);
             // 
             // cclblNombreCliente
             // 
@@ -111,7 +107,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.cclblNombreCliente.Name = "cclblNombreCliente";
             this.cclblNombreCliente.Size = new System.Drawing.Size(0, 16);
             this.cclblNombreCliente.TabIndex = 8;
-            this.cclblNombreCliente.Click += new System.EventHandler(this.cclblNombreCliente_Click);
             // 
             // pnlBody
             // 
