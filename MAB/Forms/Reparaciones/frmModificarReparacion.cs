@@ -15,59 +15,24 @@ namespace MAB.Forms.CRUD.Reparaciones
     {
         Models.Reparaciones reparacion;
 
-        /**
-         * Aun no probado. Puede que traiga multiples errores
-         */
-
         public frmModificarReparacion(int idReparacion)
         {
-
             /**
-             * TODO: Posiblemente deba modificar todo esto cuando tenga entregas y repuestos.
-             * Sospecho que quizas debi dejar la reparacion para el final.
+             * TODO: Revisar su correcto funcionamiento
              */
 
             InitializeComponent();
 
-            ucTop.Titulo = "Modificar Reparacion";
-
-            ucBottom.NumButtons = 2;
-
-            ucBottom.Accion1 = "Confirmar";
-            ucBottom.Accion3 = "Cancelar";
-
-            ucBottom.evAccion1 += confirmarCambios;
-            ucBottom.evAccion3 += cancelarCambios;
-
             cargarCBOEstadoReparacion();
 
             cargarDatos(idReparacion);
-        }
 
-        private void confirmarCambios(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                bool finalizado = (estadosReparacion)cboEstadoReparacion.SelectedItem == estadosReparacion.EnCurso ? true : false;
+            ucBottom.Accion1 = "Guardar";
+            ucBottom.Accion3 = "Cerrar";
 
-                reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
-                reparacion.fechaIngreso = dtpFechaIngreso.Value;
-                reparacion.errorAReparar = cctbFallaAReparar.Text == string.Empty ? reparacion.errorAReparar : cctbFallaAReparar.Text;
-                reparacion.reparacionRealizada = cctbReparacionRealizada.Text != string.Empty ? cctbReparacionRealizada.Text : null;
-                reparacion.manoDeObra = finalizado == false ? 0 : Convert.ToDouble(cctbManoObra.Text);
-                reparacion.totalRepuestos = finalizado == false ? 0 : Convert.ToDouble(cctbValorRepuestos.Text);
-                reparacion.fechaEgreso = finalizado == true ? dtpFechaEgreso?.Value : null;
-                reparacion.mesesGarantia = finalizado == false ? null : (int?)Convert.ToInt32(nudGarantia.Value);
+            ucBottom.evAccion1 += guardarCambios;
+            ucBottom.evAccion3 += cerrarVentana;
 
-                db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
-
-                db.SaveChanges();
-            }
-        }
-
-        private void cancelarCambios(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void cargarCBOEstadoReparacion()
@@ -84,6 +49,7 @@ namespace MAB.Forms.CRUD.Reparaciones
             {
                 reparacion = db.Reparaciones.Find(idReparacion);
 
+                cclblNombreApellidoCliente.Text = reparacion.Lavarropas.Cliente.nombre + " " + reparacion.Lavarropas.Cliente.apellido;
                 cclblMarcaModelo.Text = reparacion.Lavarropas.marca + " " + reparacion.Lavarropas.modelo;
                 cboEstadoReparacion.SelectedItem = reparacion.estadoReparacion;
                 dtpFechaIngreso.Value = reparacion.fechaIngreso;
@@ -96,6 +62,78 @@ namespace MAB.Forms.CRUD.Reparaciones
                 nudGarantia.Value = (reparacion.mesesGarantia != null) ? Convert.ToDecimal(reparacion.mesesGarantia) : 0;
                 dtpGarantia.Value = (reparacion.fechaEgreso != null) ? reparacion.fechaEgreso.Value.AddMonths(Convert.ToInt32(nudGarantia.Value)) : DateTime.Now;
             }
+
+            Text = "Modificar la reparacion: " + reparacion.Id;
         }
+
+        private void guardarCambios(object sender, EventArgs e)
+        {
+            if(cctbFallaAReparar.Text != string.Empty && cctbReparacionRealizada.Text != string.Empty)
+            {
+                if (cctbManoObra.Text == string.Empty)
+                    cctbManoObra.Text = "0";
+                if (cctbValorRepuestos.Text == string.Empty)
+                    cctbValorRepuestos.Text = "0";
+
+                DialogResult resp;
+
+                if ((estadosReparacion)cboEstadoReparacion.SelectedItem == estadosReparacion.Finalizada)
+                {
+                    resp = MessageBox.Show(
+                    "¿Desea continuar con la modificacion? \n" +
+                    "Estado de reparacion cambiara de: " + reparacion.estadoReparacion.ToString() + " a " + ((estadosReparacion)cboEstadoReparacion.SelectedItem).ToString() + "\n" +
+                    "Fecha de Ingreso cambiara de: " + reparacion.fechaEgreso.Value.ToString() + " a " + dtpFechaIngreso.Value.ToString() + "\n" +
+                    "Falla a Reparar cambiara de: " + reparacion.errorAReparar + " a " + cctbFallaAReparar.Text + "\n" +
+                    "Reparacion Realizada cambiara de: " + reparacion.reparacionRealizada + " a " + cctbReparacionRealizada.Text + "\n" +
+                    "Mano de Obra cambiara de: " + reparacion.manoDeObra + " a " + cctbManoObra.Text + "\n" +
+                    "Total de Repuestos cambiara de: " + reparacion.totalRepuestos + " a " + cctbValorRepuestos.Text + "\n" +
+                    "Fecha de Egreso cambiara de: " + reparacion.fechaEgreso + " a " + dtpFechaEgreso.Value.ToString() + "\n" +
+                    "Meses de Garantia cambiara de: " + reparacion.mesesGarantia + " a " + nudGarantia.Value.ToString() + "\n" +
+                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    reparacion.fechaEgreso = dtpFechaEgreso.Value;
+                    reparacion.mesesGarantia = Convert.ToInt32(nudGarantia.Value);
+                }
+                else
+                {
+                    resp = MessageBox.Show(
+                    "¿Desea continuar con la modificacion? \n" +
+                    "Estado de reparacion cambiara de: " + reparacion.estadoReparacion.ToString() + " a " + ((estadosReparacion)cboEstadoReparacion.SelectedItem).ToString() + "\n" +
+                    "Fecha de Ingreso cambiara de: " + reparacion.fechaEgreso.Value.ToString() + " a " + dtpFechaIngreso.Value.ToString() + "\n" +
+                    "Falla a Reparar cambiara de: " + reparacion.errorAReparar + " a " + cctbFallaAReparar.Text + "\n" +
+                    "Reparacion Realizada cambiara de: " + reparacion.reparacionRealizada + " a " + cctbReparacionRealizada.Text + "\n" +
+                    "Mano de Obra cambiara de: " + reparacion.manoDeObra + " a " + cctbManoObra.Text + "\n" +
+                    "Total de Repuestos cambiara de: " + reparacion.totalRepuestos + " a " + cctbValorRepuestos.Text + "\n" +
+                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                }
+
+                if(resp == DialogResult.Yes)
+                {
+                    using (MABEntities db = new MABEntities())
+                    {
+                        reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
+                        reparacion.fechaIngreso = dtpFechaIngreso.Value;
+                        reparacion.errorAReparar = cctbFallaAReparar.Text;
+                        reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
+                        reparacion.manoDeObra = Convert.ToDouble(cctbManoObra.Text);
+                        reparacion.totalRepuestos = Convert.ToDouble(cctbValorRepuestos.Text);
+
+                        db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
+
+                        db.SaveChanges();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hay campos que faltan completar", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cerrarVentana(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
