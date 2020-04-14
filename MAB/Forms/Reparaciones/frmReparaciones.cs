@@ -33,11 +33,6 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void cargarDGV(int? idLavarropas)
         {
-            /**
-             * TODO: Revisar esta funcion... Parece que el || no funciona. Debo revisarlo bien
-             * --- HECHO: o mas bien, eliminado, ya que ahora muestra otra info.
-             */
-             
             if(idLavarropas != null)
             {
                 using (MABEntities db = new MABEntities())
@@ -112,24 +107,30 @@ namespace MAB.Forms.CRUD.Reparaciones
         private void btnModificar(object sender, EventArgs e)
         {
             /**
-             * TODO: Debo realizar varios cambios para luego volver aqui.
+             * TODO: Acomodar la funcion Modificar
+             * --- HECHO
              */
 
-            //DataGridViewRow fila = ucBG.getSelectedItem();
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
-            //using (MABEntities db = new MABEntities())
-            //{
-            //    /**
-            //     * TODO: Revisar si tengo que castear value (yo me la juego que si)
-            //     */
-            //    Models.Reparaciones reparacion = db.Reparaciones.Find(fila.Cells[0].Value);
+                frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
+                frm.ShowDialog();
 
-            //    /**
-            //     * TODO: Tratar de forzar un reparacion == null. Solo para ver que ocurre aca.
-            //     */
-            //    frmModificarReparacion frm = new frmModificarReparacion(reparacion.Id);
-            //    frm.ShowDialog();
-            //}
+                if(lavarropas != null)
+                {
+                    cargarDGV(lavarropas.Id);
+                }
+                else
+                {
+                    cargarDGV(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnBuscar(object sender, EventArgs e)
