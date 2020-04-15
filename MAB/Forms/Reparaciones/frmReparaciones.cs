@@ -27,6 +27,46 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucDGVTabla.click_btnAdd += btnAgregar;
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnBuscar;
+            
+            ucDGVTabla.Columns["mesesGarantia"].Visible = false;
+            ucDGVTabla.Columns["reparacionRealizada"].Visible = false;
+            ucDGVTabla.Columns["manoDeObra"].Visible = false;
+            ucDGVTabla.Columns["totalRepuestos"].Visible = false;
+            ucDGVTabla.Columns["LavarropasId"].Visible = false;
+            ucDGVTabla.Columns["Lavarropas"].Visible = false;
+            ucDGVTabla.Columns["Repuestos"].Visible = false;
+            ucDGVTabla.Columns["Entregas"].Visible = false;
+
+            ucDGVTabla.CellDoubleClick += UcDGVTabla_CellDoubleClick;
+        }
+
+        private void UcDGVTabla_CellDoubleClick(object sender, EventArgs e)
+        {
+            abrirFrmModify();
+        }
+
+        private void abrirFrmModify()
+        {
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
+                frm.ShowDialog();
+
+                if (lavarropas != null)
+                {
+                    cargarDGV(lavarropas.Id);
+                }
+                else
+                {
+                    cargarDGV(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private Models.Lavarropas lavarropas;
@@ -106,33 +146,11 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void btnModificar(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
-            {
-                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
-
-                frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
-                frm.ShowDialog();
-
-                if(lavarropas != null)
-                {
-                    cargarDGV(lavarropas.Id);
-                }
-                else
-                {
-                    cargarDGV(null);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            abrirFrmModify();
         }
 
         private void btnBuscar(object sender, EventArgs e)
         {
-            // TODO: crear funcion de busqueda
-            // --- HECHO
-
             frmBuscarReparacion frm = new frmBuscarReparacion();
             frm.ShowDialog();
 
