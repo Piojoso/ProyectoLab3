@@ -130,6 +130,31 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void btnBuscar(object sender, EventArgs e)
         {
+            // TODO: crear funcion de busqueda
+            // --- HECHO
+
+            frmBuscarReparacion frm = new frmBuscarReparacion();
+            frm.ShowDialog();
+
+            if(frm.getResultados.Count != 0)
+            {
+                using (MABEntities db = new MABEntities())
+                {
+                    List<Models.Reparaciones> reparaciones = new List<Models.Reparaciones>();
+
+                    foreach(int id in frm.getResultados)
+                    {
+                        reparaciones.Add(db.Reparaciones.Find(id));
+                    }
+
+                    ucDGVTabla.dataSource(reparaciones);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
+                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
