@@ -13,51 +13,65 @@ namespace MAB.Forms.CRUD.Reparaciones
 {
     public partial class frmBuscarReparacion : Form
     {
-        public List<int> idReparaciones = null;
-
         public frmBuscarReparacion()
         {
+            /**
+             * TODO: Comprobar el correcto funcionamiento
+             */
+
             InitializeComponent();
-
-            ucTop.Titulo = "Buscar Reparacion";
-
-            ucBottom.NumButtons = 2;
-
+            
             ucBottom.Accion1 = "Buscar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion3 = "Cerrar";
 
             ucBottom.evAccion1 += buscarReparacion;
-            ucBottom.evAccion3 += cancelarBusqueda;
+            ucBottom.evAccion3 += cerrarVentana;
+        }
+
+        private List<int> idResultados;
+
+        public List<int> getResultados
+        {
+            get { return idResultados; }
         }
 
         private void buscarReparacion(object sender, EventArgs e)
         {
-            /**
-             * TODO: Testear esta funcion
-             */
+            if (dtpInicioIngreso.Value < DateTime.Now)
+                dtpInicioIngreso.Value = DateTime.Now;
+
+            if (dtpFinIngreso.Value < DateTime.Now)
+                dtpFinIngreso.Value = DateTime.Now;
+
+            if (dtpInicioEgreso.Value < DateTime.Now)
+                dtpInicioEgreso.Value = DateTime.Now;
+
+            if (dtpFinEgreso.Value < DateTime.Now)
+                dtpFinEgreso.Value = DateTime.Now;
+            
             using (MABEntities db = new MABEntities())
             {
-                var reparaciones = db.Reparaciones;
+                List<Models.Reparaciones> reparaciones = db.Reparaciones.ToList();
 
                 foreach(Models.Reparaciones reparacion in reparaciones)
                 {
-                    if((dtpInicioIngreso.Value <= reparacion.fechaIngreso) && (reparacion.fechaIngreso <= dtpFinIngreso.Value))
+                    if((reparacion.fechaIngreso >= dtpInicioIngreso.Value) && (reparacion.fechaIngreso <= dtpFinIngreso.Value))
                     {
-                        idReparaciones.Add(reparacion.Id);
+                        idResultados.Add(reparacion.Id);
                         break;
                     }
-                    else if ((dtpInicioEgreso.Value <= reparacion.fechaEgreso) && (reparacion.fechaEgreso <= dtpFinEgreso.Value))
+                    else if ((reparacion.fechaEgreso >= dtpInicioEgreso.Value) && (reparacion.fechaEgreso <= dtpFinEgreso.Value))
                     {
-                        idReparaciones.Add(reparacion.Id);
+                        idResultados.Add(reparacion.Id);
                         break;
                     }
                 }
             }
 
-            if(idReparaciones != null)
+            if(idResultados.Count != 0)
             {
-                DialogResult resp = MessageBox.Show("Se encontraron " + idReparaciones.Count + " Reparaciones. " +
-                    "\n ¿Desea verlas?", "¿Ver Resultados?", MessageBoxButtons.YesNo);
+                DialogResult resp = MessageBox.Show("Se encontraron " + idResultados.Count + " Resultados. \n" +
+                    "¿Desea verlos?", "¿Ver Resultados?", MessageBoxButtons.YesNo);
 
                 if( resp == DialogResult.Yes)
                 {
@@ -70,9 +84,8 @@ namespace MAB.Forms.CRUD.Reparaciones
             }
         }
 
-        private void cancelarBusqueda(object sender, EventArgs e)
+        private void cerrarVentana(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

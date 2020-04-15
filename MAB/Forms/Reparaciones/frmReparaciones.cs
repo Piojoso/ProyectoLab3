@@ -106,11 +106,6 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void btnModificar(object sender, EventArgs e)
         {
-            /**
-             * TODO: Acomodar la funcion Modificar
-             * --- HECHO
-             */
-
             if(ucDGVTabla.selectedRow() != null)
             {
                 int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
