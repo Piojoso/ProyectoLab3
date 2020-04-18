@@ -109,6 +109,12 @@
     <Compile Include="Forms\Clientes\frmVerTodosCliente.Designer.cs">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Entregas\frmEntregas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmEntregas.Designer.cs">
+      <DependentUpon>frmEntregas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,12 @@
     </Compile>
     <Compile Include="Forms\Reparaciones\frmBuscarReparacion.Designer.cs">
       <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmDetalleReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmDetalleReparacion.Designer.cs">
+      <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reparaciones\frmModificarReparacion.cs">
       <SubType>Form</SubType>
@@ -267,6 +279,9 @@
     <EmbeddedResource Include="Forms\Clientes\frmVerTodosCliente.resx">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmEntregas.resx">
+      <DependentUpon>frmEntregas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmAgregarLavarropas.resx">
       <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmBuscarReparacion.resx">
       <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmDetalleReparacion.resx">
+      <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmModificarReparacion.resx">
       <DependentUpon>frmModificarReparacion.cs</DependentUpon>
