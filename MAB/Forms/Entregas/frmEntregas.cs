@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Reparaciones;
 
 namespace MAB.Forms.Entregas
 {
@@ -72,20 +73,33 @@ namespace MAB.Forms.Entregas
 
         private void agregarEntrega(object sender, EventArgs e)
         {
+            /**
+             * TODO: abrir el formulario de seleccionarReparacion. Aun no creado.
+             * En el cual se podra buscar la reparacion deseada y seleccionarla.
+             * TODO: Luego hay que obtener la reparacion seleccionada
+             * --- HECHO
+             */
+
             if(cliente != null)
             {
                 MessageBox.Show(
                     "Se requiere seleccionar una reparacion a la cual agregarle la nueva entrega. \n" +
                     "Por este motivo a continuacion se abrira una ventana para que pueda seleccionar una reparacion.");
 
-                /**
-                 * TODO: abrir el formulario de seleccionarReparacion. Aun no creado.
-                 * En el cual se podra buscar la reparacion deseada y seleccionarla.
-                 * TODO: Luego hay que obtener la reparacion seleccionada
-                 * TODO: y con la info anterior abrir el formulario de agregarEntrega. Aun no creado.
-                 * En el cual se realizara la pedida de info necesario, para poder agregar una nueva entrega.
-                 * TODO: finalmente hay que volver a cargar la lista de entregas. con la funcion cargarEntregas(cliente.Id);
-                 */
+                frmSeleccionarReparacion frm = new frmSeleccionarReparacion(cliente.Id);
+                frm.ShowDialog();
+
+                if(frm.obtenerSeleccion != -1)
+                {
+                    int idReparacion = frm.obtenerSeleccion;
+
+                    /**
+                     * TODO: y con la info anterior abrir el formulario de agregarEntrega. Aun no creado.
+                     * En el cual se realizara la pedida de info necesario, para poder agregar una nueva entrega.
+                     * TODO: finalmente hay que volver a cargar la lista de entregas. con la funcion cargarEntregas(cliente.Id);
+                     */
+                     
+                }
             }
             else
             {
