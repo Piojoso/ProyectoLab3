@@ -109,6 +109,12 @@
     <Compile Include="Forms\Clientes\frmVerTodosCliente.Designer.cs">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Entregas\frmAgregarEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmAgregarEntrega.Designer.cs">
+      <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Entregas\frmEntregas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes\frmVerTodosCliente.resx">
       <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmAgregarEntrega.resx">
+      <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entregas\frmEntregas.resx">
       <DependentUpon>frmEntregas.cs</DependentUpon>
