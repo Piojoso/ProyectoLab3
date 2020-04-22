@@ -73,13 +73,6 @@ namespace MAB.Forms.Entregas
 
         private void agregarEntrega(object sender, EventArgs e)
         {
-            /**
-             * TODO: abrir el formulario de seleccionarReparacion. Aun no creado.
-             * En el cual se podra buscar la reparacion deseada y seleccionarla.
-             * TODO: Luego hay que obtener la reparacion seleccionada
-             * --- HECHO
-             */
-
             if(cliente != null)
             {
                 MessageBox.Show(
@@ -96,9 +89,16 @@ namespace MAB.Forms.Entregas
                     /**
                      * TODO: y con la info anterior abrir el formulario de agregarEntrega. Aun no creado.
                      * En el cual se realizara la pedida de info necesario, para poder agregar una nueva entrega.
-                     * TODO: finalmente hay que volver a cargar la lista de entregas. con la funcion cargarEntregas(cliente.Id);
+                     * --- HECHO
+                     * 
+                     * TODO: finalmente hay que volver a cargar la lista de entregas. con la funcion cargarEntregas(null, cliente.Id);
+                     * --- HECHO
                      */
-                     
+
+                    frmAgregarEntrega crearEntrega = new frmAgregarEntrega(idReparacion);
+                    frm.ShowDialog();
+
+                    cargarEntregas(null, cliente.Id);
                 }
             }
             else
@@ -108,7 +108,13 @@ namespace MAB.Forms.Entregas
                  * podemos facilmente suponer cual es el cliente que esta haciendo la entrega (o en nombre de quien se esta realizando)
                  * 
                  * TODO: abrir formulario de agregarEntrega. con el cliente que realizara la misma y la reparacion.
+                 * DADO QUE FINALMENTE ME DI CUENTA QUE CON LA REPARACION SOLA ALCANZA, ESTA PARTE ES REALMENTE MUY SENCILLA
                  */
+
+                frmAgregarEntrega frm = new frmAgregarEntrega(reparacion.Id);
+                frm.ShowDialog();
+
+                cargarEntregas(reparacion.Id, null);
             }
         }
 
