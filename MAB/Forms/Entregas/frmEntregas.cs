@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.Reparaciones;
+using MAB.Forms.Clientes;
 
 namespace MAB.Forms.Entregas
 {
@@ -32,6 +33,10 @@ namespace MAB.Forms.Entregas
             ucBottom.evAccion1 += agregarEntrega;
             ucBottom.evAccion2 += modificarEntrega;
             ucBottom.evAccion3 += cerrarVentana;
+
+            ucDGVTabla.CellDoubleClick += modificarEntrega;
+
+            cargarCMS();
         }
 
         Models.Clientes cliente;
@@ -46,6 +51,8 @@ namespace MAB.Forms.Entregas
                 using (MABEntities db = new MABEntities())
                 {
                     reparacion = db.Reparaciones.Find(idReparacion);
+
+                    cliente = reparacion.Lavarropas.Cliente;
 
                     entregas = reparacion.Entregas.ToList();
                 }
@@ -110,12 +117,7 @@ namespace MAB.Forms.Entregas
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Entregas entrega = db.Entregas.Find(idEntrega);
-
-                    /**
-                     * TODO: abrir formulario de modificarEntrega. Aun no creado.
-                     * --- HECHO
-                     */
-
+                    
                     frmModificarEntrega frm = new frmModificarEntrega(idEntrega);
                     frm.ShowDialog();
                 }
@@ -133,5 +135,76 @@ namespace MAB.Forms.Entregas
         }
 
         #endregion
+
+        private void cargarCMS()
+        {
+            ToolStripMenuItem tsiVerReparacion = new ToolStripMenuItem();
+            tsiVerReparacion.Name = "tsiVerReparacion";
+            tsiVerReparacion.Size = new Size(148, 22);
+            tsiVerReparacion.Text = "Ver Reparacion";
+            tsiVerReparacion.Click += verReparacion;
+
+            ToolStripMenuItem tsiVerCliente = new ToolStripMenuItem();
+            tsiVerCliente.Name = "tsiVerCliente";
+            tsiVerCliente.Size = new Size(148, 22);
+            tsiVerCliente.Text = "Ver Cliente";
+            tsiVerCliente.Click += verCliente;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+
+            cms.Items.AddRange(new ToolStripItem[]{
+                tsiVerReparacion,
+                tsiVerReparacion
+            });
+
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
+        }
+
+        #region eventos de CMS
+
+        private void verReparacion(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using(MABEntities db = new MABEntities())
+                {
+                    Models.Entregas ent = db.Entregas.Find(idEntrega);
+
+                    frmDetalleReparacion frm = new frmDetalleReparacion(ent.Reparaciones.Id);
+                    frm.ShowDialog();
+                }
+            }
+
+            if (cliente != null)
+                cargarEntregas(null, cliente.Id);
+            else
+                cargarEntregas(reparacion.Id, null);
+        }
+
+        private void verCliente(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using(MABEntities db = new MABEntities())
+                {
+                    Models.Entregas ent = db.Entregas.Find(idEntrega);
+
+                    frmDetalleCliente frm = new frmDetalleCliente(ent.Clientes.Id);
+                    frm.ShowDialog();    
+                }
+            }
+
+            if (cliente != null)
+                cargarEntregas(null, cliente.Id);
+            else
+                cargarEntregas(reparacion.Id, null);
+        }
+
+        #endregion
     }
-}
