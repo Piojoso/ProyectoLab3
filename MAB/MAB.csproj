@@ -121,6 +121,12 @@
     <Compile Include="Forms\Entregas\frmEntregas.Designer.cs">
       <DependentUpon>frmEntregas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Entregas\frmModificarEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmModificarEntrega.Designer.cs">
+      <DependentUpon>frmModificarEntrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entregas\frmEntregas.resx">
       <DependentUpon>frmEntregas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmModificarEntrega.resx">
+      <DependentUpon>frmModificarEntrega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lavarropas\frmAgregarLavarropas.resx">
       <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
