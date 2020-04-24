@@ -89,16 +89,24 @@ namespace MAB.Forms.CRUD.Reparaciones
             /**
              * TODO: agregar opcion de finalizarReparacion, el cual marcara la reparacion como finalizada y le pondra la
              * informacion necesaria por defecto.
+             * --- HECHO
              */
+
+            ToolStripMenuItem tsmiFinalizar = new ToolStripMenuItem();
+            tsmiFinalizar.Name = "tsmiFinalizar";
+            tsmiFinalizar.Size = new Size(148, 22);
+            tsmiFinalizar.Text = "Marcar Reparacion como Finalizada";
+            tsmiFinalizar.Click += finalizarReparacion;
+
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
+
             ToolStripMenuItem tsiVerLavarropas = new ToolStripMenuItem();
             tsiVerLavarropas.Name = "tsiVerLavarropas";
             tsiVerLavarropas.Size = new Size(148, 22);
             tsiVerLavarropas.Text = "Ver Lavarropas";
             tsiVerLavarropas.Click += verLavarropas;
-
-            ToolStripSeparator tssSeparador = new ToolStripSeparator();
-            tssSeparador.Name = "tssSeparador";
-            tssSeparador.Size = new Size(145, 6);
 
             ToolStripMenuItem tsiVerDetalle = new ToolStripMenuItem();
             tsiVerDetalle.Name = "tsiVerDetalle";
@@ -109,8 +117,9 @@ namespace MAB.Forms.CRUD.Reparaciones
             ContextMenuStrip cms = new ContextMenuStrip();
             cms.Items.AddRange(new ToolStripItem[]
             {
-                tsiVerLavarropas,
+                tsmiFinalizar,
                 tssSeparador,
+                tsiVerLavarropas,
                 tsiVerDetalle,
             });
             cms.Name = "cmsDGV";
@@ -206,6 +215,41 @@ namespace MAB.Forms.CRUD.Reparaciones
         #endregion
 
         #region eventos de CMS
+
+        private void finalizarReparacion(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using (MABEntities db = new MABEntities())
+                {
+                    Models.Reparaciones reparacion = db.Reparaciones.Find(idReparacion);
+
+                    if(reparacion.estadoReparacion == estadosReparacion.EnCurso)
+                    {
+                        frmFinalizarReparacion frm = new frmFinalizarReparacion(idReparacion);
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                         DialogResult resp = MessageBox.Show(
+                            "Esta reparacion ya fue finalizada. \n" +
+                            "¿Desea modificarla?", "Imposible de Finalizar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if(resp == DialogResult.Yes)
+                        {
+                            frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
+                            frm.ShowDialog();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna fila seleccionada para ser Finalizada", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void verLavarropas(object sender, EventArgs e) 
         {
