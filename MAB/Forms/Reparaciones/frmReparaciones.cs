@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.Lavarropas;
+using MAB.Forms.Reparaciones;
 
 namespace MAB.Forms.CRUD.Reparaciones
 {
@@ -37,36 +38,9 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucDGVTabla.Columns["Repuestos"].Visible = false;
             ucDGVTabla.Columns["Entregas"].Visible = false;
 
-            ucDGVTabla.CellDoubleClick += UcDGVTabla_CellDoubleClick;
-        }
+            ucDGVTabla.CellDoubleClick += btnModificar;
 
-        private void UcDGVTabla_CellDoubleClick(object sender, EventArgs e)
-        {
-            abrirFrmModify();
-        }
-
-        private void abrirFrmModify()
-        {
-            if (ucDGVTabla.selectedRow() != null)
-            {
-                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
-
-                frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
-                frm.ShowDialog();
-
-                if (lavarropas != null)
-                {
-                    cargarDGV(lavarropas.Id);
-                }
-                else
-                {
-                    cargarDGV(null);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            crearCMS();
         }
 
         private Models.Lavarropas lavarropas;
@@ -110,6 +84,40 @@ namespace MAB.Forms.CRUD.Reparaciones
             }
         }
 
+        private void crearCMS()
+        {
+            /**
+             * TODO: agregar opcion de finalizarReparacion, el cual marcara la reparacion como finalizada y le pondra la
+             * informacion necesaria por defecto.
+             */
+            ToolStripMenuItem tsiVerLavarropas = new ToolStripMenuItem();
+            tsiVerLavarropas.Name = "tsiVerLavarropas";
+            tsiVerLavarropas.Size = new Size(148, 22);
+            tsiVerLavarropas.Text = "Ver Lavarropas";
+            tsiVerLavarropas.Click += verLavarropas;
+
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsiVerDetalle = new ToolStripMenuItem();
+            tsiVerDetalle.Name = "tsiVerDetalle";
+            tsiVerDetalle.Size = new Size(148, 22);
+            tsiVerDetalle.Text = "Ver Detalle";
+            tsiVerDetalle.Click += verDetalle;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsiVerLavarropas,
+                tssSeparador,
+                tsiVerDetalle,
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
+        }
+
         #region Eventos de Botones
 
         private void btnAgregar(object sender, EventArgs e)
@@ -146,7 +154,26 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void btnModificar(object sender, EventArgs e)
         {
-            abrirFrmModify();
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmModificarReparacion frm = new frmModificarReparacion(idReparacion);
+                frm.ShowDialog();
+
+                if (lavarropas != null)
+                {
+                    cargarDGV(lavarropas.Id);
+                }
+                else
+                {
+                    cargarDGV(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnBuscar(object sender, EventArgs e)
@@ -174,6 +201,50 @@ namespace MAB.Forms.CRUD.Reparaciones
                         "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        #endregion
+
+        #region eventos de CMS
+
+        private void verLavarropas(object sender, EventArgs e) 
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using (MABEntities db = new MABEntities())
+                {
+                    Models.Reparaciones reparacion = db.Reparaciones.Find(idReparacion);
+
+                    frmDetalleLavarropas frm = new frmDetalleLavarropas(reparacion.Lavarropas.Id);
+                    frm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Debe seleccionar una Reparacion primero para luego poder ver el Lavarropas al que se realizo.",
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
+        }
+
+        private void verDetalle(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+                
+                frmDetalleReparacion frm = new frmDetalleReparacion(idReparacion);
+                frm.ShowDialog();
+
+                cargarDGV(lavarropas.Id);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una reparacion para poder ver el detalle.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         #endregion

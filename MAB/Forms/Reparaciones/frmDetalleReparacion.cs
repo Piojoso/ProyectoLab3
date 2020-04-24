@@ -65,8 +65,7 @@ namespace MAB.Forms.Reparaciones
         {
             this.Close();
         }
-
-
+        
         #endregion
 
         #region eventos de botones
