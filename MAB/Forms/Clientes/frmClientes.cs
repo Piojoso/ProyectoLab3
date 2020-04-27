@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.CRUD.Telefonos;
+using MAB.Forms.CRUD.Lavarropas;
 
 namespace MAB.Forms.CRUD.Clientes
 {
@@ -16,6 +17,12 @@ namespace MAB.Forms.CRUD.Clientes
     {
         public frmClientes()
         {
+            /**
+             * TODO: probar correcto funcionamiento
+             * 
+             * TODO: Modificar frmSeleccionarCliente para que uno de los botones sea agregar un nuevo Cliente
+             */
+
             InitializeComponent();
 
             ucDGVTabla.click_btnAdd += btnAdd;
@@ -53,27 +60,28 @@ namespace MAB.Forms.CRUD.Clientes
         {
             frmBuscarCliente frm = new frmBuscarCliente();
             frm.ShowDialog();
-
-            if (frm.DialogResult != DialogResult.Cancel)
+            
+            if (frm.idClientes != null && frm.idClientes.Count != 0)
             {
-                if (frm.idClientes != null && frm.idClientes.Count != 0)
+                using (MABEntities db = new MABEntities())
                 {
-                    using (MABEntities db = new MABEntities())
+                    List<Models.Clientes> c = new List<Models.Clientes>();
+
+                    foreach (int id in frm.idClientes)
                     {
-                        List<Models.Clientes> c = new List<Models.Clientes>();
-
-                        foreach (int id in frm.idClientes)
-                        {
-                            c.Add(db.Clientes.Find(id));
-                        }
-
-                        ucDGVTabla.dataSource(c);
-
-                        Text = "Clientes - Resultado de Busqueda";
+                        c.Add(db.Clientes.Find(id));
                     }
+
+                    ucDGVTabla.dataSource(c);
                 }
             }
-
+            else
+            {
+                MessageBox.Show(
+                    "La busqueda fue cancelada o no se encontraron resultados", 
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
         }
 
         #endregion
@@ -188,9 +196,17 @@ namespace MAB.Forms.CRUD.Clientes
         {
             if(ucDGVTabla.selectedRow() != null)
             {
-                /**
-                 * TODO: Aun no tengo ese formulario hecho
-                 */
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmLavarropas frm = new frmLavarropas(idCliente);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Debe seleccionar un Cliente primero para luego poder ver sus Lavarropas",
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
             }
         }
 
