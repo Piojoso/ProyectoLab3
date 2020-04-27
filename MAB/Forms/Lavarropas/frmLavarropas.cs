@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MAB.Forms.Lavarropas;
 using MAB.Forms.Clientes;
 using MAB.Models;
+using MAB.Forms.CRUD.Reparaciones;
 
 namespace MAB.Forms.CRUD.Lavarropas
 {
@@ -20,8 +21,11 @@ namespace MAB.Forms.CRUD.Lavarropas
         public frmLavarropas(int? idCliente = null)
         {
             /**
+             * TODO: Revisar su correcto funcionamiento
+             * 
              * TODO: Analizar si seria conveniente agregar una columna al dgv con el nombre y apellido del dueño del lavarropas
-             * NOTA: si lo hago, tendre que modificar en el evento verCliente para que haga un refrescar de la info del frm.
+             * NOTA: si lo hago, tendre que modificar en el evento verCliente para que haga un refrescar de la info del frm, 
+             * porque el cliente se puede modificar en la ventana que se abre.
              */
             InitializeComponent();
 
@@ -245,9 +249,13 @@ namespace MAB.Forms.CRUD.Lavarropas
         {
             if(ucDGVTabla.selectedRow() != null)
             {
-                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
-                frmDetalleCliente frm = new frmDetalleCliente(idCliente);
-                frm.ShowDialog();
+                int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using(MABEntities db = new MABEntities())
+                {
+                    frmDetalleCliente frm = new frmDetalleCliente(db.Lavarropas.Find(idLavarropas).Cliente.Id);
+                    frm.ShowDialog();
+                }
             }
             else
             {
@@ -260,9 +268,20 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void verReparaciones(object sender, EventArgs e)
         {
-            /**
-             * TODO: abrir formulario de verReparaciones, y listar todas las reparaciones de este lavarropas
-             */
+            if(ucDGVTabla.selectedRow()!= null)
+            {
+                int idLavarropas = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmReparaciones frm = new frmReparaciones(idLavarropas);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Debe seleccionar un lavarropas primero para luego poder ver sus Reparaciones",
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
         }
 
         #endregion
