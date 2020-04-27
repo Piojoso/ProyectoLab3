@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.CRUD.Telefonos;
 using MAB.Forms.CRUD.Lavarropas;
+using MAB.Forms.Clientes;
 
 namespace MAB.Forms.CRUD.Clientes
 {
@@ -214,10 +215,17 @@ namespace MAB.Forms.CRUD.Clientes
         {
             if(ucDGVTabla.selectedRow() != null)
             {
-                /**
-                 * TODO: Aun no modifico el formulario seeAll
-                 */
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
+                frmDetalleCliente frm = new frmDetalleCliente(idCliente);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un cliente para poder ver su detalle",
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -40,15 +40,18 @@ namespace MAB.Forms.CRUD.Clientes
             this.ucDGVTabla.buttonModify = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ucDGVTabla.buttonSearch = System.Drawing.Color.SteelBlue;
             this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
+            this.ucDGVTabla.cargarCMS = null;
             this.ucDGVTabla.ColumnHeaderStyle = null;
             this.ucDGVTabla.Columns = null;
             this.ucDGVTabla.DeleteVisibility = false;
             this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDGVTabla.FondoBotones = System.Drawing.Color.LightSeaGreen;
+            this.ucDGVTabla.FondoBotones = System.Drawing.Color.Teal;
+            this.ucDGVTabla.FullListData = null;
             this.ucDGVTabla.Location = new System.Drawing.Point(0, 0);
             this.ucDGVTabla.Name = "ucDGVTabla";
             this.ucDGVTabla.RowsCellStyle = null;
             this.ucDGVTabla.RowsHeaderStyle = null;
+            this.ucDGVTabla.ShortListData = null;
             this.ucDGVTabla.Size = new System.Drawing.Size(744, 412);
             this.ucDGVTabla.TabIndex = 0;
             // 
