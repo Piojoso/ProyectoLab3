@@ -1,6 +1,4 @@
-﻿using MAB.UC;
-
-namespace MAB.Forms.CRUD.Clientes
+﻿namespace MAB.Forms.CRUD.Clientes
 {
     partial class frmClientes
     {
