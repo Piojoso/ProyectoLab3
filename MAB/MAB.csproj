@@ -103,12 +103,6 @@
     <Compile Include="Forms\Clientes\frmSeleccionarCliente.Designer.cs">
       <DependentUpon>frmSeleccionarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Clientes\frmVerTodosCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Clientes\frmVerTodosCliente.Designer.cs">
-      <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Entregas\frmAgregarEntrega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +199,6 @@
     <Compile Include="Forms\Reparaciones\frmSeleccionarReparacion.Designer.cs">
       <DependentUpon>frmSeleccionarReparacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reparaciones\frmVerTodosReparaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reparaciones\frmVerTodosReparaciones.Designer.cs">
-      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Telefonos\frmAgregarTelefono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,9 +288,6 @@
     <EmbeddedResource Include="Forms\Clientes\frmSeleccionarCliente.resx">
       <DependentUpon>frmSeleccionarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Clientes\frmVerTodosCliente.resx">
-      <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entregas\frmAgregarEntrega.resx">
       <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,9 +335,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmSeleccionarReparacion.resx">
       <DependentUpon>frmSeleccionarReparacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reparaciones\frmVerTodosReparaciones.resx">
-      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Telefonos\frmAgregarTelefono.resx">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>

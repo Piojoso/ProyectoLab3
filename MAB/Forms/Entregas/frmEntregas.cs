@@ -46,7 +46,7 @@ namespace MAB.Forms.Entregas
 
         private void cargarEntregas(int? idReparacion, int? idCliente)
         {
-            if(idReparacion != null && idCliente == null)
+            if (idReparacion != null && idCliente == null)
             {
                 using (MABEntities db = new MABEntities())
                 {
@@ -61,9 +61,9 @@ namespace MAB.Forms.Entregas
 
                 ucDGVTabla.dataSource(entregas);
             }
-            else if(idReparacion == null && idCliente != null)
+            else if (idReparacion == null && idCliente != null)
             {
-                using(MABEntities db = new MABEntities())
+                using (MABEntities db = new MABEntities())
                 {
                     cliente = db.Clientes.Find(idCliente);
 
@@ -80,7 +80,7 @@ namespace MAB.Forms.Entregas
 
         private void agregarEntrega(object sender, EventArgs e)
         {
-            if(cliente != null)
+            if (cliente != null)
             {
                 MessageBox.Show(
                     "Se requiere seleccionar una reparacion a la cual agregarle la nueva entrega. \n" +
@@ -89,7 +89,7 @@ namespace MAB.Forms.Entregas
                 frmSeleccionarReparacion frm = new frmSeleccionarReparacion(cliente.Id);
                 frm.ShowDialog();
 
-                if(frm.obtenerSeleccion != -1)
+                if (frm.obtenerSeleccion != -1)
                 {
                     int idReparacion = frm.obtenerSeleccion;
 
@@ -110,14 +110,14 @@ namespace MAB.Forms.Entregas
 
         private void modificarEntrega(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
+            if (ucDGVTabla.selectedRow() != null)
             {
                 int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Entregas entrega = db.Entregas.Find(idEntrega);
-                    
+
                     frmModificarEntrega frm = new frmModificarEntrega(idEntrega);
                     frm.ShowDialog();
                 }
@@ -166,11 +166,11 @@ namespace MAB.Forms.Entregas
 
         private void verReparacion(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
+            if (ucDGVTabla.selectedRow() != null)
             {
                 int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
-                using(MABEntities db = new MABEntities())
+                using (MABEntities db = new MABEntities())
                 {
                     Models.Entregas ent = db.Entregas.Find(idEntrega);
 
@@ -187,16 +187,16 @@ namespace MAB.Forms.Entregas
 
         private void verCliente(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
+            if (ucDGVTabla.selectedRow() != null)
             {
                 int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
-                using(MABEntities db = new MABEntities())
+                using (MABEntities db = new MABEntities())
                 {
                     Models.Entregas ent = db.Entregas.Find(idEntrega);
 
                     frmDetalleCliente frm = new frmDetalleCliente(ent.Clientes.Id);
-                    frm.ShowDialog();    
+                    frm.ShowDialog();
                 }
             }
 
@@ -208,3 +208,4 @@ namespace MAB.Forms.Entregas
 
         #endregion
     }
+}
