@@ -18,9 +18,6 @@ namespace MAB.Forms.Clientes
         {
             /**
              * TODO: revisar el correcto funcionamiento
-             * 
-             * TODO: En vez de cerrar ventana este formulario lo que hara es brindar la opcion de agregar un nuevo cliente
-             * --- HECHO
              */
             InitializeComponent();
 

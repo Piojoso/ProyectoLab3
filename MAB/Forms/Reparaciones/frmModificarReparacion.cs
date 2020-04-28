@@ -37,10 +37,7 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void cargarCBOEstadoReparacion()
         {
-            using (MABEntities db = new MABEntities())
-            {
-                cboEstadoReparacion.DataSource = Enum.GetValues(typeof(estadosReparacion));
-            }
+            cboEstadoReparacion.DataSource = Enum.GetValues(typeof(estadosReparacion));
         }
 
         private void cargarDatos(int idReparacion)
@@ -68,8 +65,10 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void guardarCambios(object sender, EventArgs e)
         {
-            if(cctbFallaAReparar.Text != string.Empty && cctbReparacionRealizada.Text != string.Empty)
+            if(cctbFallaAReparar.Text != string.Empty)
             {
+                if (cctbReparacionRealizada.Text == string.Empty)
+                    cctbReparacionRealizada.Text = "";
                 if (cctbManoObra.Text == string.Empty)
                     cctbManoObra.Text = "0";
                 if (cctbValorRepuestos.Text == string.Empty)

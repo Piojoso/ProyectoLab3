@@ -86,12 +86,6 @@ namespace MAB.Forms.CRUD.Reparaciones
 
         private void crearCMS()
         {
-            /**
-             * TODO: agregar opcion de finalizarReparacion, el cual marcara la reparacion como finalizada y le pondra la
-             * informacion necesaria por defecto.
-             * --- HECHO
-             */
-
             ToolStripMenuItem tsmiFinalizar = new ToolStripMenuItem();
             tsmiFinalizar.Name = "tsmiFinalizar";
             tsmiFinalizar.Size = new Size(148, 22);
