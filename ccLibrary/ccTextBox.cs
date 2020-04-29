@@ -43,7 +43,7 @@ namespace ccLibrary
 
         private void keyPress(object sender, KeyPressEventArgs e)
         {
-            if(char.IsControl(e.KeyChar) || char.IsSeparator(e.KeyChar))
+            if(char.IsControl(e.KeyChar) || char.IsSeparator(e.KeyChar) || char.IsPunctuation(e.KeyChar))
                 e.Handled = false;
             else
             {
