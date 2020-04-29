@@ -1,6 +1,4 @@
-﻿using MAB.UC;
-
-namespace MAB.Forms.CRUD.Reparaciones
+﻿namespace MAB.Forms.CRUD.Reparaciones
 {
     partial class frmAgregarReparaciones
     {
