@@ -30,6 +30,12 @@ namespace MAB.Forms.CRUD.Clientes
 
             ucBottom.evAccion1 += buscarCliente;
             ucBottom.evAccion3 += cerrarBusqueda;
+
+            string messageError = "Solo se permiten Letras, no se permiten numeros.";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
+            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
         }
         
         private void buscarCliente(object sender, EventArgs e)

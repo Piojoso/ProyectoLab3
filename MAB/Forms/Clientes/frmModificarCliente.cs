@@ -34,6 +34,12 @@ namespace MAB.Forms.CRUD.Clientes
             ucBottom.evAccion1 += confirmarCambios;
             ucBottom.evAccion3 += cancelarModificacion;
 
+            string messageError = "Solo se permiten Letras, no se permiten Numeros.";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
+            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
+
             cargarDatos();
         }
 

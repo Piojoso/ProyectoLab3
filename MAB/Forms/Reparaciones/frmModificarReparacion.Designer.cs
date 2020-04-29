@@ -195,6 +195,7 @@
             // cctbFallaAReparar
             // 
             this.cctbFallaAReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbFallaAReparar.CaracterIncorrectErrorMessage = "";
             this.cctbFallaAReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbFallaAReparar.Location = new System.Drawing.Point(162, 137);
             this.cctbFallaAReparar.Name = "cctbFallaAReparar";
@@ -231,6 +232,7 @@
             // cctbReparacionRealizada
             // 
             this.cctbReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbReparacionRealizada.CaracterIncorrectErrorMessage = "";
             this.cctbReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbReparacionRealizada.Location = new System.Drawing.Point(200, 186);
             this.cctbReparacionRealizada.Name = "cctbReparacionRealizada";
@@ -240,6 +242,8 @@
             // cctbManoObra
             // 
             this.cctbManoObra.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbManoObra.CaracterIncorrectErrorMessage = "";
+            this.cctbManoObra.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbManoObra.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbManoObra.Location = new System.Drawing.Point(161, 235);
             this.cctbManoObra.Name = "cctbManoObra";
@@ -256,6 +260,8 @@
             // cctbValorRepuestos
             // 
             this.cctbValorRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbValorRepuestos.CaracterIncorrectErrorMessage = "";
+            this.cctbValorRepuestos.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbValorRepuestos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbValorRepuestos.Location = new System.Drawing.Point(453, 235);
             this.cctbValorRepuestos.Name = "cctbValorRepuestos";

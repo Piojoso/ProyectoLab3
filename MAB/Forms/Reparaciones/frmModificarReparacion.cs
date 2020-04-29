@@ -33,6 +33,10 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucBottom.evAccion1 += guardarCambios;
             ucBottom.evAccion3 += cerrarVentana;
 
+            string messageError = "Solo se permiten Numeros, no se permiten Letras.";
+
+            cctbManoObra.CaracterIncorrectErrorMessage = messageError;
+            cctbValorRepuestos.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void cargarCBOEstadoReparacion()

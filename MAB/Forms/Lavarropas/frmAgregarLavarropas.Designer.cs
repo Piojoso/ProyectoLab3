@@ -30,14 +30,14 @@
         {
             this.ucBottom = new ucLibrary.ucBottom();
             this.pnlBody = new System.Windows.Forms.Panel();
-            this.cclblCliente = new ccLibrary.ccLabel();
-            this.cclblNombreCliente = new ccLibrary.ccLabel();
-            this.cclblMarca = new ccLibrary.ccLabel();
-            this.cclblModelo = new ccLibrary.ccLabel();
-            this.cclblEstado = new ccLibrary.ccLabel();
-            this.cctbMarca = new ccLibrary.ccTextBox();
-            this.cctbModelo = new ccLibrary.ccTextBox();
             this.cctbEstado = new ccLibrary.ccTextBox();
+            this.cctbModelo = new ccLibrary.ccTextBox();
+            this.cctbMarca = new ccLibrary.ccTextBox();
+            this.cclblEstado = new ccLibrary.ccLabel();
+            this.cclblModelo = new ccLibrary.ccLabel();
+            this.cclblMarca = new ccLibrary.ccLabel();
+            this.cclblNombreCliente = new ccLibrary.ccLabel();
+            this.cclblCliente = new ccLibrary.ccLabel();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,48 +70,36 @@
             this.pnlBody.Size = new System.Drawing.Size(669, 253);
             this.pnlBody.TabIndex = 1;
             // 
-            // cclblCliente
+            // cctbEstado
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblCliente.AutoSize = true;
-            this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblCliente.Location = new System.Drawing.Point(140, 43);
-            this.cclblCliente.Name = "cclblCliente";
-            this.cclblCliente.Size = new System.Drawing.Size(47, 16);
-            this.cclblCliente.TabIndex = 0;
-            this.cclblCliente.Text = "Cliente";
+            this.cctbEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbEstado.CaracterIncorrectErrorMessage = "";
+            this.cctbEstado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbEstado.Location = new System.Drawing.Point(298, 185);
+            this.cctbEstado.Name = "cctbEstado";
+            this.cctbEstado.Size = new System.Drawing.Size(231, 24);
+            this.cctbEstado.TabIndex = 7;
             // 
-            // cclblNombreCliente
+            // cctbModelo
             // 
-            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblNombreCliente.AutoSize = true;
-            this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblNombreCliente.Location = new System.Drawing.Point(295, 43);
-            this.cclblNombreCliente.Name = "cclblNombreCliente";
-            this.cclblNombreCliente.Size = new System.Drawing.Size(0, 16);
-            this.cclblNombreCliente.TabIndex = 1;
+            this.cctbModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbModelo.CaracterIncorrectErrorMessage = "";
+            this.cctbModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbModelo.Location = new System.Drawing.Point(298, 135);
+            this.cctbModelo.Name = "cctbModelo";
+            this.cctbModelo.Size = new System.Drawing.Size(231, 24);
+            this.cctbModelo.TabIndex = 6;
             // 
-            // cclblMarca
+            // cctbMarca
             // 
-            this.cclblMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblMarca.AutoSize = true;
-            this.cclblMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblMarca.Location = new System.Drawing.Point(140, 88);
-            this.cclblMarca.Name = "cclblMarca";
-            this.cclblMarca.Size = new System.Drawing.Size(45, 16);
-            this.cclblMarca.TabIndex = 2;
-            this.cclblMarca.Text = "Marca";
-            // 
-            // cclblModelo
-            // 
-            this.cclblModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblModelo.AutoSize = true;
-            this.cclblModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblModelo.Location = new System.Drawing.Point(140, 138);
-            this.cclblModelo.Name = "cclblModelo";
-            this.cclblModelo.Size = new System.Drawing.Size(54, 16);
-            this.cclblModelo.TabIndex = 3;
-            this.cclblModelo.Text = "Modelo";
+            this.cctbMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbMarca.CaracterIncorrectErrorMessage = "";
+            this.cctbMarca.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
+            this.cctbMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbMarca.Location = new System.Drawing.Point(298, 85);
+            this.cctbMarca.Name = "cctbMarca";
+            this.cctbMarca.Size = new System.Drawing.Size(231, 24);
+            this.cctbMarca.TabIndex = 5;
             // 
             // cclblEstado
             // 
@@ -124,32 +112,48 @@
             this.cclblEstado.TabIndex = 4;
             this.cclblEstado.Text = "Estado General";
             // 
-            // cctbMarca
+            // cclblModelo
             // 
-            this.cctbMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbMarca.Location = new System.Drawing.Point(298, 85);
-            this.cctbMarca.Name = "cctbMarca";
-            this.cctbMarca.Size = new System.Drawing.Size(231, 24);
-            this.cctbMarca.TabIndex = 5;
+            this.cclblModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblModelo.AutoSize = true;
+            this.cclblModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblModelo.Location = new System.Drawing.Point(140, 138);
+            this.cclblModelo.Name = "cclblModelo";
+            this.cclblModelo.Size = new System.Drawing.Size(54, 16);
+            this.cclblModelo.TabIndex = 3;
+            this.cclblModelo.Text = "Modelo";
             // 
-            // cctbModelo
+            // cclblMarca
             // 
-            this.cctbModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbModelo.Location = new System.Drawing.Point(298, 135);
-            this.cctbModelo.Name = "cctbModelo";
-            this.cctbModelo.Size = new System.Drawing.Size(231, 24);
-            this.cctbModelo.TabIndex = 6;
+            this.cclblMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblMarca.AutoSize = true;
+            this.cclblMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblMarca.Location = new System.Drawing.Point(140, 88);
+            this.cclblMarca.Name = "cclblMarca";
+            this.cclblMarca.Size = new System.Drawing.Size(45, 16);
+            this.cclblMarca.TabIndex = 2;
+            this.cclblMarca.Text = "Marca";
             // 
-            // cctbEstado
+            // cclblNombreCliente
             // 
-            this.cctbEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbEstado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbEstado.Location = new System.Drawing.Point(298, 185);
-            this.cctbEstado.Name = "cctbEstado";
-            this.cctbEstado.Size = new System.Drawing.Size(231, 24);
-            this.cctbEstado.TabIndex = 7;
+            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblNombreCliente.AutoSize = true;
+            this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblNombreCliente.Location = new System.Drawing.Point(295, 43);
+            this.cclblNombreCliente.Name = "cclblNombreCliente";
+            this.cclblNombreCliente.Size = new System.Drawing.Size(0, 16);
+            this.cclblNombreCliente.TabIndex = 1;
+            // 
+            // cclblCliente
+            // 
+            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblCliente.AutoSize = true;
+            this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblCliente.Location = new System.Drawing.Point(140, 43);
+            this.cclblCliente.Name = "cclblCliente";
+            this.cclblCliente.Size = new System.Drawing.Size(47, 16);
+            this.cclblCliente.TabIndex = 0;
+            this.cclblCliente.Text = "Cliente";
             // 
             // frmAgregarLavarropas
             // 

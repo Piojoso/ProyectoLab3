@@ -24,6 +24,10 @@ namespace MAB.Forms.Entregas
 
             ucBottom.evAccion1 += modificarEntrega;
             ucBottom.evAccion2 += cerrarVentana;
+
+            string messageError = "Solo se permiten Numeros, no se permiten Letras";
+
+            cctbMonto.CaracterIncorrectErrorMessage = messageError;
         }
 
         private Models.Entregas entrega;

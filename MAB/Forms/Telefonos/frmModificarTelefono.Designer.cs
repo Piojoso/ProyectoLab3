@@ -85,6 +85,8 @@
             // cctbNumTelefono
             // 
             this.cctbNumTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbNumTelefono.CaracterIncorrectErrorMessage = "";
+            this.cctbNumTelefono.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbNumTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbNumTelefono.Location = new System.Drawing.Point(207, 101);
             this.cctbNumTelefono.Name = "cctbNumTelefono";

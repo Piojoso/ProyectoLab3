@@ -121,6 +121,8 @@
             // cctbMonto
             // 
             this.cctbMonto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbMonto.CaracterIncorrectErrorMessage = "";
+            this.cctbMonto.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbMonto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbMonto.Location = new System.Drawing.Point(261, 154);
             this.cctbMonto.Name = "cctbMonto";

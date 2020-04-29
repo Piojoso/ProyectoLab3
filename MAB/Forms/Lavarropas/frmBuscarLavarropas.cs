@@ -24,6 +24,10 @@ namespace MAB.Forms.Lavarropas
 
             ucBottom.evAccion1 += buscarLavarropas;
             ucBottom.evAccion2 += cerrarVentana;
+
+            string messageError = "Solo se permiten Letras, no se permiten Numeros";
+
+            cctbMarca.CaracterIncorrectErrorMessage = messageError;
         }
 
         private List<int> idLavarropas;

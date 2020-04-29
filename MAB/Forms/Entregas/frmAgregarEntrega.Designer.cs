@@ -30,14 +30,14 @@
         {
             this.ucBottom = new ucLibrary.ucBottom();
             this.pnlBody = new System.Windows.Forms.Panel();
-            this.ccLabel1 = new ccLibrary.ccLabel();
-            this.ccLabel2 = new ccLibrary.ccLabel();
-            this.ccLabel3 = new ccLibrary.ccLabel();
-            this.ccLabel4 = new ccLibrary.ccLabel();
-            this.cclblCliente = new ccLibrary.ccLabel();
-            this.cclblNumReparacion = new ccLibrary.ccLabel();
-            this.cctbMonto = new ccLibrary.ccTextBox();
             this.dtpFechaEntrega = new System.Windows.Forms.DateTimePicker();
+            this.cctbMonto = new ccLibrary.ccTextBox();
+            this.cclblNumReparacion = new ccLibrary.ccLabel();
+            this.cclblCliente = new ccLibrary.ccLabel();
+            this.ccLabel4 = new ccLibrary.ccLabel();
+            this.ccLabel3 = new ccLibrary.ccLabel();
+            this.ccLabel2 = new ccLibrary.ccLabel();
+            this.ccLabel1 = new ccLibrary.ccLabel();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,38 +70,43 @@
             this.pnlBody.Size = new System.Drawing.Size(616, 255);
             this.pnlBody.TabIndex = 1;
             // 
-            // ccLabel1
+            // dtpFechaEntrega
             // 
-            this.ccLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ccLabel1.AutoSize = true;
-            this.ccLabel1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel1.Location = new System.Drawing.Point(127, 40);
-            this.ccLabel1.Name = "ccLabel1";
-            this.ccLabel1.Size = new System.Drawing.Size(50, 16);
-            this.ccLabel1.TabIndex = 0;
-            this.ccLabel1.Text = "Cliente:";
+            this.dtpFechaEntrega.Location = new System.Drawing.Point(259, 195);
+            this.dtpFechaEntrega.Name = "dtpFechaEntrega";
+            this.dtpFechaEntrega.Size = new System.Drawing.Size(231, 20);
+            this.dtpFechaEntrega.TabIndex = 7;
             // 
-            // ccLabel2
+            // cctbMonto
             // 
-            this.ccLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ccLabel2.AutoSize = true;
-            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel2.Location = new System.Drawing.Point(127, 93);
-            this.ccLabel2.Name = "ccLabel2";
-            this.ccLabel2.Size = new System.Drawing.Size(97, 16);
-            this.ccLabel2.TabIndex = 1;
-            this.ccLabel2.Text = "Nº Reparacion:";
+            this.cctbMonto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbMonto.CaracterIncorrectErrorMessage = "";
+            this.cctbMonto.DataType = ccLibrary.ccTextBox.dataType.Numerico;
+            this.cctbMonto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbMonto.Location = new System.Drawing.Point(259, 143);
+            this.cctbMonto.Name = "cctbMonto";
+            this.cctbMonto.Size = new System.Drawing.Size(231, 24);
+            this.cctbMonto.TabIndex = 6;
             // 
-            // ccLabel3
+            // cclblNumReparacion
             // 
-            this.ccLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ccLabel3.AutoSize = true;
-            this.ccLabel3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel3.Location = new System.Drawing.Point(127, 146);
-            this.ccLabel3.Name = "ccLabel3";
-            this.ccLabel3.Size = new System.Drawing.Size(50, 16);
-            this.ccLabel3.TabIndex = 2;
-            this.ccLabel3.Text = "Monto:";
+            this.cclblNumReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblNumReparacion.AutoSize = true;
+            this.cclblNumReparacion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblNumReparacion.Location = new System.Drawing.Point(256, 93);
+            this.cclblNumReparacion.Name = "cclblNumReparacion";
+            this.cclblNumReparacion.Size = new System.Drawing.Size(0, 16);
+            this.cclblNumReparacion.TabIndex = 5;
+            // 
+            // cclblCliente
+            // 
+            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cclblCliente.AutoSize = true;
+            this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblCliente.Location = new System.Drawing.Point(256, 40);
+            this.cclblCliente.Name = "cclblCliente";
+            this.cclblCliente.Size = new System.Drawing.Size(0, 16);
+            this.cclblCliente.TabIndex = 4;
             // 
             // ccLabel4
             // 
@@ -114,41 +119,38 @@
             this.ccLabel4.TabIndex = 3;
             this.ccLabel4.Text = "Fecha de Entrega:";
             // 
-            // cclblCliente
+            // ccLabel3
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblCliente.AutoSize = true;
-            this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblCliente.Location = new System.Drawing.Point(256, 40);
-            this.cclblCliente.Name = "cclblCliente";
-            this.cclblCliente.Size = new System.Drawing.Size(0, 16);
-            this.cclblCliente.TabIndex = 4;
+            this.ccLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ccLabel3.AutoSize = true;
+            this.ccLabel3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel3.Location = new System.Drawing.Point(127, 146);
+            this.ccLabel3.Name = "ccLabel3";
+            this.ccLabel3.Size = new System.Drawing.Size(50, 16);
+            this.ccLabel3.TabIndex = 2;
+            this.ccLabel3.Text = "Monto:";
             // 
-            // cclblNumReparacion
+            // ccLabel2
             // 
-            this.cclblNumReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblNumReparacion.AutoSize = true;
-            this.cclblNumReparacion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblNumReparacion.Location = new System.Drawing.Point(256, 93);
-            this.cclblNumReparacion.Name = "cclblNumReparacion";
-            this.cclblNumReparacion.Size = new System.Drawing.Size(0, 16);
-            this.cclblNumReparacion.TabIndex = 5;
+            this.ccLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ccLabel2.AutoSize = true;
+            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel2.Location = new System.Drawing.Point(127, 93);
+            this.ccLabel2.Name = "ccLabel2";
+            this.ccLabel2.Size = new System.Drawing.Size(97, 16);
+            this.ccLabel2.TabIndex = 1;
+            this.ccLabel2.Text = "Nº Reparacion:";
             // 
-            // cctbMonto
+            // ccLabel1
             // 
-            this.cctbMonto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbMonto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbMonto.Location = new System.Drawing.Point(259, 143);
-            this.cctbMonto.Name = "cctbMonto";
-            this.cctbMonto.Size = new System.Drawing.Size(231, 24);
-            this.cctbMonto.TabIndex = 6;
-            // 
-            // dtpFechaEntrega
-            // 
-            this.dtpFechaEntrega.Location = new System.Drawing.Point(259, 195);
-            this.dtpFechaEntrega.Name = "dtpFechaEntrega";
-            this.dtpFechaEntrega.Size = new System.Drawing.Size(231, 20);
-            this.dtpFechaEntrega.TabIndex = 7;
+            this.ccLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ccLabel1.AutoSize = true;
+            this.ccLabel1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel1.Location = new System.Drawing.Point(127, 40);
+            this.ccLabel1.Name = "ccLabel1";
+            this.ccLabel1.Size = new System.Drawing.Size(50, 16);
+            this.ccLabel1.TabIndex = 0;
+            this.ccLabel1.Text = "Cliente:";
             // 
             // frmAgregarEntrega
             // 

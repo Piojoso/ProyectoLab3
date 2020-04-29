@@ -29,6 +29,13 @@ namespace MAB.Forms.Reparaciones
 
             ucBottom.evAccion1 += guardarModificacion;
             ucBottom.evAccion2 += cerrarVentana;
+
+            string messageError = "Solo se permiten Numeros, no se permiten Letras";
+
+            cctbMesesGarantia.CaracterIncorrectErrorMessage = messageError;
+            cctbManoObra.CaracterIncorrectErrorMessage = messageError;
+            cctbTotalRepuestos.CaracterIncorrectErrorMessage = messageError;
+            
         }
 
         private Models.Reparaciones reparacion;

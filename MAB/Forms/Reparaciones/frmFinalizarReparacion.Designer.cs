@@ -42,8 +42,8 @@
             this.cctbManoObra = new ccLibrary.ccTextBox();
             this.cctbTotalRepuestos = new ccLibrary.ccTextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
-            this.ccLabel7 = new ccLibrary.ccLabel();
             this.cctbReparacionRealizada = new ccLibrary.ccTextBox();
+            this.ccLabel7 = new ccLibrary.ccLabel();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,6 +156,8 @@
             // cctbMesesGarantia
             // 
             this.cctbMesesGarantia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbMesesGarantia.CaracterIncorrectErrorMessage = "";
+            this.cctbMesesGarantia.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbMesesGarantia.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbMesesGarantia.Location = new System.Drawing.Point(334, 152);
             this.cctbMesesGarantia.Name = "cctbMesesGarantia";
@@ -165,6 +167,8 @@
             // cctbManoObra
             // 
             this.cctbManoObra.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbManoObra.CaracterIncorrectErrorMessage = "";
+            this.cctbManoObra.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbManoObra.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbManoObra.Location = new System.Drawing.Point(334, 196);
             this.cctbManoObra.Name = "cctbManoObra";
@@ -174,6 +178,8 @@
             // cctbTotalRepuestos
             // 
             this.cctbTotalRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbTotalRepuestos.CaracterIncorrectErrorMessage = "";
+            this.cctbTotalRepuestos.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbTotalRepuestos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbTotalRepuestos.Location = new System.Drawing.Point(334, 240);
             this.cctbTotalRepuestos.Name = "cctbTotalRepuestos";
@@ -202,6 +208,16 @@
             this.pnlBody.Size = new System.Drawing.Size(695, 327);
             this.pnlBody.TabIndex = 13;
             // 
+            // cctbReparacionRealizada
+            // 
+            this.cctbReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbReparacionRealizada.CaracterIncorrectErrorMessage = "";
+            this.cctbReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbReparacionRealizada.Location = new System.Drawing.Point(334, 284);
+            this.cctbReparacionRealizada.Name = "cctbReparacionRealizada";
+            this.cctbReparacionRealizada.Size = new System.Drawing.Size(231, 24);
+            this.cctbReparacionRealizada.TabIndex = 14;
+            // 
             // ccLabel7
             // 
             this.ccLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -212,15 +228,6 @@
             this.ccLabel7.Size = new System.Drawing.Size(134, 16);
             this.ccLabel7.TabIndex = 13;
             this.ccLabel7.Text = "Reparacion Realizada";
-            // 
-            // cctbReparacionRealizada
-            // 
-            this.cctbReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbReparacionRealizada.Location = new System.Drawing.Point(334, 284);
-            this.cctbReparacionRealizada.Name = "cctbReparacionRealizada";
-            this.cctbReparacionRealizada.Size = new System.Drawing.Size(231, 24);
-            this.cctbReparacionRealizada.TabIndex = 14;
             // 
             // frmFinalizarReparacion
             // 

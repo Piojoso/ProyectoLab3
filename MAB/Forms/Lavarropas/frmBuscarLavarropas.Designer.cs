@@ -88,6 +88,8 @@
             // cctbMarca
             // 
             this.cctbMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbMarca.CaracterIncorrectErrorMessage = "";
+            this.cctbMarca.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbMarca.Location = new System.Drawing.Point(247, 53);
             this.cctbMarca.Name = "cctbMarca";
@@ -97,6 +99,7 @@
             // cctbModelo
             // 
             this.cctbModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbModelo.CaracterIncorrectErrorMessage = "";
             this.cctbModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbModelo.Location = new System.Drawing.Point(247, 111);
             this.cctbModelo.Name = "cctbModelo";
@@ -106,6 +109,7 @@
             // cctbEstadoGeneral
             // 
             this.cctbEstadoGeneral.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbEstadoGeneral.CaracterIncorrectErrorMessage = "";
             this.cctbEstadoGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbEstadoGeneral.Location = new System.Drawing.Point(247, 167);
             this.cctbEstadoGeneral.Name = "cctbEstadoGeneral";

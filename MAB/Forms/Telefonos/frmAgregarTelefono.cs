@@ -33,6 +33,10 @@ namespace MAB.Forms.CRUD.Telefonos
 
             ucBottom.evAccion1 += agregarTelefono;
             ucBottom.evAccion2 += cerrar;
+
+            string messageError = "Solo se permiten Numeros, no se permiten Letras";
+
+            cctbTelefono.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void cargarCliente(int id)

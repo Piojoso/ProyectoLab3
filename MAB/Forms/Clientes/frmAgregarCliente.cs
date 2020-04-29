@@ -28,6 +28,12 @@ namespace MAB.Forms.CRUD.Clientes
 
             ucBottom.evAccion1 += crearCliente;
             ucBottom.evAccion2 += cancelarCreacion;
+
+            string messageError = "Solo se permiten Letras, no se permiten numeros";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
+            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void crearCliente(object sender, EventArgs e)

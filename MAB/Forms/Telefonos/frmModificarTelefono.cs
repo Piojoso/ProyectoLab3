@@ -29,6 +29,10 @@ namespace MAB.Forms.Telefonos
 
             ucBottom.evAccion1 += modificarNumero;
             ucBottom.evAccion2 += cerrarVentana;
+
+            string messageError = "Solo se permiten Numeros, no se permiten Letras";
+
+            cctbNumTelefono.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void cargarTelefono(int idCliente, long numTelefono)
