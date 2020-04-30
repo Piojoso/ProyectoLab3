@@ -26,6 +26,8 @@ namespace MAB.Forms.CRUD.Lavarropas
              * TODO: Analizar si seria conveniente agregar una columna al dgv con el nombre y apellido del dueño del lavarropas
              * NOTA: si lo hago, tendre que modificar en el evento verCliente para que haga un refrescar de la info del frm, 
              * porque el cliente se puede modificar en la ventana que se abre.
+             * --- HECHO
+             * 
              */
             InitializeComponent();
 
@@ -36,10 +38,6 @@ namespace MAB.Forms.CRUD.Lavarropas
             ucDGVTabla.click_btnSearch += btnSearch;
 
             ucDGVTabla.CellDoubleClick += dobleClick;
-
-            ucDGVTabla.Columns["ClienteId"].Visible = false;
-            ucDGVTabla.Columns["Cliente"].Visible = false;
-            ucDGVTabla.Columns["Reparacion"].Visible = false;
 
             crearCMS();
         }
@@ -74,12 +72,27 @@ namespace MAB.Forms.CRUD.Lavarropas
 
                         var shortList = from lavarropas in db.Lavarropas
                                         where lavarropas.Id >= (ultimoId - 10)
-                                        select lavarropas;
+                                        select new
+                                        {
+                                            lavarropas.Id,
+                                            lavarropas.marca,
+                                            lavarropas.modelo,
+                                            lavarropas.estadoGeneral,
+                                            cliente = lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido,
+                                        };
 
                         ucDGVTabla.ShortListData = shortList.ToList();
                     }
 
-                    var fullList = db.Lavarropas.ToList();
+                    var fullList = from lavarropas in db.Lavarropas
+                                   select new
+                                   {
+                                       lavarropas.Id,
+                                       lavarropas.marca,
+                                       lavarropas.modelo,
+                                       lavarropas.estadoGeneral,
+                                       cliente = lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido,
+                                   };
 
                     ucDGVTabla.FullListData = fullList.ToList();
 
@@ -255,6 +268,11 @@ namespace MAB.Forms.CRUD.Lavarropas
                 {
                     frmDetalleCliente frm = new frmDetalleCliente(db.Lavarropas.Find(idLavarropas).Cliente.Id);
                     frm.ShowDialog();
+
+                    if (cliente != null)
+                        cargarLavarropas(cliente.Id);
+                    else
+                        cargarLavarropas(null);
                 }
             }
             else
