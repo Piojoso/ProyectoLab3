@@ -16,10 +16,6 @@ namespace ucLibrary
     {
         public ucTitleBar()
         {
-            /**
-             * TODO: Arreglar bug de uso entre click derecho y botones superiores
-             * 
-             */
             InitializeComponent();
         }
 

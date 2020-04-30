@@ -23,11 +23,6 @@ namespace MAB.Forms.CRUD.Lavarropas
             /**
              * TODO: Revisar su correcto funcionamiento
              * 
-             * TODO: Analizar si seria conveniente agregar una columna al dgv con el nombre y apellido del dueño del lavarropas
-             * NOTA: si lo hago, tendre que modificar en el evento verCliente para que haga un refrescar de la info del frm, 
-             * porque el cliente se puede modificar en la ventana que se abre.
-             * --- HECHO
-             * 
              */
             InitializeComponent();
 

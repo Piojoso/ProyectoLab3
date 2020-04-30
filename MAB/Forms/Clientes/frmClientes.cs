@@ -21,7 +21,6 @@ namespace MAB.Forms.CRUD.Clientes
             /**
              * TODO: probar correcto funcionamiento
              * 
-             * TODO: Modificar frmSeleccionarCliente para que uno de los botones sea agregar un nuevo Cliente
              */
 
             InitializeComponent();
@@ -96,9 +95,6 @@ namespace MAB.Forms.CRUD.Clientes
 
                 if (ultimo != null)
                 {
-                    /**
-                     * TODO: Probar si funciona cuando la DB tenga Clientes guardados
-                     */
                     var data = from cliente in db.Clientes
                                where cliente.Id > (ultimo.Id - 10)
                                select cliente;

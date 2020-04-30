@@ -52,13 +52,6 @@ namespace MAB.Forms.CRUD.Telefonos
         {
             if(ucDGVTabla.selectedRow() != null)
             {
-                /**
-                 * TODO: Tomar el numero y abrir un formulario para modificar el numero. Se me ocurre usar el mismo frmAgregarTelefono
-                 * Pero para ello tendre que modificarlo para que pueda aceptar un numero a modificar. Eso o crear un nuevo frm que reciba
-                 * un numero de telefono y luego permita modificarlo, pero nose, ya vere, parece mas trabajo, pero tambien mas entendible.
-                 * --- HECHO
-                 */
-
                 long numTelefono = Convert.ToInt64(ucDGVTabla.selectedRow().Cells["telefono"].Value);
                 int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["ClienteId"].Value);
 

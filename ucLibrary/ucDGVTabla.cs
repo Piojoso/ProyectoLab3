@@ -15,10 +15,6 @@ namespace ucLibrary
     {
         public ucDGVTabla()
         {
-            /**
-             * TODO: Que la botonera se pueda ocultar.
-             * --- HECHO
-             */
             InitializeComponent();
 
             dgvPrincipal.CellDoubleClick += dobleClickSobreItemDGV;

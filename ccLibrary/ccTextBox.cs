@@ -14,6 +14,11 @@ namespace ccLibrary
     {
         public ccTextBox()
         {
+            /**
+             * TODO: Comprobar el correcto funcionamiento
+             * 
+             */
+
             InitializeComponent();
 
             Anchor = AnchorStyles.None;
@@ -72,16 +77,5 @@ namespace ccLibrary
             get { return messageError; }
             set { messageError = value; }
         }
-
-        /**
-         * TODO: Ponerle una propiedad que permita seleccionar si el tb sera alfanumero, solo de letras, solo de numeros, solo de letras
-         * y caracteres especiales o solo de numeros y caracteres especiales. Y luego capturar el evento keypress para capturar la letra
-         * que se ingreso y apartir de ahi continuar con lo que desee y no permitir el resto. Incluso se me ocurre que podria dejarle poner
-         * un mensajito custom que salga si ingresa algun caracter invalido.
-         * 
-         * Lo de letras y caracteres especiales, y numeros y caracteres especiales, es descartado, porque es al pedo.
-         * 
-         * --- HECHO
-         */
     }
 }

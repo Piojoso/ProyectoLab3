@@ -103,14 +103,6 @@ namespace ucLibrary
         
         private void ucBottom_Resize(object sender, EventArgs e)
         {
-            /**
-             * TODO:    Que los botones se mantengan centrados y cambien su tamaño segun el tamaño del uc, Si el control es lo 
-             *          suficientemente chiquito, los botones ocuparan todo el espacio disponible, asi sera mas facil clickearles
-             *          Si el control crece los botones iran haciendolo a medida que lo haga el uc.
-             * ---HECHO
-             * 
-             */
-
             if (tlpAccion1.Width >= 100)
             {
                 btnAccion1.Anchor = AnchorStyles.None;

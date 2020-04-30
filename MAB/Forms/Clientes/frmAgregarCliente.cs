@@ -38,11 +38,6 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void crearCliente(object sender, EventArgs e)
         {
-            /**
-             * TODO: Preguntar si desea agregarle lavarropas a este Cliente.
-             * --- HECHO
-             */
-
             int idCliente = guardarCliente();
 
             if(idCliente > -1)

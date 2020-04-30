@@ -36,10 +36,6 @@ namespace ucLibrary
         public event EventHandler evClickAccion5;
         public event EventHandler evClickAccion6;
         public event EventHandler evClickAccion7;
-
-        /**
-         * TODO: Probar a ver si al seleccionar un numero de botones menores se puede hacer que dejen de ser accesible el resto. Posiblemente cambiandole la accesibilidad
-         */
          
         //Funciones de eventos
 

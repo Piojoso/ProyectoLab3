@@ -1,6 +1,6 @@
 ﻿namespace MAB.Forms
 {
-    partial class NuevoFormStyle
+    partial class frmInicio
     {
         /// <summary>
         /// Required designer variable.

@@ -61,13 +61,6 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void confirmarCambios(object sender, EventArgs e)
         {
-            /**
-             * TODO: Esta funcion no funciona:
-             * Va a guardar la misma informacion del cliente que se recupero al inicio del formulario.
-             * Porque no hice en ningun lado una modificacion de los datos.
-             * ---FIXED
-             */
-
             if((cctbDireccion.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
                 DialogResult resp = MessageBox.Show(
