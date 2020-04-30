@@ -87,21 +87,21 @@
             this.cmsiRestaurar.Name = "cmsiRestaurar";
             this.cmsiRestaurar.Size = new System.Drawing.Size(180, 22);
             this.cmsiRestaurar.Text = "Restaurar";
-            this.cmsiRestaurar.Click += new System.EventHandler(this.cmsiRestaurar_Click);
+            this.cmsiRestaurar.Click += new System.EventHandler(this.Maximizar_Click);
             // 
             // cmsiMinimizar
             // 
             this.cmsiMinimizar.Name = "cmsiMinimizar";
             this.cmsiMinimizar.Size = new System.Drawing.Size(180, 22);
             this.cmsiMinimizar.Text = "Minimizar";
-            this.cmsiMinimizar.Click += new System.EventHandler(this.cmsiMinimizar_Click);
+            this.cmsiMinimizar.Click += new System.EventHandler(this.Minimizar_Click);
             // 
             // cmsiMaximizar
             // 
             this.cmsiMaximizar.Name = "cmsiMaximizar";
             this.cmsiMaximizar.Size = new System.Drawing.Size(180, 22);
             this.cmsiMaximizar.Text = "Maximizar";
-            this.cmsiMaximizar.Click += new System.EventHandler(this.cmsiMaximizar_Click);
+            this.cmsiMaximizar.Click += new System.EventHandler(this.Maximizar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -115,7 +115,7 @@
             this.cmsiCerrar.Size = new System.Drawing.Size(180, 22);
             this.cmsiCerrar.Text = "Cerrar";
             this.cmsiCerrar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.cmsiCerrar.Click += new System.EventHandler(this.cmsiCerrar_Click);
+            this.cmsiCerrar.Click += new System.EventHandler(this.Cerrar_Click);
             // 
             // cclblTituloVentana
             // 
@@ -160,7 +160,7 @@
             this.iconBtnMaximizar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnMaximizar.TabIndex = 2;
             this.iconBtnMaximizar.UseVisualStyleBackColor = false;
-            this.iconBtnMaximizar.Click += new System.EventHandler(this.iconBtnMaximizar_Click);
+            this.iconBtnMaximizar.Click += new System.EventHandler(this.Maximizar_Click);
             // 
             // iconBtnCerrar
             // 
@@ -180,7 +180,7 @@
             this.iconBtnCerrar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnCerrar.TabIndex = 3;
             this.iconBtnCerrar.UseVisualStyleBackColor = false;
-            this.iconBtnCerrar.Click += new System.EventHandler(this.iconBtnCerrar_Click);
+            this.iconBtnCerrar.Click += new System.EventHandler(this.Cerrar_Click);
             // 
             // iconBtnMinimizar
             // 
@@ -200,7 +200,7 @@
             this.iconBtnMinimizar.Size = new System.Drawing.Size(30, 25);
             this.iconBtnMinimizar.TabIndex = 1;
             this.iconBtnMinimizar.UseVisualStyleBackColor = false;
-            this.iconBtnMinimizar.Click += new System.EventHandler(this.iconBtnMinimizar_Click);
+            this.iconBtnMinimizar.Click += new System.EventHandler(this.Minimizar_Click);
             // 
             // ucTitleBar
             // 
