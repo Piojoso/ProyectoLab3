@@ -23,20 +23,18 @@ namespace MAB.Forms
         public frmInicio()
         {
             /**
-             * TODO: Analizar la posibilidad de colocar en el titulo de la ventana el estado de la conexion con la DB = {Conectada, Conectando, No Conectada};
-             * --- CANCELADO
-             * 
              * TODO: Analizar la posibilidad de colocar un mini reloj con la hora actual. ¿para que?: nose, solo por hacerlo.
              * No solo eso, Esta sera la ventana de inicio del proyecto y desde aca tengo pensado que se podrian llegar a enseñar ciertas
              * estadisticas. Como cantidad de Lavarropas ingresados del ultimo mes, Cantidad de Lavarropas finalizados, Suma recaudada, etc.
              * Alertas sobre Stock Faltante, Quizas la opcion de Filtrar informacion de alguna manera. Nose como aun.
              * 
              * TODO: Capturar posible error de la DB para enseñarlo si es oportuno, o realizar un segundo intento, si se puede
+             * --- Cancelado
              * 
              * TODO: Hacer que la barra superior, de control de la ventana, sea un User Control separado. Para reutilizar
              * --- HECHO
              * 
-             * TODO: Todos los formularios que agregan y modifican no dan feedback. Hay que decir GG si se guardo correctamente.
+             * TODO: Todos los formularios que agregan y modifican no dan feedback. Hay que decir "GG" si se guardo correctamente.
              * 
              * TODO: Todos los formularios que agregan no preguntan si se desea agregar uno nuevamente.
              */
@@ -49,21 +47,31 @@ namespace MAB.Forms
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             
-            ucBotonera.NumBotones = 4;                              
+            ucBotonera.NumBotones = 5;                              
             ucBotonera.ColorAlternativo = Control.DefaultBackColor;
 
-            ucBotonera.btnAccion1 = "Clientes";
-            ucBotonera.btnAccion2 = "Reparaciones";
-            ucBotonera.btnAccion3 = "Lavarropas";
-            ucBotonera.btnAccion4 = "Stock";
-                                                                    
-            ucBotonera.evClickAccion1 += verClientes;
-            ucBotonera.evClickAccion2 += verReparaciones;
-            ucBotonera.evClickAccion3 += verLavarropas;
-            ucBotonera.evClickAccion4 += verStock;
+            ucBotonera.btnAccion1 = "Inicio";
+            ucBotonera.btnAccion2 = "Clientes";
+            ucBotonera.btnAccion3 = "Reparaciones";
+            ucBotonera.btnAccion4 = "Lavarropas";
+            ucBotonera.btnAccion5 = "Stock";
+
+            ucBotonera.evClickAccion1 += verInicio;                                                        
+            ucBotonera.evClickAccion2 += verClientes;
+            ucBotonera.evClickAccion3 += verReparaciones;
+            ucBotonera.evClickAccion4 += verLavarropas;
+            ucBotonera.evClickAccion5 += verStock;
+
+            ucBotonera.BotonInicial = 1;
         }
 
         #region Acciones Botones
+
+        private void verInicio(object sender, EventArgs e)
+        {
+            if (hijoActual != null)
+                hijoActual.Close();
+        }
 
         private void verClientes(object sender, EventArgs e)
         {
