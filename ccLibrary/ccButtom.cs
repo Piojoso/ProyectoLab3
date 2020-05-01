@@ -30,6 +30,11 @@ namespace ccLibrary
             TextAlign = ContentAlignment.MiddleCenter;
         }
 
+        public void PerformClick()
+        {
+            OnClick(new EventArgs());
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -45,8 +50,6 @@ namespace ccLibrary
 
         public void alternateBackColor()
         {
-            //BackColor = BackColor == colors.colorPredefinido ? colors.colorAlternativo : colors.colorPredefinido;
-
             if (BackColor == colors.colorPredefinido)
                 BackColor = colors.colorAlternativo;
             else
