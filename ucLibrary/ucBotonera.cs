@@ -26,6 +26,31 @@ namespace ucLibrary
             pnlBG.Controls.Add(pnlLeftBorderBtn);
         }
 
+        #region Boton seleccionado al Inicio
+
+        private int numBoton;
+
+        public int BotonInicial
+        {
+            get { return numBoton; }
+            set
+            {
+                numBoton = value;
+                
+                string nameButton = "ccbtnAccion" + numBoton;
+
+                pnlBG.Controls.OfType<ccButtom>().ToList().ForEach(btn =>
+                {
+                    if(btn.Name == nameButton)
+                    {
+                        btn.PerformClick();
+                    }
+                });
+            }
+        }
+
+        #endregion
+
         #region Eventos
 
         //Campos
