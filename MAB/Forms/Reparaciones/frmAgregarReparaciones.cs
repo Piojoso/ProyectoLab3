@@ -77,7 +77,15 @@ namespace MAB.Forms.CRUD.Reparaciones
 
                         db.Reparaciones.Add(reparacion);
 
-                        MessageBox.Show("Reparacion agregada correctamente");
+                        resp = MessageBox.Show("Reparacion agregada correctamente \n" +
+                            "¿Desea limpiar los campos para agregar otra Reparacion?", 
+                            "¿Desea agregar otra Reparacion?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if(resp == DialogResult.Yes)
+                        {
+                            cctbErrorAReparar.Text = "";
+                            cctbErrorAReparar.Focus();
+                        }
                     }
                 }
             }

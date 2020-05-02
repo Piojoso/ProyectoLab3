@@ -76,7 +76,18 @@ namespace MAB.Forms.Lavarropas
                         db.Lavarropas.Add(Lavarropas);
                         db.SaveChanges();
 
-                        MessageBox.Show("Lavarropas agregado correctamente");
+                        resp = MessageBox.Show("Lavarropas agregado correctamente \n" +
+                            "¿Desea limpiar los campos para agregar otro lavarropas?",
+                            "¿Desea agregar otro Lavarropas?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if(resp == DialogResult.Yes)
+                        {
+                            cctbMarca.Text = "";
+                            cctbModelo.Text = "";
+                            cctbEstado.Text = "";
+
+                            cctbMarca.Focus();
+                        }
                     }
                 }
             }

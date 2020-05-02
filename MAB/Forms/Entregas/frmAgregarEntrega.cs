@@ -75,7 +75,15 @@ namespace MAB.Forms.Entregas
                         db.Entregas.Add(entrega);
                         db.SaveChanges();
 
-                        MessageBox.Show("Entrega Guardada Correctamente");
+                        resp = MessageBox.Show("Entrega Guardada Correctamente \n" +
+                            "¿Desea limpiar los campos para agregar otra Entrega?", 
+                            "¿Desea agregar otra Entrega?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if(resp == DialogResult.Yes)
+                        {
+                            cctbMonto.Text = "";
+                            cctbMonto.Focus();
+                        }
                     }
                 }
             }

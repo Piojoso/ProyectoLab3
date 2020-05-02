@@ -86,7 +86,15 @@ namespace MAB.Forms.CRUD.Telefonos
                             db.Telefonos.Add(telefono);
                             db.SaveChanges();
 
-                            MessageBox.Show("Telefono agregado correcamente");
+                            resp = MessageBox.Show("Telefono agregado correcamente \n" +
+                                "¿Desea limpiar los campos para agregar otro Telefono?", 
+                                "¿Desea agregar otro Telefono?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if(resp == DialogResult.Yes)
+                            {
+                                cctbTelefono.Text = "";
+                                cctbTelefono.Focus();
+                            }
                         }
                     }else
                     {

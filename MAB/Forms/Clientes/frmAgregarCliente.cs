@@ -67,6 +67,19 @@ namespace MAB.Forms.CRUD.Clientes
                     frmAgregarLavarropas frm = new frmAgregarLavarropas(idCliente);
                     frm.ShowDialog();
                 }
+
+                resp = MessageBox.Show("Cliente agregador correctamente \n" +
+                    "¿Desea limpiar los campos para agregar uno nuevo?", 
+                    "¿Desea agregar otro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(resp == DialogResult.Yes)
+                {
+                    cctbNombre.Text = "";
+                    cctbApellido.Text = "";
+                    cctbDireccion.Text = "";
+
+                    cctbNombre.Focus();
+                }
             }
         }
 
@@ -104,8 +117,6 @@ namespace MAB.Forms.CRUD.Clientes
 
                         db.Clientes.Add(cliente);
                         db.SaveChanges();
-
-                        MessageBox.Show("Cliente agregador correctamente");
 
                         return cliente.Id;
                     }
