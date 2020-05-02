@@ -71,6 +71,8 @@ namespace MAB.Forms.Entregas
                     {
                         db.Entry(entrega).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
+                        MessageBox.Show("Entrega modificada Correctamente");
                     }
                 }
             }

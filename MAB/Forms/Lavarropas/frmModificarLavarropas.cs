@@ -72,6 +72,8 @@ namespace MAB.Forms.Lavarropas
 
                         db.Entry(lavarropas).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
+                        MessageBox.Show("Lavarropas modificado correctamente");
                     }
                 }
             }

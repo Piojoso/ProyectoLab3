@@ -105,6 +105,8 @@ namespace MAB.Forms.CRUD.Clientes
                         db.Clientes.Add(cliente);
                         db.SaveChanges();
 
+                        MessageBox.Show("Cliente agregador correctamente");
+
                         return cliente.Id;
                     }
                 }

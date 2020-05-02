@@ -74,6 +74,8 @@ namespace MAB.Forms.Entregas
                     {
                         db.Entregas.Add(entrega);
                         db.SaveChanges();
+
+                        MessageBox.Show("Entrega Guardada Correctamente");
                     }
                 }
             }

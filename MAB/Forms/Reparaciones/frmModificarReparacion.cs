@@ -124,6 +124,8 @@ namespace MAB.Forms.CRUD.Reparaciones
                         db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
 
                         db.SaveChanges();
+
+                        MessageBox.Show("Reparacion Modificada correctamente");
                     }
                 }
             }

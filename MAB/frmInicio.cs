@@ -28,13 +28,8 @@ namespace MAB.Forms
              * estadisticas. Como cantidad de Lavarropas ingresados del ultimo mes, Cantidad de Lavarropas finalizados, Suma recaudada, etc.
              * Alertas sobre Stock Faltante, Quizas la opcion de Filtrar informacion de alguna manera. Nose como aun.
              * 
-             * TODO: Capturar posible error de la DB para enseñarlo si es oportuno, o realizar un segundo intento, si se puede
-             * --- Cancelado
-             * 
-             * TODO: Hacer que la barra superior, de control de la ventana, sea un User Control separado. Para reutilizar
-             * --- HECHO
-             * 
              * TODO: Todos los formularios que agregan y modifican no dan feedback. Hay que decir "GG" si se guardo correctamente.
+             * --- HECHO
              * 
              * TODO: Todos los formularios que agregan no preguntan si se desea agregar uno nuevamente.
              */

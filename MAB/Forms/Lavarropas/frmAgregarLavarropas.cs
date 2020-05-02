@@ -75,6 +75,8 @@ namespace MAB.Forms.Lavarropas
 
                         db.Lavarropas.Add(Lavarropas);
                         db.SaveChanges();
+
+                        MessageBox.Show("Lavarropas agregado correctamente");
                     }
                 }
             }

@@ -80,6 +80,8 @@ namespace MAB.Forms.CRUD.Clientes
                     {
                         db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
+                        MessageBox.Show("Cliente modificado Correctamente");
                     }
                 }
             }

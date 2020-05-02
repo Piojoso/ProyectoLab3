@@ -65,6 +65,8 @@ namespace MAB.Forms.Telefonos
                             db.Entry(Telefono).State = System.Data.Entity.EntityState.Modified;
 
                             db.SaveChanges();
+
+                            MessageBox.Show("Telefono Modificado Correctamente");
                         }
                     }
                 }

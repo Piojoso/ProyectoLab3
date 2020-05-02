@@ -86,6 +86,7 @@ namespace MAB.Forms.CRUD.Telefonos
                             db.Telefonos.Add(telefono);
                             db.SaveChanges();
 
+                            MessageBox.Show("Telefono agregado correcamente");
                         }
                     }else
                     {

@@ -76,6 +76,8 @@ namespace MAB.Forms.CRUD.Reparaciones
                         reparacion.LavarropasId = lavarropas.Id;
 
                         db.Reparaciones.Add(reparacion);
+
+                        MessageBox.Show("Reparacion agregada correctamente");
                     }
                 }
             }

@@ -95,6 +95,8 @@ namespace MAB.Forms.Reparaciones
                     {
                         db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
+                        MessageBox.Show("Reparacion finalizada correctamente");
                     }
                 }
             }
