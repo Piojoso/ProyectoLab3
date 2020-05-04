@@ -16,11 +16,18 @@ namespace ccLibrary
         {
             InitializeComponent();
 
-            Anchor = System.Windows.Forms.AnchorStyles.None;
+            //Anchor = System.Windows.Forms.AnchorStyles.None;
             AutoSize = true;
             Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             Name = "lblEtiqueta";
             Size = new System.Drawing.Size(100, 23);
+        }
+
+        [DefaultValue(AnchorStyles.None)]
+        public override AnchorStyles Anchor
+        {
+            get => base.Anchor;
+            set => base.Anchor = value;
         }
     }
 }
