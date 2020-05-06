@@ -28,14 +28,15 @@ namespace MAB.Forms
              * estadisticas. Como cantidad de Lavarropas ingresados del ultimo mes, Cantidad de Lavarropas finalizados, Suma recaudada, etc.
              * Alertas sobre Stock Faltante, Quizas la opcion de Filtrar informacion de alguna manera. Nose como aun.
              * 
-             * TODO: Todos los formularios que agregan y modifican no dan feedback. Hay que decir "GG" si se guardo correctamente.
-             * --- HECHO
+             * Analizar la posibilidad de:
+             * · Intentar agregar de alguna forma que se puedan filtrar aquellas reparaciones que faltan de pagar
+             * · Pensandolo asi quizas deberia ponerle un nuevo estado a las reparaciones, para saber si estan o no pagadas.
+             * · Con esta info podria sacar a aquellos clientes que mas se tardaron en pagar sus deudas.
              * 
-             * TODO: Todos los formularios que agregan no preguntan si se desea agregar uno nuevamente.
              */
 
             InitializeComponent();
-
+            
             // Form
             this.Text = string.Empty;
             this.ControlBox = false;
@@ -66,6 +67,10 @@ namespace MAB.Forms
         {
             if (hijoActual != null)
                 hijoActual.Close();
+            
+            ucTitleBar.TitleText = "MAB";
+
+            rbCantLavInMensual.Checked = true;
         }
 
         private void verClientes(object sender, EventArgs e)
@@ -103,6 +108,7 @@ namespace MAB.Forms
             if(hijoActual != null)
             {
                 hijoActual.Close();
+                ucTitleBar.TitleText = "MAB";
             }
             hijoActual = hijo;
             hijo.TopLevel = false;
@@ -117,5 +123,52 @@ namespace MAB.Forms
         }
 
         #endregion
+
+        private void cargarChart()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                //var data = from clientes in db.Clientes
+                //           where
+            }
+        }
+
+        private void rbCantLavInMensual_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * select COUNT(r.Id) 
+                 * from Reparaciones as r
+                 * group by MONTH(r.fechaIngreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                           group r by new { month = r.fechaIngreso.Month } into grouped
+                           select new { count = grouped.Count() }).ToList();
+
+                chartCantLavarropasIn.DataSource = data;
+            }
+        }
+
+        private void rbCantLavInAnual_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * select count(r.id)
+                 * from Reparaciones as r
+                 * group by YEAR(r.fechaIngreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                           group r by new { year = r.fechaIngreso.Year } into grouped
+                           select new { count = grouped.Count() }).ToList();
+
+                chartCantLavarropasIn.DataSource = data;
+            }
+        }
     }
 }
