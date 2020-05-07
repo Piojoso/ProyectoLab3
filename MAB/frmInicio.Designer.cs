@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -53,11 +56,14 @@
             this.ccLabel7 = new ccLibrary.ccLabel();
             this.ccLabel6 = new ccLibrary.ccLabel();
             this.tpReparaciones = new System.Windows.Forms.TabPage();
+            this.pnlCantLavarropasIn = new System.Windows.Forms.Panel();
+            this.chartCantLavarropasIn = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnlTopCantLavarropasIn = new System.Windows.Forms.Panel();
+            this.rbCantLavInAnual = new System.Windows.Forms.RadioButton();
+            this.rbCantLavInMensual = new System.Windows.Forms.RadioButton();
+            this.ccLabel17 = new ccLibrary.ccLabel();
             this.ccLabel12 = new ccLibrary.ccLabel();
-            this.ccLabel11 = new ccLibrary.ccLabel();
             this.ccLabel10 = new ccLibrary.ccLabel();
-            this.ccLabel8 = new ccLibrary.ccLabel();
-            this.ccLabel9 = new ccLibrary.ccLabel();
             this.tpStock = new System.Windows.Forms.TabPage();
             this.ccLabel14 = new ccLibrary.ccLabel();
             this.ccLabel13 = new ccLibrary.ccLabel();
@@ -67,12 +73,12 @@
             this.ucBotonera = new ucLibrary.ucBotonera();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.ucTitleBar = new ucLibrary.ucTitleBar();
-            this.chartCantLavarropasIn = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.ccLabel17 = new ccLibrary.ccLabel();
-            this.pnlCantLavarropasIn = new System.Windows.Forms.Panel();
-            this.pnlTopCantLavarropasIn = new System.Windows.Forms.Panel();
-            this.rbCantLavInMensual = new System.Windows.Forms.RadioButton();
-            this.rbCantLavInAnual = new System.Windows.Forms.RadioButton();
+            this.pnlIngresos = new System.Windows.Forms.Panel();
+            this.chartIngresoObtenidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnlIngresosTop = new System.Windows.Forms.Panel();
+            this.rbIngresosAnual = new System.Windows.Forms.RadioButton();
+            this.rbIngresosMensual = new System.Windows.Forms.RadioButton();
+            this.ccLabel8 = new ccLibrary.ccLabel();
             this.pnlBG.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.pnlContent.SuspendLayout();
@@ -82,13 +88,16 @@
             this.tpClientes.SuspendLayout();
             this.tpLavarropas.SuspendLayout();
             this.tpReparaciones.SuspendLayout();
+            this.pnlCantLavarropasIn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCantLavarropasIn)).BeginInit();
+            this.pnlTopCantLavarropasIn.SuspendLayout();
             this.tpStock.SuspendLayout();
             this.pnlTituloEstadisticas.SuspendLayout();
             this.pnlNavBar.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCantLavarropasIn)).BeginInit();
-            this.pnlCantLavarropasIn.SuspendLayout();
-            this.pnlTopCantLavarropasIn.SuspendLayout();
+            this.pnlIngresos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresoObtenidos)).BeginInit();
+            this.pnlIngresosTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBG
@@ -167,7 +176,7 @@
             this.tpClientes.Location = new System.Drawing.Point(4, 22);
             this.tpClientes.Name = "tpClientes";
             this.tpClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpClientes.Size = new System.Drawing.Size(607, 418);
+            this.tpClientes.Size = new System.Drawing.Size(607, 458);
             this.tpClientes.TabIndex = 0;
             this.tpClientes.Text = "Clientes";
             this.tpClientes.UseVisualStyleBackColor = true;
@@ -270,7 +279,7 @@
             this.tpLavarropas.Location = new System.Drawing.Point(4, 22);
             this.tpLavarropas.Name = "tpLavarropas";
             this.tpLavarropas.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLavarropas.Size = new System.Drawing.Size(607, 418);
+            this.tpLavarropas.Size = new System.Drawing.Size(607, 458);
             this.tpLavarropas.TabIndex = 1;
             this.tpLavarropas.Text = "Lavarropas";
             this.tpLavarropas.UseVisualStyleBackColor = true;
@@ -327,12 +336,10 @@
             // 
             // tpReparaciones
             // 
+            this.tpReparaciones.Controls.Add(this.pnlIngresos);
             this.tpReparaciones.Controls.Add(this.pnlCantLavarropasIn);
             this.tpReparaciones.Controls.Add(this.ccLabel12);
-            this.tpReparaciones.Controls.Add(this.ccLabel11);
             this.tpReparaciones.Controls.Add(this.ccLabel10);
-            this.tpReparaciones.Controls.Add(this.ccLabel8);
-            this.tpReparaciones.Controls.Add(this.ccLabel9);
             this.tpReparaciones.Location = new System.Drawing.Point(4, 22);
             this.tpReparaciones.Name = "tpReparaciones";
             this.tpReparaciones.Padding = new System.Windows.Forms.Padding(3);
@@ -341,55 +348,99 @@
             this.tpReparaciones.Text = "Reparaciones";
             this.tpReparaciones.UseVisualStyleBackColor = true;
             // 
+            // pnlCantLavarropasIn
+            // 
+            this.pnlCantLavarropasIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCantLavarropasIn.Controls.Add(this.chartCantLavarropasIn);
+            this.pnlCantLavarropasIn.Controls.Add(this.pnlTopCantLavarropasIn);
+            this.pnlCantLavarropasIn.Location = new System.Drawing.Point(6, 6);
+            this.pnlCantLavarropasIn.Name = "pnlCantLavarropasIn";
+            this.pnlCantLavarropasIn.Size = new System.Drawing.Size(593, 195);
+            this.pnlCantLavarropasIn.TabIndex = 7;
+            // 
+            // chartCantLavarropasIn
+            // 
+            this.chartCantLavarropasIn.BorderlineColor = System.Drawing.Color.Black;
+            this.chartCantLavarropasIn.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea2.Name = "ChartArea1";
+            this.chartCantLavarropasIn.ChartAreas.Add(chartArea2);
+            this.chartCantLavarropasIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chartCantLavarropasIn.Legends.Add(legend2);
+            this.chartCantLavarropasIn.Location = new System.Drawing.Point(0, 17);
+            this.chartCantLavarropasIn.Name = "chartCantLavarropasIn";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartCantLavarropasIn.Series.Add(series2);
+            this.chartCantLavarropasIn.Size = new System.Drawing.Size(593, 178);
+            this.chartCantLavarropasIn.TabIndex = 5;
+            this.chartCantLavarropasIn.Text = "Cantidad de Reparaciones Ingresados";
+            // 
+            // pnlTopCantLavarropasIn
+            // 
+            this.pnlTopCantLavarropasIn.Controls.Add(this.rbCantLavInAnual);
+            this.pnlTopCantLavarropasIn.Controls.Add(this.rbCantLavInMensual);
+            this.pnlTopCantLavarropasIn.Controls.Add(this.ccLabel17);
+            this.pnlTopCantLavarropasIn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopCantLavarropasIn.Location = new System.Drawing.Point(0, 0);
+            this.pnlTopCantLavarropasIn.Name = "pnlTopCantLavarropasIn";
+            this.pnlTopCantLavarropasIn.Size = new System.Drawing.Size(593, 17);
+            this.pnlTopCantLavarropasIn.TabIndex = 7;
+            // 
+            // rbCantLavInAnual
+            // 
+            this.rbCantLavInAnual.AutoSize = true;
+            this.rbCantLavInAnual.Location = new System.Drawing.Point(340, 0);
+            this.rbCantLavInAnual.Name = "rbCantLavInAnual";
+            this.rbCantLavInAnual.Size = new System.Drawing.Size(81, 17);
+            this.rbCantLavInAnual.TabIndex = 8;
+            this.rbCantLavInAnual.Text = "Anualmente";
+            this.rbCantLavInAnual.UseVisualStyleBackColor = true;
+            this.rbCantLavInAnual.CheckedChanged += new System.EventHandler(this.rbCantLavInAnual_CheckedChanged);
+            // 
+            // rbCantLavInMensual
+            // 
+            this.rbCantLavInMensual.AutoSize = true;
+            this.rbCantLavInMensual.Location = new System.Drawing.Point(240, 0);
+            this.rbCantLavInMensual.Name = "rbCantLavInMensual";
+            this.rbCantLavInMensual.Size = new System.Drawing.Size(94, 17);
+            this.rbCantLavInMensual.TabIndex = 7;
+            this.rbCantLavInMensual.Text = "Mensualmente";
+            this.rbCantLavInMensual.UseVisualStyleBackColor = true;
+            this.rbCantLavInMensual.CheckedChanged += new System.EventHandler(this.rbCantLavInMensual_CheckedChanged);
+            // 
+            // ccLabel17
+            // 
+            this.ccLabel17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel17.AutoSize = true;
+            this.ccLabel17.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel17.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel17.Name = "ccLabel17";
+            this.ccLabel17.Size = new System.Drawing.Size(234, 16);
+            this.ccLabel17.TabIndex = 6;
+            this.ccLabel17.Text = "Cantidad de Reparaciones Ingresados:";
+            // 
             // ccLabel12
             // 
             this.ccLabel12.AutoSize = true;
             this.ccLabel12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel12.Location = new System.Drawing.Point(104, 417);
+            this.ccLabel12.Location = new System.Drawing.Point(314, 221);
             this.ccLabel12.Name = "ccLabel12";
-            this.ccLabel12.Size = new System.Drawing.Size(186, 16);
+            this.ccLabel12.Size = new System.Drawing.Size(163, 16);
             this.ccLabel12.TabIndex = 4;
-            this.ccLabel12.Text = "Reparaciones aun por finalizar";
-            // 
-            // ccLabel11
-            // 
-            this.ccLabel11.AutoSize = true;
-            this.ccLabel11.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel11.Location = new System.Drawing.Point(104, 380);
-            this.ccLabel11.Name = "ccLabel11";
-            this.ccLabel11.Size = new System.Drawing.Size(175, 16);
-            this.ccLabel11.TabIndex = 3;
-            this.ccLabel11.Text = "Total de Ingresos Obtenidos";
+            this.ccLabel12.Text = "Reparaciones sin Terminar";
             // 
             // ccLabel10
             // 
             this.ccLabel10.AutoSize = true;
             this.ccLabel10.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel10.Location = new System.Drawing.Point(104, 343);
+            this.ccLabel10.Location = new System.Drawing.Point(3, 221);
             this.ccLabel10.Name = "ccLabel10";
             this.ccLabel10.Size = new System.Drawing.Size(205, 16);
             this.ccLabel10.TabIndex = 2;
             this.ccLabel10.Text = "Total de Reparaciones Realizadas";
-            // 
-            // ccLabel8
-            // 
-            this.ccLabel8.AutoSize = true;
-            this.ccLabel8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel8.Location = new System.Drawing.Point(104, 281);
-            this.ccLabel8.Name = "ccLabel8";
-            this.ccLabel8.Size = new System.Drawing.Size(211, 16);
-            this.ccLabel8.TabIndex = 0;
-            this.ccLabel8.Text = "Reparaciones ingresadas este mes";
-            // 
-            // ccLabel9
-            // 
-            this.ccLabel9.AutoSize = true;
-            this.ccLabel9.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel9.Location = new System.Drawing.Point(104, 306);
-            this.ccLabel9.Name = "ccLabel9";
-            this.ccLabel9.Size = new System.Drawing.Size(177, 16);
-            this.ccLabel9.TabIndex = 1;
-            this.ccLabel9.Text = "Ingresos obtenidos este mes";
             // 
             // tpStock
             // 
@@ -398,7 +449,7 @@
             this.tpStock.Location = new System.Drawing.Point(4, 22);
             this.tpStock.Name = "tpStock";
             this.tpStock.Padding = new System.Windows.Forms.Padding(3);
-            this.tpStock.Size = new System.Drawing.Size(607, 418);
+            this.tpStock.Size = new System.Drawing.Size(607, 458);
             this.tpStock.TabIndex = 3;
             this.tpStock.Text = "Stock";
             this.tpStock.UseVisualStyleBackColor = true;
@@ -497,77 +548,79 @@
             this.ucTitleBar.TabIndex = 1;
             this.ucTitleBar.TitleAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chartCantLavarropasIn
+            // pnlIngresos
             // 
-            this.chartCantLavarropasIn.BorderlineColor = System.Drawing.Color.Black;
-            this.chartCantLavarropasIn.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.pnlIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlIngresos.Controls.Add(this.chartIngresoObtenidos);
+            this.pnlIngresos.Controls.Add(this.pnlIngresosTop);
+            this.pnlIngresos.Location = new System.Drawing.Point(6, 255);
+            this.pnlIngresos.Name = "pnlIngresos";
+            this.pnlIngresos.Size = new System.Drawing.Size(593, 195);
+            this.pnlIngresos.TabIndex = 8;
+            // 
+            // chartIngresoObtenidos
+            // 
+            this.chartIngresoObtenidos.BorderlineColor = System.Drawing.Color.Black;
+            this.chartIngresoObtenidos.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.Name = "ChartArea1";
-            this.chartCantLavarropasIn.ChartAreas.Add(chartArea1);
-            this.chartCantLavarropasIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartIngresoObtenidos.ChartAreas.Add(chartArea1);
+            this.chartIngresoObtenidos.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            this.chartCantLavarropasIn.Legends.Add(legend1);
-            this.chartCantLavarropasIn.Location = new System.Drawing.Point(0, 17);
-            this.chartCantLavarropasIn.Name = "chartCantLavarropasIn";
+            this.chartIngresoObtenidos.Legends.Add(legend1);
+            this.chartIngresoObtenidos.Location = new System.Drawing.Point(0, 17);
+            this.chartIngresoObtenidos.Name = "chartIngresoObtenidos";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chartCantLavarropasIn.Series.Add(series1);
-            this.chartCantLavarropasIn.Size = new System.Drawing.Size(593, 178);
-            this.chartCantLavarropasIn.TabIndex = 5;
-            this.chartCantLavarropasIn.Text = "Cantidad de Lavarropas Ingresados";
+            this.chartIngresoObtenidos.Series.Add(series1);
+            this.chartIngresoObtenidos.Size = new System.Drawing.Size(593, 178);
+            this.chartIngresoObtenidos.TabIndex = 5;
+            this.chartIngresoObtenidos.Text = "Cantidad de Reparaciones Ingresados";
             // 
-            // ccLabel17
+            // pnlIngresosTop
             // 
-            this.ccLabel17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel17.AutoSize = true;
-            this.ccLabel17.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel17.Location = new System.Drawing.Point(0, 1);
-            this.ccLabel17.Name = "ccLabel17";
-            this.ccLabel17.Size = new System.Drawing.Size(220, 16);
-            this.ccLabel17.TabIndex = 6;
-            this.ccLabel17.Text = "Cantidad de Lavarropas Ingresados:";
+            this.pnlIngresosTop.Controls.Add(this.rbIngresosAnual);
+            this.pnlIngresosTop.Controls.Add(this.rbIngresosMensual);
+            this.pnlIngresosTop.Controls.Add(this.ccLabel8);
+            this.pnlIngresosTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlIngresosTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlIngresosTop.Name = "pnlIngresosTop";
+            this.pnlIngresosTop.Size = new System.Drawing.Size(593, 17);
+            this.pnlIngresosTop.TabIndex = 7;
             // 
-            // pnlCantLavarropasIn
+            // rbIngresosAnual
             // 
-            this.pnlCantLavarropasIn.Controls.Add(this.chartCantLavarropasIn);
-            this.pnlCantLavarropasIn.Controls.Add(this.pnlTopCantLavarropasIn);
-            this.pnlCantLavarropasIn.Location = new System.Drawing.Point(6, 6);
-            this.pnlCantLavarropasIn.Name = "pnlCantLavarropasIn";
-            this.pnlCantLavarropasIn.Size = new System.Drawing.Size(593, 195);
-            this.pnlCantLavarropasIn.TabIndex = 7;
+            this.rbIngresosAnual.AutoSize = true;
+            this.rbIngresosAnual.Location = new System.Drawing.Point(232, 0);
+            this.rbIngresosAnual.Name = "rbIngresosAnual";
+            this.rbIngresosAnual.Size = new System.Drawing.Size(81, 17);
+            this.rbIngresosAnual.TabIndex = 8;
+            this.rbIngresosAnual.Text = "Anualmente";
+            this.rbIngresosAnual.UseVisualStyleBackColor = true;
+            this.rbIngresosAnual.CheckedChanged += new System.EventHandler(this.rbIngresosAnual_CheckedChanged);
             // 
-            // pnlTopCantLavarropasIn
+            // rbIngresosMensual
             // 
-            this.pnlTopCantLavarropasIn.Controls.Add(this.rbCantLavInAnual);
-            this.pnlTopCantLavarropasIn.Controls.Add(this.rbCantLavInMensual);
-            this.pnlTopCantLavarropasIn.Controls.Add(this.ccLabel17);
-            this.pnlTopCantLavarropasIn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTopCantLavarropasIn.Location = new System.Drawing.Point(0, 0);
-            this.pnlTopCantLavarropasIn.Name = "pnlTopCantLavarropasIn";
-            this.pnlTopCantLavarropasIn.Size = new System.Drawing.Size(593, 17);
-            this.pnlTopCantLavarropasIn.TabIndex = 7;
+            this.rbIngresosMensual.AutoSize = true;
+            this.rbIngresosMensual.Location = new System.Drawing.Point(132, 0);
+            this.rbIngresosMensual.Name = "rbIngresosMensual";
+            this.rbIngresosMensual.Size = new System.Drawing.Size(94, 17);
+            this.rbIngresosMensual.TabIndex = 7;
+            this.rbIngresosMensual.Text = "Mensualmente";
+            this.rbIngresosMensual.UseVisualStyleBackColor = true;
+            this.rbIngresosMensual.CheckedChanged += new System.EventHandler(this.rbIngresosMensual_CheckedChanged);
             // 
-            // rbCantLavInMensual
+            // ccLabel8
             // 
-            this.rbCantLavInMensual.AutoSize = true;
-            this.rbCantLavInMensual.Location = new System.Drawing.Point(228, 0);
-            this.rbCantLavInMensual.Name = "rbCantLavInMensual";
-            this.rbCantLavInMensual.Size = new System.Drawing.Size(94, 17);
-            this.rbCantLavInMensual.TabIndex = 7;
-            this.rbCantLavInMensual.Text = "Mensualmente";
-            this.rbCantLavInMensual.UseVisualStyleBackColor = true;
-            this.rbCantLavInMensual.CheckedChanged += new System.EventHandler(this.rbCantLavInMensual_CheckedChanged);
-            // 
-            // rbCantLavInAnual
-            // 
-            this.rbCantLavInAnual.AutoSize = true;
-            this.rbCantLavInAnual.Location = new System.Drawing.Point(342, 0);
-            this.rbCantLavInAnual.Name = "rbCantLavInAnual";
-            this.rbCantLavInAnual.Size = new System.Drawing.Size(81, 17);
-            this.rbCantLavInAnual.TabIndex = 8;
-            this.rbCantLavInAnual.Text = "Anualmente";
-            this.rbCantLavInAnual.UseVisualStyleBackColor = true;
-            this.rbCantLavInAnual.CheckedChanged += new System.EventHandler(this.rbCantLavInAnual_CheckedChanged);
+            this.ccLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel8.AutoSize = true;
+            this.ccLabel8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel8.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel8.Name = "ccLabel8";
+            this.ccLabel8.Size = new System.Drawing.Size(126, 16);
+            this.ccLabel8.TabIndex = 6;
+            this.ccLabel8.Text = "Ingresos Obtenidos:";
             // 
             // frmInicio
             // 
@@ -591,16 +644,20 @@
             this.tpLavarropas.PerformLayout();
             this.tpReparaciones.ResumeLayout(false);
             this.tpReparaciones.PerformLayout();
+            this.pnlCantLavarropasIn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartCantLavarropasIn)).EndInit();
+            this.pnlTopCantLavarropasIn.ResumeLayout(false);
+            this.pnlTopCantLavarropasIn.PerformLayout();
             this.tpStock.ResumeLayout(false);
             this.tpStock.PerformLayout();
             this.pnlTituloEstadisticas.ResumeLayout(false);
             this.pnlTituloEstadisticas.PerformLayout();
             this.pnlNavBar.ResumeLayout(false);
             this.pnlTitulo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartCantLavarropasIn)).EndInit();
-            this.pnlCantLavarropasIn.ResumeLayout(false);
-            this.pnlTopCantLavarropasIn.ResumeLayout(false);
-            this.pnlTopCantLavarropasIn.PerformLayout();
+            this.pnlIngresos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresoObtenidos)).EndInit();
+            this.pnlIngresosTop.ResumeLayout(false);
+            this.pnlIngresosTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -625,10 +682,7 @@
         private ccLibrary.ccLabel ccLabel7;
         private ccLibrary.ccLabel ccLabel6;
         private ccLibrary.ccLabel ccLabel12;
-        private ccLibrary.ccLabel ccLabel11;
         private ccLibrary.ccLabel ccLabel10;
-        private ccLibrary.ccLabel ccLabel9;
-        private ccLibrary.ccLabel ccLabel8;
         private ccLibrary.ccLabel ccLabel13;
         private ccLibrary.ccLabel ccLabel14;
         private System.Windows.Forms.TabControl tcPrincipal;
@@ -649,5 +703,11 @@
         private System.Windows.Forms.RadioButton rbCantLavInAnual;
         private System.Windows.Forms.RadioButton rbCantLavInMensual;
         private ccLibrary.ccLabel ccLabel17;
+        private System.Windows.Forms.Panel pnlIngresos;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresoObtenidos;
+        private System.Windows.Forms.Panel pnlIngresosTop;
+        private System.Windows.Forms.RadioButton rbIngresosAnual;
+        private System.Windows.Forms.RadioButton rbIngresosMensual;
+        private ccLibrary.ccLabel ccLabel8;
     }
 }

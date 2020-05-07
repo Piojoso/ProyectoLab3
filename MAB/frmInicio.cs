@@ -170,5 +170,51 @@ namespace MAB.Forms
                 chartCantLavarropasIn.DataSource = data;
             }
         }
+
+        private void rbIngresosMensual_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * Select sum(r.manoObra), sum(r.totalRepuestos)
+                 * from Reparaciones as r
+                 * gruop by MONTH(r.fechaEgreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                            group r by new { month = r.fechaEgreso.Value.Month } into grouped
+                            select new
+                            {
+                                ManoObra = grouped.Sum(x => x.manoDeObra),
+                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
+                            }).ToList();
+
+                chartIngresoObtenidos.DataSource = data;
+            }
+        }
+
+        private void rbIngresosAnual_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * Select sum(r.manoObra), sum(r.totalRepuestos)
+                 * from Reparaciones as r
+                 * gruop by YEAR(r.fechaEgreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                            group r by new { year = r.fechaEgreso.Value.Year } into grouped
+                            select new
+                            {
+                                ManoObra = grouped.Sum(x => x.manoDeObra),
+                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
+                            }).ToList();
+
+                chartIngresoObtenidos.DataSource = data;
+            }
+        }
     }
 }
