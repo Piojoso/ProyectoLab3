@@ -69,8 +69,10 @@ namespace MAB.Forms
                 hijoActual.Close();
             
             ucTitleBar.TitleText = "MAB";
-
+            
+            cargarEstadisticasDeReparaciones();
             rbCantLavInMensual.Checked = true;
+            rbIngresosMensual.Checked = true;
         }
 
         private void verClientes(object sender, EventArgs e)
@@ -214,6 +216,24 @@ namespace MAB.Forms
                             }).ToList();
 
                 chartIngresoObtenidos.DataSource = data;
+            }
+        }
+
+        private void cargarEstadisticasDeReparaciones()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                var cantRepRealizadas = (from r in db.Reparaciones
+                                         where r.estadoReparacion == estadosReparacion.Finalizada
+                                         select r);
+
+                cclblCantRepFin.Text = cantRepRealizadas.Count().ToString();
+
+                var cantRepSinTerminar = (from r in db.Reparaciones
+                                          where r.estadoReparacion == estadosReparacion.EnCurso
+                                          select r);
+
+                cclblCantRepNoFin.Text = cantRepSinTerminar.Count().ToString();
             }
         }
     }
