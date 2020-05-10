@@ -171,6 +171,12 @@
     <Compile Include="Forms\Reparaciones\frmDetalleReparacion.Designer.cs">
       <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reparaciones\frmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmEstadisticas.Designer.cs">
+      <DependentUpon>frmEstadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reparaciones\frmFinalizarReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmDetalleReparacion.resx">
       <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmEstadisticas.resx">
+      <DependentUpon>frmEstadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reparaciones\frmFinalizarReparacion.resx">
       <DependentUpon>frmFinalizarReparacion.cs</DependentUpon>
