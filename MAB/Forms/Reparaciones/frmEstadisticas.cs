@@ -15,6 +15,11 @@ namespace MAB.Forms.Reparaciones
     {
         public frmEstadisticas()
         {
+            /**
+             * TODO: Revisar el correcto funcionamiento
+             * 
+             */
+
             InitializeComponent();
 
             ucBottom.Accion1 = "Reparaciones";
@@ -24,6 +29,12 @@ namespace MAB.Forms.Reparaciones
             ucBottom.evAccion1 += verReparaciones;
             ucBottom.evAccion2 += verIngresos;
             ucBottom.evAccion3 += cerrarVentana;
+
+            rbCantRepInMensual.Checked = true;
+            rbCantRepOutMensual.Checked = true;
+
+            cargarInfoEnLabels();
+            rbIngresosMensuales.Checked = true;
         }
 
         #region eventos de ucBottom
@@ -130,7 +141,68 @@ namespace MAB.Forms.Reparaciones
                 chartCantRepOut.DataSource = data;
             }
         }
-        
+
+        #endregion
+
+        private void cargarInfoEnLabels()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                cclblTotalRep.Text = db.Reparaciones.Count().ToString();
+                cclblTotalEnCurso.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.EnCurso).Count().ToString();
+                cclblTotalFinalizadas.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.Finalizada).Count().ToString();
+                cclblTotalNoFinalizadas.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.NoReparada).Count().ToString();
+            }
+        }
+
+        #region eventos de RadioButtons Ingresos
+
+        private void rbIngresosMensuales_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * Select sum(r.manoObra), sum(r.totalRepuestos)
+                 * from Reparaciones as r
+                 * gruop by MONTH(r.fechaEgreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                            group r by new { month = r.fechaEgreso.Value.Month } into grouped
+                            select new
+                            {
+                                ManoObra = grouped.Sum(x => x.manoDeObra),
+                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
+                            }).ToList();
+
+                chartIngresosReparaciones.DataSource = data;
+            }
+        }
+
+        private void rbIngresosAnuales_CheckedChanged(object sender, EventArgs e)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                /**
+                 * Select sum(r.manoObra), sum(r.totalRepuestos)
+                 * from Reparaciones as r
+                 * gruop by YEAR(r.fechaEgreso);
+                 * 
+                 */
+
+                var data = (from r in db.Reparaciones
+                            group r by new { year = r.fechaEgreso.Value.Year } into grouped
+                            select new
+                            {
+                                ManoObra = grouped.Sum(x => x.manoDeObra),
+                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
+                            }).ToList();
+
+                chartIngresosReparaciones.DataSource = data;
+            }
+        }
+
         #endregion
 
     }

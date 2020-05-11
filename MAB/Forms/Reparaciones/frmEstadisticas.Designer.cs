@@ -28,14 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ucBottom = new ucLibrary.ucBottom();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.pnlIngresosReparaciones = new System.Windows.Forms.Panel();
+            this.pnlTotalRep = new System.Windows.Forms.Panel();
+            this.ccLabel10 = new ccLibrary.ccLabel();
+            this.ccLabel12 = new ccLibrary.ccLabel();
+            this.cclblTotalNoFinalizadas = new ccLibrary.ccLabel();
+            this.cclblTotalRep = new ccLibrary.ccLabel();
+            this.ccLabel5 = new ccLibrary.ccLabel();
+            this.cclblTotalFinalizadas = new ccLibrary.ccLabel();
+            this.cclblTotalEnCurso = new ccLibrary.ccLabel();
+            this.ccLabel3 = new ccLibrary.ccLabel();
+            this.pnlIngresos = new System.Windows.Forms.Panel();
+            this.chartIngresosReparaciones = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnlTopIngresos = new System.Windows.Forms.Panel();
+            this.rbIngresosAnuales = new System.Windows.Forms.RadioButton();
+            this.rbIngresosMensuales = new System.Windows.Forms.RadioButton();
+            this.ccLabel7 = new ccLibrary.ccLabel();
             this.pnlNumeroReparaciones = new System.Windows.Forms.Panel();
             this.pnlCantRepOut = new System.Windows.Forms.Panel();
             this.chartCantRepOut = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -49,8 +68,12 @@
             this.rbCantRepInAnual = new System.Windows.Forms.RadioButton();
             this.rbCantRepInMensual = new System.Windows.Forms.RadioButton();
             this.ccLabel2 = new ccLibrary.ccLabel();
-            this.pnlIngresosReparaciones = new System.Windows.Forms.Panel();
             this.pnlBody.SuspendLayout();
+            this.pnlIngresosReparaciones.SuspendLayout();
+            this.pnlTotalRep.SuspendLayout();
+            this.pnlIngresos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosReparaciones)).BeginInit();
+            this.pnlTopIngresos.SuspendLayout();
             this.pnlNumeroReparaciones.SuspendLayout();
             this.pnlCantRepOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCantRepOut)).BeginInit();
@@ -74,13 +97,194 @@
             // 
             // pnlBody
             // 
-            this.pnlBody.Controls.Add(this.pnlNumeroReparaciones);
             this.pnlBody.Controls.Add(this.pnlIngresosReparaciones);
+            this.pnlBody.Controls.Add(this.pnlNumeroReparaciones);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(783, 429);
             this.pnlBody.TabIndex = 1;
+            // 
+            // pnlIngresosReparaciones
+            // 
+            this.pnlIngresosReparaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlIngresosReparaciones.Controls.Add(this.pnlTotalRep);
+            this.pnlIngresosReparaciones.Controls.Add(this.pnlIngresos);
+            this.pnlIngresosReparaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlIngresosReparaciones.Location = new System.Drawing.Point(0, 0);
+            this.pnlIngresosReparaciones.Name = "pnlIngresosReparaciones";
+            this.pnlIngresosReparaciones.Size = new System.Drawing.Size(783, 429);
+            this.pnlIngresosReparaciones.TabIndex = 1;
+            // 
+            // pnlTotalRep
+            // 
+            this.pnlTotalRep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTotalRep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTotalRep.Controls.Add(this.ccLabel10);
+            this.pnlTotalRep.Controls.Add(this.ccLabel12);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalNoFinalizadas);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalRep);
+            this.pnlTotalRep.Controls.Add(this.ccLabel5);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalFinalizadas);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalEnCurso);
+            this.pnlTotalRep.Controls.Add(this.ccLabel3);
+            this.pnlTotalRep.Location = new System.Drawing.Point(3, 3);
+            this.pnlTotalRep.Name = "pnlTotalRep";
+            this.pnlTotalRep.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlTotalRep.Size = new System.Drawing.Size(777, 132);
+            this.pnlTotalRep.TabIndex = 20;
+            // 
+            // ccLabel10
+            // 
+            this.ccLabel10.AutoSize = true;
+            this.ccLabel10.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel10.Location = new System.Drawing.Point(289, 28);
+            this.ccLabel10.Name = "ccLabel10";
+            this.ccLabel10.Size = new System.Drawing.Size(142, 16);
+            this.ccLabel10.TabIndex = 11;
+            this.ccLabel10.Text = "Total de Reparaciones:";
+            // 
+            // ccLabel12
+            // 
+            this.ccLabel12.AutoSize = true;
+            this.ccLabel12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel12.Location = new System.Drawing.Point(95, 89);
+            this.ccLabel12.Name = "ccLabel12";
+            this.ccLabel12.Size = new System.Drawing.Size(63, 16);
+            this.ccLabel12.TabIndex = 12;
+            this.ccLabel12.Text = "En Curso:";
+            // 
+            // cclblTotalNoFinalizadas
+            // 
+            this.cclblTotalNoFinalizadas.AutoSize = true;
+            this.cclblTotalNoFinalizadas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalNoFinalizadas.Location = new System.Drawing.Point(419, 89);
+            this.cclblTotalNoFinalizadas.Name = "cclblTotalNoFinalizadas";
+            this.cclblTotalNoFinalizadas.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalNoFinalizadas.TabIndex = 18;
+            // 
+            // cclblTotalRep
+            // 
+            this.cclblTotalRep.AutoSize = true;
+            this.cclblTotalRep.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalRep.Location = new System.Drawing.Point(437, 28);
+            this.cclblTotalRep.Name = "cclblTotalRep";
+            this.cclblTotalRep.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalRep.TabIndex = 13;
+            // 
+            // ccLabel5
+            // 
+            this.ccLabel5.AutoSize = true;
+            this.ccLabel5.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel5.Location = new System.Drawing.Point(317, 89);
+            this.ccLabel5.Name = "ccLabel5";
+            this.ccLabel5.Size = new System.Drawing.Size(96, 16);
+            this.ccLabel5.TabIndex = 17;
+            this.ccLabel5.Text = "No Finalizadas:";
+            // 
+            // cclblTotalFinalizadas
+            // 
+            this.cclblTotalFinalizadas.AutoSize = true;
+            this.cclblTotalFinalizadas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalFinalizadas.Location = new System.Drawing.Point(652, 89);
+            this.cclblTotalFinalizadas.Name = "cclblTotalFinalizadas";
+            this.cclblTotalFinalizadas.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalFinalizadas.TabIndex = 14;
+            // 
+            // cclblTotalEnCurso
+            // 
+            this.cclblTotalEnCurso.AutoSize = true;
+            this.cclblTotalEnCurso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalEnCurso.Location = new System.Drawing.Point(164, 89);
+            this.cclblTotalEnCurso.Name = "cclblTotalEnCurso";
+            this.cclblTotalEnCurso.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalEnCurso.TabIndex = 16;
+            // 
+            // ccLabel3
+            // 
+            this.ccLabel3.AutoSize = true;
+            this.ccLabel3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel3.Location = new System.Drawing.Point(572, 89);
+            this.ccLabel3.Name = "ccLabel3";
+            this.ccLabel3.Size = new System.Drawing.Size(74, 16);
+            this.ccLabel3.TabIndex = 15;
+            this.ccLabel3.Text = "Finalizadas:";
+            // 
+            // pnlIngresos
+            // 
+            this.pnlIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlIngresos.Controls.Add(this.chartIngresosReparaciones);
+            this.pnlIngresos.Controls.Add(this.pnlTopIngresos);
+            this.pnlIngresos.Location = new System.Drawing.Point(3, 141);
+            this.pnlIngresos.Name = "pnlIngresos";
+            this.pnlIngresos.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlIngresos.Size = new System.Drawing.Size(777, 285);
+            this.pnlIngresos.TabIndex = 19;
+            // 
+            // chartIngresosReparaciones
+            // 
+            this.chartIngresosReparaciones.BorderlineColor = System.Drawing.Color.Black;
+            this.chartIngresosReparaciones.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea4.Name = "ChartArea1";
+            this.chartIngresosReparaciones.ChartAreas.Add(chartArea4);
+            this.chartIngresosReparaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend4.Name = "Legend1";
+            this.chartIngresosReparaciones.Legends.Add(legend4);
+            this.chartIngresosReparaciones.Location = new System.Drawing.Point(15, 32);
+            this.chartIngresosReparaciones.Name = "chartIngresosReparaciones";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartIngresosReparaciones.Series.Add(series4);
+            this.chartIngresosReparaciones.Size = new System.Drawing.Size(747, 238);
+            this.chartIngresosReparaciones.TabIndex = 5;
+            this.chartIngresosReparaciones.Text = "Cantidad de Reparaciones Ingresados";
+            // 
+            // pnlTopIngresos
+            // 
+            this.pnlTopIngresos.Controls.Add(this.rbIngresosAnuales);
+            this.pnlTopIngresos.Controls.Add(this.rbIngresosMensuales);
+            this.pnlTopIngresos.Controls.Add(this.ccLabel7);
+            this.pnlTopIngresos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopIngresos.Location = new System.Drawing.Point(15, 15);
+            this.pnlTopIngresos.Name = "pnlTopIngresos";
+            this.pnlTopIngresos.Size = new System.Drawing.Size(747, 17);
+            this.pnlTopIngresos.TabIndex = 7;
+            // 
+            // rbIngresosAnuales
+            // 
+            this.rbIngresosAnuales.AutoSize = true;
+            this.rbIngresosAnuales.Location = new System.Drawing.Point(340, 0);
+            this.rbIngresosAnuales.Name = "rbIngresosAnuales";
+            this.rbIngresosAnuales.Size = new System.Drawing.Size(81, 17);
+            this.rbIngresosAnuales.TabIndex = 8;
+            this.rbIngresosAnuales.Text = "Anualmente";
+            this.rbIngresosAnuales.UseVisualStyleBackColor = true;
+            this.rbIngresosAnuales.CheckedChanged += new System.EventHandler(this.rbIngresosAnuales_CheckedChanged);
+            // 
+            // rbIngresosMensuales
+            // 
+            this.rbIngresosMensuales.AutoSize = true;
+            this.rbIngresosMensuales.Location = new System.Drawing.Point(240, 0);
+            this.rbIngresosMensuales.Name = "rbIngresosMensuales";
+            this.rbIngresosMensuales.Size = new System.Drawing.Size(94, 17);
+            this.rbIngresosMensuales.TabIndex = 7;
+            this.rbIngresosMensuales.Text = "Mensualmente";
+            this.rbIngresosMensuales.UseVisualStyleBackColor = true;
+            this.rbIngresosMensuales.CheckedChanged += new System.EventHandler(this.rbIngresosMensuales_CheckedChanged);
+            // 
+            // ccLabel7
+            // 
+            this.ccLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel7.AutoSize = true;
+            this.ccLabel7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel7.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel7.Name = "ccLabel7";
+            this.ccLabel7.Size = new System.Drawing.Size(228, 16);
+            this.ccLabel7.TabIndex = 6;
+            this.ccLabel7.Text = "Ingresos Obtenidos de Reparaciones:";
             // 
             // pnlNumeroReparaciones
             // 
@@ -109,17 +313,17 @@
             // 
             this.chartCantRepOut.BorderlineColor = System.Drawing.Color.Black;
             this.chartCantRepOut.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chartCantRepOut.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.chartCantRepOut.ChartAreas.Add(chartArea5);
             this.chartCantRepOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartCantRepOut.Legends.Add(legend1);
+            legend5.Name = "Legend1";
+            this.chartCantRepOut.Legends.Add(legend5);
             this.chartCantRepOut.Location = new System.Drawing.Point(15, 32);
             this.chartCantRepOut.Name = "chartCantRepOut";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartCantRepOut.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartCantRepOut.Series.Add(series5);
             this.chartCantRepOut.Size = new System.Drawing.Size(747, 163);
             this.chartCantRepOut.TabIndex = 5;
             this.chartCantRepOut.Text = "Cantidad de Reparaciones Ingresados";
@@ -184,17 +388,17 @@
             // 
             this.chartCantRepIn.BorderlineColor = System.Drawing.Color.Black;
             this.chartCantRepIn.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.chartCantRepIn.ChartAreas.Add(chartArea2);
+            chartArea6.Name = "ChartArea1";
+            this.chartCantRepIn.ChartAreas.Add(chartArea6);
             this.chartCantRepIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartCantRepIn.Legends.Add(legend2);
+            legend6.Name = "Legend1";
+            this.chartCantRepIn.Legends.Add(legend6);
             this.chartCantRepIn.Location = new System.Drawing.Point(15, 32);
             this.chartCantRepIn.Name = "chartCantRepIn";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartCantRepIn.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartCantRepIn.Series.Add(series6);
             this.chartCantRepIn.Size = new System.Drawing.Size(747, 163);
             this.chartCantRepIn.TabIndex = 5;
             this.chartCantRepIn.Text = "Cantidad de Reparaciones Ingresados";
@@ -243,15 +447,6 @@
             this.ccLabel2.TabIndex = 6;
             this.ccLabel2.Text = "Cantidad de Reparaciones Ingresados:";
             // 
-            // pnlIngresosReparaciones
-            // 
-            this.pnlIngresosReparaciones.BackColor = System.Drawing.Color.Red;
-            this.pnlIngresosReparaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlIngresosReparaciones.Location = new System.Drawing.Point(0, 0);
-            this.pnlIngresosReparaciones.Name = "pnlIngresosReparaciones";
-            this.pnlIngresosReparaciones.Size = new System.Drawing.Size(783, 429);
-            this.pnlIngresosReparaciones.TabIndex = 1;
-            // 
             // frmEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,6 +462,13 @@
             this.ShowInTaskbar = false;
             this.Text = "Estadisticas de las Reparaciones";
             this.pnlBody.ResumeLayout(false);
+            this.pnlIngresosReparaciones.ResumeLayout(false);
+            this.pnlTotalRep.ResumeLayout(false);
+            this.pnlTotalRep.PerformLayout();
+            this.pnlIngresos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosReparaciones)).EndInit();
+            this.pnlTopIngresos.ResumeLayout(false);
+            this.pnlTopIngresos.PerformLayout();
             this.pnlNumeroReparaciones.ResumeLayout(false);
             this.pnlCantRepOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartCantRepOut)).EndInit();
@@ -298,5 +500,20 @@
         private System.Windows.Forms.RadioButton rbCantRepInAnual;
         private System.Windows.Forms.RadioButton rbCantRepInMensual;
         private ccLibrary.ccLabel ccLabel2;
+        private System.Windows.Forms.Panel pnlTotalRep;
+        private ccLibrary.ccLabel ccLabel10;
+        private ccLibrary.ccLabel ccLabel12;
+        private ccLibrary.ccLabel cclblTotalNoFinalizadas;
+        private ccLibrary.ccLabel cclblTotalRep;
+        private ccLibrary.ccLabel ccLabel5;
+        private ccLibrary.ccLabel cclblTotalFinalizadas;
+        private ccLibrary.ccLabel cclblTotalEnCurso;
+        private ccLibrary.ccLabel ccLabel3;
+        private System.Windows.Forms.Panel pnlIngresos;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresosReparaciones;
+        private System.Windows.Forms.Panel pnlTopIngresos;
+        private System.Windows.Forms.RadioButton rbIngresosAnuales;
+        private System.Windows.Forms.RadioButton rbIngresosMensuales;
+        private ccLibrary.ccLabel ccLabel7;
     }
 }
