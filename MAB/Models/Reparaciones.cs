@@ -17,8 +17,8 @@ namespace MAB.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Reparaciones()
         {
-            this.Repuestos = new HashSet<Repuestos>();
             this.Entregas = new HashSet<Entregas>();
+            this.Repuestos = new HashSet<ReparacionesRepuestos>();
         }
     
         public int Id { get; set; }
@@ -34,8 +34,8 @@ namespace MAB.Models
     
         public virtual Lavarropas Lavarropas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Repuestos> Repuestos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entregas> Entregas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReparacionesRepuestos> Repuestos { get; set; }
     }
 }

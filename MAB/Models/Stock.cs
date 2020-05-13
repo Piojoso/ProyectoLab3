@@ -12,20 +12,18 @@ namespace MAB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Repuestos
+    public partial class Stock
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Repuestos()
+        public Stock()
         {
-            this.Reparaciones = new HashSet<ReparacionesRepuestos>();
+            this.Disponibilidad = 0;
         }
     
         public int Id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public int Disponibilidad { get; set; }
+        public double Precio { get; set; }
     
-        public virtual Stock Stock { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReparacionesRepuestos> Reparaciones { get; set; }
+        public virtual Repuestos Repuestos { get; set; }
     }
 }
