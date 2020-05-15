@@ -570,8 +570,8 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="9c11d10b3a6c4626814d81d162fb7bac" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="MABModel.Clientes" Width="1.5" PointX="1.875" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="9c11d10b3a6c4626814d81d162fb7bac" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="MABModel.Clientes" Width="1.5" PointX="1.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MABModel.Telefonos" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MABModel.Lavarropas" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MABModel.Reparaciones" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />

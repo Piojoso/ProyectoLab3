@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 using MAB.Forms.CRUD.Clientes;
 using MAB.Forms.CRUD.Lavarropas;
 using MAB.Forms.CRUD.Reparaciones;
-using MAB.Models;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms
 {
@@ -69,10 +69,6 @@ namespace MAB.Forms
                 hijoActual.Close();
             
             ucTitleBar.TitleText = "MAB";
-            
-            cargarEstadisticasDeReparaciones();
-            rbCantLavInMensual.Checked = true;
-            rbIngresosMensual.Checked = true;
         }
 
         private void verClientes(object sender, EventArgs e)
@@ -92,10 +88,7 @@ namespace MAB.Forms
 
         private void verStock(object sender, EventArgs e)
         {
-            /**
-             * TODO: Asignar su correspondiente formulario a este Boton
-             */
-            //abrirFormulario();
+            abrirFormulario(new frmRepuestos());
         }
 
         #endregion
@@ -125,116 +118,6 @@ namespace MAB.Forms
         }
 
         #endregion
-
-        private void cargarChart()
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                //var data = from clientes in db.Clientes
-                //           where
-            }
-        }
-
-        private void rbCantLavInMensual_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * select COUNT(r.Id) 
-                 * from Reparaciones as r
-                 * group by MONTH(r.fechaIngreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                           group r by new { month = r.fechaIngreso.Month } into grouped
-                           select new { count = grouped.Count() }).ToList();
-
-                chartCantLavarropasIn.DataSource = data;
-            }
-        }
-
-        private void rbCantLavInAnual_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * select count(r.id)
-                 * from Reparaciones as r
-                 * group by YEAR(r.fechaIngreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                           group r by new { year = r.fechaIngreso.Year } into grouped
-                           select new { count = grouped.Count() }).ToList();
-
-                chartCantLavarropasIn.DataSource = data;
-            }
-        }
-
-        private void rbIngresosMensual_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * Select sum(r.manoObra), sum(r.totalRepuestos)
-                 * from Reparaciones as r
-                 * gruop by MONTH(r.fechaEgreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                            group r by new { month = r.fechaEgreso.Value.Month } into grouped
-                            select new
-                            {
-                                ManoObra = grouped.Sum(x => x.manoDeObra),
-                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
-                            }).ToList();
-
-                chartIngresoObtenidos.DataSource = data;
-            }
-        }
-
-        private void rbIngresosAnual_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * Select sum(r.manoObra), sum(r.totalRepuestos)
-                 * from Reparaciones as r
-                 * gruop by YEAR(r.fechaEgreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                            group r by new { year = r.fechaEgreso.Value.Year } into grouped
-                            select new
-                            {
-                                ManoObra = grouped.Sum(x => x.manoDeObra),
-                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
-                            }).ToList();
-
-                chartIngresoObtenidos.DataSource = data;
-            }
-        }
-
-        private void cargarEstadisticasDeReparaciones()
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                var cantRepRealizadas = (from r in db.Reparaciones
-                                         where r.estadoReparacion == estadosReparacion.Finalizada
-                                         select r);
-
-                cclblCantRepFin.Text = cantRepRealizadas.Count().ToString();
-
-                var cantRepSinTerminar = (from r in db.Reparaciones
-                                          where r.estadoReparacion == estadosReparacion.EnCurso
-                                          select r);
-
-                cclblCantRepNoFin.Text = cantRepSinTerminar.Count().ToString();
-            }
-        }
+        
     }
 }
