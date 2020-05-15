@@ -96,7 +96,28 @@ namespace MAB.Forms.Repuestos
 
         private void btnBuscar(object sender, EventArgs e)
         {
+            frmBuscarRepuesto frm = new frmBuscarRepuesto();
+            frm.ShowDialog();
 
+            if (frm.getRepuestos.Count != 0)
+            {
+                using (MABEntities db = new MABEntities())
+                {
+                    List<Models.Reparaciones> reparaciones = new List<Models.Reparaciones>();
+
+                    foreach (int id in frm.getRepuestos)
+                    {
+                        reparaciones.Add(db.Reparaciones.Find(id));
+                    }
+
+                    ucDGVTabla.dataSource(reparaciones);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
+                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         #endregion

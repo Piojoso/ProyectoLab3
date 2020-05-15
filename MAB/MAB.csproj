@@ -207,6 +207,12 @@
     <Compile Include="Forms\Repuestos\frmAgregarRepuesto.Designer.cs">
       <DependentUpon>frmAgregarRepuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Repuestos\frmBuscarRepuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmBuscarRepuesto.Designer.cs">
+      <DependentUpon>frmBuscarRepuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Repuestos\frmModificarRepuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Repuestos\frmAgregarRepuesto.resx">
       <DependentUpon>frmAgregarRepuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Repuestos\frmBuscarRepuesto.resx">
+      <DependentUpon>frmBuscarRepuesto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Repuestos\frmModificarRepuesto.resx">
       <DependentUpon>frmModificarRepuesto.cs</DependentUpon>
