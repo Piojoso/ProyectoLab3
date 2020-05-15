@@ -76,7 +76,22 @@ namespace MAB.Forms.Repuestos
 
         private void btnModificar(object sender, EventArgs e)
         {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idRepuesto = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
+                frmModificarRepuesto frm = new frmModificarRepuesto(idRepuesto);
+                frm.ShowDialog();
+
+                if (reparacion != null)
+                {
+                    cargarDGV(reparacion.Id);
+                }
+                else
+                {
+                    cargarDGV(null);
+                }
+            }
         }
 
         private void btnBuscar(object sender, EventArgs e)
