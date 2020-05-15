@@ -13,24 +13,51 @@ namespace MAB.Forms.Repuestos
 {
     public partial class frmRepuestos : Form
     {
-        public frmRepuestos()
+        public frmRepuestos(int? idReparacion = null)
         {
             InitializeComponent();
 
-            cargarDGV();
+            cargarDGV(idReparacion);
 
             ucDGVTabla.click_btnAdd += btnAgregar;
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnBuscar;
         }
 
-        private void cargarDGV()
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                var repuestos = db.Repuestos;
+        private Models.Reparaciones reparacion = null;
 
-                ucDGVTabla.FullListData = repuestos.ToList();
+        private void cargarDGV(int? idReparacion)
+        {
+            if(idReparacion != null)
+            {
+                using (MABEntities db = new MABEntities())
+                {
+                    reparacion = db.Reparaciones.Find(idReparacion);
+
+                    List<Models.Repuestos> repuestos = new List<Models.Repuestos>();
+
+                    foreach(ReparacionesRepuestos r in reparacion.Repuestos)
+                    {
+                        repuestos.Add(db.Repuestos.Find(r.RepuestosId));
+                    }
+
+                    var data = from r in repuestos
+                                    select new { r.Id, r.nombre, r.descripcion, stock = r.Stock.Disponibilidad, precio = r.Stock.Precio };
+
+                    ucDGVTabla.dataSource(data.ToList());
+                }
+            }
+            else
+            {
+                using (MABEntities db = new MABEntities())
+                {
+                    var repuestos = db.Repuestos;
+
+                    var data = from r in repuestos
+                                select new { r.Id, r.nombre, r.descripcion, stock = r.Stock.Disponibilidad, precio = r.Stock.Precio };
+
+                    ucDGVTabla.FullListData = data.ToList();
+                }
             }
         }
 
@@ -38,7 +65,13 @@ namespace MAB.Forms.Repuestos
 
         private void btnAgregar(object sender, EventArgs e)
         {
+            frmAgregarRepuesto frm = new frmAgregarRepuesto();
+            frm.ShowDialog();
 
+            if(reparacion != null)
+                cargarDGV(reparacion.Id);
+            else
+                cargarDGV(null);
         }
 
         private void btnModificar(object sender, EventArgs e)
