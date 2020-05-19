@@ -119,11 +119,8 @@ namespace MAB.Forms.Repuestos
 
         private void btnBuscar(object sender, EventArgs e)
         {
-            /**
-             * TODO: Revisar si no tengo que realizar busquedas por repuestos de una determinada 
-             * reparacion en caso de que se esten enseñando repuestos de una determinada reparacion
-             * 
-             */
+            if (reparacion != null)
+                MessageBox.Show("La busqueda se realiza sobre todos los repuestos", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             frmBuscarRepuesto frm = new frmBuscarRepuesto();
             frm.ShowDialog();
