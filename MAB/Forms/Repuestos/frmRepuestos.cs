@@ -65,13 +65,36 @@ namespace MAB.Forms.Repuestos
 
         private void btnAgregar(object sender, EventArgs e)
         {
-            frmAgregarRepuesto frm = new frmAgregarRepuesto();
-            frm.ShowDialog();
-
             if(reparacion != null)
+            {
+                frmSeleccionarRepuesto frm = new frmSeleccionarRepuesto();
+                frm.ShowDialog();
+
+                int idRepuesto = frm.repuestoSeleccionado;
+
+                if(idRepuesto != -1)
+                {
+                    using (MABEntities db = new MABEntities())
+                    {
+                        Models.ReparacionesRepuestos repuRepa = new ReparacionesRepuestos();
+
+                        repuRepa.ReparacionesId = reparacion.Id;
+                        repuRepa.RepuestosId = idRepuesto;
+
+                        db.ReparacionesRepuestos.Add(repuRepa);
+                        db.SaveChanges();
+                    }
+                }
+
                 cargarDGV(reparacion.Id);
+            }
             else
+            {
+                frmAgregarRepuesto frm = new frmAgregarRepuesto();
+                frm.ShowDialog();
+
                 cargarDGV(null);
+            }
         }
 
         private void btnModificar(object sender, EventArgs e)
@@ -96,6 +119,12 @@ namespace MAB.Forms.Repuestos
 
         private void btnBuscar(object sender, EventArgs e)
         {
+            /**
+             * TODO: Revisar si no tengo que realizar busquedas por repuestos de una determinada 
+             * reparacion en caso de que se esten enseñando repuestos de una determinada reparacion
+             * 
+             */
+
             frmBuscarRepuesto frm = new frmBuscarRepuesto();
             frm.ShowDialog();
 
