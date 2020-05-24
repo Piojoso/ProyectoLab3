@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.Lavarropas;
 using MAB.Forms.Reparaciones;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms.CRUD.Reparaciones
 {
@@ -102,6 +103,12 @@ namespace MAB.Forms.CRUD.Reparaciones
             tsiVerLavarropas.Text = "Ver Lavarropas";
             tsiVerLavarropas.Click += verLavarropas;
 
+            ToolStripMenuItem tsmiVerRepuestos = new ToolStripMenuItem();
+            tsmiVerRepuestos.Name = "tsmiVerRepuestos";
+            tsmiVerRepuestos.Size = new Size(148, 22);
+            tsmiVerRepuestos.Text = "Ver Repuestos";
+            tsmiVerRepuestos.Click += verRepuestos;
+
             ToolStripMenuItem tsiVerDetalle = new ToolStripMenuItem();
             tsiVerDetalle.Name = "tsiVerDetalle";
             tsiVerDetalle.Size = new Size(148, 22);
@@ -114,6 +121,7 @@ namespace MAB.Forms.CRUD.Reparaciones
                 tsmiFinalizar,
                 tssSeparador,
                 tsiVerLavarropas,
+                tsmiVerRepuestos,
                 tsiVerDetalle,
             });
             cms.Name = "cmsDGV";
@@ -263,6 +271,24 @@ namespace MAB.Forms.CRUD.Reparaciones
             {
                 MessageBox.Show(
                     "Debe seleccionar una Reparacion primero para luego poder ver el Lavarropas al que se realizo.",
+                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
+        }
+
+        private void verRepuestos(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idReparacion = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmRepuestos frm = new frmRepuestos(idReparacion);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Debe seleccionar una Reparacion primero para luego poder ver los repuestos usados.",
                     "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
                 );
             }

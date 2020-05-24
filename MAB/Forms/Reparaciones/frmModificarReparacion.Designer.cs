@@ -54,6 +54,7 @@
             this.pnlBody = new System.Windows.Forms.Panel();
             this.cclblNombreApellidoCliente = new ccLibrary.ccLabel();
             this.cclblCliente = new ccLibrary.ccLabel();
+            this.btnRepuestos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudGarantia)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +74,6 @@
             // 
             // cclblFechaIngreso
             // 
-            this.cclblFechaIngreso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFechaIngreso.AutoSize = true;
             this.cclblFechaIngreso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblFechaIngreso.Location = new System.Drawing.Point(371, 91);
@@ -84,7 +84,6 @@
             // 
             // cclblFechaEgreso
             // 
-            this.cclblFechaEgreso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFechaEgreso.AutoSize = true;
             this.cclblFechaEgreso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblFechaEgreso.Location = new System.Drawing.Point(60, 287);
@@ -95,7 +94,6 @@
             // 
             // cclblErrorReparar
             // 
-            this.cclblErrorReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblErrorReparar.AutoSize = true;
             this.cclblErrorReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblErrorReparar.Location = new System.Drawing.Point(60, 140);
@@ -106,7 +104,6 @@
             // 
             // cclblEstadoReparacion
             // 
-            this.cclblEstadoReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblEstadoReparacion.AutoSize = true;
             this.cclblEstadoReparacion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblEstadoReparacion.Location = new System.Drawing.Point(60, 91);
@@ -117,7 +114,6 @@
             // 
             // cclblMesesGarantia
             // 
-            this.cclblMesesGarantia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMesesGarantia.AutoSize = true;
             this.cclblMesesGarantia.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblMesesGarantia.Location = new System.Drawing.Point(371, 287);
@@ -128,7 +124,6 @@
             // 
             // cclblReparacionRealizada
             // 
-            this.cclblReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblReparacionRealizada.AutoSize = true;
             this.cclblReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblReparacionRealizada.Location = new System.Drawing.Point(60, 189);
@@ -139,7 +134,6 @@
             // 
             // cclblManoObra
             // 
-            this.cclblManoObra.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblManoObra.AutoSize = true;
             this.cclblManoObra.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblManoObra.Location = new System.Drawing.Point(60, 238);
@@ -150,7 +144,6 @@
             // 
             // cclblTotalRepuestos
             // 
-            this.cclblTotalRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTotalRepuestos.AutoSize = true;
             this.cclblTotalRepuestos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTotalRepuestos.Location = new System.Drawing.Point(326, 238);
@@ -161,7 +154,6 @@
             // 
             // cclblLavarropa
             // 
-            this.cclblLavarropa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblLavarropa.AutoSize = true;
             this.cclblLavarropa.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblLavarropa.Location = new System.Drawing.Point(371, 42);
@@ -172,7 +164,6 @@
             // 
             // cclblTotal
             // 
-            this.cclblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTotal.AutoSize = true;
             this.cclblTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTotal.Location = new System.Drawing.Point(645, 238);
@@ -183,7 +174,6 @@
             // 
             // cclblValorTotal
             // 
-            this.cclblValorTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblValorTotal.AutoSize = true;
             this.cclblValorTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblValorTotal.Location = new System.Drawing.Point(691, 238);
@@ -212,7 +202,6 @@
             // 
             // cclblMarcaModelo
             // 
-            this.cclblMarcaModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMarcaModelo.AutoSize = true;
             this.cclblMarcaModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblMarcaModelo.Location = new System.Drawing.Point(453, 42);
@@ -236,7 +225,7 @@
             this.cctbReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbReparacionRealizada.Location = new System.Drawing.Point(200, 186);
             this.cctbReparacionRealizada.Name = "cctbReparacionRealizada";
-            this.cctbReparacionRealizada.Size = new System.Drawing.Size(506, 24);
+            this.cctbReparacionRealizada.Size = new System.Drawing.Size(374, 24);
             this.cctbReparacionRealizada.TabIndex = 17;
             // 
             // cctbManoObra
@@ -285,7 +274,6 @@
             // 
             // cclblFinaliza
             // 
-            this.cclblFinaliza.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFinaliza.AutoSize = true;
             this.cclblFinaliza.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblFinaliza.Location = new System.Drawing.Point(549, 287);
@@ -296,6 +284,7 @@
             // 
             // pnlBody
             // 
+            this.pnlBody.Controls.Add(this.btnRepuestos);
             this.pnlBody.Controls.Add(this.cclblNombreApellidoCliente);
             this.pnlBody.Controls.Add(this.cclblCliente);
             this.pnlBody.Controls.Add(this.cclblLavarropa);
@@ -328,7 +317,6 @@
             // 
             // cclblNombreApellidoCliente
             // 
-            this.cclblNombreApellidoCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombreApellidoCliente.AutoSize = true;
             this.cclblNombreApellidoCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombreApellidoCliente.Location = new System.Drawing.Point(116, 42);
@@ -338,7 +326,6 @@
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente.Location = new System.Drawing.Point(60, 42);
@@ -346,6 +333,17 @@
             this.cclblCliente.Size = new System.Drawing.Size(50, 16);
             this.cclblCliente.TabIndex = 26;
             this.cclblCliente.Text = "Cliente:";
+            // 
+            // btnRepuestos
+            // 
+            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepuestos.Location = new System.Drawing.Point(580, 185);
+            this.btnRepuestos.Name = "btnRepuestos";
+            this.btnRepuestos.Size = new System.Drawing.Size(126, 23);
+            this.btnRepuestos.TabIndex = 28;
+            this.btnRepuestos.Text = "Repuestos Usados";
+            this.btnRepuestos.UseVisualStyleBackColor = true;
+            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
             // 
             // frmModificarReparacion
             // 
@@ -395,5 +393,6 @@
         private System.Windows.Forms.Panel pnlBody;
         private ccLibrary.ccLabel cclblNombreApellidoCliente;
         private ccLibrary.ccLabel cclblCliente;
+        private System.Windows.Forms.Button btnRepuestos;
     }
 }

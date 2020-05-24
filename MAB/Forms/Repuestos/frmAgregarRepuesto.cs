@@ -16,6 +16,8 @@ namespace MAB.Forms.Repuestos
         public frmAgregarRepuesto()
         {
             InitializeComponent();
+            
+            Text = "Agregar nuevo Repuesto";
 
             ucBottom.Accion1 = "Agregar";
             ucBottom.Accion2 = "Cerrar";

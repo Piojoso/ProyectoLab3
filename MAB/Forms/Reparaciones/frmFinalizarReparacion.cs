@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms.Reparaciones
 {
@@ -112,5 +113,13 @@ namespace MAB.Forms.Reparaciones
         }
 
         #endregion
+
+        private void btnRepuestos_Click(object sender, EventArgs e)
+        {
+            frmRepuestos frm = new frmRepuestos(reparacion.Id);
+            frm.ShowDialog();
+
+            cargarReparacion(reparacion.Id);
+        }
     }
 }

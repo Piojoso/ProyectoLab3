@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms.CRUD.Reparaciones
 {
@@ -140,5 +141,12 @@ namespace MAB.Forms.CRUD.Reparaciones
             this.Close();
         }
 
+        private void btnRepuestos_Click(object sender, EventArgs e)
+        {
+            frmRepuestos frm = new frmRepuestos(reparacion.Id);
+            frm.ShowDialog();
+
+            cargarDatos(reparacion.Id);
+        }
     }
 }

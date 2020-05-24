@@ -11,6 +11,7 @@ using MAB.Models;
 using MAB.Forms.CRUD.Reparaciones;
 using MAB.Forms.Lavarropas;
 using MAB.Forms.Entregas;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms.Reparaciones
 {
@@ -82,6 +83,13 @@ namespace MAB.Forms.Reparaciones
             frm.ShowDialog();
         }
 
+        private void btnRepuestos_Click(object sender, EventArgs e)
+        {
+            frmRepuestos frm = new frmRepuestos(reparacion.Id);
+            frm.ShowDialog();
+        }
+
         #endregion
+
     }
 }
