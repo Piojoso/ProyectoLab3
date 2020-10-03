@@ -31,7 +31,6 @@ namespace MAB.Models
         public virtual DbSet<Reparaciones> Reparaciones { get; set; }
         public virtual DbSet<Repuestos> Repuestos { get; set; }
         public virtual DbSet<Entregas> Entregas { get; set; }
-        public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<ReparacionesRepuestos> ReparacionesRepuestos { get; set; }
     }
 }

@@ -48,8 +48,8 @@ namespace MAB.Forms.Repuestos
                         "Desea guardar el Repuesto con: \n" +
                         "Nombre: " + cctbNombre.Text + "\n" +
                         "Descripcion: " + cctbDescripcion.Text + "\n" +
-                        "Stock" + cctbStock.Text + "\n" +
-                        "Precio" + cctbPrecio.Text + "\n",
+                        "Stock: " + cctbStock.Text + "\n" +
+                        "Precio: " + cctbPrecio.Text + "\n",
                         "Atencion",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning
@@ -61,16 +61,9 @@ namespace MAB.Forms.Repuestos
 
                         repuesto.nombre = cctbNombre.Text;
                         repuesto.descripcion = cctbDescripcion.Text;
+                        repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
+                        repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
 
-                        Models.Stock stock = new Models.Stock();
-
-                        stock.Disponibilidad = Convert.ToInt32(cctbStock.Text);
-                        stock.Precio = Convert.ToDouble(cctbPrecio.Text);
-
-                        repuesto.Stock = stock;
-                        stock.Repuestos = repuesto;
-
-                        db.Stock.Add(stock);
                         db.Repuestos.Add(repuesto);
 
                         db.SaveChanges();

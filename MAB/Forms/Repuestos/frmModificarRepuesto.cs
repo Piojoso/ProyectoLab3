@@ -47,8 +47,8 @@ namespace MAB.Forms.Repuestos
 
             cctbNombre.Text = repuesto.nombre;
             cctbDescripcion.Text = repuesto.descripcion;
-            cctbStock.Text = repuesto.Stock.Disponibilidad.ToString();
-            cctbPrecio.Text = repuesto.Stock.Precio.ToString();
+            cctbStock.Text = repuesto.disponibles.ToString();
+            cctbPrecio.Text = repuesto.precio.ToString();
 
         }
 
@@ -62,16 +62,16 @@ namespace MAB.Forms.Repuestos
                     "¿Desea continuar con la modificacion? \n" +
                     "Nombre cambiara de: " + repuesto.nombre + " a " + cctbNombre.Text + "\n" +
                     "Descripcion cambiara de: " + repuesto.descripcion + " a " + cctbDescripcion.Text + "\n" +
-                    "Stock cambiara de: " + repuesto.Stock.Disponibilidad + " a " + cctbStock.Text + "\n" +
-                    "Precio cambiara de: " + repuesto.Stock.Precio + " a " + cctbPrecio.Text + "\n" +
+                    "Stock cambiara de: " + repuesto.disponibles + " a " + cctbStock.Text + "\n" +
+                    "Precio cambiara de: " + repuesto.precio + " a " + cctbPrecio.Text + "\n" +
                     "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (resp == DialogResult.Yes)
                 {
                     repuesto.nombre = cctbNombre.Text;
                     repuesto.descripcion = cctbDescripcion.Text;
-                    repuesto.Stock.Disponibilidad = Convert.ToInt32(cctbStock.Text);
-                    repuesto.Stock.Precio = Convert.ToDouble(cctbPrecio.Text);
+                    repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
+                    repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
 
                     using (MABEntities db = new MABEntities())
                     {

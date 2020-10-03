@@ -42,7 +42,7 @@ namespace MAB.Forms.Repuestos
                     }
 
                     var data = from r in repuestos
-                                    select new { r.Id, r.nombre, r.descripcion, stock = r.Stock.Disponibilidad, precio = r.Stock.Precio };
+                                    select new { r.Id, r.nombre, r.descripcion, stock = r.disponibles, r.precio };
 
                     ucDGVTabla.dataSource(data.ToList());
                 }
@@ -54,7 +54,7 @@ namespace MAB.Forms.Repuestos
                     var repuestos = db.Repuestos;
 
                     var data = from r in repuestos
-                                select new { r.Id, r.nombre, r.descripcion, stock = r.Stock.Disponibilidad, precio = r.Stock.Precio };
+                                select new { r.Id, r.nombre, r.descripcion, stock = r.disponibles, r.precio };
 
                     ucDGVTabla.FullListData = data.ToList();
                 }

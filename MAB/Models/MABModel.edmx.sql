@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/12/2020 22:06:19
+-- Date Created: 10/02/2020 20:53:00
 -- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 3\MAB\Models\MABModel.edmx
 -- --------------------------------------------------
 
@@ -31,9 +31,6 @@ IF OBJECT_ID(N'[dbo].[FK_ReparacionesEntregas]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClientesEntregas]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Entregas] DROP CONSTRAINT [FK_ClientesEntregas];
-GO
-IF OBJECT_ID(N'[dbo].[FK_StockRepuestos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Repuestos] DROP CONSTRAINT [FK_StockRepuestos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ReparacionesReparacionesRepuestos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ReparacionesRepuestos] DROP CONSTRAINT [FK_ReparacionesReparacionesRepuestos];
@@ -64,9 +61,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Entregas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Entregas];
 GO
-IF OBJECT_ID(N'[dbo].[Stock]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Stock];
-GO
 IF OBJECT_ID(N'[dbo].[ReparacionesRepuestos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ReparacionesRepuestos];
 GO
@@ -80,7 +74,8 @@ CREATE TABLE [dbo].[Clientes] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NULL,
     [apellido] nvarchar(max)  NOT NULL,
-    [direccion] nvarchar(max)  NOT NULL
+    [direccion] nvarchar(max)  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
@@ -98,7 +93,8 @@ CREATE TABLE [dbo].[Lavarropas] (
     [marca] nvarchar(max)  NOT NULL,
     [modelo] nvarchar(max)  NOT NULL,
     [estadoGeneral] nvarchar(max)  NULL,
-    [ClienteId] int  NOT NULL
+    [ClienteId] int  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
@@ -113,7 +109,8 @@ CREATE TABLE [dbo].[Reparaciones] (
     [reparacionRealizada] nvarchar(max)  NOT NULL,
     [manoDeObra] float  NOT NULL,
     [totalRepuestos] float  NOT NULL,
-    [LavarropasId] int  NOT NULL
+    [LavarropasId] int  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
@@ -121,7 +118,10 @@ GO
 CREATE TABLE [dbo].[Repuestos] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
-    [descripcion] nvarchar(max)  NULL
+    [descripcion] nvarchar(max)  NULL,
+    [disponibles] int  NOT NULL,
+    [precio] float  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
@@ -131,22 +131,16 @@ CREATE TABLE [dbo].[Entregas] (
     [fecha] datetime  NOT NULL,
     [monto] float  NOT NULL,
     [ReparacionesId] int  NOT NULL,
-    [ClientesId] int  NOT NULL
-);
-GO
-
--- Creating table 'Stock'
-CREATE TABLE [dbo].[Stock] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Disponibilidad] int  NOT NULL,
-    [Precio] float  NOT NULL
+    [ClientesId] int  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
 -- Creating table 'ReparacionesRepuestos'
 CREATE TABLE [dbo].[ReparacionesRepuestos] (
     [ReparacionesId] int  NOT NULL,
-    [RepuestosId] int  NOT NULL
+    [RepuestosId] int  NOT NULL,
+    [estado] bit  NOT NULL
 );
 GO
 
@@ -187,12 +181,6 @@ GO
 -- Creating primary key on [Id] in table 'Entregas'
 ALTER TABLE [dbo].[Entregas]
 ADD CONSTRAINT [PK_Entregas]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'Stock'
-ALTER TABLE [dbo].[Stock]
-ADD CONSTRAINT [PK_Stock]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -279,15 +267,6 @@ GO
 CREATE INDEX [IX_FK_ClientesEntregas]
 ON [dbo].[Entregas]
     ([ClientesId]);
-GO
-
--- Creating foreign key on [Id] in table 'Repuestos'
-ALTER TABLE [dbo].[Repuestos]
-ADD CONSTRAINT [FK_StockRepuestos]
-    FOREIGN KEY ([Id])
-    REFERENCES [dbo].[Stock]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ReparacionesId] in table 'ReparacionesRepuestos'

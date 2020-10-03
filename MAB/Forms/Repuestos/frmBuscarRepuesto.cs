@@ -34,7 +34,7 @@ namespace MAB.Forms.Repuestos
             cctbPrecio.CaracterIncorrectErrorMessage = messageError;
         }
 
-        private List<int> idRepuestos;
+        private List<int> idRepuestos = new List<int>();
 
         public List<int> getRepuestos
         {
@@ -69,12 +69,12 @@ namespace MAB.Forms.Repuestos
                     idRepuestos.Add(r.Id);
                     break;
                 }
-                else if(stock && r.Stock.Disponibilidad == Convert.ToInt32(cctbStock.Text))
+                else if(stock && r.disponibles == Convert.ToInt32(cctbStock.Text))
                 {
                     idRepuestos.Add(r.Id);
                     break;
                 }
-                else if (precio && r.Stock.Precio == Convert.ToDouble(cctbPrecio.Text))
+                else if (precio && r.precio == Convert.ToDouble(cctbPrecio.Text))
                 {
                     idRepuestos.Add(r.Id);
                     break;

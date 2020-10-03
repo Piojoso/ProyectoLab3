@@ -16,6 +16,7 @@ namespace MAB.Models
     {
         public int ReparacionesId { get; set; }
         public int RepuestosId { get; set; }
+        public bool estado { get; set; }
     
         public virtual Reparaciones Reparaciones { get; set; }
         public virtual Repuestos Repuestos { get; set; }
