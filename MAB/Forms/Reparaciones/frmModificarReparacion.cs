@@ -79,55 +79,26 @@ namespace MAB.Forms.CRUD.Reparaciones
                 if (cctbValorRepuestos.Text == string.Empty)
                     cctbValorRepuestos.Text = "0";
 
-                DialogResult resp;
-
                 if ((estadosReparacion)cboEstadoReparacion.SelectedItem == estadosReparacion.Finalizada)
                 {
-                    resp = MessageBox.Show(
-                    "¿Desea continuar con la modificacion? \n" +
-                    "Estado de reparacion cambiara de: " + reparacion.estadoReparacion.ToString() + " a " + ((estadosReparacion)cboEstadoReparacion.SelectedItem).ToString() + "\n" +
-                    "Fecha de Ingreso cambiara de: " + reparacion.fechaEgreso.Value.ToString() + " a " + dtpFechaIngreso.Value.ToString() + "\n" +
-                    "Falla a Reparar cambiara de: " + reparacion.errorAReparar + " a " + cctbFallaAReparar.Text + "\n" +
-                    "Reparacion Realizada cambiara de: " + reparacion.reparacionRealizada + " a " + cctbReparacionRealizada.Text + "\n" +
-                    "Mano de Obra cambiara de: " + reparacion.manoDeObra + " a " + cctbManoObra.Text + "\n" +
-                    "Total de Repuestos cambiara de: " + reparacion.totalRepuestos + " a " + cctbValorRepuestos.Text + "\n" +
-                    "Fecha de Egreso cambiara de: " + reparacion.fechaEgreso + " a " + dtpFechaEgreso.Value.ToString() + "\n" +
-                    "Meses de Garantia cambiara de: " + reparacion.mesesGarantia + " a " + nudGarantia.Value.ToString() + "\n" +
-                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
                     reparacion.fechaEgreso = dtpFechaEgreso.Value;
                     reparacion.mesesGarantia = Convert.ToInt32(nudGarantia.Value);
                 }
-                else
+
+                using (MABEntities db = new MABEntities())
                 {
-                    resp = MessageBox.Show(
-                    "¿Desea continuar con la modificacion? \n" +
-                    "Estado de reparacion cambiara de: " + reparacion.estadoReparacion.ToString() + " a " + ((estadosReparacion)cboEstadoReparacion.SelectedItem).ToString() + "\n" +
-                    "Fecha de Ingreso cambiara de: " + reparacion.fechaEgreso.Value.ToString() + " a " + dtpFechaIngreso.Value.ToString() + "\n" +
-                    "Falla a Reparar cambiara de: " + reparacion.errorAReparar + " a " + cctbFallaAReparar.Text + "\n" +
-                    "Reparacion Realizada cambiara de: " + reparacion.reparacionRealizada + " a " + cctbReparacionRealizada.Text + "\n" +
-                    "Mano de Obra cambiara de: " + reparacion.manoDeObra + " a " + cctbManoObra.Text + "\n" +
-                    "Total de Repuestos cambiara de: " + reparacion.totalRepuestos + " a " + cctbValorRepuestos.Text + "\n" +
-                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                }
+                    reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
+                    reparacion.fechaIngreso = dtpFechaIngreso.Value;
+                    reparacion.errorAReparar = cctbFallaAReparar.Text;
+                    reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
+                    reparacion.manoDeObra = Convert.ToDouble(cctbManoObra.Text);
+                    reparacion.totalRepuestos = Convert.ToDouble(cctbValorRepuestos.Text);
 
-                if(resp == DialogResult.Yes)
-                {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
-                        reparacion.fechaIngreso = dtpFechaIngreso.Value;
-                        reparacion.errorAReparar = cctbFallaAReparar.Text;
-                        reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
-                        reparacion.manoDeObra = Convert.ToDouble(cctbManoObra.Text);
-                        reparacion.totalRepuestos = Convert.ToDouble(cctbValorRepuestos.Text);
+                    db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
 
-                        db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
 
-                        db.SaveChanges();
-
-                        MessageBox.Show("Reparacion Modificada correctamente");
-                    }
+                    MessageBox.Show("Reparacion Modificada correctamente");
                 }
             }
             else

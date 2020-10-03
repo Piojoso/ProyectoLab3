@@ -35,36 +35,20 @@ namespace MAB.Forms.CRUD.Clientes
 
             cctbNombre.CaracterIncorrectErrorMessage = messageError;
             cctbApellido.CaracterIncorrectErrorMessage = messageError;
-            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
         }
         
         private void buscarCliente(object sender, EventArgs e)
         {
             idClientes = buscar();
 
-            DialogResult respuesta;
-
             if (idClientes.Count > 0)
             {
-                respuesta = MessageBox.Show("Se encontraron un total de: " + idClientes.Count + " registro/s. \n ¿Desea ver el/los resultado/s?", "Encontrados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {
-                respuesta = MessageBox.Show("No se encontraron registros. \n ¿Desea limpiar los campos para realizar una nueva busqueda?", "No hubo Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    cctbNombre.Clear();
-                    cctbApellido.Clear();
-                    cctbDireccion.Clear();
-
-                    cctbNombre.Focus();
-                }
+                MessageBox.Show("No se encontraron registros", "No hubo resultados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cctbNombre.Focus();
             }
         }
 

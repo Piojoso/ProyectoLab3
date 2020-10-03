@@ -44,30 +44,16 @@ namespace MAB.Forms.Repuestos
             {
                 using(MABEntities db = new MABEntities())
                 {
-                    DialogResult resp = MessageBox.Show(
-                        "Desea guardar el Repuesto con: \n" +
-                        "Nombre: " + cctbNombre.Text + "\n" +
-                        "Descripcion: " + cctbDescripcion.Text + "\n" +
-                        "Stock: " + cctbStock.Text + "\n" +
-                        "Precio: " + cctbPrecio.Text + "\n",
-                        "Atencion",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning
-                    );
+                    Models.Repuestos repuesto = new Models.Repuestos();
 
-                    if (resp == DialogResult.Yes)
-                    {
-                        Models.Repuestos repuesto = new Models.Repuestos();
+                    repuesto.nombre = cctbNombre.Text;
+                    repuesto.descripcion = cctbDescripcion.Text;
+                    repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
+                    repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
 
-                        repuesto.nombre = cctbNombre.Text;
-                        repuesto.descripcion = cctbDescripcion.Text;
-                        repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
-                        repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
+                    db.Repuestos.Add(repuesto);
 
-                        db.Repuestos.Add(repuesto);
-
-                        db.SaveChanges();
-                    }
+                    db.SaveChanges();
                 }
             }
             else

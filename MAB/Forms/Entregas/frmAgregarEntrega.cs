@@ -39,7 +39,7 @@ namespace MAB.Forms.Entregas
                 reparacion = db.Reparaciones.Find(idReparacion);
             }
 
-            Text = "Registrar una entrega nueva";
+            Text = "Registrar una nueva Entrega";
 
             cclblCliente.Text = reparacion.Lavarropas.Cliente.nombre + " " + reparacion.Lavarropas.Cliente.apellido;
             cclblNumReparacion.Text = reparacion.Id.ToString();
@@ -54,37 +54,22 @@ namespace MAB.Forms.Entregas
 
             if(cctbMonto.Text != string.Empty)
             {
-                DialogResult resp = MessageBox.Show(
-                    "Esta a punto de agregar una nueva entrega a nombre del \n" +
-                    "Cliente: " + reparacion.Lavarropas.Cliente.nombre + " " + reparacion.Lavarropas.Cliente.apellido + "\n" +
-                    "para la reparacion numero: " + reparacion.Id + "\n" +
-                    "El dia: " + dtpFechaEntrega.Value.ToShortDateString() + " y con un monto de: $" + cctbMonto.Text + "\n" +
-                    "¿Deseas Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                Models.Entregas entrega = new Models.Entregas();
 
-                if(resp == DialogResult.Yes)
+                entrega.ClientesId = reparacion.Lavarropas.Cliente.Id;
+                entrega.ReparacionesId = reparacion.Id;
+                entrega.monto = Convert.ToInt32(cctbMonto.Text);
+                entrega.fecha = dtpFechaEntrega.Value;
+
+                using(MABEntities db = new MABEntities())
                 {
-                    Models.Entregas entrega = new Models.Entregas();
+                    db.Entregas.Add(entrega);
+                    db.SaveChanges();
 
-                    entrega.ClientesId = reparacion.Lavarropas.Cliente.Id;
-                    entrega.ReparacionesId = reparacion.Id;
-                    entrega.monto = Convert.ToInt32(cctbMonto.Text);
-                    entrega.fecha = dtpFechaEntrega.Value;
-
-                    using(MABEntities db = new MABEntities())
-                    {
-                        db.Entregas.Add(entrega);
-                        db.SaveChanges();
-
-                        resp = MessageBox.Show("Entrega Guardada Correctamente \n" +
-                            "¿Desea limpiar los campos para agregar otra Entrega?", 
-                            "¿Desea agregar otra Entrega?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                        if(resp == DialogResult.Yes)
-                        {
-                            cctbMonto.Text = "";
-                            cctbMonto.Focus();
-                        }
-                    }
+                    MessageBox.Show("Entrega Creada Correctamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    cctbMonto.Text = "";
+                    cctbMonto.Focus();
                 }
             }
             else

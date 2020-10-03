@@ -57,7 +57,6 @@
             // 
             // cclblTelefono
             // 
-            this.cclblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTelefono.AutoSize = true;
             this.cclblTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTelefono.Location = new System.Drawing.Point(119, 190);
@@ -68,7 +67,6 @@
             // 
             // cclblDireccion
             // 
-            this.cclblDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblDireccion.AutoSize = true;
             this.cclblDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblDireccion.Location = new System.Drawing.Point(119, 141);
@@ -79,7 +77,6 @@
             // 
             // cclblApellido
             // 
-            this.cclblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblApellido.AutoSize = true;
             this.cclblApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblApellido.Location = new System.Drawing.Point(119, 92);
@@ -90,7 +87,6 @@
             // 
             // cclblNombre
             // 
-            this.cclblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombre.AutoSize = true;
             this.cclblNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombre.Location = new System.Drawing.Point(119, 43);
@@ -125,7 +121,6 @@
             // 
             this.cctbDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbDireccion.CaracterIncorrectErrorMessage = "";
-            this.cctbDireccion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbDireccion.Location = new System.Drawing.Point(235, 138);
             this.cctbDireccion.Name = "cctbDireccion";
@@ -134,7 +129,6 @@
             // 
             // cclblNumTelefonos
             // 
-            this.cclblNumTelefonos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNumTelefonos.AutoSize = true;
             this.cclblNumTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNumTelefonos.Location = new System.Drawing.Point(232, 190);

@@ -181,10 +181,6 @@ namespace MAB.Forms.CRUD.Reparaciones
                     cargarDGV(null);
                 }
             }
-            else
-            {
-                MessageBox.Show("No hay ninguna Reparacion seleccionada.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void btnBuscar(object sender, EventArgs e)
@@ -206,12 +202,6 @@ namespace MAB.Forms.CRUD.Reparaciones
                     ucDGVTabla.dataSource(reparaciones);
                 }
             }
-            else
-            {
-                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
-                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
         }
 
         #endregion
@@ -237,7 +227,7 @@ namespace MAB.Forms.CRUD.Reparaciones
                     {
                          DialogResult resp = MessageBox.Show(
                             "Esta reparacion ya fue finalizada. \n" +
-                            "¿Desea modificarla?", "Imposible de Finalizar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            "¿Desea modificarla?", "Reparacion ya Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                         if(resp == DialogResult.Yes)
                         {
@@ -246,10 +236,6 @@ namespace MAB.Forms.CRUD.Reparaciones
                         }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("No hay ninguna fila seleccionada para ser Finalizada", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -267,13 +253,6 @@ namespace MAB.Forms.CRUD.Reparaciones
                     frm.ShowDialog();
                 }
             }
-            else
-            {
-                MessageBox.Show(
-                    "Debe seleccionar una Reparacion primero para luego poder ver el Lavarropas al que se realizo.",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
-            }
         }
 
         private void verRepuestos(object sender, EventArgs e)
@@ -284,13 +263,6 @@ namespace MAB.Forms.CRUD.Reparaciones
 
                 frmRepuestos frm = new frmRepuestos(idReparacion);
                 frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Debe seleccionar una Reparacion primero para luego poder ver los repuestos usados.",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
             }
         }
 
@@ -304,10 +276,6 @@ namespace MAB.Forms.CRUD.Reparaciones
                 frm.ShowDialog();
 
                 cargarDGV(lavarropas.Id);
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una reparacion para poder ver el detalle.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

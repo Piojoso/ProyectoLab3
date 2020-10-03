@@ -55,40 +55,25 @@ namespace MAB.Forms.Lavarropas
         {
             if((cctbMarca.Text != string.Empty) && (cctbModelo.Text != string.Empty) && (cctbEstado.Text != string.Empty))
             {
-                DialogResult resp = MessageBox.Show(
-                    "Se guardara el Lavarropas: \n" +
-                    "Marca: " + cctbMarca.Text + "\n" +
-                    "Modelo: " + cctbModelo.Text + "\n" +
-                    "Para el Cliente: " + Cliente.nombre + " " + Cliente.apellido + "\n" +
-                    "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if(resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        Models.Lavarropas Lavarropas = new Models.Lavarropas();
+                    Models.Lavarropas Lavarropas = new Models.Lavarropas();
 
-                        Lavarropas.marca = cctbMarca.Text;
-                        Lavarropas.modelo = cctbModelo.Text;
-                        Lavarropas.estadoGeneral = cctbEstado.Text;
-                        Lavarropas.ClienteId = Cliente.Id;
+                    Lavarropas.marca = cctbMarca.Text;
+                    Lavarropas.modelo = cctbModelo.Text;
+                    Lavarropas.estadoGeneral = cctbEstado.Text;
+                    Lavarropas.ClienteId = Cliente.Id;
 
-                        db.Lavarropas.Add(Lavarropas);
-                        db.SaveChanges();
+                    db.Lavarropas.Add(Lavarropas);
+                    db.SaveChanges();
 
-                        resp = MessageBox.Show("Lavarropas agregado correctamente \n" +
-                            "¿Desea limpiar los campos para agregar otro lavarropas?",
-                            "¿Desea agregar otro Lavarropas?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    MessageBox.Show("Lavarropas agregado correctamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    cctbMarca.Text = "";
+                    cctbModelo.Text = "";
+                    cctbEstado.Text = "";
 
-                        if(resp == DialogResult.Yes)
-                        {
-                            cctbMarca.Text = "";
-                            cctbModelo.Text = "";
-                            cctbEstado.Text = "";
-
-                            cctbMarca.Focus();
-                        }
-                    }
+                    cctbMarca.Focus();
                 }
             }
             else

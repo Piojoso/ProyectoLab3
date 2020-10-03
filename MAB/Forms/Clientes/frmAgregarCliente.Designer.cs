@@ -59,7 +59,6 @@ namespace MAB.Forms.CRUD.Clientes
             // 
             this.cctbDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbDireccion.CaracterIncorrectErrorMessage = "";
-            this.cctbDireccion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbDireccion.Location = new System.Drawing.Point(246, 137);
             this.cctbDireccion.Name = "cctbDireccion";

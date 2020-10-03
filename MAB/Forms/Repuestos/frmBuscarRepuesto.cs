@@ -81,34 +81,20 @@ namespace MAB.Forms.Repuestos
                 }
             }
 
-            DialogResult resp;
-
             if (idRepuestos.Count > 0)
             {
-                resp = MessageBox.Show(
-                    "Se han encontrado: " + idRepuestos.Count + " registro/s. \n" +
-                    "¿Desea verlos?", idRepuestos.Count + " Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if (resp == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {
-                resp = MessageBox.Show(
-                    "No se encontraron registros con la actual informacion. \n" +
-                    "¿Desea que se limpien todos los campos?", "Sin Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron registros", "No hubo resultados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                cctbNombre.Text = string.Empty;
+                cctbDescripcion.Text = string.Empty;
+                cctbStock.Text = string.Empty;
+                cctbPrecio.Text = string.Empty;
 
-                if (resp == DialogResult.Yes)
-                {
-                    cctbNombre.Text = string.Empty;
-                    cctbDescripcion.Text = string.Empty;
-                    cctbStock.Text = string.Empty;
-                    cctbPrecio.Text = string.Empty;
-
-                    cctbNombre.Focus();
-                }
+                cctbNombre.Focus();
             }
         }
         

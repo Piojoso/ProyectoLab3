@@ -30,7 +30,7 @@ namespace MAB.Forms.Lavarropas
             cctbMarca.CaracterIncorrectErrorMessage = messageError;
         }
 
-        private List<int> idLavarropas;
+        private List<int> idLavarropas = new List<int>();
 
         public List<int> getResultados
         {
@@ -69,33 +69,19 @@ namespace MAB.Forms.Lavarropas
                 }
             }
 
-            DialogResult resp;
-
             if (idLavarropas.Count > 0)
             {
-                resp = MessageBox.Show(
-                    "Se han encontrado: " + idLavarropas.Count + " registro/s. \n" +
-                    "¿Desea verlos?", idLavarropas.Count + " Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if(resp == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {
-                resp = MessageBox.Show(
-                    "No se encontraron registros con la actual informacion. \n" +
-                    "¿Desea que se limpien todos los campos?", "Sin Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron registros", "No hubo resultados", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                if(resp == DialogResult.Yes)
-                {
-                    cctbMarca.Text = string.Empty;
-                    cctbModelo.Text = string.Empty;
-                    cctbEstadoGeneral.Text = string.Empty;
+                cctbMarca.Text = string.Empty;
+                cctbModelo.Text = string.Empty;
+                cctbEstadoGeneral.Text = string.Empty;
 
-                    cctbMarca.Focus();
-                }
+                cctbMarca.Focus();
             }
         }
 

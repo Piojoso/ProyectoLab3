@@ -54,7 +54,7 @@ namespace MAB.Forms.CRUD.Telefonos
             int idCliente = cliente.Id;
             long numTelefono = Convert.ToInt64(cctbTelefono.Text);
 
-            if(cctbTelefono.Text != string.Empty && cctbTelefono.TextLength < 8)
+            if(cctbTelefono.Text != string.Empty && cctbTelefono.TextLength <= 10)
             {
                 Models.Telefonos telefono;
 
@@ -62,44 +62,30 @@ namespace MAB.Forms.CRUD.Telefonos
                 {
                     telefono = db.Telefonos.Find(idCliente, numTelefono);
                     
-
+                    /**
+                     * TODO: Tengo que revisar esto, porque mepa que telefono deberia preguntarse al verre. si es null, 
+                     * dejarlo pasar por el if, sino por el else
+                     */
                     if(telefono != null)
                     {
-                        DialogResult resp = MessageBox.Show(
-                            "Datos a guardar: \n" +
-                            "Nombre y Apellido del Cliente: " + cliente.nombre + " " + cliente.apellido + "\n" +
-                            "Nuevo numero de Telefono: " + numTelefono + "\n" +
-                            "¿Desea Continuar?",
-                            "Atencion",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning
-                        );
+                        telefono = new Models.Telefonos();
 
-                        if(resp == DialogResult.Yes)
-                        {
-                            telefono = new Models.Telefonos();
+                        telefono.ClienteId = cliente.Id;
+                        telefono.telefono = Convert.ToInt64(cctbTelefono.Text);
+                        telefono.estado = true;
 
-                            telefono.ClienteId = cliente.Id;
-                            telefono.telefono = Convert.ToInt64(cctbTelefono.Text);
-                            telefono.estado = true;
+                        db.Telefonos.Add(telefono);
+                        db.SaveChanges();
 
-                            db.Telefonos.Add(telefono);
-                            db.SaveChanges();
-
-                            resp = MessageBox.Show("Telefono agregado correcamente \n" +
-                                "¿Desea limpiar los campos para agregar otro Telefono?", 
-                                "¿Desea agregar otro Telefono?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                            if(resp == DialogResult.Yes)
-                            {
-                                cctbTelefono.Text = "";
-                                cctbTelefono.Focus();
-                            }
-                        }
-                    }else
-                    {
+                        MessageBox.Show("Telefono agregado correcamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        cctbTelefono.Text = "";
+                        cctbTelefono.Focus();
+                    }
+                    else
+                    { 
                         MessageBox.Show("Se a encontrado un numero igual que pertenecio a este cliente. \n" +
-                            "Se procedera a recuperar el telefono.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            "Se procedera a recuperar el telefono.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         telefono.estado = true;
 
@@ -110,7 +96,7 @@ namespace MAB.Forms.CRUD.Telefonos
             }
             else
             {
-                MessageBox.Show("Debe ingresar un numero de telefono valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe ingresar un numero de telefono valido (Max: 10 Caracteres)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

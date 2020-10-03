@@ -58,28 +58,17 @@ namespace MAB.Forms.Repuestos
         {
             if (cctbNombre.Text != string.Empty && cctbDescripcion.Text != string.Empty && cctbPrecio.Text != string.Empty && cctbStock.Text != string.Empty)
             {
-                DialogResult resp = MessageBox.Show(
-                    "¿Desea continuar con la modificacion? \n" +
-                    "Nombre cambiara de: " + repuesto.nombre + " a " + cctbNombre.Text + "\n" +
-                    "Descripcion cambiara de: " + repuesto.descripcion + " a " + cctbDescripcion.Text + "\n" +
-                    "Stock cambiara de: " + repuesto.disponibles + " a " + cctbStock.Text + "\n" +
-                    "Precio cambiara de: " + repuesto.precio + " a " + cctbPrecio.Text + "\n" +
-                    "Tenga en cuenta que la informacion anterior se perdera", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                repuesto.nombre = cctbNombre.Text;
+                repuesto.descripcion = cctbDescripcion.Text;
+                repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
+                repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
 
-                if (resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    repuesto.nombre = cctbNombre.Text;
-                    repuesto.descripcion = cctbDescripcion.Text;
-                    repuesto.disponibles = Convert.ToInt32(cctbStock.Text);
-                    repuesto.precio = Convert.ToDouble(cctbPrecio.Text);
+                    db.Entry(repuesto).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
 
-                    using (MABEntities db = new MABEntities())
-                    {
-                        db.Entry(repuesto).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-
-                        MessageBox.Show("Repuesto modificado Correctamente");
-                    }
+                    MessageBox.Show("Repuesto modificado Correctamente");
                 }
             }
             else

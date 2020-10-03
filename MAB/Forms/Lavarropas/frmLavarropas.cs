@@ -190,8 +190,8 @@ namespace MAB.Forms.CRUD.Lavarropas
                 "Existe 2 Maneras de buscar lavarropas. \n" +
                 "1) Ver todos los lavarropas de un cliente en particular \n" +
                 "2) Buscar un lavarropas dado su marca y modelo \n" +
-                "¿Desea ver todos los lavarropas de un cliente en particular? \n" +
-                "Al seleccionar no la busqueda se realizara por el segundo metodo.",
+                "¿Desea ver todos los lavarropas de un cliente en particular? (Opcion 1) \n" +
+                "Al seleccionar \"NO\" la busqueda se realizara por el segundo metodo. (Opcion 2)",
                 "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if(resp == DialogResult.Yes)
@@ -232,11 +232,6 @@ namespace MAB.Forms.CRUD.Lavarropas
                         ucDGVTabla.dataSource(lavarropas);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados", 
-                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
         }
 
@@ -270,13 +265,6 @@ namespace MAB.Forms.CRUD.Lavarropas
                         cargarLavarropas(null);
                 }
             }
-            else
-            {
-                MessageBox.Show(
-                    "Debe seleccionar un lavarropas primero para luego poder ver su clientes", 
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
-            }
         }
 
         private void verReparaciones(object sender, EventArgs e)
@@ -287,13 +275,6 @@ namespace MAB.Forms.CRUD.Lavarropas
 
                 frmReparaciones frm = new frmReparaciones(idLavarropas);
                 frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Debe seleccionar un lavarropas primero para luego poder ver sus Reparaciones",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
             }
         }
 

@@ -139,11 +139,6 @@ namespace MAB.Forms.Repuestos
                     ucDGVTabla.dataSource(reparaciones);
                 }
             }
-            else
-            {
-                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
-                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         #endregion

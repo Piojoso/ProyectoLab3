@@ -53,21 +53,15 @@ namespace MAB.Forms.Telefonos
             {
                 if(Convert.ToInt64(cctbNumTelefono.Text) != Telefono.telefono)
                 {
-                    DialogResult resp = MessageBox.Show("El numero de telefono cambiara de: " + Telefono.telefono + " a " + cctbNumTelefono.Text + "\n" +
-                        "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if(resp == DialogResult.Yes)
+                    using (MABEntities db = new MABEntities())
                     {
-                        using (MABEntities db = new MABEntities())
-                        {
-                            Telefono.telefono = Convert.ToInt64(cctbNumTelefono.Text);
+                        Telefono.telefono = Convert.ToInt64(cctbNumTelefono.Text);
 
-                            db.Entry(Telefono).State = System.Data.Entity.EntityState.Modified;
+                        db.Entry(Telefono).State = System.Data.Entity.EntityState.Modified;
 
-                            db.SaveChanges();
+                        db.SaveChanges();
 
-                            MessageBox.Show("Telefono Modificado Correctamente");
-                        }
+                        MessageBox.Show("Telefono Modificado Correctamente");
                     }
                 }
                 else

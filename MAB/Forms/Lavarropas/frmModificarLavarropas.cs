@@ -55,26 +55,16 @@ namespace MAB.Forms.Lavarropas
         {
             if((cctbMarca.Text != string.Empty) && (cctbModelo.Text != string.Empty) && (cctbEstadoGeneral.Text != string.Empty))
             {
-                DialogResult resp = MessageBox.Show(
-                    "Esta por modificar el lavarropas. \n" +
-                    "Marca cambiara de: " + lavarropas.marca + " a " + cctbMarca.Text + "\n" +
-                    "Modelo cambiara de: " + lavarropas.modelo + " a " + cctbModelo.Text + "\n" +
-                    "Estado General cambiara de: " + lavarropas.estadoGeneral + " a " + cctbEstadoGeneral.Text + "\n" +
-                    "¿Desea continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if(resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        lavarropas.marca = cctbMarca.Text;
-                        lavarropas.modelo = cctbModelo.Text;
-                        lavarropas.estadoGeneral = cctbModelo.Text;
+                    lavarropas.marca = cctbMarca.Text;
+                    lavarropas.modelo = cctbModelo.Text;
+                    lavarropas.estadoGeneral = cctbModelo.Text;
 
-                        db.Entry(lavarropas).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
+                    db.Entry(lavarropas).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
 
-                        MessageBox.Show("Lavarropas modificado correctamente");
-                    }
+                    MessageBox.Show("Lavarropas modificado correctamente");
                 }
             }
             else

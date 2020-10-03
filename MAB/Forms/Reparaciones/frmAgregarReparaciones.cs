@@ -50,43 +50,26 @@ namespace MAB.Forms.CRUD.Reparaciones
         {
             if((cctbErrorAReparar.Text != string.Empty) && (dtpFechaIngreso.Value <= DateTime.Now))
             {
-                DialogResult resp = MessageBox.Show(
-                    "Se guardara una nueva reparacion \n" +
-                    "para el lavarropas " + lavarropas.marca + " " + lavarropas.modelo + "\n" +
-                    "del cliente " + lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido + "\n" +
-                    "con el siguiente error a reparar: \n" +
-                    cctbErrorAReparar.Text + "\n" +
-                    "y con la siguiente fecha de ingreso: " + dtpFechaIngreso.Value.ToLongDateString() + "\n" +
-                    "¿Desea continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if(resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        Models.Reparaciones reparacion = new Models.Reparaciones();
+                    Models.Reparaciones reparacion = new Models.Reparaciones();
 
-                        reparacion.fechaIngreso = dtpFechaIngreso.Value;
-                        reparacion.fechaEgreso = null;
-                        reparacion.errorAReparar = cctbErrorAReparar.Text;
-                        reparacion.estadoReparacion = estadosReparacion.EnCurso;
-                        reparacion.mesesGarantia = null;
-                        reparacion.reparacionRealizada = "";
-                        reparacion.manoDeObra = 0;
-                        reparacion.totalRepuestos = 0;
-                        reparacion.LavarropasId = lavarropas.Id;
+                    reparacion.fechaIngreso = dtpFechaIngreso.Value;
+                    reparacion.fechaEgreso = null;
+                    reparacion.errorAReparar = cctbErrorAReparar.Text;
+                    reparacion.estadoReparacion = estadosReparacion.EnCurso;
+                    reparacion.mesesGarantia = null;
+                    reparacion.reparacionRealizada = "";
+                    reparacion.manoDeObra = 0;
+                    reparacion.totalRepuestos = 0;
+                    reparacion.LavarropasId = lavarropas.Id;
 
-                        db.Reparaciones.Add(reparacion);
+                    db.Reparaciones.Add(reparacion);
 
-                        resp = MessageBox.Show("Reparacion agregada correctamente \n" +
-                            "¿Desea limpiar los campos para agregar otra Reparacion?", 
-                            "¿Desea agregar otra Reparacion?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                        if(resp == DialogResult.Yes)
-                        {
-                            cctbErrorAReparar.Text = "";
-                            cctbErrorAReparar.Focus();
-                        }
-                    }
+                    MessageBox.Show("Reparacion agregada correctamente", "Guardada Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    cctbErrorAReparar.Text = "";
+                    cctbErrorAReparar.Focus();
                 }
             }
             else

@@ -75,13 +75,6 @@ namespace MAB.Forms.CRUD.Clientes
                     ucDGVTabla.dataSource(c);
                 }
             }
-            else
-            {
-                MessageBox.Show(
-                    "La busqueda fue cancelada o no se encontraron resultados", 
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
-            }
         }
 
         #endregion
@@ -116,7 +109,7 @@ namespace MAB.Forms.CRUD.Clientes
         {
             if (ucDGVTabla.selectedRow() != null)
             {
-                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["idCliente"].Value);
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["id"].Value);
 
                 frmModificarCliente frm = new frmModificarCliente(idCliente);
                 frm.ShowDialog();
@@ -181,12 +174,7 @@ namespace MAB.Forms.CRUD.Clientes
 
                 frmTelefonos frm = new frmTelefonos(idCliente);
                 frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No hay ningun Item Seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            }            
         }
 
         private void verLavarropas(object sender, EventArgs e)
@@ -197,13 +185,6 @@ namespace MAB.Forms.CRUD.Clientes
 
                 frmLavarropas frm = new frmLavarropas(idCliente);
                 frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Debe seleccionar un Cliente primero para luego poder ver sus Lavarropas",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
             }
         }
 
@@ -217,11 +198,6 @@ namespace MAB.Forms.CRUD.Clientes
                 frm.ShowDialog();
 
                 cargarDGV();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un cliente para poder ver su detalle",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

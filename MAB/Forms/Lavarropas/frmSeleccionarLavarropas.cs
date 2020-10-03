@@ -64,24 +64,14 @@ namespace MAB.Forms.Lavarropas
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Lavarropas lavarropas = db.Lavarropas.Find(idLavarropas);
-
-                    DialogResult resp = MessageBox.Show(
-                        "A seleccionado el lavarropas: \n" +
-                        lavarropas.marca + " " + lavarropas.modelo + "\n" +
-                        "del cliente: \n" +
-                        lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido + "\n" +
-                        "¿Desea continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                    if(resp == DialogResult.Yes)
-                    {
-                        this.idLavarropas = lavarropas.Id;
-                        this.Close();
-                    }
+                    
+                    this.idLavarropas = lavarropas.Id;
+                    this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("No hay una fila seleccionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay ningun Lavarropas seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -132,11 +122,6 @@ namespace MAB.Forms.Lavarropas
 
                         ucDGVTabla.dataSource(lavarropas);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
-                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

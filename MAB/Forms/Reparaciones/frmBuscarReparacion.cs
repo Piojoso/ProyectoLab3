@@ -28,7 +28,7 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucBottom.evAccion3 += cerrarVentana;
         }
 
-        private List<int> idResultados;
+        private List<int> idResultados = new List<int>();
 
         public List<int> getResultados
         {
@@ -70,13 +70,7 @@ namespace MAB.Forms.CRUD.Reparaciones
 
             if(idResultados.Count != 0)
             {
-                DialogResult resp = MessageBox.Show("Se encontraron " + idResultados.Count + " Resultados. \n" +
-                    "¿Desea verlos?", "¿Ver Resultados?", MessageBoxButtons.YesNo);
-
-                if( resp == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {

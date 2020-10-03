@@ -56,24 +56,15 @@ namespace MAB.Forms.Entregas
 
             if(cctbMonto.Text != string.Empty)
             {
-                DialogResult resp = MessageBox.Show(
-                    "Esta a punto de modificar la Entrega. \n" +
-                    "El monto cambiara de " + entrega.monto + " a " + cctbMonto.Text + "\n" +
-                    "Y la fecha de la entrega cambiara de " + entrega.fecha.ToShortDateString() + " a " + dtpFechaEntrega.Value.ToShortDateString() + "\n" +
-                    "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                entrega.monto = Convert.ToDouble(cctbMonto.Text);
+                entrega.fecha = dtpFechaEntrega.Value;
 
-                if(resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    entrega.monto = Convert.ToDouble(cctbMonto.Text);
-                    entrega.fecha = dtpFechaEntrega.Value;
+                    db.Entry(entrega).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
 
-                    using (MABEntities db = new MABEntities())
-                    {
-                        db.Entry(entrega).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-
-                        MessageBox.Show("Entrega modificada Correctamente");
-                    }
+                    MessageBox.Show("Entrega modificada Correctamente");
                 }
             }
             else

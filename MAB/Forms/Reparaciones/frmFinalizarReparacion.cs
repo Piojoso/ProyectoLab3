@@ -72,33 +72,19 @@ namespace MAB.Forms.Reparaciones
 
             if(cctbManoObra.Text != string.Empty && cctbTotalRepuestos.Text != string.Empty)
             {
-                DialogResult resp = MessageBox.Show(
-                    "La Reparacion " + reparacion.Id + " del lavarropas " + reparacion.Lavarropas.marca + reparacion.Lavarropas.modelo + "\n" +
-                    "Sera modificada \n "+
-                    "Estado de Reparacion cambiara de: " + reparacion.estadoReparacion + " a " + cboEstadoReparacion.SelectedText + "\n" +
-                    "Meses de Garantia cambiara a: " + cctbMesesGarantia.Text + " \n" +
-                    "Fecha de Egreso cambiara a: " + dtpFechaEgreso.Value + "\n" +
-                    "Reparacion Realizada cambiara a: \n" + cctbReparacionRealizada.Text + "\n" +
-                    "Mano de Obra cambiara a: " + cctbManoObra.Text + "\n" +
-                    "Total de Repuestos cambiara a: " + cctbTotalRepuestos.Text + "\n" +
-                    "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
+                reparacion.mesesGarantia = Convert.ToInt32(cctbMesesGarantia.Text);
+                reparacion.fechaEgreso = dtpFechaEgreso.Value;
+                reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
+                reparacion.manoDeObra = Convert.ToInt32(cctbManoObra.Text);
+                reparacion.totalRepuestos = Convert.ToInt32(cctbTotalRepuestos.Text);
 
-                if (resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
-                    reparacion.mesesGarantia = Convert.ToInt32(cctbMesesGarantia.Text);
-                    reparacion.fechaEgreso = dtpFechaEgreso.Value;
-                    reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
-                    reparacion.manoDeObra = Convert.ToInt32(cctbManoObra.Text);
-                    reparacion.totalRepuestos = Convert.ToInt32(cctbTotalRepuestos.Text);
+                    db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
 
-                    using (MABEntities db = new MABEntities())
-                    {
-                        db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-
-                        MessageBox.Show("Reparacion finalizada correctamente");
-                    }
+                    MessageBox.Show("Reparacion finalizada correctamente");
                 }
             }
             else

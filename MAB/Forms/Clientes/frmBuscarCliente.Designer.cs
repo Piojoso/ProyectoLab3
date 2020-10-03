@@ -54,7 +54,6 @@
             // 
             // cclblNombre
             // 
-            this.cclblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombre.AutoSize = true;
             this.cclblNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombre.Location = new System.Drawing.Point(118, 36);
@@ -65,7 +64,6 @@
             // 
             // cclblApellido
             // 
-            this.cclblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblApellido.AutoSize = true;
             this.cclblApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblApellido.Location = new System.Drawing.Point(118, 91);
@@ -76,7 +74,6 @@
             // 
             // cclblDireccion
             // 
-            this.cclblDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblDireccion.AutoSize = true;
             this.cclblDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblDireccion.Location = new System.Drawing.Point(118, 146);
@@ -111,7 +108,6 @@
             // 
             this.cctbDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbDireccion.CaracterIncorrectErrorMessage = "";
-            this.cctbDireccion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbDireccion.Location = new System.Drawing.Point(234, 143);
             this.cctbDireccion.Name = "cctbDireccion";

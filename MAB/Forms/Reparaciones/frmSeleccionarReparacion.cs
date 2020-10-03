@@ -77,19 +77,9 @@ namespace MAB.Forms.Reparaciones
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Reparaciones reparacion = db.Reparaciones.Find(idReparacion);
-
-                    DialogResult resp = MessageBox.Show(
-                        "Ha seleccionado la Reparacion: \n" +
-                        reparacion.Id + "\n" +
-                        "Realizada al lavarropas: " + reparacion.Lavarropas.marca + " " + reparacion.Lavarropas.modelo + "\n" +
-                        "Del Cliente: " + cliente.nombre + " " + cliente.apellido + "\n" +
-                        "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if (resp == DialogResult.Yes)
-                    {
-                        idReparacion = reparacion.Id;
-                        this.Close();
-                    }
+                    
+                    idReparacion = reparacion.Id;
+                    this.Close();
                 }
             }
         }
@@ -112,11 +102,6 @@ namespace MAB.Forms.Reparaciones
 
                     ucDGVTabla.dataSource(reparaciones);
                 }
-            }
-            else
-            {
-                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
-                        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

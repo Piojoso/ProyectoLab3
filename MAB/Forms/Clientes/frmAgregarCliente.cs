@@ -33,14 +33,13 @@ namespace MAB.Forms.CRUD.Clientes
 
             cctbNombre.CaracterIncorrectErrorMessage = messageError;
             cctbApellido.CaracterIncorrectErrorMessage = messageError;
-            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void crearCliente(object sender, EventArgs e)
         {
             int idCliente = guardarCliente();
 
-            if(idCliente > -1)
+            if(idCliente != -1)
             {
                 DialogResult resp = MessageBox.Show(
                     "¿Desea agregarle telefonos a este cliente?", 
@@ -68,18 +67,18 @@ namespace MAB.Forms.CRUD.Clientes
                     frm.ShowDialog();
                 }
 
-                resp = MessageBox.Show("Cliente agregador correctamente \n" +
-                    "¿Desea limpiar los campos para agregar uno nuevo?", 
-                    "¿Desea agregar otro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                resp = MessageBox.Show(
+                    "Cliente agregador correctamente",
+                    "Guardado Correctamente",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                
+                cctbNombre.Text = "";
+                cctbApellido.Text = "";
+                cctbDireccion.Text = "";
 
-                if(resp == DialogResult.Yes)
-                {
-                    cctbNombre.Text = "";
-                    cctbApellido.Text = "";
-                    cctbDireccion.Text = "";
-
-                    cctbNombre.Focus();
-                }
+                cctbNombre.Focus();
             }
         }
 
@@ -94,32 +93,18 @@ namespace MAB.Forms.CRUD.Clientes
 
             if ((cctbNombre.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
-
                 using (MABEntities db = new MABEntities())
                 {
-                    DialogResult resp = MessageBox.Show(
-                        "Desea guardar al cliente: \n" + 
-                        "Nombre: " + cctbNombre.Text + "\n" + 
-                        "Apellido: " + cctbApellido.Text + "\n" +
-                        "Direccion" + cctbDireccion.Text + "\n", 
-                        "Atencion",
-                        MessageBoxButtons.YesNo, 
-                        MessageBoxIcon.Warning
-                    );
+                    cliente = new Models.Clientes();
 
-                    if(resp == DialogResult.Yes)
-                    {
-                        cliente = new Models.Clientes();
+                    cliente.nombre = cctbNombre.Text;
+                    cliente.apellido = cctbApellido.Text;
+                    cliente.direccion = cctbDireccion.Text;
 
-                        cliente.nombre = cctbNombre.Text;
-                        cliente.apellido = cctbApellido.Text;
-                        cliente.direccion = cctbDireccion.Text;
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
 
-                        db.Clientes.Add(cliente);
-                        db.SaveChanges();
-
-                        return cliente.Id;
-                    }
+                    return cliente.Id;
                 }
             }
             else

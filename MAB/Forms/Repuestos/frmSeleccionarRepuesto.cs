@@ -61,22 +61,14 @@ namespace MAB.Forms.Repuestos
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Repuestos repuesto = db.Repuestos.Find(idRepuesto);
-
-                    DialogResult resp = MessageBox.Show(
-                        "A seleccionado el lavarropas: \n" +
-                        repuesto.nombre + "\n" +
-                        "¿Desea continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                    if (resp == DialogResult.Yes)
-                    {
-                        this.idRepuesto = repuesto.Id;
-                        this.Close();
-                    }
+                    
+                    this.idRepuesto = repuesto.Id;
+                    this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("No hay una fila seleccionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay ningun Repuesto seleccionado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,11 +90,6 @@ namespace MAB.Forms.Repuestos
 
                     ucDGVTabla.dataSource(repuestos);
                 }
-            }
-            else
-            {
-                MessageBox.Show("La busqueda fue cancelada o no se encontraron resultados",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

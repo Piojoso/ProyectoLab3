@@ -61,22 +61,14 @@ namespace MAB.Forms.Clientes
                 using (MABEntities db = new MABEntities())
                 {
                     Models.Clientes cliente = db.Clientes.Find(Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value));
-
-                    DialogResult resp = MessageBox.Show(
-                        "Ha seleccionado al Cliente: \n" +
-                        cliente.nombre + " " + cliente.apellido + "\n" +
-                        "¿Desea Continuar?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if(resp == DialogResult.Yes)
-                    {
-                        idCliente = cliente.Id;
-                        this.Close();
-                    }
+                    
+                    idCliente = cliente.Id;
+                    this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("No hay una fila seleccionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar un Cliente primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -99,13 +91,6 @@ namespace MAB.Forms.Clientes
 
                     ucDGVTabla.dataSource(clientes);
                 }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "La busqueda fue cancelada o no se encontraron resultados",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information
-                );
             }
         }
 

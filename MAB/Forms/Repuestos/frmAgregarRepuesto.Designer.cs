@@ -34,10 +34,10 @@
             this.ccLabel3 = new ccLibrary.ccLabel();
             this.ccLabel4 = new ccLibrary.ccLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cctbNombre = new ccLibrary.ccTextBox();
-            this.cctbDescripcion = new ccLibrary.ccTextBox();
-            this.cctbPrecio = new ccLibrary.ccTextBox();
             this.cctbStock = new ccLibrary.ccTextBox();
+            this.cctbPrecio = new ccLibrary.ccTextBox();
+            this.cctbDescripcion = new ccLibrary.ccTextBox();
+            this.cctbNombre = new ccLibrary.ccTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,27 +110,16 @@
             this.panel1.Size = new System.Drawing.Size(600, 242);
             this.panel1.TabIndex = 5;
             // 
-            // cctbNombre
+            // cctbStock
             // 
-            this.cctbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbNombre.CaracterIncorrectErrorMessage = "";
-            this.cctbNombre.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
-            this.cctbNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbNombre.Location = new System.Drawing.Point(258, 35);
-            this.cctbNombre.Name = "cctbNombre";
-            this.cctbNombre.Size = new System.Drawing.Size(231, 24);
-            this.cctbNombre.TabIndex = 5;
-            // 
-            // cctbDescripcion
-            // 
-            this.cctbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbDescripcion.CaracterIncorrectErrorMessage = "";
-            this.cctbDescripcion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
-            this.cctbDescripcion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbDescripcion.Location = new System.Drawing.Point(258, 85);
-            this.cctbDescripcion.Name = "cctbDescripcion";
-            this.cctbDescripcion.Size = new System.Drawing.Size(231, 24);
-            this.cctbDescripcion.TabIndex = 6;
+            this.cctbStock.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbStock.CaracterIncorrectErrorMessage = "";
+            this.cctbStock.DataType = ccLibrary.ccTextBox.dataType.Numerico;
+            this.cctbStock.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbStock.Location = new System.Drawing.Point(258, 185);
+            this.cctbStock.Name = "cctbStock";
+            this.cctbStock.Size = new System.Drawing.Size(231, 24);
+            this.cctbStock.TabIndex = 8;
             // 
             // cctbPrecio
             // 
@@ -143,16 +132,27 @@
             this.cctbPrecio.Size = new System.Drawing.Size(231, 24);
             this.cctbPrecio.TabIndex = 7;
             // 
-            // cctbStock
+            // cctbDescripcion
             // 
-            this.cctbStock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cctbStock.CaracterIncorrectErrorMessage = "";
-            this.cctbStock.DataType = ccLibrary.ccTextBox.dataType.Numerico;
-            this.cctbStock.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbStock.Location = new System.Drawing.Point(258, 185);
-            this.cctbStock.Name = "cctbStock";
-            this.cctbStock.Size = new System.Drawing.Size(231, 24);
-            this.cctbStock.TabIndex = 8;
+            this.cctbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbDescripcion.CaracterIncorrectErrorMessage = "";
+            this.cctbDescripcion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
+            this.cctbDescripcion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbDescripcion.Location = new System.Drawing.Point(258, 85);
+            this.cctbDescripcion.Name = "cctbDescripcion";
+            this.cctbDescripcion.Size = new System.Drawing.Size(231, 24);
+            this.cctbDescripcion.TabIndex = 6;
+            // 
+            // cctbNombre
+            // 
+            this.cctbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbNombre.CaracterIncorrectErrorMessage = "";
+            this.cctbNombre.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
+            this.cctbNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbNombre.Location = new System.Drawing.Point(258, 35);
+            this.cctbNombre.Name = "cctbNombre";
+            this.cctbNombre.Size = new System.Drawing.Size(231, 24);
+            this.cctbNombre.TabIndex = 5;
             // 
             // frmAgregarRepuesto
             // 
