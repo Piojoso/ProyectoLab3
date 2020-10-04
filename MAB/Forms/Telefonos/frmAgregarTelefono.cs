@@ -60,13 +60,16 @@ namespace MAB.Forms.CRUD.Telefonos
 
                 using (MABEntities db = new MABEntities())
                 {
-                    telefono = db.Telefonos.Find(idCliente, numTelefono);
+                    telefono = (from tel in db.Telefonos
+                                where tel.ClienteId == idCliente
+                                where tel.telefono == numTelefono
+                                select tel).First();
                     
                     /**
                      * TODO: Tengo que revisar esto, porque mepa que telefono deberia preguntarse al verre. si es null, 
                      * dejarlo pasar por el if, sino por el else
                      */
-                    if(telefono != null)
+                    if(telefono == null)
                     {
                         telefono = new Models.Telefonos();
 

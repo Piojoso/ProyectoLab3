@@ -46,7 +46,6 @@ namespace MAB.Forms.Repuestos
 
             Text = "Seleccione un Repuesto";
 
-            ucDGVTabla.Columns["Stock"].Visible = false;
             ucDGVTabla.Columns["Reparaciones"].Visible = false;
         }
 

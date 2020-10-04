@@ -29,7 +29,7 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucDGVTabla.click_btnAdd += btnAgregar;
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnBuscar;
-            
+
             ucDGVTabla.Columns["mesesGarantia"].Visible = false;
             ucDGVTabla.Columns["reparacionRealizada"].Visible = false;
             ucDGVTabla.Columns["manoDeObra"].Visible = false;
@@ -155,7 +155,7 @@ namespace MAB.Forms.CRUD.Reparaciones
                 
                 if(idLavarropas != -1)
                 {
-                    frmAgregarReparaciones frmAgregarReparaciones = new frmAgregarReparaciones(lavarropas.Id);
+                    frmAgregarReparaciones frmAgregarReparaciones = new frmAgregarReparaciones(idLavarropas);
                     frmAgregarReparaciones.ShowDialog();
                 }
 

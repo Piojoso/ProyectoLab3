@@ -38,12 +38,12 @@ namespace MAB.Forms.CRUD.Reparaciones
             using (MABEntities db = new MABEntities())
             {
                 lavarropas = db.Lavarropas.Find(idLavarropas);
+
+                Text = "Agregar nueva Reparacion al lavarropas: " + lavarropas.marca + " " + lavarropas.modelo;
+
+                cclblNombreCliente.Text = lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido;
+                cclblMarcaLavarropas.Text = lavarropas.marca + " " + lavarropas.modelo;
             }
-
-            Text = "Agregar nueva Reparacion al lavarropas: " + lavarropas.marca + " " + lavarropas.modelo;
-
-            cclblNombreCliente.Text = lavarropas.Cliente.nombre + " " + lavarropas.Cliente.apellido;
-            cclblMarcaLavarropas.Text = lavarropas.marca + " " + lavarropas.modelo;
         }
 
         private void agregarReparacion(object sender, EventArgs e)
@@ -65,6 +65,7 @@ namespace MAB.Forms.CRUD.Reparaciones
                     reparacion.LavarropasId = lavarropas.Id;
 
                     db.Reparaciones.Add(reparacion);
+                    db.SaveChanges();
 
                     MessageBox.Show("Reparacion agregada correctamente", "Guardada Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     

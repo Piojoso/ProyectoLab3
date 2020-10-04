@@ -45,8 +45,15 @@ namespace MAB.Forms.CRUD.Lavarropas
                 using (MABEntities db = new MABEntities())
                 {
                     var lavarropas = from lav in db.Lavarropas
-                                     where lav.ClienteId == idCliente
-                                     select lav;
+                                   where lav.ClienteId == idCliente
+                                   select new
+                                   {
+                                       lav.Id,
+                                       lav.marca,
+                                       lav.modelo,
+                                       lav.estadoGeneral,
+                                       cliente = lav.Cliente.nombre + " " + lav.Cliente.apellido,
+                                   };
 
                     ucDGVTabla.dataSource(lavarropas.ToList());
 
@@ -207,7 +214,14 @@ namespace MAB.Forms.CRUD.Lavarropas
                     {
                         var lavarropas = from lav in db.Lavarropas
                                          where lav.ClienteId == idCliente
-                                         select lav;
+                                         select new
+                                         {
+                                             lav.Id,
+                                             lav.marca,
+                                             lav.modelo,
+                                             lav.estadoGeneral,
+                                             cliente = lav.Cliente.nombre + " " + lav.Cliente.apellido,
+                                         };
 
                         ucDGVTabla.dataSource(lavarropas.ToList());
                     }
@@ -222,14 +236,23 @@ namespace MAB.Forms.CRUD.Lavarropas
                 {
                     using (MABEntities db = new MABEntities())
                     {
-                        List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
+                        List<object> lavarropas = new List<object>();
 
-                        foreach(int id in frm.getResultados)
+                        foreach (int id in frm.getResultados)
                         {
-                            lavarropas.Add(db.Lavarropas.Find(id));
-                        }
+                            var lavarropa = db.Lavarropas.Find(id);
 
+                            db.Entry(lavarropa).Reference("Cliente").Load();
+                            db.Entry(lavarropa).Collection("Reparacion").Load();
+
+                            lavarropas.Add(lavarropa);
+                        }
                         ucDGVTabla.dataSource(lavarropas);
+                        
+                        ucDGVTabla.Columns["Id"].Visible = false;
+                        ucDGVTabla.Columns["Cliente"].Visible = false;
+                        ucDGVTabla.Columns["ClienteId"].Visible = false;
+                        ucDGVTabla.Columns["Reparacion"].Visible = false;
                     }
                 }
             }

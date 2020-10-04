@@ -66,7 +66,7 @@ namespace MAB.Forms.CRUD.Telefonos
         {
             if (ucDGVTabla.selectedRow() != null)
             {
-                int telefono = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Telefono"].Value);
+                long telefono = Convert.ToInt64(ucDGVTabla.selectedRow().Cells["Telefono"].Value);
 
                 using (MABEntities db = new MABEntities())
                 {
@@ -102,12 +102,13 @@ namespace MAB.Forms.CRUD.Telefonos
 
                 var data = (from telefonos in db.Telefonos
                             where telefonos.ClienteId == cliente.Id
-                            where telefonos.estado == true
                             select telefonos);
 
                 ucDGVTabla.dataSource(data.ToList());
             }
 
+            ucDGVTabla.Columns["ClienteId"].Visible = false;
+            ucDGVTabla.Columns["Cliente"].Visible = false;
         }
 
         private void creacionCMS()

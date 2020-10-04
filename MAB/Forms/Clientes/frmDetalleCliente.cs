@@ -38,14 +38,14 @@ namespace MAB.Forms.Clientes
             using (MABEntities db = new MABEntities())
             {
                 cliente = db.Clientes.Find(idCliente);
-            }
 
-            cclblShowNumId.Text = cliente.Id.ToString();
-            cclblShowNombre.Text = cliente.nombre;
-            cclblShowApellido.Text = cliente.apellido;
-            cclblShowDireccion.Text = cliente.direccion;
-            cclblShowNumTelefonos.Text = cliente.Telefonos.Count.ToString();
-            cclblShowNumLavarropas.Text = cliente.Lavarropas.Count.ToString();
+                cclblShowNumId.Text = cliente.Id.ToString();
+                cclblShowNombre.Text = cliente.nombre;
+                cclblShowApellido.Text = cliente.apellido;
+                cclblShowDireccion.Text = cliente.direccion;
+                cclblShowNumTelefonos.Text = cliente.Telefonos.Count.ToString();
+                cclblShowNumLavarropas.Text = cliente.Lavarropas.Count.ToString();
+            }
 
             Text = "Detalle del Cliente " + cliente.nombre + " " + cliente.apellido;
         }

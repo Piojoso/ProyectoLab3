@@ -22,6 +22,8 @@ namespace MAB.Forms.Telefonos
              */
             InitializeComponent();
 
+            cargarTelefono(idCliente, numTelefono);
+
             Text = "Modificar el Numero: " + Telefono.telefono;
 
             ucBottom.Accion1 = "Modificar";
@@ -39,7 +41,10 @@ namespace MAB.Forms.Telefonos
         {
             using (MABEntities db = new MABEntities())
             {
-                Telefono = db.Telefonos.Find(idCliente, numTelefono);
+                Telefono = (from tel in db.Telefonos
+                           where tel.ClienteId == idCliente
+                           where tel.telefono == numTelefono
+                           select tel).First();
 
                 cclblNombreCliente.Text = Telefono.Cliente.nombre + " " + Telefono.Cliente.apellido;
 
