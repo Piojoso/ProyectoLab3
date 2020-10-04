@@ -36,19 +36,7 @@ namespace MAB.Forms.CRUD.Reparaciones
         }
 
         private void buscarReparacion(object sender, EventArgs e)
-        {
-            if (dtpInicioIngreso.Value < DateTime.Now)
-                dtpInicioIngreso.Value = DateTime.Now;
-
-            if (dtpFinIngreso.Value < DateTime.Now)
-                dtpFinIngreso.Value = DateTime.Now;
-
-            if (dtpInicioEgreso.Value < DateTime.Now)
-                dtpInicioEgreso.Value = DateTime.Now;
-
-            if (dtpFinEgreso.Value < DateTime.Now)
-                dtpFinEgreso.Value = DateTime.Now;
-            
+        {            
             using (MABEntities db = new MABEntities())
             {
                 List<Models.Reparaciones> reparaciones = db.Reparaciones.ToList();

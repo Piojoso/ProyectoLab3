@@ -49,9 +49,6 @@ namespace MAB.Forms.Entregas
 
         private void agregarEntrega(object sender, EventArgs e)
         {
-            if (dtpFechaEntrega.Value > DateTime.Now)
-                dtpFechaEntrega.Value = DateTime.Now;
-
             if(cctbMonto.Text != string.Empty)
             {
                 Models.Entregas entrega = new Models.Entregas();
