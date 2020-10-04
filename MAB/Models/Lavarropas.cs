@@ -25,7 +25,6 @@ namespace MAB.Models
         public string modelo { get; set; }
         public string estadoGeneral { get; set; }
         public int ClienteId { get; set; }
-        public bool estado { get; set; }
     
         public virtual Clientes Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,7 +19,6 @@ namespace MAB.Models
         public double monto { get; set; }
         public int ReparacionesId { get; set; }
         public int ClientesId { get; set; }
-        public bool estado { get; set; }
     
         public virtual Reparaciones Reparaciones { get; set; }
         public virtual Clientes Clientes { get; set; }

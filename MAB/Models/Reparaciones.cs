@@ -31,7 +31,6 @@ namespace MAB.Models
         public double manoDeObra { get; set; }
         public double totalRepuestos { get; set; }
         public int LavarropasId { get; set; }
-        public bool estado { get; set; }
     
         public virtual Lavarropas Lavarropas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -50,7 +50,6 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="true" />
     <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
     <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Telefonos">
     <Key>
@@ -58,7 +57,7 @@
       <PropertyRef Name="ClienteId" />
     </Key>
     <Property Name="ClienteId" Type="int" Nullable="false" />
-    <Property Name="telefono" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="telefono" Type="bigint" Nullable="false" />
     <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Lavarropas">
@@ -70,7 +69,6 @@
     <Property Name="modelo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="estadoGeneral" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ClienteId" Type="int" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Reparaciones">
     <Key>
@@ -86,7 +84,6 @@
     <Property Name="manoDeObra" Type="float" Nullable="false" />
     <Property Name="totalRepuestos" Type="float" Nullable="false" />
     <Property Name="LavarropasId" Type="int" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Repuestos">
     <Key>
@@ -97,7 +94,6 @@
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="disponibles" Type="int" Nullable="false" />
     <Property Name="precio" Type="float" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Entregas">
     <Key>
@@ -108,7 +104,6 @@
     <Property Name="monto" Type="float" Nullable="false" />
     <Property Name="ReparacionesId" Type="int" Nullable="false" />
     <Property Name="ClientesId" Type="int" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ReparacionesRepuestos">
     <Key>
@@ -117,7 +112,6 @@
     </Key>
     <Property Name="ReparacionesId" Type="int" Nullable="false" />
     <Property Name="RepuestosId" Type="int" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="ClienteTelefono">
     <End Role="Cliente" Type="MABModel.Store.Clientes" Multiplicity="1" />
@@ -255,7 +249,6 @@
           <NavigationProperty Name="Telefonos" Relationship="MABModel.ClienteTelefono" FromRole="Cliente" ToRole="Telefono" />
           <NavigationProperty Name="Lavarropas" Relationship="MABModel.ClienteLavarropas" FromRole="Cliente" ToRole="Lavarropas" />
           <NavigationProperty Name="Entregas" Relationship="MABModel.ClientesEntregas" FromRole="Clientes" ToRole="Entregas" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Telefonos">
           <Key>
@@ -263,7 +256,7 @@
             <PropertyRef Name="ClienteId" />
           </Key>
           <Property Name="ClienteId" Type="Int32" Nullable="false" />
-          <Property Name="telefono" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="Cliente" Relationship="MABModel.ClienteTelefono" FromRole="Telefono" ToRole="Cliente" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
@@ -290,7 +283,6 @@
           <Property Name="estadoGeneral" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ClienteId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Reparacion" Relationship="MABModel.LavarropasReparacion" FromRole="Lavarropas" ToRole="Reparacion" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="ClienteLavarropas">
           <End Type="MABModel.Clientes" Role="Cliente" Multiplicity="1" />
@@ -321,7 +313,6 @@
           <Property Name="LavarropasId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Entregas" Relationship="MABModel.ReparacionesEntregas" FromRole="Reparaciones" ToRole="Entregas" />
           <NavigationProperty Name="Repuestos" Relationship="MABModel.ReparacionesReparacionesRepuestos" FromRole="Reparaciones" ToRole="ReparacionesRepuestos" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EnumType Name="estadosReparacion" UnderlyingType="Int32" >
           <Member Name="EnCurso" />
@@ -350,7 +341,6 @@
           <NavigationProperty Name="Reparaciones" Relationship="MABModel.RepuestosReparacionesRepuestos" FromRole="Repuestos" ToRole="ReparacionesRepuestos" />
           <Property Name="disponibles" Type="Int32" Nullable="false" />
           <Property Name="precio" Type="Double" Nullable="false" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Entregas">
           <Key>
@@ -363,7 +353,6 @@
           <Property Name="ReparacionesId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="MABModel.ClientesEntregas" FromRole="Entregas" ToRole="Clientes" />
           <Property Name="ClientesId" Type="Int32" Nullable="false" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="ReparacionesEntregas">
           <End Type="MABModel.Reparaciones" Role="Reparaciones" Multiplicity="1" />
@@ -398,7 +387,6 @@
           <NavigationProperty Name="Reparaciones" Relationship="MABModel.ReparacionesReparacionesRepuestos" FromRole="ReparacionesRepuestos" ToRole="Reparaciones" />
           <NavigationProperty Name="Repuestos" Relationship="MABModel.RepuestosReparacionesRepuestos" FromRole="ReparacionesRepuestos" ToRole="Repuestos" />
           <Property Name="RepuestosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="ReparacionesReparacionesRepuestos">
           <End Type="MABModel.Reparaciones" Role="Reparaciones" Multiplicity="1" />
@@ -437,7 +425,6 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido" ColumnName="apellido" />
           <ScalarProperty Name="direccion" ColumnName="direccion" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -458,7 +445,6 @@
           <ScalarProperty Name="modelo" ColumnName="modelo" />
           <ScalarProperty Name="estadoGeneral" ColumnName="estadoGeneral" />
           <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -475,7 +461,6 @@
           <ScalarProperty Name="manoDeObra" ColumnName="manoDeObra" />
           <ScalarProperty Name="totalRepuestos" ColumnName="totalRepuestos" />
           <ScalarProperty Name="LavarropasId" ColumnName="LavarropasId" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -487,7 +472,6 @@
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="disponibles" ColumnName="disponibles" />
           <ScalarProperty Name="precio" ColumnName="precio" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -499,7 +483,6 @@
           <ScalarProperty Name="monto" ColumnName="monto" />
           <ScalarProperty Name="ReparacionesId" ColumnName="ReparacionesId" />
           <ScalarProperty Name="ClientesId" ColumnName="ClientesId" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -508,7 +491,6 @@
         <MappingFragment StoreEntitySet="ReparacionesRepuestos">
           <ScalarProperty Name="ReparacionesId" ColumnName="ReparacionesId" />
           <ScalarProperty Name="RepuestosId" ColumnName="RepuestosId" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

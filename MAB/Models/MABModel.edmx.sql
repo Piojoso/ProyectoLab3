@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/02/2020 20:53:00
+-- Date Created: 10/03/2020 20:10:10
 -- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 3\MAB\Models\MABModel.edmx
 -- --------------------------------------------------
 
@@ -74,15 +74,14 @@ CREATE TABLE [dbo].[Clientes] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NULL,
     [apellido] nvarchar(max)  NOT NULL,
-    [direccion] nvarchar(max)  NOT NULL,
-    [estado] bit  NOT NULL
+    [direccion] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'Telefonos'
 CREATE TABLE [dbo].[Telefonos] (
     [ClienteId] int  NOT NULL,
-    [telefono] bigint IDENTITY(1,1) NOT NULL,
+    [telefono] bigint  NOT NULL,
     [estado] bit  NOT NULL
 );
 GO
@@ -93,8 +92,7 @@ CREATE TABLE [dbo].[Lavarropas] (
     [marca] nvarchar(max)  NOT NULL,
     [modelo] nvarchar(max)  NOT NULL,
     [estadoGeneral] nvarchar(max)  NULL,
-    [ClienteId] int  NOT NULL,
-    [estado] bit  NOT NULL
+    [ClienteId] int  NOT NULL
 );
 GO
 
@@ -109,8 +107,7 @@ CREATE TABLE [dbo].[Reparaciones] (
     [reparacionRealizada] nvarchar(max)  NOT NULL,
     [manoDeObra] float  NOT NULL,
     [totalRepuestos] float  NOT NULL,
-    [LavarropasId] int  NOT NULL,
-    [estado] bit  NOT NULL
+    [LavarropasId] int  NOT NULL
 );
 GO
 
@@ -120,8 +117,7 @@ CREATE TABLE [dbo].[Repuestos] (
     [nombre] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NULL,
     [disponibles] int  NOT NULL,
-    [precio] float  NOT NULL,
-    [estado] bit  NOT NULL
+    [precio] float  NOT NULL
 );
 GO
 
@@ -131,16 +127,14 @@ CREATE TABLE [dbo].[Entregas] (
     [fecha] datetime  NOT NULL,
     [monto] float  NOT NULL,
     [ReparacionesId] int  NOT NULL,
-    [ClientesId] int  NOT NULL,
-    [estado] bit  NOT NULL
+    [ClientesId] int  NOT NULL
 );
 GO
 
 -- Creating table 'ReparacionesRepuestos'
 CREATE TABLE [dbo].[ReparacionesRepuestos] (
     [ReparacionesId] int  NOT NULL,
-    [RepuestosId] int  NOT NULL,
-    [estado] bit  NOT NULL
+    [RepuestosId] int  NOT NULL
 );
 GO
 
