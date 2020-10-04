@@ -52,9 +52,9 @@
             this.dtpGarantia = new System.Windows.Forms.DateTimePicker();
             this.cclblFinaliza = new ccLibrary.ccLabel();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.btnRepuestos = new System.Windows.Forms.Button();
             this.cclblNombreApellidoCliente = new ccLibrary.ccLabel();
             this.cclblCliente = new ccLibrary.ccLabel();
-            this.btnRepuestos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudGarantia)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -315,6 +315,17 @@
             this.pnlBody.Size = new System.Drawing.Size(780, 344);
             this.pnlBody.TabIndex = 26;
             // 
+            // btnRepuestos
+            // 
+            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepuestos.Location = new System.Drawing.Point(580, 185);
+            this.btnRepuestos.Name = "btnRepuestos";
+            this.btnRepuestos.Size = new System.Drawing.Size(126, 23);
+            this.btnRepuestos.TabIndex = 28;
+            this.btnRepuestos.Text = "Repuestos Usados";
+            this.btnRepuestos.UseVisualStyleBackColor = true;
+            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
+            // 
             // cclblNombreApellidoCliente
             // 
             this.cclblNombreApellidoCliente.AutoSize = true;
@@ -334,17 +345,6 @@
             this.cclblCliente.TabIndex = 26;
             this.cclblCliente.Text = "Cliente:";
             // 
-            // btnRepuestos
-            // 
-            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRepuestos.Location = new System.Drawing.Point(580, 185);
-            this.btnRepuestos.Name = "btnRepuestos";
-            this.btnRepuestos.Size = new System.Drawing.Size(126, 23);
-            this.btnRepuestos.TabIndex = 28;
-            this.btnRepuestos.Text = "Repuestos Usados";
-            this.btnRepuestos.UseVisualStyleBackColor = true;
-            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
-            // 
             // frmModificarReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +359,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Modificar Reparacion";
             ((System.ComponentModel.ISupportInitialize)(this.nudGarantia)).EndInit();
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();

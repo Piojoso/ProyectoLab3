@@ -54,7 +54,6 @@
             this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
             this.ucDGVTabla.cargarCMS = null;
             this.ucDGVTabla.ColumnHeaderStyle = null;
-            this.ucDGVTabla.Columns = null;
             this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDGVTabla.FondoBotones = System.Drawing.Color.Empty;
             this.ucDGVTabla.FullListData = null;
@@ -79,6 +78,7 @@
             this.Name = "frmSeleccionarReparacion";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmSeleccionarReparacion";
             this.ResumeLayout(false);
 

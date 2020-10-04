@@ -56,7 +56,6 @@
             // 
             // ccLabel1
             // 
-            this.ccLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ccLabel1.AutoSize = true;
             this.ccLabel1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.ccLabel1.Location = new System.Drawing.Point(98, 47);
@@ -67,7 +66,6 @@
             // 
             // ccLabel2
             // 
-            this.ccLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ccLabel2.AutoSize = true;
             this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.ccLabel2.Location = new System.Drawing.Point(98, 102);
@@ -78,7 +76,6 @@
             // 
             // ccLabel3
             // 
-            this.ccLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ccLabel3.AutoSize = true;
             this.ccLabel3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.ccLabel3.Location = new System.Drawing.Point(98, 157);
@@ -89,7 +86,6 @@
             // 
             // ccLabel4
             // 
-            this.ccLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ccLabel4.AutoSize = true;
             this.ccLabel4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.ccLabel4.Location = new System.Drawing.Point(98, 212);
@@ -100,7 +96,6 @@
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente.Location = new System.Drawing.Point(258, 47);
@@ -110,7 +105,6 @@
             // 
             // cclblNumReparacion
             // 
-            this.cclblNumReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNumReparacion.AutoSize = true;
             this.cclblNumReparacion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNumReparacion.Location = new System.Drawing.Point(258, 102);
@@ -165,6 +159,7 @@
             this.Name = "frmModificarEntrega";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmModificarEntrega";
             this.panelBody.ResumeLayout(false);
             this.panelBody.PerformLayout();

@@ -33,6 +33,8 @@
             this.ccLabel2 = new ccLibrary.ccLabel();
             this.ccLabel3 = new ccLibrary.ccLabel();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.ccLabel12 = new ccLibrary.ccLabel();
+            this.btnRepuestos = new System.Windows.Forms.Button();
             this.cclblTotal = new ccLibrary.ccLabel();
             this.cclblTotalRepuestos = new ccLibrary.ccLabel();
             this.cclblManoObra = new ccLibrary.ccLabel();
@@ -53,8 +55,6 @@
             this.ccLabel6 = new ccLibrary.ccLabel();
             this.ccLabel5 = new ccLibrary.ccLabel();
             this.ccLabel4 = new ccLibrary.ccLabel();
-            this.btnRepuestos = new System.Windows.Forms.Button();
-            this.ccLabel12 = new ccLibrary.ccLabel();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +133,27 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(747, 310);
             this.pnlBody.TabIndex = 4;
+            // 
+            // ccLabel12
+            // 
+            this.ccLabel12.AutoSize = true;
+            this.ccLabel12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel12.Location = new System.Drawing.Point(423, 256);
+            this.ccLabel12.Name = "ccLabel12";
+            this.ccLabel12.Size = new System.Drawing.Size(62, 16);
+            this.ccLabel12.TabIndex = 25;
+            this.ccLabel12.Text = "Entregas:";
+            // 
+            // btnRepuestos
+            // 
+            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepuestos.Location = new System.Drawing.Point(205, 196);
+            this.btnRepuestos.Name = "btnRepuestos";
+            this.btnRepuestos.Size = new System.Drawing.Size(93, 23);
+            this.btnRepuestos.TabIndex = 24;
+            this.btnRepuestos.Text = "Ver Repuestos";
+            this.btnRepuestos.UseVisualStyleBackColor = true;
+            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
             // 
             // cclblTotal
             // 
@@ -326,27 +347,6 @@
             this.ccLabel4.TabIndex = 4;
             this.ccLabel4.Text = "Error A Reparar:";
             // 
-            // btnRepuestos
-            // 
-            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRepuestos.Location = new System.Drawing.Point(205, 196);
-            this.btnRepuestos.Name = "btnRepuestos";
-            this.btnRepuestos.Size = new System.Drawing.Size(93, 23);
-            this.btnRepuestos.TabIndex = 24;
-            this.btnRepuestos.Text = "Ver Repuestos";
-            this.btnRepuestos.UseVisualStyleBackColor = true;
-            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
-            // 
-            // ccLabel12
-            // 
-            this.ccLabel12.AutoSize = true;
-            this.ccLabel12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel12.Location = new System.Drawing.Point(423, 256);
-            this.ccLabel12.Name = "ccLabel12";
-            this.ccLabel12.Size = new System.Drawing.Size(62, 16);
-            this.ccLabel12.TabIndex = 25;
-            this.ccLabel12.Text = "Entregas:";
-            // 
             // frmDetalleReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +360,7 @@
             this.Name = "frmDetalleReparacion";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
             this.ResumeLayout(false);
