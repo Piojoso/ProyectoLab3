@@ -48,15 +48,16 @@ namespace MAB.Forms.Reparaciones
             ucDGVTabla.dataSource(reparaciones);
 
             Text = "Seleccione una Reparacion del cliente " + cliente.nombre + " " + cliente.apellido;
-
+            
+            ucDGVTabla.Columns["Id"].Visible = false;
             ucDGVTabla.Columns["mesesGarantia"].Visible = false;
             ucDGVTabla.Columns["reparacionRealizada"].Visible = false;
             ucDGVTabla.Columns["manoDeObra"].Visible = false;
             ucDGVTabla.Columns["totalRepuestos"].Visible = false;
             ucDGVTabla.Columns["LavarropasId"].Visible = false;
             ucDGVTabla.Columns["Lavarropas"].Visible = false;
-            ucDGVTabla.Columns["Repuestos"].Visible = false;
             ucDGVTabla.Columns["Entregas"].Visible = false;
+            ucDGVTabla.Columns["Repuestos"].Visible = false;
         }
         
         private int idReparacion = -1;

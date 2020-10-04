@@ -35,10 +35,6 @@ namespace MAB.Forms.CRUD.Clientes
 
             cargarDGV();
 
-            ucDGVTabla.Columns["Telefonos"].Visible = false;
-            ucDGVTabla.Columns["Lavarropas"].Visible = false;
-            ucDGVTabla.Columns["Entregas"].Visible = false;
-
             creacionCMS();
         }
 
@@ -101,6 +97,11 @@ namespace MAB.Forms.CRUD.Clientes
                 {
                     ucDGVTabla.FullListData = clientes.ToList();
                 }
+
+                ucDGVTabla.Columns["Id"].Visible = false;
+                ucDGVTabla.Columns["Telefonos"].Visible = false;
+                ucDGVTabla.Columns["Lavarropas"].Visible = false;
+                ucDGVTabla.Columns["Entregas"].Visible = false;
             }
         }
 

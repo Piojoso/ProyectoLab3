@@ -45,15 +45,15 @@ namespace MAB.Forms.CRUD.Lavarropas
                 using (MABEntities db = new MABEntities())
                 {
                     var lavarropas = from lav in db.Lavarropas
-                                   where lav.ClienteId == idCliente
-                                   select new
-                                   {
-                                       lav.Id,
-                                       lav.marca,
-                                       lav.modelo,
-                                       lav.estadoGeneral,
-                                       cliente = lav.Cliente.nombre + " " + lav.Cliente.apellido,
-                                   };
+                                     where lav.ClienteId == idCliente
+                                     select new
+                                     {
+                                         lav.Id,
+                                         lav.marca,
+                                         lav.modelo,
+                                         lav.estadoGeneral,
+                                         cliente = lav.Cliente.nombre + " " + lav.Cliente.apellido,
+                                     };
 
                     ucDGVTabla.dataSource(lavarropas.ToList());
 
@@ -101,6 +101,8 @@ namespace MAB.Forms.CRUD.Lavarropas
                     Text = "Lavarropas";
                 }
             }
+
+            ucDGVTabla.Columns["Id"].Visible = false;
         }
 
         private void abrirFormModify()

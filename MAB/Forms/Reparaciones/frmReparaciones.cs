@@ -30,15 +30,6 @@ namespace MAB.Forms.CRUD.Reparaciones
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnBuscar;
 
-            ucDGVTabla.Columns["mesesGarantia"].Visible = false;
-            ucDGVTabla.Columns["reparacionRealizada"].Visible = false;
-            ucDGVTabla.Columns["manoDeObra"].Visible = false;
-            ucDGVTabla.Columns["totalRepuestos"].Visible = false;
-            ucDGVTabla.Columns["LavarropasId"].Visible = false;
-            ucDGVTabla.Columns["Lavarropas"].Visible = false;
-            ucDGVTabla.Columns["Repuestos"].Visible = false;
-            ucDGVTabla.Columns["Entregas"].Visible = false;
-
             ucDGVTabla.CellDoubleClick += btnModificar;
 
             crearCMS();
@@ -83,6 +74,16 @@ namespace MAB.Forms.CRUD.Reparaciones
 
                 Text = "Reparaciones";
             }
+
+            ucDGVTabla.Columns["Id"].Visible = false;
+            ucDGVTabla.Columns["mesesGarantia"].Visible = false;
+            ucDGVTabla.Columns["reparacionRealizada"].Visible = false;
+            ucDGVTabla.Columns["manoDeObra"].Visible = false;
+            ucDGVTabla.Columns["totalRepuestos"].Visible = false;
+            ucDGVTabla.Columns["LavarropasId"].Visible = false;
+            ucDGVTabla.Columns["Lavarropas"].Visible = false;
+            ucDGVTabla.Columns["Entregas"].Visible = false;
+            ucDGVTabla.Columns["Repuestos"].Visible = false;
         }
 
         private void crearCMS()
@@ -275,7 +276,7 @@ namespace MAB.Forms.CRUD.Reparaciones
                 frmDetalleReparacion frm = new frmDetalleReparacion(idReparacion);
                 frm.ShowDialog();
 
-                cargarDGV(lavarropas.Id);
+                cargarDGV(lavarropas?.Id);
             }
         }
 

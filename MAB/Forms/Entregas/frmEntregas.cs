@@ -21,11 +21,6 @@ namespace MAB.Forms.Entregas
 
             cargarEntregas(idReparacion, idCliente);
 
-            ucDGVTabla.Columns["ClientesId"].Visible = false;
-            ucDGVTabla.Columns["ReparacionesId"].Visible = false;
-            ucDGVTabla.Columns["Clientes"].Visible = false;
-            ucDGVTabla.Columns["Reparaciones"].Visible = false;
-
             ucBottom.Accion1 = "Agregar";
             ucBottom.Accion2 = "Modificar";
             ucBottom.Accion3 = "Cerrar";
@@ -74,6 +69,12 @@ namespace MAB.Forms.Entregas
 
                 ucDGVTabla.dataSource(entregas);
             }
+
+            ucDGVTabla.Columns["Id"].Visible = false;
+            ucDGVTabla.Columns["ClientesId"].Visible = false;
+            ucDGVTabla.Columns["ReparacionesId"].Visible = false;
+            ucDGVTabla.Columns["Clientes"].Visible = false;
+            ucDGVTabla.Columns["Reparaciones"].Visible = false;
         }
 
         #region eventos de ucBottom
