@@ -59,6 +59,8 @@ namespace MAB.Forms.Repuestos
                     ucDGVTabla.FullListData = data.ToList();
                 }
             }
+
+            ucDGVTabla.Columns["Id"].Visible = false;
         }
 
         #region eventos de botones
@@ -99,20 +101,50 @@ namespace MAB.Forms.Repuestos
 
         private void btnModificar(object sender, EventArgs e)
         {
-            if(ucDGVTabla.selectedRow() != null)
+            if(reparacion != null)
             {
-                int idRepuesto = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+                int idRepuestoOriginal = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
 
-                frmModificarRepuesto frm = new frmModificarRepuesto(idRepuesto);
+                /** Desde aca se hace un guardar que voy a tener que modificar, claramente */
+
+                frmSeleccionarRepuesto frm = new frmSeleccionarRepuesto();
                 frm.ShowDialog();
 
-                if (reparacion != null)
+                int idRepuestoNuevo = frm.repuestoSeleccionado;
+
+                if (idRepuestoNuevo != -1)
                 {
-                    cargarDGV(reparacion.Id);
+                    using (MABEntities db = new MABEntities())
+                    {
+                        Models.ReparacionesRepuestos repaRepu = db.ReparacionesRepuestos.Find(reparacion.Id, idRepuestoOriginal);
+                        
+                        repaRepu.ReparacionesId = reparacion.Id;
+                        repaRepu.RepuestosId = idRepuestoNuevo;
+
+                        db.Entry(repaRepu).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
-                else
+
+                cargarDGV(reparacion.Id);
+            }
+            else
+            {
+                if(ucDGVTabla.selectedRow() != null)
                 {
-                    cargarDGV(null);
+                    int idRepuesto = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                    frmModificarRepuesto frm = new frmModificarRepuesto(idRepuesto);
+                    frm.ShowDialog();
+
+                    if (reparacion != null)
+                    {
+                        cargarDGV(reparacion.Id);
+                    }
+                    else
+                    {
+                        cargarDGV(null);
+                    }
                 }
             }
         }
@@ -129,14 +161,20 @@ namespace MAB.Forms.Repuestos
             {
                 using (MABEntities db = new MABEntities())
                 {
-                    List<Models.Reparaciones> reparaciones = new List<Models.Reparaciones>();
+                    List<Models.Repuestos> repuestos = new List<Models.Repuestos>();
 
                     foreach (int id in frm.getRepuestos)
                     {
-                        reparaciones.Add(db.Reparaciones.Find(id));
+                        var repuesto = db.Repuestos.Find(id);
+
+                        db.Entry(repuesto).Collection("Reparaciones").Load();
+
+                        repuestos.Add(repuesto);
                     }
 
-                    ucDGVTabla.dataSource(reparaciones);
+                    ucDGVTabla.dataSource(repuestos);
+
+                    ucDGVTabla.Columns["Reparaciones"].Visible = false;
                 }
             }
         }
