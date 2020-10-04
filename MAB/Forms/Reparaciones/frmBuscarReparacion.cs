@@ -22,10 +22,10 @@ namespace MAB.Forms.CRUD.Reparaciones
             InitializeComponent();
             
             ucBottom.Accion1 = "Buscar";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += buscarReparacion;
-            ucBottom.evAccion3 += cerrarVentana;
+            ucBottom.evAccion2 += cerrarVentana;
         }
 
         private List<int> idResultados = new List<int>();
