@@ -38,6 +38,7 @@
             this.dgvPrincipal = new System.Windows.Forms.DataGridView();
             this.pnlAside = new System.Windows.Forms.Panel();
             this.gbButtons = new System.Windows.Forms.GroupBox();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.btnSeeAll = new FontAwesome.Sharp.IconButton();
@@ -142,6 +143,7 @@
             // 
             // gbButtons
             // 
+            this.gbButtons.Controls.Add(this.pnlSeparator);
             this.gbButtons.Controls.Add(this.btnDelete);
             this.gbButtons.Controls.Add(this.btnSearch);
             this.gbButtons.Controls.Add(this.btnSeeAll);
@@ -155,6 +157,14 @@
             this.gbButtons.TabStop = false;
             this.gbButtons.Text = "Acciones";
             // 
+            // pnlSeparator
+            // 
+            this.pnlSeparator.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 165);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(180, 1);
+            this.pnlSeparator.TabIndex = 5;
+            // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
@@ -165,7 +175,7 @@
             this.btnDelete.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnDelete.IconSize = 25;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDelete.Location = new System.Drawing.Point(6, 206);
+            this.btnDelete.Location = new System.Drawing.Point(6, 124);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Rotation = 0D;
             this.btnDelete.Size = new System.Drawing.Size(168, 35);
@@ -183,7 +193,7 @@
             this.btnSearch.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnSearch.IconSize = 25;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSearch.Location = new System.Drawing.Point(6, 165);
+            this.btnSearch.Location = new System.Drawing.Point(6, 172);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Rotation = 0D;
             this.btnSearch.Size = new System.Drawing.Size(168, 35);
@@ -201,7 +211,7 @@
             this.btnSeeAll.IconColor = System.Drawing.Color.WhiteSmoke;
             this.btnSeeAll.IconSize = 25;
             this.btnSeeAll.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSeeAll.Location = new System.Drawing.Point(6, 124);
+            this.btnSeeAll.Location = new System.Drawing.Point(6, 213);
             this.btnSeeAll.Name = "btnSeeAll";
             this.btnSeeAll.Rotation = 0D;
             this.btnSeeAll.Size = new System.Drawing.Size(168, 35);
@@ -277,5 +287,6 @@
         private FontAwesome.Sharp.IconButton btnSeeAll;
         private FontAwesome.Sharp.IconButton btnModify;
         private FontAwesome.Sharp.IconButton btnAdd;
+        private System.Windows.Forms.Panel pnlSeparator;
     }
 }

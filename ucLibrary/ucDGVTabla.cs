@@ -45,9 +45,13 @@ namespace ucLibrary
 
                 if (!fondoBotones.IsEmpty)
                 {
-                    foreach (IconButton btn in gbButtons.Controls)
+                    foreach (Control control in gbButtons.Controls)
                     {
-                        btn.BackColor = fondoBotones;
+                        if(control is IconButton)
+                        {
+                            IconButton btn = (control as IconButton);
+                            btn.BackColor = fondoBotones;
+                        }
                     }
                 }
                 else
@@ -207,6 +211,35 @@ namespace ucLibrary
                 deleteVisibility = value;
 
                 btnDelete.Visible = deleteVisibility;
+
+                Point controlPointLocation = new Point();
+                controlPointLocation.X = 0;
+                if(btnDelete.Visible == true)
+                {
+                    controlPointLocation.Y = 165;
+                    pnlSeparator.Location = controlPointLocation;
+
+                    controlPointLocation.X = 6;
+
+                    controlPointLocation.Y = 172;
+                    btnSearch.Location = controlPointLocation;
+
+                    controlPointLocation.Y = 213;
+                    btnSeeAll.Location = controlPointLocation;
+                }
+                else
+                {
+                    controlPointLocation.Y = 124;
+                    pnlSeparator.Location = controlPointLocation;
+
+                    controlPointLocation.X = 6;
+
+                    controlPointLocation.Y = 131;
+                    btnSearch.Location = controlPointLocation;
+
+                    controlPointLocation.Y = 172;
+                    btnSeeAll.Location = controlPointLocation;
+                }
             }
         }
 
