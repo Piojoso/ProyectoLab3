@@ -29,10 +29,10 @@ namespace MAB.Forms.CRUD.Reparaciones
             cargarDatos(idReparacion);
 
             ucBottom.Accion1 = "Guardar";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += guardarCambios;
-            ucBottom.evAccion3 += cerrarVentana;
+            ucBottom.evAccion2 += cerrarVentana;
 
             string messageError = "Solo se permiten Numeros, no se permiten Letras.";
 

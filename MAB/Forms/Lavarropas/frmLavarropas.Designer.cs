@@ -40,7 +40,6 @@
             this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
             this.ucDGVTabla.cargarCMS = null;
             this.ucDGVTabla.ColumnHeaderStyle = null;
-            this.ucDGVTabla.Columns = null;
             this.ucDGVTabla.DeleteVisibility = false;
             this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDGVTabla.FondoBotones = System.Drawing.Color.Teal;

@@ -54,7 +54,6 @@
             // 
             // cclblMarca
             // 
-            this.cclblMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMarca.AutoSize = true;
             this.cclblMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblMarca.Location = new System.Drawing.Point(102, 56);
@@ -65,7 +64,6 @@
             // 
             // cclblModelo
             // 
-            this.cclblModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblModelo.AutoSize = true;
             this.cclblModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblModelo.Location = new System.Drawing.Point(102, 114);
@@ -76,7 +74,6 @@
             // 
             // cclblEstadoGeneral
             // 
-            this.cclblEstadoGeneral.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblEstadoGeneral.AutoSize = true;
             this.cclblEstadoGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblEstadoGeneral.Location = new System.Drawing.Point(102, 170);
@@ -143,6 +140,7 @@
             this.Name = "frmBuscarLavarropas";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
             this.ResumeLayout(false);

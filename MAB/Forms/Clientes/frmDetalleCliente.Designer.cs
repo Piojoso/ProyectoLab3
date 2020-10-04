@@ -106,7 +106,6 @@
             // 
             // cclblShowNumLavarropas
             // 
-            this.cclblShowNumLavarropas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowNumLavarropas.AutoSize = true;
             this.cclblShowNumLavarropas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowNumLavarropas.Location = new System.Drawing.Point(305, 252);
@@ -116,7 +115,6 @@
             // 
             // cclblLavarropas
             // 
-            this.cclblLavarropas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblLavarropas.AutoSize = true;
             this.cclblLavarropas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblLavarropas.Location = new System.Drawing.Point(106, 252);
@@ -127,7 +125,6 @@
             // 
             // cclblShowNumTelefonos
             // 
-            this.cclblShowNumTelefonos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowNumTelefonos.AutoSize = true;
             this.cclblShowNumTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowNumTelefonos.Location = new System.Drawing.Point(305, 210);
@@ -137,7 +134,6 @@
             // 
             // cclblTelefono
             // 
-            this.cclblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTelefono.AutoSize = true;
             this.cclblTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTelefono.Location = new System.Drawing.Point(106, 210);
@@ -148,7 +144,6 @@
             // 
             // cclblShowDireccion
             // 
-            this.cclblShowDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowDireccion.AutoSize = true;
             this.cclblShowDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowDireccion.Location = new System.Drawing.Point(305, 168);
@@ -158,7 +153,6 @@
             // 
             // cclblDireccion
             // 
-            this.cclblDireccion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblDireccion.AutoSize = true;
             this.cclblDireccion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblDireccion.Location = new System.Drawing.Point(106, 168);
@@ -169,7 +163,6 @@
             // 
             // cclblShowApellido
             // 
-            this.cclblShowApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowApellido.AutoSize = true;
             this.cclblShowApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowApellido.Location = new System.Drawing.Point(305, 126);
@@ -179,7 +172,6 @@
             // 
             // cclblApellido
             // 
-            this.cclblApellido.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblApellido.AutoSize = true;
             this.cclblApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblApellido.Location = new System.Drawing.Point(106, 126);
@@ -190,7 +182,6 @@
             // 
             // cclblShowNombre
             // 
-            this.cclblShowNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowNombre.AutoSize = true;
             this.cclblShowNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowNombre.Location = new System.Drawing.Point(305, 84);
@@ -200,7 +191,6 @@
             // 
             // cclblNombre
             // 
-            this.cclblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombre.AutoSize = true;
             this.cclblNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombre.Location = new System.Drawing.Point(106, 84);
@@ -211,7 +201,6 @@
             // 
             // cclblShowNumId
             // 
-            this.cclblShowNumId.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblShowNumId.AutoSize = true;
             this.cclblShowNumId.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblShowNumId.Location = new System.Drawing.Point(305, 42);
@@ -221,7 +210,6 @@
             // 
             // cclblID
             // 
-            this.cclblID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblID.AutoSize = true;
             this.cclblID.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblID.Location = new System.Drawing.Point(106, 42);
@@ -243,6 +231,7 @@
             this.Name = "frmDetalleCliente";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
             this.ResumeLayout(false);

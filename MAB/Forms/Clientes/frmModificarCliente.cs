@@ -29,10 +29,10 @@ namespace MAB.Forms.CRUD.Clientes
             Text = "Modificar al Cliente: " + cliente.nombre + " " + cliente.apellido;
 
             ucBottom.Accion1 = "Guardar";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += confirmarCambios;
-            ucBottom.evAccion3 += cerrarModificacion;
+            ucBottom.evAccion2 += cerrarModificacion;
 
             string messageError = "Solo se permiten Letras, no se permiten Numeros.";
 

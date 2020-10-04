@@ -65,7 +65,6 @@
             this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
             this.ucDGVTabla.cargarCMS = null;
             this.ucDGVTabla.ColumnHeaderStyle = null;
-            this.ucDGVTabla.Columns = null;
             this.ucDGVTabla.DeleteVisibility = false;
             this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDGVTabla.FondoBotones = System.Drawing.Color.Empty;
@@ -91,6 +90,7 @@
             this.Name = "frmSeleccionarLavarropas";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.pnlBody.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -52,7 +52,6 @@
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente.Location = new System.Drawing.Point(113, 44);
@@ -63,7 +62,6 @@
             // 
             // cclblNombreCliente
             // 
-            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombreCliente.AutoSize = true;
             this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombreCliente.Location = new System.Drawing.Point(204, 44);
@@ -73,7 +71,6 @@
             // 
             // cclblTelefono
             // 
-            this.cclblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTelefono.AutoSize = true;
             this.cclblTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTelefono.Location = new System.Drawing.Point(113, 104);
@@ -118,6 +115,7 @@
             this.Name = "frmModificarTelefono";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
             this.ResumeLayout(false);

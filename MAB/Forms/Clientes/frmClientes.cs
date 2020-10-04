@@ -24,14 +24,14 @@ namespace MAB.Forms.CRUD.Clientes
              */
 
             InitializeComponent();
+            
+            this.Text = "Clientes";
 
             ucDGVTabla.click_btnAdd += btnAdd;
             ucDGVTabla.click_btnModify += btnModificar;
             ucDGVTabla.click_btnSearch += btnSearch;
 
             ucDGVTabla.CellDoubleClick += dobleClick;
-
-            ucDGVTabla.DeleteVisibility = false;
 
             cargarDGV();
 
@@ -48,12 +48,15 @@ namespace MAB.Forms.CRUD.Clientes
         {
             frmAgregarCliente frm = new frmAgregarCliente();
             frm.ShowDialog();
+
+            cargarDGV();
         }
 
         private void btnModificar(object sender, EventArgs e)
         {
             abrirFrmModificar();
 
+            cargarDGV();
         }
 
         private void btnSearch(object sender, EventArgs e)
@@ -93,14 +96,10 @@ namespace MAB.Forms.CRUD.Clientes
                                select cliente;
 
                     ucDGVTabla.ShortListData = clientes.ToList();
-
-                    this.Text = "Clientes - Ultimos 10 Clientes agregados";
                 }
                 else
                 {
                     ucDGVTabla.FullListData = clientes.ToList();
-
-                    this.Text = "Clientes - Todos los Clientes";
                 }
             }
         }
@@ -185,6 +184,8 @@ namespace MAB.Forms.CRUD.Clientes
 
                 frmLavarropas frm = new frmLavarropas(idCliente);
                 frm.ShowDialog();
+
+                cargarDGV();
             }
         }
 

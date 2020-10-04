@@ -26,10 +26,10 @@ namespace MAB.Forms.CRUD.Clientes
             Text = "Buscar Cliente";
             
             ucBottom.Accion1 = "Buscar";
-            ucBottom.Accion3 = "Cerrar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += buscarCliente;
-            ucBottom.evAccion3 += cerrarBusqueda;
+            ucBottom.evAccion2 += cerrarBusqueda;
 
             string messageError = "Solo se permiten Letras, no se permiten numeros.";
 

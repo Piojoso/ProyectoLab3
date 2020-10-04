@@ -103,7 +103,6 @@
             // 
             // cclblEstado
             // 
-            this.cclblEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblEstado.AutoSize = true;
             this.cclblEstado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblEstado.Location = new System.Drawing.Point(140, 188);
@@ -114,7 +113,6 @@
             // 
             // cclblModelo
             // 
-            this.cclblModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblModelo.AutoSize = true;
             this.cclblModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblModelo.Location = new System.Drawing.Point(140, 138);
@@ -125,7 +123,6 @@
             // 
             // cclblMarca
             // 
-            this.cclblMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMarca.AutoSize = true;
             this.cclblMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblMarca.Location = new System.Drawing.Point(140, 88);
@@ -136,7 +133,6 @@
             // 
             // cclblNombreCliente
             // 
-            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombreCliente.AutoSize = true;
             this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombreCliente.Location = new System.Drawing.Point(295, 43);
@@ -146,7 +142,6 @@
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente.Location = new System.Drawing.Point(140, 43);
@@ -168,6 +163,7 @@
             this.Name = "frmAgregarLavarropas";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
             this.ResumeLayout(false);

@@ -52,7 +52,6 @@
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente.Location = new System.Drawing.Point(110, 42);
@@ -63,7 +62,6 @@
             // 
             // cclblNombreCliente
             // 
-            this.cclblNombreCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblNombreCliente.AutoSize = true;
             this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblNombreCliente.Location = new System.Drawing.Point(219, 42);
@@ -74,7 +72,6 @@
             // 
             // cclblTelefono
             // 
-            this.cclblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTelefono.AutoSize = true;
             this.cclblTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblTelefono.Location = new System.Drawing.Point(110, 101);
@@ -119,6 +116,7 @@
             this.Name = "frmAgregarTelefono";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agregar un nuevo Telefono";
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
