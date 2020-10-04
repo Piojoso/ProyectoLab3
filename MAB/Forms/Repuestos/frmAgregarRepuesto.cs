@@ -54,6 +54,15 @@ namespace MAB.Forms.Repuestos
                     db.Repuestos.Add(repuesto);
 
                     db.SaveChanges();
+
+                    MessageBox.Show("Repuesto agregado correctamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    cctbNombre.Text = "";
+                    cctbDescripcion.Text = "";
+                    cctbPrecio.Text = "";
+                    cctbStock.Text = "";
+
+                    cctbNombre.Focus();
                 }
             }
             else
