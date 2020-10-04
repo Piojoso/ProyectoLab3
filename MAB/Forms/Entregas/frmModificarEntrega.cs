@@ -37,14 +37,15 @@ namespace MAB.Forms.Entregas
             using (MABEntities db = new MABEntities())
             {
                 entrega = db.Entregas.Find(idEntrega);
+
+                Text = "Modificacion de la entrega Numero: " + entrega.Id;
+
+                cclblCliente.Text = entrega.Clientes.nombre + " " + entrega.Clientes.apellido;
+                cclblNumReparacion.Text = entrega.Reparaciones.Id.ToString();
+                cctbMonto.Text = entrega.monto.ToString();
+                dtpFechaEntrega.Value = entrega.fecha;
             }
 
-            Text = "Modificacion de la entrega Numero: " + entrega.Id;
-
-            cclblCliente.Text = entrega.Clientes.nombre + " " + entrega.Clientes.apellido;
-            cclblNumReparacion.Text = entrega.Reparaciones.Id.ToString();
-            cctbMonto.Text = entrega.monto.ToString();
-            dtpFechaEntrega.Value = entrega.fecha;
         }
 
         #region eventos de ucBottom

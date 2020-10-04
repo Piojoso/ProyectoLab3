@@ -81,7 +81,14 @@ namespace MAB.Forms.Entregas
 
         private void agregarEntrega(object sender, EventArgs e)
         {
-            if (cliente != null)
+            if (reparacion != null)
+            {
+                frmAgregarEntrega frm = new frmAgregarEntrega(reparacion.Id);
+                frm.ShowDialog();
+
+                cargarEntregas(reparacion.Id, null);
+            }
+            else
             {
                 MessageBox.Show(
                     "Se requiere seleccionar una reparacion a la cual agregarle la nueva entrega. \n" +
@@ -100,13 +107,6 @@ namespace MAB.Forms.Entregas
                     cargarEntregas(null, cliente.Id);
                 }
             }
-            else
-            {
-                frmAgregarEntrega frm = new frmAgregarEntrega(reparacion.Id);
-                frm.ShowDialog();
-
-                cargarEntregas(reparacion.Id, null);
-            }
         }
 
         private void modificarEntrega(object sender, EventArgs e)
@@ -123,10 +123,10 @@ namespace MAB.Forms.Entregas
                     frm.ShowDialog();
                 }
 
-                if (cliente != null)
-                    cargarEntregas(null, cliente.Id);
-                else
+                if (reparacion != null)
                     cargarEntregas(reparacion.Id, null);
+                else
+                    cargarEntregas(null, cliente.Id);
             }
         }
 
@@ -180,10 +180,10 @@ namespace MAB.Forms.Entregas
                 }
             }
 
-            if (cliente != null)
-                cargarEntregas(null, cliente.Id);
-            else
+            if (reparacion != null)
                 cargarEntregas(reparacion.Id, null);
+            else
+                cargarEntregas(null, cliente.Id);
         }
 
         private void verCliente(object sender, EventArgs e)
@@ -201,10 +201,10 @@ namespace MAB.Forms.Entregas
                 }
             }
 
-            if (cliente != null)
-                cargarEntregas(null, cliente.Id);
-            else
+            if (reparacion != null)
                 cargarEntregas(reparacion.Id, null);
+            else
+                cargarEntregas(null, cliente.Id);
         }
 
         #endregion
