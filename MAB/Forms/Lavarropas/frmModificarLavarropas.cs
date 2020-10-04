@@ -59,7 +59,7 @@ namespace MAB.Forms.Lavarropas
                 {
                     lavarropas.marca = cctbMarca.Text;
                     lavarropas.modelo = cctbModelo.Text;
-                    lavarropas.estadoGeneral = cctbModelo.Text;
+                    lavarropas.estadoGeneral = cctbEstadoGeneral.Text;
 
                     db.Entry(lavarropas).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
