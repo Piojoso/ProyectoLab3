@@ -28,56 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlBody = new System.Windows.Forms.Panel();
-            this.pnlRepuestosUsados = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlGrafico = new System.Windows.Forms.Panel();
-            this.chartRepuestoUsado = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.pnlTituloChart = new System.Windows.Forms.Panel();
-            this.rbRepuestoUsadoAnualmente = new System.Windows.Forms.RadioButton();
-            this.rbRepuestoUsadoMensualmente = new System.Windows.Forms.RadioButton();
             this.pnlNumeroReparaciones = new System.Windows.Forms.Panel();
             this.pnlCantRepOut = new System.Windows.Forms.Panel();
             this.chartCantRepOut = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlTopCantRepOut = new System.Windows.Forms.Panel();
             this.rbCantRepOutAnual = new System.Windows.Forms.RadioButton();
             this.rbCantRepOutMensual = new System.Windows.Forms.RadioButton();
+            this.ccLabel1 = new ccLibrary.ccLabel();
             this.pnlCantRepIn = new System.Windows.Forms.Panel();
             this.chartCantRepIn = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlTopCantRepIn = new System.Windows.Forms.Panel();
             this.rbCantRepInAnual = new System.Windows.Forms.RadioButton();
             this.rbCantRepInMensual = new System.Windows.Forms.RadioButton();
+            this.ccLabel2 = new ccLibrary.ccLabel();
             this.pnlIngresosReparaciones = new System.Windows.Forms.Panel();
-            this.pnlTotalRep = new System.Windows.Forms.Panel();
             this.pnlIngresos = new System.Windows.Forms.Panel();
             this.chartIngresosReparaciones = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlTopIngresos = new System.Windows.Forms.Panel();
             this.rbIngresosAnuales = new System.Windows.Forms.RadioButton();
             this.rbIngresosMensuales = new System.Windows.Forms.RadioButton();
-            this.cboRepuestoSeleccionado = new System.Windows.Forms.ComboBox();
-            this.btnSeleccionarRepuesto = new System.Windows.Forms.Button();
-            this.ccLabel16 = new ccLibrary.ccLabel();
-            this.cclblPorcentajeReparacionesConRepuesto = new ccLibrary.ccLabel();
-            this.ccLabel9 = new ccLibrary.ccLabel();
-            this.cclblCantReparacionesConRepuesto = new ccLibrary.ccLabel();
-            this.ccLabel6 = new ccLibrary.ccLabel();
-            this.ccLabel4 = new ccLibrary.ccLabel();
-            this.ccLabel13 = new ccLibrary.ccLabel();
-            this.ccLabel1 = new ccLibrary.ccLabel();
-            this.ccLabel2 = new ccLibrary.ccLabel();
             this.ccLabel7 = new ccLibrary.ccLabel();
+            this.pnlTotalRep = new System.Windows.Forms.Panel();
             this.ccLabel10 = new ccLibrary.ccLabel();
             this.ccLabel12 = new ccLibrary.ccLabel();
             this.cclblTotalNoFinalizadas = new ccLibrary.ccLabel();
@@ -86,13 +70,24 @@
             this.cclblTotalFinalizadas = new ccLibrary.ccLabel();
             this.cclblTotalEnCurso = new ccLibrary.ccLabel();
             this.ccLabel3 = new ccLibrary.ccLabel();
+            this.pnlRepuestosUsados = new System.Windows.Forms.Panel();
+            this.pnlGrafico = new System.Windows.Forms.Panel();
+            this.chartRepuestoUsado = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnlTituloChart = new System.Windows.Forms.Panel();
+            this.rbRepuestoUsadoAnualmente = new System.Windows.Forms.RadioButton();
+            this.rbRepuestoUsadoMensualmente = new System.Windows.Forms.RadioButton();
+            this.ccLabel16 = new ccLibrary.ccLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cclblPorcentajeReparacionesConRepuesto = new ccLibrary.ccLabel();
+            this.ccLabel9 = new ccLibrary.ccLabel();
+            this.cclblCantReparacionesConRepuesto = new ccLibrary.ccLabel();
+            this.ccLabel6 = new ccLibrary.ccLabel();
+            this.btnSeleccionarRepuesto = new System.Windows.Forms.Button();
+            this.cboRepuestoSeleccionado = new System.Windows.Forms.ComboBox();
+            this.ccLabel4 = new ccLibrary.ccLabel();
+            this.ccLabel13 = new ccLibrary.ccLabel();
             this.ucBottom = new ucLibrary.ucBottom();
             this.pnlBody.SuspendLayout();
-            this.pnlRepuestosUsados.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.pnlGrafico.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRepuestoUsado)).BeginInit();
-            this.pnlTituloChart.SuspendLayout();
             this.pnlNumeroReparaciones.SuspendLayout();
             this.pnlCantRepOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCantRepOut)).BeginInit();
@@ -101,10 +96,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartCantRepIn)).BeginInit();
             this.pnlTopCantRepIn.SuspendLayout();
             this.pnlIngresosReparaciones.SuspendLayout();
-            this.pnlTotalRep.SuspendLayout();
             this.pnlIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartIngresosReparaciones)).BeginInit();
             this.pnlTopIngresos.SuspendLayout();
+            this.pnlTotalRep.SuspendLayout();
+            this.pnlRepuestosUsados.SuspendLayout();
+            this.pnlGrafico.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRepuestoUsado)).BeginInit();
+            this.pnlTituloChart.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBody
@@ -117,100 +117,6 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(783, 429);
             this.pnlBody.TabIndex = 1;
-            // 
-            // pnlRepuestosUsados
-            // 
-            this.pnlRepuestosUsados.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlRepuestosUsados.Controls.Add(this.pnlGrafico);
-            this.pnlRepuestosUsados.Controls.Add(this.panel2);
-            this.pnlRepuestosUsados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRepuestosUsados.Location = new System.Drawing.Point(0, 0);
-            this.pnlRepuestosUsados.Name = "pnlRepuestosUsados";
-            this.pnlRepuestosUsados.Size = new System.Drawing.Size(783, 429);
-            this.pnlRepuestosUsados.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.cclblPorcentajeReparacionesConRepuesto);
-            this.panel2.Controls.Add(this.ccLabel9);
-            this.panel2.Controls.Add(this.cclblCantReparacionesConRepuesto);
-            this.panel2.Controls.Add(this.ccLabel6);
-            this.panel2.Controls.Add(this.btnSeleccionarRepuesto);
-            this.panel2.Controls.Add(this.cboRepuestoSeleccionado);
-            this.panel2.Controls.Add(this.ccLabel4);
-            this.panel2.Controls.Add(this.ccLabel13);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(15);
-            this.panel2.Size = new System.Drawing.Size(783, 126);
-            this.panel2.TabIndex = 20;
-            // 
-            // pnlGrafico
-            // 
-            this.pnlGrafico.Controls.Add(this.chartRepuestoUsado);
-            this.pnlGrafico.Controls.Add(this.pnlTituloChart);
-            this.pnlGrafico.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGrafico.Location = new System.Drawing.Point(0, 126);
-            this.pnlGrafico.Name = "pnlGrafico";
-            this.pnlGrafico.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlGrafico.Size = new System.Drawing.Size(783, 303);
-            this.pnlGrafico.TabIndex = 19;
-            // 
-            // chartRepuestoUsado
-            // 
-            this.chartRepuestoUsado.BorderlineColor = System.Drawing.Color.Black;
-            this.chartRepuestoUsado.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chartRepuestoUsado.ChartAreas.Add(chartArea1);
-            this.chartRepuestoUsado.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartRepuestoUsado.Legends.Add(legend1);
-            this.chartRepuestoUsado.Location = new System.Drawing.Point(15, 32);
-            this.chartRepuestoUsado.Name = "chartRepuestoUsado";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartRepuestoUsado.Series.Add(series1);
-            this.chartRepuestoUsado.Size = new System.Drawing.Size(753, 256);
-            this.chartRepuestoUsado.TabIndex = 5;
-            this.chartRepuestoUsado.Text = "Cantidad de Reparaciones Ingresados";
-            // 
-            // pnlTituloChart
-            // 
-            this.pnlTituloChart.Controls.Add(this.rbRepuestoUsadoAnualmente);
-            this.pnlTituloChart.Controls.Add(this.rbRepuestoUsadoMensualmente);
-            this.pnlTituloChart.Controls.Add(this.ccLabel16);
-            this.pnlTituloChart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTituloChart.Location = new System.Drawing.Point(15, 15);
-            this.pnlTituloChart.Name = "pnlTituloChart";
-            this.pnlTituloChart.Size = new System.Drawing.Size(753, 17);
-            this.pnlTituloChart.TabIndex = 7;
-            // 
-            // rbRepuestoUsadoAnualmente
-            // 
-            this.rbRepuestoUsadoAnualmente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rbRepuestoUsadoAnualmente.AutoSize = true;
-            this.rbRepuestoUsadoAnualmente.Location = new System.Drawing.Point(217, 0);
-            this.rbRepuestoUsadoAnualmente.Name = "rbRepuestoUsadoAnualmente";
-            this.rbRepuestoUsadoAnualmente.Size = new System.Drawing.Size(81, 17);
-            this.rbRepuestoUsadoAnualmente.TabIndex = 8;
-            this.rbRepuestoUsadoAnualmente.Text = "Anualmente";
-            this.rbRepuestoUsadoAnualmente.UseVisualStyleBackColor = true;
-            this.rbRepuestoUsadoAnualmente.CheckedChanged += new System.EventHandler(this.rbRepuestoUsadoAnualmente_CheckedChanged);
-            // 
-            // rbRepuestoUsadoMensualmente
-            // 
-            this.rbRepuestoUsadoMensualmente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rbRepuestoUsadoMensualmente.AutoSize = true;
-            this.rbRepuestoUsadoMensualmente.Location = new System.Drawing.Point(117, 0);
-            this.rbRepuestoUsadoMensualmente.Name = "rbRepuestoUsadoMensualmente";
-            this.rbRepuestoUsadoMensualmente.Size = new System.Drawing.Size(94, 17);
-            this.rbRepuestoUsadoMensualmente.TabIndex = 7;
-            this.rbRepuestoUsadoMensualmente.Text = "Mensualmente";
-            this.rbRepuestoUsadoMensualmente.UseVisualStyleBackColor = true;
-            this.rbRepuestoUsadoMensualmente.CheckedChanged += new System.EventHandler(this.rbRepuestoUsadoMensualmente_CheckedChanged);
             // 
             // pnlNumeroReparaciones
             // 
@@ -239,17 +145,17 @@
             // 
             this.chartCantRepOut.BorderlineColor = System.Drawing.Color.Black;
             this.chartCantRepOut.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.chartCantRepOut.ChartAreas.Add(chartArea2);
+            chartArea5.Name = "ChartArea1";
+            this.chartCantRepOut.ChartAreas.Add(chartArea5);
             this.chartCantRepOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartCantRepOut.Legends.Add(legend2);
+            legend5.Name = "Legend1";
+            this.chartCantRepOut.Legends.Add(legend5);
             this.chartCantRepOut.Location = new System.Drawing.Point(15, 32);
             this.chartCantRepOut.Name = "chartCantRepOut";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartCantRepOut.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartCantRepOut.Series.Add(series5);
             this.chartCantRepOut.Size = new System.Drawing.Size(747, 163);
             this.chartCantRepOut.TabIndex = 5;
             this.chartCantRepOut.Text = "Cantidad de Reparaciones Ingresados";
@@ -289,6 +195,17 @@
             this.rbCantRepOutMensual.UseVisualStyleBackColor = true;
             this.rbCantRepOutMensual.CheckedChanged += new System.EventHandler(this.rbCantRepOutMensual_CheckedChanged);
             // 
+            // ccLabel1
+            // 
+            this.ccLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel1.AutoSize = true;
+            this.ccLabel1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel1.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel1.Name = "ccLabel1";
+            this.ccLabel1.Size = new System.Drawing.Size(230, 16);
+            this.ccLabel1.TabIndex = 6;
+            this.ccLabel1.Text = "Cantidad de Reparaciones Egresadas:";
+            // 
             // pnlCantRepIn
             // 
             this.pnlCantRepIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -305,17 +222,17 @@
             // 
             this.chartCantRepIn.BorderlineColor = System.Drawing.Color.Black;
             this.chartCantRepIn.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea3.Name = "ChartArea1";
-            this.chartCantRepIn.ChartAreas.Add(chartArea3);
+            chartArea6.Name = "ChartArea1";
+            this.chartCantRepIn.ChartAreas.Add(chartArea6);
             this.chartCantRepIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chartCantRepIn.Legends.Add(legend3);
+            legend6.Name = "Legend1";
+            this.chartCantRepIn.Legends.Add(legend6);
             this.chartCantRepIn.Location = new System.Drawing.Point(15, 32);
             this.chartCantRepIn.Name = "chartCantRepIn";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartCantRepIn.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartCantRepIn.Series.Add(series6);
             this.chartCantRepIn.Size = new System.Drawing.Size(747, 163);
             this.chartCantRepIn.TabIndex = 5;
             this.chartCantRepIn.Text = "Cantidad de Reparaciones Ingresados";
@@ -355,6 +272,17 @@
             this.rbCantRepInMensual.UseVisualStyleBackColor = true;
             this.rbCantRepInMensual.CheckedChanged += new System.EventHandler(this.rbCantRepInMensual_CheckedChanged);
             // 
+            // ccLabel2
+            // 
+            this.ccLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel2.AutoSize = true;
+            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel2.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel2.Name = "ccLabel2";
+            this.ccLabel2.Size = new System.Drawing.Size(234, 16);
+            this.ccLabel2.TabIndex = 6;
+            this.ccLabel2.Text = "Cantidad de Reparaciones Ingresados:";
+            // 
             // pnlIngresosReparaciones
             // 
             this.pnlIngresosReparaciones.BackColor = System.Drawing.SystemColors.Control;
@@ -365,24 +293,6 @@
             this.pnlIngresosReparaciones.Name = "pnlIngresosReparaciones";
             this.pnlIngresosReparaciones.Size = new System.Drawing.Size(783, 429);
             this.pnlIngresosReparaciones.TabIndex = 1;
-            // 
-            // pnlTotalRep
-            // 
-            this.pnlTotalRep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTotalRep.Controls.Add(this.ccLabel10);
-            this.pnlTotalRep.Controls.Add(this.ccLabel12);
-            this.pnlTotalRep.Controls.Add(this.cclblTotalNoFinalizadas);
-            this.pnlTotalRep.Controls.Add(this.cclblTotalRep);
-            this.pnlTotalRep.Controls.Add(this.ccLabel5);
-            this.pnlTotalRep.Controls.Add(this.cclblTotalFinalizadas);
-            this.pnlTotalRep.Controls.Add(this.cclblTotalEnCurso);
-            this.pnlTotalRep.Controls.Add(this.ccLabel3);
-            this.pnlTotalRep.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTotalRep.Location = new System.Drawing.Point(0, 0);
-            this.pnlTotalRep.Name = "pnlTotalRep";
-            this.pnlTotalRep.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlTotalRep.Size = new System.Drawing.Size(783, 132);
-            this.pnlTotalRep.TabIndex = 20;
             // 
             // pnlIngresos
             // 
@@ -399,17 +309,17 @@
             // 
             this.chartIngresosReparaciones.BorderlineColor = System.Drawing.Color.Black;
             this.chartIngresosReparaciones.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea4.Name = "ChartArea1";
-            this.chartIngresosReparaciones.ChartAreas.Add(chartArea4);
+            chartArea7.Name = "ChartArea1";
+            this.chartIngresosReparaciones.ChartAreas.Add(chartArea7);
             this.chartIngresosReparaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chartIngresosReparaciones.Legends.Add(legend4);
+            legend7.Name = "Legend1";
+            this.chartIngresosReparaciones.Legends.Add(legend7);
             this.chartIngresosReparaciones.Location = new System.Drawing.Point(15, 32);
             this.chartIngresosReparaciones.Name = "chartIngresosReparaciones";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartIngresosReparaciones.Series.Add(series4);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chartIngresosReparaciones.Series.Add(series7);
             this.chartIngresosReparaciones.Size = new System.Drawing.Size(753, 250);
             this.chartIngresosReparaciones.TabIndex = 5;
             this.chartIngresosReparaciones.Text = "Cantidad de Reparaciones Ingresados";
@@ -449,114 +359,6 @@
             this.rbIngresosMensuales.UseVisualStyleBackColor = true;
             this.rbIngresosMensuales.CheckedChanged += new System.EventHandler(this.rbIngresosMensuales_CheckedChanged);
             // 
-            // cboRepuestoSeleccionado
-            // 
-            this.cboRepuestoSeleccionado.FormattingEnabled = true;
-            this.cboRepuestoSeleccionado.Location = new System.Drawing.Point(307, 13);
-            this.cboRepuestoSeleccionado.Name = "cboRepuestoSeleccionado";
-            this.cboRepuestoSeleccionado.Size = new System.Drawing.Size(239, 21);
-            this.cboRepuestoSeleccionado.TabIndex = 16;
-            // 
-            // btnSeleccionarRepuesto
-            // 
-            this.btnSeleccionarRepuesto.Location = new System.Drawing.Point(552, 11);
-            this.btnSeleccionarRepuesto.Name = "btnSeleccionarRepuesto";
-            this.btnSeleccionarRepuesto.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionarRepuesto.TabIndex = 17;
-            this.btnSeleccionarRepuesto.Text = "Cargar";
-            this.btnSeleccionarRepuesto.UseVisualStyleBackColor = true;
-            this.btnSeleccionarRepuesto.Click += new System.EventHandler(this.btnSeleccionarRepuesto_Click);
-            // 
-            // ccLabel16
-            // 
-            this.ccLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel16.AutoSize = true;
-            this.ccLabel16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel16.Location = new System.Drawing.Point(0, 1);
-            this.ccLabel16.Name = "ccLabel16";
-            this.ccLabel16.Size = new System.Drawing.Size(108, 16);
-            this.ccLabel16.TabIndex = 6;
-            this.ccLabel16.Text = "Repuesto Usado:";
-            // 
-            // cclblPorcentajeReparacionesConRepuesto
-            // 
-            this.cclblPorcentajeReparacionesConRepuesto.AutoSize = true;
-            this.cclblPorcentajeReparacionesConRepuesto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblPorcentajeReparacionesConRepuesto.Location = new System.Drawing.Point(457, 88);
-            this.cclblPorcentajeReparacionesConRepuesto.Name = "cclblPorcentajeReparacionesConRepuesto";
-            this.cclblPorcentajeReparacionesConRepuesto.Size = new System.Drawing.Size(0, 16);
-            this.cclblPorcentajeReparacionesConRepuesto.TabIndex = 21;
-            // 
-            // ccLabel9
-            // 
-            this.ccLabel9.AutoSize = true;
-            this.ccLabel9.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel9.Location = new System.Drawing.Point(184, 88);
-            this.ccLabel9.Name = "ccLabel9";
-            this.ccLabel9.Size = new System.Drawing.Size(267, 16);
-            this.ccLabel9.TabIndex = 20;
-            this.ccLabel9.Text = "Porcentaje de que cambiaron este repuesto:";
-            // 
-            // cclblCantReparacionesConRepuesto
-            // 
-            this.cclblCantReparacionesConRepuesto.AutoSize = true;
-            this.cclblCantReparacionesConRepuesto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblCantReparacionesConRepuesto.Location = new System.Drawing.Point(527, 55);
-            this.cclblCantReparacionesConRepuesto.Name = "cclblCantReparacionesConRepuesto";
-            this.cclblCantReparacionesConRepuesto.Size = new System.Drawing.Size(0, 16);
-            this.cclblCantReparacionesConRepuesto.TabIndex = 19;
-            // 
-            // ccLabel6
-            // 
-            this.ccLabel6.AutoSize = true;
-            this.ccLabel6.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel6.Location = new System.Drawing.Point(184, 55);
-            this.ccLabel6.Name = "ccLabel6";
-            this.ccLabel6.Size = new System.Drawing.Size(337, 16);
-            this.ccLabel6.TabIndex = 18;
-            this.ccLabel6.Text = "Numero de Reparaciones que cambiaron este repuesto:";
-            // 
-            // ccLabel4
-            // 
-            this.ccLabel4.AutoSize = true;
-            this.ccLabel4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel4.Location = new System.Drawing.Point(153, 15);
-            this.ccLabel4.Name = "ccLabel4";
-            this.ccLabel4.Size = new System.Drawing.Size(148, 16);
-            this.ccLabel4.TabIndex = 15;
-            this.ccLabel4.Text = "Seleccione Un Repuesto";
-            // 
-            // ccLabel13
-            // 
-            this.ccLabel13.AutoSize = true;
-            this.ccLabel13.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel13.Location = new System.Drawing.Point(655, 86);
-            this.ccLabel13.Name = "ccLabel13";
-            this.ccLabel13.Size = new System.Drawing.Size(0, 16);
-            this.ccLabel13.TabIndex = 14;
-            // 
-            // ccLabel1
-            // 
-            this.ccLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel1.AutoSize = true;
-            this.ccLabel1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel1.Location = new System.Drawing.Point(0, 1);
-            this.ccLabel1.Name = "ccLabel1";
-            this.ccLabel1.Size = new System.Drawing.Size(230, 16);
-            this.ccLabel1.TabIndex = 6;
-            this.ccLabel1.Text = "Cantidad de Reparaciones Egresadas:";
-            // 
-            // ccLabel2
-            // 
-            this.ccLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel2.AutoSize = true;
-            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel2.Location = new System.Drawing.Point(0, 1);
-            this.ccLabel2.Name = "ccLabel2";
-            this.ccLabel2.Size = new System.Drawing.Size(234, 16);
-            this.ccLabel2.TabIndex = 6;
-            this.ccLabel2.Text = "Cantidad de Reparaciones Ingresados:";
-            // 
             // ccLabel7
             // 
             this.ccLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
@@ -567,6 +369,24 @@
             this.ccLabel7.Size = new System.Drawing.Size(228, 16);
             this.ccLabel7.TabIndex = 6;
             this.ccLabel7.Text = "Ingresos Obtenidos de Reparaciones:";
+            // 
+            // pnlTotalRep
+            // 
+            this.pnlTotalRep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTotalRep.Controls.Add(this.ccLabel10);
+            this.pnlTotalRep.Controls.Add(this.ccLabel12);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalNoFinalizadas);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalRep);
+            this.pnlTotalRep.Controls.Add(this.ccLabel5);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalFinalizadas);
+            this.pnlTotalRep.Controls.Add(this.cclblTotalEnCurso);
+            this.pnlTotalRep.Controls.Add(this.ccLabel3);
+            this.pnlTotalRep.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTotalRep.Location = new System.Drawing.Point(0, 0);
+            this.pnlTotalRep.Name = "pnlTotalRep";
+            this.pnlTotalRep.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlTotalRep.Size = new System.Drawing.Size(783, 132);
+            this.pnlTotalRep.TabIndex = 20;
             // 
             // ccLabel10
             // 
@@ -644,6 +464,186 @@
             this.ccLabel3.TabIndex = 15;
             this.ccLabel3.Text = "Finalizadas:";
             // 
+            // pnlRepuestosUsados
+            // 
+            this.pnlRepuestosUsados.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlRepuestosUsados.Controls.Add(this.pnlGrafico);
+            this.pnlRepuestosUsados.Controls.Add(this.panel2);
+            this.pnlRepuestosUsados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRepuestosUsados.Location = new System.Drawing.Point(0, 0);
+            this.pnlRepuestosUsados.Name = "pnlRepuestosUsados";
+            this.pnlRepuestosUsados.Size = new System.Drawing.Size(783, 429);
+            this.pnlRepuestosUsados.TabIndex = 2;
+            // 
+            // pnlGrafico
+            // 
+            this.pnlGrafico.Controls.Add(this.chartRepuestoUsado);
+            this.pnlGrafico.Controls.Add(this.pnlTituloChart);
+            this.pnlGrafico.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlGrafico.Location = new System.Drawing.Point(0, 126);
+            this.pnlGrafico.Name = "pnlGrafico";
+            this.pnlGrafico.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlGrafico.Size = new System.Drawing.Size(783, 303);
+            this.pnlGrafico.TabIndex = 19;
+            // 
+            // chartRepuestoUsado
+            // 
+            this.chartRepuestoUsado.BorderlineColor = System.Drawing.Color.Black;
+            this.chartRepuestoUsado.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea8.Name = "ChartArea1";
+            this.chartRepuestoUsado.ChartAreas.Add(chartArea8);
+            this.chartRepuestoUsado.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend8.Name = "Legend1";
+            this.chartRepuestoUsado.Legends.Add(legend8);
+            this.chartRepuestoUsado.Location = new System.Drawing.Point(15, 32);
+            this.chartRepuestoUsado.Name = "chartRepuestoUsado";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chartRepuestoUsado.Series.Add(series8);
+            this.chartRepuestoUsado.Size = new System.Drawing.Size(753, 256);
+            this.chartRepuestoUsado.TabIndex = 5;
+            this.chartRepuestoUsado.Text = "Cantidad de Reparaciones Ingresados";
+            // 
+            // pnlTituloChart
+            // 
+            this.pnlTituloChart.Controls.Add(this.rbRepuestoUsadoAnualmente);
+            this.pnlTituloChart.Controls.Add(this.rbRepuestoUsadoMensualmente);
+            this.pnlTituloChart.Controls.Add(this.ccLabel16);
+            this.pnlTituloChart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTituloChart.Location = new System.Drawing.Point(15, 15);
+            this.pnlTituloChart.Name = "pnlTituloChart";
+            this.pnlTituloChart.Size = new System.Drawing.Size(753, 17);
+            this.pnlTituloChart.TabIndex = 7;
+            // 
+            // rbRepuestoUsadoAnualmente
+            // 
+            this.rbRepuestoUsadoAnualmente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbRepuestoUsadoAnualmente.AutoSize = true;
+            this.rbRepuestoUsadoAnualmente.Location = new System.Drawing.Point(217, 0);
+            this.rbRepuestoUsadoAnualmente.Name = "rbRepuestoUsadoAnualmente";
+            this.rbRepuestoUsadoAnualmente.Size = new System.Drawing.Size(81, 17);
+            this.rbRepuestoUsadoAnualmente.TabIndex = 8;
+            this.rbRepuestoUsadoAnualmente.Text = "Anualmente";
+            this.rbRepuestoUsadoAnualmente.UseVisualStyleBackColor = true;
+            this.rbRepuestoUsadoAnualmente.CheckedChanged += new System.EventHandler(this.rbRepuestoUsadoAnualmente_CheckedChanged);
+            // 
+            // rbRepuestoUsadoMensualmente
+            // 
+            this.rbRepuestoUsadoMensualmente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbRepuestoUsadoMensualmente.AutoSize = true;
+            this.rbRepuestoUsadoMensualmente.Location = new System.Drawing.Point(117, 0);
+            this.rbRepuestoUsadoMensualmente.Name = "rbRepuestoUsadoMensualmente";
+            this.rbRepuestoUsadoMensualmente.Size = new System.Drawing.Size(94, 17);
+            this.rbRepuestoUsadoMensualmente.TabIndex = 7;
+            this.rbRepuestoUsadoMensualmente.Text = "Mensualmente";
+            this.rbRepuestoUsadoMensualmente.UseVisualStyleBackColor = true;
+            this.rbRepuestoUsadoMensualmente.CheckedChanged += new System.EventHandler(this.rbRepuestoUsadoMensualmente_CheckedChanged);
+            // 
+            // ccLabel16
+            // 
+            this.ccLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel16.AutoSize = true;
+            this.ccLabel16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel16.Location = new System.Drawing.Point(0, 1);
+            this.ccLabel16.Name = "ccLabel16";
+            this.ccLabel16.Size = new System.Drawing.Size(108, 16);
+            this.ccLabel16.TabIndex = 6;
+            this.ccLabel16.Text = "Repuesto Usado:";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cclblPorcentajeReparacionesConRepuesto);
+            this.panel2.Controls.Add(this.ccLabel9);
+            this.panel2.Controls.Add(this.cclblCantReparacionesConRepuesto);
+            this.panel2.Controls.Add(this.ccLabel6);
+            this.panel2.Controls.Add(this.btnSeleccionarRepuesto);
+            this.panel2.Controls.Add(this.cboRepuestoSeleccionado);
+            this.panel2.Controls.Add(this.ccLabel4);
+            this.panel2.Controls.Add(this.ccLabel13);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(15);
+            this.panel2.Size = new System.Drawing.Size(783, 126);
+            this.panel2.TabIndex = 20;
+            // 
+            // cclblPorcentajeReparacionesConRepuesto
+            // 
+            this.cclblPorcentajeReparacionesConRepuesto.AutoSize = true;
+            this.cclblPorcentajeReparacionesConRepuesto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblPorcentajeReparacionesConRepuesto.Location = new System.Drawing.Point(457, 88);
+            this.cclblPorcentajeReparacionesConRepuesto.Name = "cclblPorcentajeReparacionesConRepuesto";
+            this.cclblPorcentajeReparacionesConRepuesto.Size = new System.Drawing.Size(0, 16);
+            this.cclblPorcentajeReparacionesConRepuesto.TabIndex = 21;
+            // 
+            // ccLabel9
+            // 
+            this.ccLabel9.AutoSize = true;
+            this.ccLabel9.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel9.Location = new System.Drawing.Point(184, 88);
+            this.ccLabel9.Name = "ccLabel9";
+            this.ccLabel9.Size = new System.Drawing.Size(267, 16);
+            this.ccLabel9.TabIndex = 20;
+            this.ccLabel9.Text = "Porcentaje de que cambiaron este repuesto:";
+            // 
+            // cclblCantReparacionesConRepuesto
+            // 
+            this.cclblCantReparacionesConRepuesto.AutoSize = true;
+            this.cclblCantReparacionesConRepuesto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblCantReparacionesConRepuesto.Location = new System.Drawing.Point(527, 55);
+            this.cclblCantReparacionesConRepuesto.Name = "cclblCantReparacionesConRepuesto";
+            this.cclblCantReparacionesConRepuesto.Size = new System.Drawing.Size(0, 16);
+            this.cclblCantReparacionesConRepuesto.TabIndex = 19;
+            // 
+            // ccLabel6
+            // 
+            this.ccLabel6.AutoSize = true;
+            this.ccLabel6.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel6.Location = new System.Drawing.Point(184, 55);
+            this.ccLabel6.Name = "ccLabel6";
+            this.ccLabel6.Size = new System.Drawing.Size(337, 16);
+            this.ccLabel6.TabIndex = 18;
+            this.ccLabel6.Text = "Numero de Reparaciones que cambiaron este repuesto:";
+            // 
+            // btnSeleccionarRepuesto
+            // 
+            this.btnSeleccionarRepuesto.Location = new System.Drawing.Point(552, 11);
+            this.btnSeleccionarRepuesto.Name = "btnSeleccionarRepuesto";
+            this.btnSeleccionarRepuesto.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionarRepuesto.TabIndex = 17;
+            this.btnSeleccionarRepuesto.Text = "Cargar";
+            this.btnSeleccionarRepuesto.UseVisualStyleBackColor = true;
+            this.btnSeleccionarRepuesto.Click += new System.EventHandler(this.btnSeleccionarRepuesto_Click);
+            // 
+            // cboRepuestoSeleccionado
+            // 
+            this.cboRepuestoSeleccionado.FormattingEnabled = true;
+            this.cboRepuestoSeleccionado.Location = new System.Drawing.Point(307, 13);
+            this.cboRepuestoSeleccionado.Name = "cboRepuestoSeleccionado";
+            this.cboRepuestoSeleccionado.Size = new System.Drawing.Size(239, 21);
+            this.cboRepuestoSeleccionado.TabIndex = 16;
+            // 
+            // ccLabel4
+            // 
+            this.ccLabel4.AutoSize = true;
+            this.ccLabel4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel4.Location = new System.Drawing.Point(153, 15);
+            this.ccLabel4.Name = "ccLabel4";
+            this.ccLabel4.Size = new System.Drawing.Size(148, 16);
+            this.ccLabel4.TabIndex = 15;
+            this.ccLabel4.Text = "Seleccione Un Repuesto";
+            // 
+            // ccLabel13
+            // 
+            this.ccLabel13.AutoSize = true;
+            this.ccLabel13.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel13.Location = new System.Drawing.Point(655, 86);
+            this.ccLabel13.Name = "ccLabel13";
+            this.ccLabel13.Size = new System.Drawing.Size(0, 16);
+            this.ccLabel13.TabIndex = 14;
+            // 
             // ucBottom
             // 
             this.ucBottom.Accion1 = null;
@@ -671,13 +671,6 @@
             this.ShowInTaskbar = false;
             this.Text = "Estadisticas de las Reparaciones";
             this.pnlBody.ResumeLayout(false);
-            this.pnlRepuestosUsados.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.pnlGrafico.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartRepuestoUsado)).EndInit();
-            this.pnlTituloChart.ResumeLayout(false);
-            this.pnlTituloChart.PerformLayout();
             this.pnlNumeroReparaciones.ResumeLayout(false);
             this.pnlCantRepOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartCantRepOut)).EndInit();
@@ -688,12 +681,19 @@
             this.pnlTopCantRepIn.ResumeLayout(false);
             this.pnlTopCantRepIn.PerformLayout();
             this.pnlIngresosReparaciones.ResumeLayout(false);
-            this.pnlTotalRep.ResumeLayout(false);
-            this.pnlTotalRep.PerformLayout();
             this.pnlIngresos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartIngresosReparaciones)).EndInit();
             this.pnlTopIngresos.ResumeLayout(false);
             this.pnlTopIngresos.PerformLayout();
+            this.pnlTotalRep.ResumeLayout(false);
+            this.pnlTotalRep.PerformLayout();
+            this.pnlRepuestosUsados.ResumeLayout(false);
+            this.pnlGrafico.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartRepuestoUsado)).EndInit();
+            this.pnlTituloChart.ResumeLayout(false);
+            this.pnlTituloChart.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

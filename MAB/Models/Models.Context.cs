@@ -12,6 +12,8 @@ namespace MAB.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MABEntities : DbContext
     {
@@ -32,5 +34,20 @@ namespace MAB.Models
         public virtual DbSet<Repuestos> Repuestos { get; set; }
         public virtual DbSet<Entregas> Entregas { get; set; }
         public virtual DbSet<ReparacionesRepuestos> ReparacionesRepuestos { get; set; }
+    
+        public virtual ObjectResult<string> Procedure()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Procedure");
+        }
+    
+        public virtual ObjectResult<string> MarcaMasReparado()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MarcaMasReparado");
+        }
+    
+        public virtual ObjectResult<string> ModeloMasReparado()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ModeloMasReparado");
+        }
     }
 }

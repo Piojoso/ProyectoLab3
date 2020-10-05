@@ -138,7 +138,7 @@
             // 
             this.ccLabel12.AutoSize = true;
             this.ccLabel12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel12.Location = new System.Drawing.Point(423, 256);
+            this.ccLabel12.Location = new System.Drawing.Point(439, 256);
             this.ccLabel12.Name = "ccLabel12";
             this.ccLabel12.Size = new System.Drawing.Size(62, 16);
             this.ccLabel12.TabIndex = 25;
@@ -248,7 +248,7 @@
             // btnVerLavarropa
             // 
             this.btnVerLavarropa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVerLavarropa.Location = new System.Drawing.Point(242, 252);
+            this.btnVerLavarropa.Location = new System.Drawing.Point(228, 252);
             this.btnVerLavarropa.Name = "btnVerLavarropa";
             this.btnVerLavarropa.Size = new System.Drawing.Size(93, 23);
             this.btnVerLavarropa.TabIndex = 13;
@@ -259,7 +259,7 @@
             // btnVerEntregas
             // 
             this.btnVerEntregas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVerEntregas.Location = new System.Drawing.Point(575, 252);
+            this.btnVerEntregas.Location = new System.Drawing.Point(507, 252);
             this.btnVerEntregas.Name = "btnVerEntregas";
             this.btnVerEntregas.Size = new System.Drawing.Size(93, 23);
             this.btnVerEntregas.TabIndex = 12;
@@ -281,11 +281,11 @@
             // 
             this.ccLabel10.AutoSize = true;
             this.ccLabel10.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel10.Location = new System.Drawing.Point(64, 256);
+            this.ccLabel10.Location = new System.Drawing.Point(146, 256);
             this.ccLabel10.Name = "ccLabel10";
-            this.ccLabel10.Size = new System.Drawing.Size(70, 16);
+            this.ccLabel10.Size = new System.Drawing.Size(76, 16);
             this.ccLabel10.TabIndex = 10;
-            this.ccLabel10.Text = "Lavarropa:";
+            this.ccLabel10.Text = "Lavarropas:";
             // 
             // ccLabel9
             // 
