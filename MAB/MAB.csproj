@@ -36,6 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +56,8 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +70,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\dsStockEscaso.cs">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsStockEscaso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Clientes\frmAgregarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +119,12 @@
     </Compile>
     <Compile Include="Forms\Entregas\frmAgregarEntrega.Designer.cs">
       <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmComprobanteDeRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmComprobanteDeRecibo.Designer.cs">
+      <DependentUpon>frmComprobanteDeRecibo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Entregas\frmEntregas.cs">
       <SubType>Form</SubType>
@@ -296,6 +317,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\crComprobanteDeRecibo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crComprobanteDeRecibo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\crStocks.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crStocks.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Forms\Clientes\frmAgregarCliente.resx">
       <DependentUpon>frmAgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entregas\frmAgregarEntrega.resx">
       <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmComprobanteDeRecibo.resx">
+      <DependentUpon>frmComprobanteDeRecibo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entregas\frmEntregas.resx">
       <DependentUpon>frmEntregas.cs</DependentUpon>
@@ -401,10 +437,29 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\crComprobanteDeRecibo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crComprobanteDeRecibo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crStocks.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crStocks.cs</LastGenOutput>
+    </EmbeddedResource>
     <EntityDeploy Include="Models\MABModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MABModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DataSets\dsStockEscaso.xsc">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsStockEscaso.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsStockEscaso.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsStockEscaso.xss">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -417,7 +472,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\MABModel.edmx.sql" />
@@ -434,6 +491,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ccLibrary\ccLibrary.csproj">

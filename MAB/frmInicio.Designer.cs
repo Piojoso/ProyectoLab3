@@ -34,40 +34,42 @@
             this.pnlEstadisticas = new System.Windows.Forms.Panel();
             this.pnlBodyEstadisticas = new System.Windows.Forms.Panel();
             this.tcPrincipal = new System.Windows.Forms.TabControl();
-            this.tpClientes = new System.Windows.Forms.TabPage();
-            this.ccLabel15 = new ccLibrary.ccLabel();
-            this.cclblCliente4 = new ccLibrary.ccLabel();
-            this.ccLabel20 = new ccLibrary.ccLabel();
-            this.cclblCliente3 = new ccLibrary.ccLabel();
-            this.ccLabel5 = new ccLibrary.ccLabel();
-            this.cclblCliente1 = new ccLibrary.ccLabel();
-            this.ccLabel3 = new ccLibrary.ccLabel();
-            this.cclblCliente2 = new ccLibrary.ccLabel();
-            this.tpLavarropas = new System.Windows.Forms.TabPage();
-            this.ccLabel8 = new ccLibrary.ccLabel();
+            this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.cclblModeloMasReparado = new ccLibrary.ccLabel();
+            this.cclblMarcaMasReparada = new ccLibrary.ccLabel();
+            this.cclblLavarropasConMasReparaciones = new ccLibrary.ccLabel();
+            this.cclblUltimoLavarropasAgregado = new ccLibrary.ccLabel();
+            this.cclblTotalLavarropasGuardados = new ccLibrary.ccLabel();
             this.ccLabel16 = new ccLibrary.ccLabel();
             this.ccLabel4 = new ccLibrary.ccLabel();
             this.ccLabel2 = new ccLibrary.ccLabel();
             this.ccLabel7 = new ccLibrary.ccLabel();
             this.ccLabel6 = new ccLibrary.ccLabel();
+            this.cclblClienteConMasLavarropas = new ccLibrary.ccLabel();
+            this.cclblCliente4 = new ccLibrary.ccLabel();
+            this.cclblClienteConMasReparaciones = new ccLibrary.ccLabel();
+            this.cclblCliente3 = new ccLibrary.ccLabel();
+            this.cclblUltimoClienteAgregado = new ccLibrary.ccLabel();
+            this.cclblCliente1 = new ccLibrary.ccLabel();
+            this.cclblTotalClientesGuardados = new ccLibrary.ccLabel();
+            this.cclblCliente2 = new ccLibrary.ccLabel();
             this.tpReparaciones = new System.Windows.Forms.TabPage();
             this.tpStock = new System.Windows.Forms.TabPage();
-            this.ccLabel14 = new ccLibrary.ccLabel();
-            this.ccLabel13 = new ccLibrary.ccLabel();
+            this.crvRepuestos = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.pnlTituloEstadisticas = new System.Windows.Forms.Panel();
             this.ccLabel1 = new ccLibrary.ccLabel();
             this.pnlNavBar = new System.Windows.Forms.Panel();
             this.ucBotonera = new ucLibrary.ucBotonera();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.ucTitleBar = new ucLibrary.ucTitleBar();
+            this.crStocks1 = new MAB.Reports.crStocks();
             this.pnlBG.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlEstadisticas.SuspendLayout();
             this.pnlBodyEstadisticas.SuspendLayout();
             this.tcPrincipal.SuspendLayout();
-            this.tpClientes.SuspendLayout();
-            this.tpLavarropas.SuspendLayout();
+            this.tpGeneral.SuspendLayout();
             this.tpStock.SuspendLayout();
             this.pnlTituloEstadisticas.SuspendLayout();
             this.pnlNavBar.SuspendLayout();
@@ -124,8 +126,7 @@
             // 
             // tcPrincipal
             // 
-            this.tcPrincipal.Controls.Add(this.tpClientes);
-            this.tcPrincipal.Controls.Add(this.tpLavarropas);
+            this.tcPrincipal.Controls.Add(this.tpGeneral);
             this.tcPrincipal.Controls.Add(this.tpReparaciones);
             this.tcPrincipal.Controls.Add(this.tpStock);
             this.tcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,34 +138,148 @@
             this.tcPrincipal.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcPrincipal.TabIndex = 0;
             // 
-            // tpClientes
+            // tpGeneral
             // 
-            this.tpClientes.Controls.Add(this.ccLabel15);
-            this.tpClientes.Controls.Add(this.cclblCliente4);
-            this.tpClientes.Controls.Add(this.ccLabel20);
-            this.tpClientes.Controls.Add(this.cclblCliente3);
-            this.tpClientes.Controls.Add(this.ccLabel5);
-            this.tpClientes.Controls.Add(this.cclblCliente1);
-            this.tpClientes.Controls.Add(this.ccLabel3);
-            this.tpClientes.Controls.Add(this.cclblCliente2);
-            this.tpClientes.Location = new System.Drawing.Point(4, 22);
-            this.tpClientes.Name = "tpClientes";
-            this.tpClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpClientes.Size = new System.Drawing.Size(607, 458);
-            this.tpClientes.TabIndex = 0;
-            this.tpClientes.Text = "Clientes";
-            this.tpClientes.UseVisualStyleBackColor = true;
+            this.tpGeneral.Controls.Add(this.cclblModeloMasReparado);
+            this.tpGeneral.Controls.Add(this.cclblMarcaMasReparada);
+            this.tpGeneral.Controls.Add(this.cclblLavarropasConMasReparaciones);
+            this.tpGeneral.Controls.Add(this.cclblUltimoLavarropasAgregado);
+            this.tpGeneral.Controls.Add(this.cclblTotalLavarropasGuardados);
+            this.tpGeneral.Controls.Add(this.ccLabel16);
+            this.tpGeneral.Controls.Add(this.ccLabel4);
+            this.tpGeneral.Controls.Add(this.ccLabel2);
+            this.tpGeneral.Controls.Add(this.ccLabel7);
+            this.tpGeneral.Controls.Add(this.ccLabel6);
+            this.tpGeneral.Controls.Add(this.cclblClienteConMasLavarropas);
+            this.tpGeneral.Controls.Add(this.cclblCliente4);
+            this.tpGeneral.Controls.Add(this.cclblClienteConMasReparaciones);
+            this.tpGeneral.Controls.Add(this.cclblCliente3);
+            this.tpGeneral.Controls.Add(this.cclblUltimoClienteAgregado);
+            this.tpGeneral.Controls.Add(this.cclblCliente1);
+            this.tpGeneral.Controls.Add(this.cclblTotalClientesGuardados);
+            this.tpGeneral.Controls.Add(this.cclblCliente2);
+            this.tpGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpGeneral.Name = "tpGeneral";
+            this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGeneral.Size = new System.Drawing.Size(607, 458);
+            this.tpGeneral.TabIndex = 0;
+            this.tpGeneral.Text = "Generales";
+            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
-            // ccLabel15
+            // cclblModeloMasReparado
             // 
-            this.ccLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel15.AutoSize = true;
-            this.ccLabel15.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel15.Location = new System.Drawing.Point(364, 133);
-            this.ccLabel15.Name = "ccLabel15";
-            this.ccLabel15.Size = new System.Drawing.Size(65, 16);
-            this.ccLabel15.TabIndex = 12;
-            this.ccLabel15.Text = "ccLabel15";
+            this.cclblModeloMasReparado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblModeloMasReparado.AutoSize = true;
+            this.cclblModeloMasReparado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblModeloMasReparado.Location = new System.Drawing.Point(303, 316);
+            this.cclblModeloMasReparado.Name = "cclblModeloMasReparado";
+            this.cclblModeloMasReparado.Size = new System.Drawing.Size(0, 16);
+            this.cclblModeloMasReparado.TabIndex = 23;
+            // 
+            // cclblMarcaMasReparada
+            // 
+            this.cclblMarcaMasReparada.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblMarcaMasReparada.AutoSize = true;
+            this.cclblMarcaMasReparada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblMarcaMasReparada.Location = new System.Drawing.Point(303, 279);
+            this.cclblMarcaMasReparada.Name = "cclblMarcaMasReparada";
+            this.cclblMarcaMasReparada.Size = new System.Drawing.Size(0, 16);
+            this.cclblMarcaMasReparada.TabIndex = 22;
+            // 
+            // cclblLavarropasConMasReparaciones
+            // 
+            this.cclblLavarropasConMasReparaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblLavarropasConMasReparaciones.AutoSize = true;
+            this.cclblLavarropasConMasReparaciones.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblLavarropasConMasReparaciones.Location = new System.Drawing.Point(303, 242);
+            this.cclblLavarropasConMasReparaciones.Name = "cclblLavarropasConMasReparaciones";
+            this.cclblLavarropasConMasReparaciones.Size = new System.Drawing.Size(0, 16);
+            this.cclblLavarropasConMasReparaciones.TabIndex = 21;
+            // 
+            // cclblUltimoLavarropasAgregado
+            // 
+            this.cclblUltimoLavarropasAgregado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblUltimoLavarropasAgregado.AutoSize = true;
+            this.cclblUltimoLavarropasAgregado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblUltimoLavarropasAgregado.Location = new System.Drawing.Point(303, 168);
+            this.cclblUltimoLavarropasAgregado.Name = "cclblUltimoLavarropasAgregado";
+            this.cclblUltimoLavarropasAgregado.Size = new System.Drawing.Size(0, 16);
+            this.cclblUltimoLavarropasAgregado.TabIndex = 20;
+            // 
+            // cclblTotalLavarropasGuardados
+            // 
+            this.cclblTotalLavarropasGuardados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblTotalLavarropasGuardados.AutoSize = true;
+            this.cclblTotalLavarropasGuardados.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalLavarropasGuardados.Location = new System.Drawing.Point(303, 205);
+            this.cclblTotalLavarropasGuardados.Name = "cclblTotalLavarropasGuardados";
+            this.cclblTotalLavarropasGuardados.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalLavarropasGuardados.TabIndex = 19;
+            // 
+            // ccLabel16
+            // 
+            this.ccLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel16.AutoSize = true;
+            this.ccLabel16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel16.Location = new System.Drawing.Point(20, 316);
+            this.ccLabel16.Name = "ccLabel16";
+            this.ccLabel16.Size = new System.Drawing.Size(147, 16);
+            this.ccLabel16.TabIndex = 17;
+            this.ccLabel16.Text = "Modelo mas Reparado:";
+            // 
+            // ccLabel4
+            // 
+            this.ccLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel4.AutoSize = true;
+            this.ccLabel4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel4.Location = new System.Drawing.Point(20, 279);
+            this.ccLabel4.Name = "ccLabel4";
+            this.ccLabel4.Size = new System.Drawing.Size(137, 16);
+            this.ccLabel4.TabIndex = 16;
+            this.ccLabel4.Text = "Marca mas Reparada:";
+            // 
+            // ccLabel2
+            // 
+            this.ccLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel2.AutoSize = true;
+            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel2.Location = new System.Drawing.Point(20, 242);
+            this.ccLabel2.Name = "ccLabel2";
+            this.ccLabel2.Size = new System.Drawing.Size(212, 16);
+            this.ccLabel2.TabIndex = 15;
+            this.ccLabel2.Text = "Lavarropas con mas Reparaciones:";
+            // 
+            // ccLabel7
+            // 
+            this.ccLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel7.AutoSize = true;
+            this.ccLabel7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel7.Location = new System.Drawing.Point(20, 168);
+            this.ccLabel7.Name = "ccLabel7";
+            this.ccLabel7.Size = new System.Drawing.Size(181, 16);
+            this.ccLabel7.TabIndex = 14;
+            this.ccLabel7.Text = "Ultimo Lavarropas Agregado:";
+            // 
+            // ccLabel6
+            // 
+            this.ccLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.ccLabel6.AutoSize = true;
+            this.ccLabel6.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.ccLabel6.Location = new System.Drawing.Point(20, 205);
+            this.ccLabel6.Name = "ccLabel6";
+            this.ccLabel6.Size = new System.Drawing.Size(197, 16);
+            this.ccLabel6.TabIndex = 13;
+            this.ccLabel6.Text = "Total de Lavarropas Guardados:";
+            // 
+            // cclblClienteConMasLavarropas
+            // 
+            this.cclblClienteConMasLavarropas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblClienteConMasLavarropas.AutoSize = true;
+            this.cclblClienteConMasLavarropas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblClienteConMasLavarropas.Location = new System.Drawing.Point(303, 131);
+            this.cclblClienteConMasLavarropas.Name = "cclblClienteConMasLavarropas";
+            this.cclblClienteConMasLavarropas.Size = new System.Drawing.Size(0, 16);
+            this.cclblClienteConMasLavarropas.TabIndex = 12;
             // 
             // cclblCliente4
             // 
@@ -173,20 +288,19 @@
             this.cclblCliente4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente4.Location = new System.Drawing.Point(20, 131);
             this.cclblCliente4.Name = "cclblCliente4";
-            this.cclblCliente4.Size = new System.Drawing.Size(169, 16);
+            this.cclblCliente4.Size = new System.Drawing.Size(172, 16);
             this.cclblCliente4.TabIndex = 11;
-            this.cclblCliente4.Text = "Cliente con mas Lavarropas";
+            this.cclblCliente4.Text = "Cliente con mas Lavarropas:";
             // 
-            // ccLabel20
+            // cclblClienteConMasReparaciones
             // 
-            this.ccLabel20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel20.AutoSize = true;
-            this.ccLabel20.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel20.Location = new System.Drawing.Point(364, 96);
-            this.ccLabel20.Name = "ccLabel20";
-            this.ccLabel20.Size = new System.Drawing.Size(65, 16);
-            this.ccLabel20.TabIndex = 10;
-            this.ccLabel20.Text = "ccLabel20";
+            this.cclblClienteConMasReparaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblClienteConMasReparaciones.AutoSize = true;
+            this.cclblClienteConMasReparaciones.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblClienteConMasReparaciones.Location = new System.Drawing.Point(303, 94);
+            this.cclblClienteConMasReparaciones.Name = "cclblClienteConMasReparaciones";
+            this.cclblClienteConMasReparaciones.Size = new System.Drawing.Size(0, 16);
+            this.cclblClienteConMasReparaciones.TabIndex = 10;
             // 
             // cclblCliente3
             // 
@@ -195,20 +309,19 @@
             this.cclblCliente3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente3.Location = new System.Drawing.Point(20, 94);
             this.cclblCliente3.Name = "cclblCliente3";
-            this.cclblCliente3.Size = new System.Drawing.Size(183, 16);
+            this.cclblCliente3.Size = new System.Drawing.Size(186, 16);
             this.cclblCliente3.TabIndex = 9;
-            this.cclblCliente3.Text = "Cliente con mas Reparaciones";
+            this.cclblCliente3.Text = "Cliente con mas Reparaciones:";
             // 
-            // ccLabel5
+            // cclblUltimoClienteAgregado
             // 
-            this.ccLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel5.AutoSize = true;
-            this.ccLabel5.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel5.Location = new System.Drawing.Point(364, 22);
-            this.ccLabel5.Name = "ccLabel5";
-            this.ccLabel5.Size = new System.Drawing.Size(58, 16);
-            this.ccLabel5.TabIndex = 3;
-            this.ccLabel5.Text = "ccLabel5";
+            this.cclblUltimoClienteAgregado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblUltimoClienteAgregado.AutoSize = true;
+            this.cclblUltimoClienteAgregado.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblUltimoClienteAgregado.Location = new System.Drawing.Point(303, 20);
+            this.cclblUltimoClienteAgregado.Name = "cclblUltimoClienteAgregado";
+            this.cclblUltimoClienteAgregado.Size = new System.Drawing.Size(0, 16);
+            this.cclblUltimoClienteAgregado.TabIndex = 3;
             // 
             // cclblCliente1
             // 
@@ -217,20 +330,19 @@
             this.cclblCliente1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente1.Location = new System.Drawing.Point(20, 20);
             this.cclblCliente1.Name = "cclblCliente1";
-            this.cclblCliente1.Size = new System.Drawing.Size(152, 16);
+            this.cclblCliente1.Size = new System.Drawing.Size(155, 16);
             this.cclblCliente1.TabIndex = 2;
-            this.cclblCliente1.Text = "Ultimo Cliente Agregado";
+            this.cclblCliente1.Text = "Ultimo Cliente Agregado:";
             // 
-            // ccLabel3
+            // cclblTotalClientesGuardados
             // 
-            this.ccLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.ccLabel3.AutoSize = true;
-            this.ccLabel3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel3.Location = new System.Drawing.Point(364, 59);
-            this.ccLabel3.Name = "ccLabel3";
-            this.ccLabel3.Size = new System.Drawing.Size(58, 16);
-            this.ccLabel3.TabIndex = 1;
-            this.ccLabel3.Text = "ccLabel3";
+            this.cclblTotalClientesGuardados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cclblTotalClientesGuardados.AutoSize = true;
+            this.cclblTotalClientesGuardados.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblTotalClientesGuardados.Location = new System.Drawing.Point(303, 57);
+            this.cclblTotalClientesGuardados.Name = "cclblTotalClientesGuardados";
+            this.cclblTotalClientesGuardados.Size = new System.Drawing.Size(0, 16);
+            this.cclblTotalClientesGuardados.TabIndex = 1;
             // 
             // cclblCliente2
             // 
@@ -239,85 +351,9 @@
             this.cclblCliente2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cclblCliente2.Location = new System.Drawing.Point(20, 57);
             this.cclblCliente2.Name = "cclblCliente2";
-            this.cclblCliente2.Size = new System.Drawing.Size(174, 16);
+            this.cclblCliente2.Size = new System.Drawing.Size(177, 16);
             this.cclblCliente2.TabIndex = 0;
-            this.cclblCliente2.Text = "Total de Clientes Guardados";
-            // 
-            // tpLavarropas
-            // 
-            this.tpLavarropas.Controls.Add(this.ccLabel8);
-            this.tpLavarropas.Controls.Add(this.ccLabel16);
-            this.tpLavarropas.Controls.Add(this.ccLabel4);
-            this.tpLavarropas.Controls.Add(this.ccLabel2);
-            this.tpLavarropas.Controls.Add(this.ccLabel7);
-            this.tpLavarropas.Controls.Add(this.ccLabel6);
-            this.tpLavarropas.Location = new System.Drawing.Point(4, 22);
-            this.tpLavarropas.Name = "tpLavarropas";
-            this.tpLavarropas.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLavarropas.Size = new System.Drawing.Size(607, 458);
-            this.tpLavarropas.TabIndex = 1;
-            this.tpLavarropas.Text = "Lavarropas";
-            this.tpLavarropas.UseVisualStyleBackColor = true;
-            // 
-            // ccLabel8
-            // 
-            this.ccLabel8.AutoSize = true;
-            this.ccLabel8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel8.Location = new System.Drawing.Point(20, 205);
-            this.ccLabel8.Name = "ccLabel8";
-            this.ccLabel8.Size = new System.Drawing.Size(227, 16);
-            this.ccLabel8.TabIndex = 5;
-            this.ccLabel8.Text = "Lavarropas actualmente con garantia:";
-            // 
-            // ccLabel16
-            // 
-            this.ccLabel16.AutoSize = true;
-            this.ccLabel16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel16.Location = new System.Drawing.Point(20, 168);
-            this.ccLabel16.Name = "ccLabel16";
-            this.ccLabel16.Size = new System.Drawing.Size(144, 16);
-            this.ccLabel16.TabIndex = 4;
-            this.ccLabel16.Text = "Modelo mas Reparado";
-            // 
-            // ccLabel4
-            // 
-            this.ccLabel4.AutoSize = true;
-            this.ccLabel4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel4.Location = new System.Drawing.Point(20, 131);
-            this.ccLabel4.Name = "ccLabel4";
-            this.ccLabel4.Size = new System.Drawing.Size(134, 16);
-            this.ccLabel4.TabIndex = 3;
-            this.ccLabel4.Text = "Marca mas Reparada";
-            // 
-            // ccLabel2
-            // 
-            this.ccLabel2.AutoSize = true;
-            this.ccLabel2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel2.Location = new System.Drawing.Point(20, 94);
-            this.ccLabel2.Name = "ccLabel2";
-            this.ccLabel2.Size = new System.Drawing.Size(209, 16);
-            this.ccLabel2.TabIndex = 2;
-            this.ccLabel2.Text = "Lavarropas con mas Reparaciones";
-            // 
-            // ccLabel7
-            // 
-            this.ccLabel7.AutoSize = true;
-            this.ccLabel7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel7.Location = new System.Drawing.Point(20, 20);
-            this.ccLabel7.Name = "ccLabel7";
-            this.ccLabel7.Size = new System.Drawing.Size(178, 16);
-            this.ccLabel7.TabIndex = 1;
-            this.ccLabel7.Text = "Ultimo Lavarropas Agregado";
-            // 
-            // ccLabel6
-            // 
-            this.ccLabel6.AutoSize = true;
-            this.ccLabel6.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel6.Location = new System.Drawing.Point(20, 57);
-            this.ccLabel6.Name = "ccLabel6";
-            this.ccLabel6.Size = new System.Drawing.Size(194, 16);
-            this.ccLabel6.TabIndex = 0;
-            this.ccLabel6.Text = "Total de Lavarropas Guardados";
+            this.cclblCliente2.Text = "Total de Clientes Guardados:";
             // 
             // tpReparaciones
             // 
@@ -331,8 +367,7 @@
             // 
             // tpStock
             // 
-            this.tpStock.Controls.Add(this.ccLabel14);
-            this.tpStock.Controls.Add(this.ccLabel13);
+            this.tpStock.Controls.Add(this.crvRepuestos);
             this.tpStock.Location = new System.Drawing.Point(4, 22);
             this.tpStock.Name = "tpStock";
             this.tpStock.Padding = new System.Windows.Forms.Padding(3);
@@ -341,25 +376,23 @@
             this.tpStock.Text = "Stock";
             this.tpStock.UseVisualStyleBackColor = true;
             // 
-            // ccLabel14
+            // crvRepuestos
             // 
-            this.ccLabel14.AutoSize = true;
-            this.ccLabel14.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel14.Location = new System.Drawing.Point(20, 57);
-            this.ccLabel14.Name = "ccLabel14";
-            this.ccLabel14.Size = new System.Drawing.Size(65, 16);
-            this.ccLabel14.TabIndex = 5;
-            this.ccLabel14.Text = "ccLabel14";
-            // 
-            // ccLabel13
-            // 
-            this.ccLabel13.AutoSize = true;
-            this.ccLabel13.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.ccLabel13.Location = new System.Drawing.Point(20, 22);
-            this.ccLabel13.Name = "ccLabel13";
-            this.ccLabel13.Size = new System.Drawing.Size(65, 16);
-            this.ccLabel13.TabIndex = 0;
-            this.ccLabel13.Text = "ccLabel13";
+            this.crvRepuestos.ActiveViewIndex = -1;
+            this.crvRepuestos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crvRepuestos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crvRepuestos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crvRepuestos.Location = new System.Drawing.Point(3, 3);
+            this.crvRepuestos.Name = "crvRepuestos";
+            this.crvRepuestos.ShowCloseButton = false;
+            this.crvRepuestos.ShowCopyButton = false;
+            this.crvRepuestos.ShowGotoPageButton = false;
+            this.crvRepuestos.ShowPageNavigateButtons = false;
+            this.crvRepuestos.ShowParameterPanelButton = false;
+            this.crvRepuestos.ShowRefreshButton = false;
+            this.crvRepuestos.Size = new System.Drawing.Size(601, 452);
+            this.crvRepuestos.TabIndex = 6;
+            this.crvRepuestos.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // pnlTituloEstadisticas
             // 
@@ -451,12 +484,9 @@
             this.pnlEstadisticas.ResumeLayout(false);
             this.pnlBodyEstadisticas.ResumeLayout(false);
             this.tcPrincipal.ResumeLayout(false);
-            this.tpClientes.ResumeLayout(false);
-            this.tpClientes.PerformLayout();
-            this.tpLavarropas.ResumeLayout(false);
-            this.tpLavarropas.PerformLayout();
+            this.tpGeneral.ResumeLayout(false);
+            this.tpGeneral.PerformLayout();
             this.tpStock.ResumeLayout(false);
-            this.tpStock.PerformLayout();
             this.pnlTituloEstadisticas.ResumeLayout(false);
             this.pnlTituloEstadisticas.PerformLayout();
             this.pnlNavBar.ResumeLayout(false);
@@ -478,26 +508,29 @@
         private System.Windows.Forms.Panel pnlTituloEstadisticas;
         private ccLibrary.ccLabel ccLabel1;
         private System.Windows.Forms.Panel pnlEstadisticas;
-        private ccLibrary.ccLabel ccLabel5;
-        private ccLibrary.ccLabel cclblCliente1;
-        private ccLibrary.ccLabel ccLabel3;
-        private ccLibrary.ccLabel cclblCliente2;
-        private ccLibrary.ccLabel ccLabel7;
-        private ccLibrary.ccLabel ccLabel6;
-        private ccLibrary.ccLabel ccLabel13;
-        private ccLibrary.ccLabel ccLabel14;
+        private Reports.crStocks crStocks1;
         private System.Windows.Forms.TabControl tcPrincipal;
-        private System.Windows.Forms.TabPage tpClientes;
-        private System.Windows.Forms.TabPage tpLavarropas;
-        private System.Windows.Forms.TabPage tpReparaciones;
-        private System.Windows.Forms.TabPage tpStock;
-        private ccLibrary.ccLabel ccLabel20;
-        private ccLibrary.ccLabel cclblCliente3;
-        private ccLibrary.ccLabel ccLabel15;
-        private ccLibrary.ccLabel cclblCliente4;
-        private ccLibrary.ccLabel ccLabel2;
+        private System.Windows.Forms.TabPage tpGeneral;
         private ccLibrary.ccLabel ccLabel16;
         private ccLibrary.ccLabel ccLabel4;
-        private ccLibrary.ccLabel ccLabel8;
+        private ccLibrary.ccLabel ccLabel2;
+        private ccLibrary.ccLabel ccLabel7;
+        private ccLibrary.ccLabel ccLabel6;
+        private ccLibrary.ccLabel cclblClienteConMasLavarropas;
+        private ccLibrary.ccLabel cclblCliente4;
+        private ccLibrary.ccLabel cclblClienteConMasReparaciones;
+        private ccLibrary.ccLabel cclblCliente3;
+        private ccLibrary.ccLabel cclblUltimoClienteAgregado;
+        private ccLibrary.ccLabel cclblCliente1;
+        private ccLibrary.ccLabel cclblTotalClientesGuardados;
+        private ccLibrary.ccLabel cclblCliente2;
+        private System.Windows.Forms.TabPage tpReparaciones;
+        private System.Windows.Forms.TabPage tpStock;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crvRepuestos;
+        private ccLibrary.ccLabel cclblModeloMasReparado;
+        private ccLibrary.ccLabel cclblMarcaMasReparada;
+        private ccLibrary.ccLabel cclblLavarropasConMasReparaciones;
+        private ccLibrary.ccLabel cclblUltimoLavarropasAgregado;
+        private ccLibrary.ccLabel cclblTotalLavarropasGuardados;
     }
 }

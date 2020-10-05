@@ -14,7 +14,11 @@ using System.Runtime.InteropServices;
 using MAB.Forms.CRUD.Clientes;
 using MAB.Forms.CRUD.Lavarropas;
 using MAB.Forms.CRUD.Reparaciones;
+using MAB.Forms.Reparaciones;
 using MAB.Forms.Repuestos;
+using MAB.Models;
+using MAB.Reports;
+using MAB.DataSets.dsStockEscasoTableAdapters;
 
 namespace MAB.Forms
 {
@@ -36,14 +40,14 @@ namespace MAB.Forms
              */
 
             InitializeComponent();
-            
+
             // Form
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            
-            ucBotonera.NumBotones = 5;                              
+
+            ucBotonera.NumBotones = 5;
             ucBotonera.ColorAlternativo = Control.DefaultBackColor;
 
             ucBotonera.btnAccion1 = "Inicio";
@@ -52,13 +56,212 @@ namespace MAB.Forms
             ucBotonera.btnAccion4 = "Lavarropas";
             ucBotonera.btnAccion5 = "Stock";
 
-            ucBotonera.evClickAccion1 += verInicio;                                                        
+            ucBotonera.evClickAccion1 += verInicio;
             ucBotonera.evClickAccion2 += verClientes;
             ucBotonera.evClickAccion3 += verReparaciones;
             ucBotonera.evClickAccion4 += verLavarropas;
             ucBotonera.evClickAccion5 += verStock;
 
             ucBotonera.BotonInicial = 1;
+
+            cargarReporteStockEscaso();
+
+            cargarEstadisticasReparaciones();
+
+            cargarEstadisticasGenerales();
+        }
+
+        #region estadisticas
+
+        private string ultimoClienteAgregado()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                var cliente = db.Clientes.OrderByDescending(c => c.Id).FirstOrDefault();
+
+                return (cliente.nombre + ' ' + cliente.apellido);
+            }
+        }
+
+        private int totalClientesGuardados()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                return db.Clientes.Count();
+            }
+        }
+
+        private string clienteConMasReparaciones()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                int idCliente = -1;
+                int maxReparaciones = 0;
+                foreach (Models.Clientes cliente in db.Clientes)
+                {
+                    int reparaciones = 0;
+
+                    foreach (Models.Lavarropas lavarropa in cliente.Lavarropas)
+                    {
+                        reparaciones += lavarropa.Reparacion.Count();
+                    }
+
+                    if (reparaciones >= maxReparaciones)
+                    {
+                        idCliente = cliente.Id;
+                    }
+                }
+
+                if (idCliente != -1)
+                {
+                    Models.Clientes c = db.Clientes.Find(idCliente);
+
+                    return (c.nombre + ' ' + c.apellido);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        private string clienteConMasLavarropas()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                int idCliente = -1;
+                int maxLavarropas = 0;
+                foreach (Models.Clientes cliente in db.Clientes)
+                {
+                    int lavarropas = cliente.Lavarropas.Count();
+
+                    if (lavarropas >= maxLavarropas)
+                    {
+                        idCliente = cliente.Id;
+                    }
+                }
+
+                if (idCliente != -1)
+                {
+                    Models.Clientes c = db.Clientes.Find(idCliente);
+                    return (c.nombre + " " + c.apellido);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        private string ultimoLavarropasAgregado()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                var lavarropa = db.Lavarropas.OrderByDescending(l => l.Id).FirstOrDefault();
+
+                return (lavarropa.marca + " " + lavarropa.modelo + " del Cliente " + lavarropa.Cliente.nombre + " " + lavarropa.Cliente.apellido);
+            }
+        }
+
+        private int totalDeLavarropasGuardados()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                return db.Lavarropas.Count();
+            }
+        }
+
+        private string lavarropasConMasReparaciones()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                int idLavarropas = -1;
+                int maxReparaciones = 0;
+
+                foreach (Models.Lavarropas lavarropa in db.Lavarropas)
+                {
+                    int reparaciones = lavarropa.Reparacion.Count();
+
+                    if (reparaciones >= maxReparaciones)
+                    {
+                        idLavarropas = lavarropa.Id;
+                    }
+                }
+
+                if (idLavarropas != -1)
+                {
+                    Models.Lavarropas l = db.Lavarropas.Find(idLavarropas);
+
+                    return (l.marca + " " + l.modelo + " del cliente " + l.Cliente.nombre + " " + l.Cliente.apellido);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+        private string marcaMasReparada()
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                return db.MarcaMasReparado().FirstOrDefault();;
+            }
+        }
+
+        private string modeloMasReparado()
+        {
+            using(MABEntities db = new MABEntities())
+            {
+                return db.ModeloMasReparado().FirstOrDefault();
+            }
+        }
+
+        #endregion
+
+        private void cargarEstadisticasGenerales()
+        {
+            cclblUltimoClienteAgregado.Text = ultimoClienteAgregado();
+
+            cclblTotalClientesGuardados.Text = totalClientesGuardados().ToString();
+
+            cclblClienteConMasReparaciones.Text = clienteConMasReparaciones();
+
+            cclblClienteConMasLavarropas.Text = clienteConMasLavarropas();
+
+            cclblUltimoLavarropasAgregado.Text = ultimoLavarropasAgregado();
+
+            cclblTotalLavarropasGuardados.Text = totalDeLavarropasGuardados().ToString();
+
+            cclblLavarropasConMasReparaciones.Text = lavarropasConMasReparaciones();
+
+            cclblMarcaMasReparada.Text = marcaMasReparada();
+
+            cclblModeloMasReparado.Text = modeloMasReparado();
+        }
+
+        private void cargarReporteStockEscaso()
+        {
+            crStocks report = new crStocks();
+            RepuestosTableAdapter ta = new RepuestosTableAdapter();
+
+            DataSet ds = new DataSet();
+            ds.Tables.Add(ta.GetData());
+
+            report.SetDataSource(ds);
+            crvRepuestos.ReportSource = report;
+        }
+
+        private void cargarEstadisticasReparaciones()
+        {
+            frmEstadisticas frm = new frmEstadisticas();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            tcPrincipal.TabPages["tpReparaciones"].Controls.Add(frm);
+            tcPrincipal.TabPages["tpReparaciones"].Tag = frm;
+            frm.BringToFront();
+            frm.Show();
         }
 
         #region Acciones Botones
@@ -67,7 +270,7 @@ namespace MAB.Forms
         {
             if (hijoActual != null)
                 hijoActual.Close();
-            
+
             ucTitleBar.TitleText = "MAB";
         }
 
@@ -92,7 +295,7 @@ namespace MAB.Forms
         }
 
         #endregion
-        
+
         #region Formulario Hijo
 
         //Campos
@@ -100,7 +303,7 @@ namespace MAB.Forms
 
         private void abrirFormulario(Form hijo)
         {
-            if(hijoActual != null)
+            if (hijoActual != null)
             {
                 hijoActual.Close();
                 ucTitleBar.TitleText = "MAB";
@@ -118,6 +321,6 @@ namespace MAB.Forms
         }
 
         #endregion
-        
+
     }
 }

@@ -63,7 +63,14 @@ namespace MAB.Forms.Entregas
                     db.Entregas.Add(entrega);
                     db.SaveChanges();
 
-                    MessageBox.Show("Entrega Creada Correctamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult resp = MessageBox.Show("Entrega Creada Correctamente \n ¿Desea crear un Comprobante de Recibo?",
+                        "Guardado Correctamente", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if(resp == DialogResult.Yes)
+                    {
+                        frmComprobanteDeRecibo frm = new frmComprobanteDeRecibo(entrega);
+                        frm.ShowDialog();
+                    }
                     
                     cctbMonto.Text = "";
                     cctbMonto.Focus();
