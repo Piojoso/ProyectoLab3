@@ -77,51 +77,21 @@ namespace MAB.Forms.Lavarropas
 
         private void buscarLavarropas(object sender, EventArgs e)
         {
-            DialogResult resp = MessageBox.Show(
-                "Existe 2 Maneras de buscar lavarropas. \n" +
-                "1) Ver todos los lavarropas de un cliente en particular \n" +
-                "2) Buscar un lavarropas dado su marca y modelo \n" +
-                "¿Desea ver todos los lavarropas de un cliente en particular? (Opcion 1) \n" +
-                "Al seleccionar \"NO\" la busqueda se realizara por el segundo metodo. (Opcion 2)",
-                "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            frmBuscarLavarropas frm = new frmBuscarLavarropas();
+            frm.ShowDialog();
 
-            if (resp == DialogResult.Yes)
+            if (frm.getResultados.Count != 0)
             {
-                frmSeleccionarCliente frm = new frmSeleccionarCliente();
-                frm.ShowDialog();
-
-                int idCliente = frm.ClienteSeleccionado;
-
-                if (idCliente != -1)
+                using (MABEntities db = new MABEntities())
                 {
-                    using (MABEntities db = new MABEntities())
+                    List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
+
+                    foreach (int id in frm.getResultados)
                     {
-                        var lavarropas = from lav in db.Lavarropas
-                                         where lav.ClienteId == idCliente
-                                         select lav;
-
-                        ucDGVTabla.dataSource(lavarropas.ToList());
+                        lavarropas.Add(db.Lavarropas.Find(id));
                     }
-                }
-            }
-            else
-            {
-                frmBuscarLavarropas frm = new frmBuscarLavarropas();
-                frm.ShowDialog();
 
-                if (frm.getResultados.Count != 0)
-                {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        List<Models.Lavarropas> lavarropas = new List<Models.Lavarropas>();
-
-                        foreach (int id in frm.getResultados)
-                        {
-                            lavarropas.Add(db.Lavarropas.Find(id));
-                        }
-
-                        ucDGVTabla.dataSource(lavarropas);
-                    }
+                    ucDGVTabla.dataSource(lavarropas);
                 }
             }
         }

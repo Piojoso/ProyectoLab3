@@ -195,67 +195,30 @@ namespace MAB.Forms.CRUD.Lavarropas
 
         private void btnSearch(object sender, EventArgs e)
         {
-            DialogResult resp = MessageBox.Show(
-                "Existe 2 Maneras de buscar lavarropas. \n" +
-                "1) Ver todos los lavarropas de un cliente en particular \n" +
-                "2) Buscar un lavarropas dado su marca y modelo \n" +
-                "¿Desea ver todos los lavarropas de un cliente en particular? (Opcion 1) \n" +
-                "Al seleccionar \"NO\" la busqueda se realizara por el segundo metodo. (Opcion 2)",
-                "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            frmBuscarLavarropas frm = new frmBuscarLavarropas();
+            frm.ShowDialog();
 
-            if(resp == DialogResult.Yes)
+            if(frm.getResultados.Count != 0)
             {
-                frmSeleccionarCliente frm = new frmSeleccionarCliente();
-                frm.ShowDialog();
-
-                int idCliente = frm.ClienteSeleccionado;
-
-                if(idCliente != -1)
+                using (MABEntities db = new MABEntities())
                 {
-                    using(MABEntities db = new MABEntities())
-                    {
-                        var lavarropas = from lav in db.Lavarropas
-                                         where lav.ClienteId == idCliente
-                                         select new
-                                         {
-                                             lav.Id,
-                                             lav.marca,
-                                             lav.modelo,
-                                             lav.estadoGeneral,
-                                             cliente = lav.Cliente.nombre + " " + lav.Cliente.apellido,
-                                         };
+                    List<object> lavarropas = new List<object>();
 
-                        ucDGVTabla.dataSource(lavarropas.ToList());
+                    foreach (int id in frm.getResultados)
+                    {
+                        var lavarropa = db.Lavarropas.Find(id);
+
+                        db.Entry(lavarropa).Reference("Cliente").Load();
+                        db.Entry(lavarropa).Collection("Reparacion").Load();
+
+                        lavarropas.Add(lavarropa);
                     }
-                }
-            }
-            else
-            {
-                frmBuscarLavarropas frm = new frmBuscarLavarropas();
-                frm.ShowDialog();
-
-                if(frm.getResultados.Count != 0)
-                {
-                    using (MABEntities db = new MABEntities())
-                    {
-                        List<object> lavarropas = new List<object>();
-
-                        foreach (int id in frm.getResultados)
-                        {
-                            var lavarropa = db.Lavarropas.Find(id);
-
-                            db.Entry(lavarropa).Reference("Cliente").Load();
-                            db.Entry(lavarropa).Collection("Reparacion").Load();
-
-                            lavarropas.Add(lavarropa);
-                        }
-                        ucDGVTabla.dataSource(lavarropas);
+                    ucDGVTabla.dataSource(lavarropas);
                         
-                        ucDGVTabla.Columns["Id"].Visible = false;
-                        ucDGVTabla.Columns["Cliente"].Visible = false;
-                        ucDGVTabla.Columns["ClienteId"].Visible = false;
-                        ucDGVTabla.Columns["Reparacion"].Visible = false;
-                    }
+                    ucDGVTabla.Columns["Id"].Visible = false;
+                    ucDGVTabla.Columns["Cliente"].Visible = false;
+                    ucDGVTabla.Columns["ClienteId"].Visible = false;
+                    ucDGVTabla.Columns["Reparacion"].Visible = false;
                 }
             }
         }
