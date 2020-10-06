@@ -62,24 +62,40 @@ namespace MAB.Forms.CRUD.Clientes
 
             using (MABEntities db = new MABEntities())
             {
-                var clientes = db.Clientes;
-
-                foreach (Models.Clientes cliente in clientes)
+                if(nombre)
                 {
-                    if (nombre && cctbNombre.Text == cliente.nombre)
+                    var clientes = db.Clientes.Where(c => c.nombre.Contains(cctbNombre.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
-                    else if (apellido && cctbApellido.Text == cliente.apellido)
+                }
+                if (apellido)
+                {
+                    var clientes = db.Clientes.Where(c => c.apellido.Contains(cctbApellido.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
-                    else if (direccion && cctbDireccion.Text == cliente.direccion)
+                }
+                if (direccion)
+                {
+                    var clientes = db.Clientes.Where(c => c.direccion.Contains(cctbDireccion.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
                 }
             }

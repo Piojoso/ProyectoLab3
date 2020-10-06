@@ -85,7 +85,12 @@ namespace MAB.Forms.Repuestos
 
                     foreach (int id in frm.getRepuestos)
                     {
-                        repuestos.Add(db.Repuestos.Find(id));
+                        var repuesto = db.Repuestos.Find(id);
+
+                        if (!repuestos.Contains(repuesto))
+                        {
+                            repuestos.Add(repuesto);
+                        }
                     }
 
                     ucDGVTabla.dataSource(repuestos);

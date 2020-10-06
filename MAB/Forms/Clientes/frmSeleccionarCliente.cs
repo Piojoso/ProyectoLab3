@@ -86,7 +86,12 @@ namespace MAB.Forms.Clientes
                 {
                     foreach(int id in idClientes)
                     {
-                        clientes.Add(db.Clientes.Find(id));
+                        var cliente = db.Clientes.Find(id);
+
+                        if (!clientes.Contains(cliente))
+                        {
+                            clientes.Add(cliente);
+                        }
                     }
 
                     ucDGVTabla.dataSource(clientes);

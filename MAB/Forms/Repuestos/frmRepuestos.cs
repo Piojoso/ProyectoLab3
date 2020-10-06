@@ -167,9 +167,12 @@ namespace MAB.Forms.Repuestos
                     {
                         var repuesto = db.Repuestos.Find(id);
 
-                        db.Entry(repuesto).Collection("Reparaciones").Load();
+                        if(!repuestos.Contains(repuesto))
+                        {
+                            db.Entry(repuesto).Collection("Reparaciones").Load();
 
-                        repuestos.Add(repuesto);
+                            repuestos.Add(repuesto);
+                        }
                     }
 
                     ucDGVTabla.dataSource(repuestos);

@@ -50,34 +50,55 @@ namespace MAB.Forms.Repuestos
             bool stock = cctbStock.Text != string.Empty ? true : false;
             bool precio = cctbPrecio.Text != string.Empty ? true : false;
 
-            List<Models.Repuestos> repuestos;
-
             using (MABEntities db = new MABEntities())
             {
-                repuestos = db.Repuestos.ToList();
-            }
+                if (nombre)
+                {
+                    var repuestos = db.Repuestos.Where(r => r.nombre.Contains(cctbNombre.Text));
 
-            foreach (Models.Repuestos r in repuestos)
-            {
-                if (nombre && r.nombre == cctbNombre.Text)
-                {
-                    idRepuestos.Add(r.Id);
-                    break;
+                    foreach (var r in repuestos)
+                    {
+                        if (!idRepuestos.Contains(r.Id))
+                        {
+                            idRepuestos.Add(r.Id);
+                        }
+                    }
                 }
-                else if (descripcion && r.descripcion == cctbDescripcion.Text)
+                if (descripcion)
                 {
-                    idRepuestos.Add(r.Id);
-                    break;
+                    var repuestos = db.Repuestos.Where(r => r.descripcion.Contains(cctbDescripcion.Text));
+
+                    foreach (var r in repuestos)
+                    {
+                        if (!idRepuestos.Contains(r.Id))
+                        {
+                            idRepuestos.Add(r.Id);
+                        }
+                    }
                 }
-                else if(stock && r.disponibles == Convert.ToInt32(cctbStock.Text))
+                if(stock)
                 {
-                    idRepuestos.Add(r.Id);
-                    break;
+                    var repuestos = db.Repuestos.Where(r => r.disponibles == Convert.ToInt32(cctbNombre.Text));
+
+                    foreach (var r in repuestos)
+                    {
+                        if (!idRepuestos.Contains(r.Id))
+                        {
+                            idRepuestos.Add(r.Id);
+                        }
+                    }
                 }
-                else if (precio && r.precio == Convert.ToDouble(cctbPrecio.Text))
+                if (precio)
                 {
-                    idRepuestos.Add(r.Id);
-                    break;
+                    var repuestos = db.Repuestos.Where(r => r.precio == Convert.ToInt32(cctbNombre.Text));
+
+                    foreach (var r in repuestos)
+                    {
+                        if (!idRepuestos.Contains(r.Id))
+                        {
+                            idRepuestos.Add(r.Id);
+                        }
+                    }
                 }
             }
 

@@ -88,7 +88,12 @@ namespace MAB.Forms.Lavarropas
 
                     foreach (int id in frm.getResultados)
                     {
-                        lavarropas.Add(db.Lavarropas.Find(id));
+                        var lav = db.Lavarropas.Find(id);
+
+                        if(!lavarropas.Contains(lav))
+                        {
+                            lavarropas.Add(lav);
+                        }
                     }
 
                     ucDGVTabla.dataSource(lavarropas);

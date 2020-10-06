@@ -208,10 +208,13 @@ namespace MAB.Forms.CRUD.Lavarropas
                     {
                         var lavarropa = db.Lavarropas.Find(id);
 
-                        db.Entry(lavarropa).Reference("Cliente").Load();
-                        db.Entry(lavarropa).Collection("Reparacion").Load();
+                        if (!lavarropas.Contains(lavarropa))
+                        {
+                            db.Entry(lavarropa).Reference("Cliente").Load();
+                            db.Entry(lavarropa).Collection("Reparacion").Load();
 
-                        lavarropas.Add(lavarropa);
+                            lavarropas.Add(lavarropa);
+                        }
                     }
                     ucDGVTabla.dataSource(lavarropas);
                         

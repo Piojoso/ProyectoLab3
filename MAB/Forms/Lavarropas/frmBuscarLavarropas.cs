@@ -43,29 +43,43 @@ namespace MAB.Forms.Lavarropas
             bool modelo = cctbModelo.Text != string.Empty ? true : false;
             bool estadoGeneral = cctbEstadoGeneral.Text != string.Empty ? true : false;
 
-            List<Models.Lavarropas> lavarropas;
-
             using (MABEntities db = new MABEntities())
             {
-                lavarropas = db.Lavarropas.ToList();
-            }
+                if (marca)
+                {
+                    var lavarropas = db.Lavarropas.Where(l => l.marca.Contains(cctbMarca.Text));
 
-            foreach (Models.Lavarropas l in lavarropas)
-            {
-                if (marca && l.marca == cctbMarca.Text)
-                {
-                    idLavarropas.Add(l.Id);
-                    break;
+                    foreach (var lavarropa in lavarropas)
+                    {
+                        if (!idLavarropas.Contains(lavarropa.Id))
+                        {
+                            idLavarropas.Add(lavarropa.Id);
+                        }
+                    }
                 }
-                else if (modelo && l.modelo == cctbModelo.Text)
+                if (modelo)
                 {
-                    idLavarropas.Add(l.Id);
-                    break;
+                    var lavarropas = db.Lavarropas.Where(l => l.modelo.Contains(cctbModelo.Text));
+
+                    foreach (var lavarropa in lavarropas)
+                    {
+                        if (!idLavarropas.Contains(lavarropa.Id))
+                        {
+                            idLavarropas.Add(lavarropa.Id);
+                        }
+                    }
                 }
-                else if (estadoGeneral && l.estadoGeneral == cctbEstadoGeneral.Text)
+                if (estadoGeneral)
                 {
-                    idLavarropas.Add(l.Id);
-                    break;
+                    var lavarropas = db.Lavarropas.Where(l => l.estadoGeneral.Contains(cctbEstadoGeneral.Text));
+
+                    foreach (var lavarropa in lavarropas)
+                    {
+                        if (!idLavarropas.Contains(lavarropa.Id))
+                        {
+                            idLavarropas.Add(lavarropa.Id);
+                        }
+                    }
                 }
             }
 
