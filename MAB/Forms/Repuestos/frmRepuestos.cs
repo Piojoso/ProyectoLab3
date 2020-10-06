@@ -117,11 +117,16 @@ namespace MAB.Forms.Repuestos
                     using (MABEntities db = new MABEntities())
                     {
                         Models.ReparacionesRepuestos repaRepu = db.ReparacionesRepuestos.Find(reparacion.Id, idRepuestoOriginal);
-                        
-                        repaRepu.ReparacionesId = reparacion.Id;
-                        repaRepu.RepuestosId = idRepuestoNuevo;
 
-                        db.Entry(repaRepu).State = System.Data.Entity.EntityState.Modified;
+                        db.Entry(repaRepu).State = System.Data.Entity.EntityState.Deleted;
+                        db.SaveChanges();
+
+                        Models.ReparacionesRepuestos nuevoRepaRepu = new Models.ReparacionesRepuestos();
+                        
+                        nuevoRepaRepu.ReparacionesId = reparacion.Id;
+                        nuevoRepaRepu.RepuestosId = idRepuestoNuevo;
+
+                        db.ReparacionesRepuestos.Add(nuevoRepaRepu);
                         db.SaveChanges();
                     }
                 }
