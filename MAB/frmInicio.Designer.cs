@@ -53,8 +53,8 @@
             this.cclblCliente1 = new ccLibrary.ccLabel();
             this.cclblTotalClientesGuardados = new ccLibrary.ccLabel();
             this.cclblCliente2 = new ccLibrary.ccLabel();
-            this.tpReparaciones = new System.Windows.Forms.TabPage();
-            this.tpStock = new System.Windows.Forms.TabPage();
+            this.tpOtros = new System.Windows.Forms.TabPage();
+            this.tpStockFaltante = new System.Windows.Forms.TabPage();
             this.crvRepuestos = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.pnlTituloEstadisticas = new System.Windows.Forms.Panel();
             this.ccLabel1 = new ccLibrary.ccLabel();
@@ -70,7 +70,7 @@
             this.pnlBodyEstadisticas.SuspendLayout();
             this.tcPrincipal.SuspendLayout();
             this.tpGeneral.SuspendLayout();
-            this.tpStock.SuspendLayout();
+            this.tpStockFaltante.SuspendLayout();
             this.pnlTituloEstadisticas.SuspendLayout();
             this.pnlNavBar.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
@@ -127,8 +127,8 @@
             // tcPrincipal
             // 
             this.tcPrincipal.Controls.Add(this.tpGeneral);
-            this.tcPrincipal.Controls.Add(this.tpReparaciones);
-            this.tcPrincipal.Controls.Add(this.tpStock);
+            this.tcPrincipal.Controls.Add(this.tpOtros);
+            this.tcPrincipal.Controls.Add(this.tpStockFaltante);
             this.tcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tcPrincipal.Multiline = true;
@@ -355,26 +355,26 @@
             this.cclblCliente2.TabIndex = 0;
             this.cclblCliente2.Text = "Total de Clientes Guardados:";
             // 
-            // tpReparaciones
+            // tpOtros
             // 
-            this.tpReparaciones.Location = new System.Drawing.Point(4, 22);
-            this.tpReparaciones.Name = "tpReparaciones";
-            this.tpReparaciones.Padding = new System.Windows.Forms.Padding(3);
-            this.tpReparaciones.Size = new System.Drawing.Size(607, 458);
-            this.tpReparaciones.TabIndex = 2;
-            this.tpReparaciones.Text = "Reparaciones";
-            this.tpReparaciones.UseVisualStyleBackColor = true;
+            this.tpOtros.Location = new System.Drawing.Point(4, 22);
+            this.tpOtros.Name = "tpOtros";
+            this.tpOtros.Padding = new System.Windows.Forms.Padding(3);
+            this.tpOtros.Size = new System.Drawing.Size(607, 458);
+            this.tpOtros.TabIndex = 2;
+            this.tpOtros.Text = "Otros";
+            this.tpOtros.UseVisualStyleBackColor = true;
             // 
-            // tpStock
+            // tpStockFaltante
             // 
-            this.tpStock.Controls.Add(this.crvRepuestos);
-            this.tpStock.Location = new System.Drawing.Point(4, 22);
-            this.tpStock.Name = "tpStock";
-            this.tpStock.Padding = new System.Windows.Forms.Padding(3);
-            this.tpStock.Size = new System.Drawing.Size(607, 458);
-            this.tpStock.TabIndex = 3;
-            this.tpStock.Text = "Stock";
-            this.tpStock.UseVisualStyleBackColor = true;
+            this.tpStockFaltante.Controls.Add(this.crvRepuestos);
+            this.tpStockFaltante.Location = new System.Drawing.Point(4, 22);
+            this.tpStockFaltante.Name = "tpStockFaltante";
+            this.tpStockFaltante.Padding = new System.Windows.Forms.Padding(3);
+            this.tpStockFaltante.Size = new System.Drawing.Size(607, 458);
+            this.tpStockFaltante.TabIndex = 3;
+            this.tpStockFaltante.Text = "Stock Faltante";
+            this.tpStockFaltante.UseVisualStyleBackColor = true;
             // 
             // crvRepuestos
             // 
@@ -486,7 +486,7 @@
             this.tcPrincipal.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
             this.tpGeneral.PerformLayout();
-            this.tpStock.ResumeLayout(false);
+            this.tpStockFaltante.ResumeLayout(false);
             this.pnlTituloEstadisticas.ResumeLayout(false);
             this.pnlTituloEstadisticas.PerformLayout();
             this.pnlNavBar.ResumeLayout(false);
@@ -524,8 +524,8 @@
         private ccLibrary.ccLabel cclblCliente1;
         private ccLibrary.ccLabel cclblTotalClientesGuardados;
         private ccLibrary.ccLabel cclblCliente2;
-        private System.Windows.Forms.TabPage tpReparaciones;
-        private System.Windows.Forms.TabPage tpStock;
+        private System.Windows.Forms.TabPage tpOtros;
+        private System.Windows.Forms.TabPage tpStockFaltante;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvRepuestos;
         private ccLibrary.ccLabel cclblModeloMasReparado;
         private ccLibrary.ccLabel cclblMarcaMasReparada;

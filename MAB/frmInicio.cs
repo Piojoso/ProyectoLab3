@@ -66,7 +66,7 @@ namespace MAB.Forms
 
             cargarReporteStockEscaso();
 
-            cargarEstadisticasReparaciones();
+            cargarTablasDeEstadisticas();
 
             cargarEstadisticasGenerales();
         }
@@ -252,14 +252,14 @@ namespace MAB.Forms
             crvRepuestos.ReportSource = report;
         }
 
-        private void cargarEstadisticasReparaciones()
+        private void cargarTablasDeEstadisticas()
         {
             frmEstadisticas frm = new frmEstadisticas();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            tcPrincipal.TabPages["tpReparaciones"].Controls.Add(frm);
-            tcPrincipal.TabPages["tpReparaciones"].Tag = frm;
+            tcPrincipal.TabPages["tpOtros"].Controls.Add(frm);
+            tcPrincipal.TabPages["tpOtros"].Tag = frm;
             frm.BringToFront();
             frm.Show();
         }
