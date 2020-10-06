@@ -30,7 +30,7 @@ namespace MAB.Forms.CRUD.Telefonos
            
             ucBottom.Accion1 = "Agregar";
             ucBottom.Accion2 = "Modificar";
-            ucBottom.Accion3 = "Eliminar";
+            ucBottom.Accion3 = "Desactivar";
 
             ucBottom.evAccion1 += agregarNuevo;
             ucBottom.evAccion2 += modificarNumero;
