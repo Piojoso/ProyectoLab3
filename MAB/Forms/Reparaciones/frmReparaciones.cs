@@ -223,6 +223,15 @@ namespace MAB.Forms.CRUD.Reparaciones
                     {
                         frmFinalizarReparacion frm = new frmFinalizarReparacion(idReparacion);
                         frm.ShowDialog();
+
+                        if (lavarropas != null)
+                        {
+                            cargarDGV(lavarropas.Id);
+                        }
+                        else
+                        {
+                            cargarDGV(null);
+                        }
                     }
                     else
                     {
