@@ -91,7 +91,7 @@ namespace MAB.Forms.CRUD.Clientes
         {
             Models.Clientes cliente;
 
-            if ((cctbNombre.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
+            if ((cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
                 using (MABEntities db = new MABEntities())
                 {

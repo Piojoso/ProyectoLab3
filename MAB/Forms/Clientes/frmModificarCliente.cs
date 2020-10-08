@@ -61,7 +61,7 @@ namespace MAB.Forms.CRUD.Clientes
 
         private void confirmarCambios(object sender, EventArgs e)
         {
-            if((cctbNombre.Text != string.Empty) && (cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
+            if((cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
                 cliente.nombre = cctbNombre.Text;
                 cliente.apellido = cctbApellido.Text;
