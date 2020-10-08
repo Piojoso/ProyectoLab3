@@ -75,7 +75,10 @@ namespace MAB.Forms
             {
                 var cliente = db.Clientes.OrderByDescending(c => c.Id).FirstOrDefault();
 
-                return (cliente.nombre + ' ' + cliente.apellido);
+                if (cliente != null)
+                    return (cliente.nombre + ' ' + cliente.apellido);
+                else
+                    return "";
             }
         }
 
@@ -157,7 +160,10 @@ namespace MAB.Forms
             {
                 var lavarropa = db.Lavarropas.OrderByDescending(l => l.Id).FirstOrDefault();
 
-                return (lavarropa.marca + " " + lavarropa.modelo + " del Cliente " + lavarropa.Cliente.nombre + " " + lavarropa.Cliente.apellido);
+                if (lavarropa != null)
+                    return (lavarropa.marca + " " + lavarropa.modelo + " del Cliente " + lavarropa.Cliente.nombre + " " + lavarropa.Cliente.apellido);
+                else
+                    return "";
             }
         }
 
