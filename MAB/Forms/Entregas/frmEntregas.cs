@@ -151,11 +151,22 @@ namespace MAB.Forms.Entregas
             tsiVerCliente.Text = "Ver Cliente";
             tsiVerCliente.Click += verCliente;
 
-            ContextMenuStrip cms = new ContextMenuStrip();
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
 
+            ToolStripMenuItem tsiVerRecibo = new ToolStripMenuItem();
+            tsiVerRecibo.Name = "tsiVerRecibo";
+            tsiVerRecibo.Size = new Size(148, 22);
+            tsiVerRecibo.Text = "Ver Recibo";
+            tsiVerRecibo.Click += verRecibo;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
             cms.Items.AddRange(new ToolStripItem[]{
                 tsiVerReparacion,
-                tsiVerReparacion
+                tsiVerReparacion,
+                tssSeparador,
+                tsiVerRecibo,
             });
 
             cms.Name = "cmsDGV";
@@ -205,6 +216,22 @@ namespace MAB.Forms.Entregas
                 cargarEntregas(reparacion.Id, null);
             else
                 cargarEntregas(null, cliente.Id);
+        }
+
+        private void verRecibo(object sender, EventArgs e)
+        {
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idEntrega = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                using (MABEntities db = new MABEntities())
+                {
+                    Models.Entregas ent = db.Entregas.Find(idEntrega);
+
+                    frmComprobanteDeRecibo frm = new frmComprobanteDeRecibo(ent);
+                    frm.ShowDialog();
+                }
+            }
         }
 
         #endregion
