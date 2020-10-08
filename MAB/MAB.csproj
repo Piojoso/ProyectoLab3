@@ -306,6 +306,18 @@
     <Compile Include="Models\Reparaciones.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\reparacionesEgresadasAnuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesEgresadasMensuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesIngresadasAnuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesIngresadasMensuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ReparacionesRepuestos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

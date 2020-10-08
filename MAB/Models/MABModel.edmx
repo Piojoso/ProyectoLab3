@@ -162,6 +162,10 @@
         </Association>
         <Function Name="MarcaMasReparado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ModeloMasReparado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesEgresadasAnuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesEgresadasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesIngresadasAnuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesIngresadasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MABModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entregas" EntityType="Self.Entregas" Schema="dbo" store:Type="Tables" />
@@ -242,6 +246,10 @@
           <FunctionImport Name="Procedure" ReturnType="Collection(String)" />
           <FunctionImport Name="MarcaMasReparado" ReturnType="Collection(String)" />
           <FunctionImport Name="ModeloMasReparado" ReturnType="Collection(String)" />
+          <FunctionImport Name="reparacionesEgresadasAnuales" ReturnType="Collection(MABModel.reparacionesEgresadasAnuales_Result)" />
+          <FunctionImport Name="reparacionesEgresadasMensuales" ReturnType="Collection(MABModel.reparacionesEgresadasMensuales_Result)" />
+          <FunctionImport Name="reparacionesIngresadasAnuales" ReturnType="Collection(MABModel.reparacionesIngresadasAnuales_Result)" />
+          <FunctionImport Name="reparacionesIngresadasMensuales" ReturnType="Collection(MABModel.reparacionesIngresadasMensuales_Result)" />
         </EntityContainer>
         <EntityType Name="Clientes">
           <Key>
@@ -417,6 +425,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="reparacionesEgresadasAnuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Año" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesEgresadasMensuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Mes" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesIngresadasAnuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Año" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesIngresadasMensuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Mes" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -501,6 +525,38 @@
     </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="MarcaMasReparado" FunctionName="MABModel.Store.MarcaMasReparado" />
           <FunctionImportMapping FunctionImportName="ModeloMasReparado" FunctionName="MABModel.Store.ModeloMasReparado" />
+          <FunctionImportMapping FunctionImportName="reparacionesEgresadasAnuales" FunctionName="MABModel.Store.reparacionesEgresadasAnuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesEgresadasAnuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesEgresadasMensuales" FunctionName="MABModel.Store.reparacionesEgresadasMensuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesEgresadasMensuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesIngresadasAnuales" FunctionName="MABModel.Store.reparacionesIngresadasAnuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesIngresadasAnuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesIngresadasMensuales" FunctionName="MABModel.Store.reparacionesIngresadasMensuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesIngresadasMensuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

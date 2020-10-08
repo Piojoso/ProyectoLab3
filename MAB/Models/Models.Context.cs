@@ -49,5 +49,25 @@ namespace MAB.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ModeloMasReparado");
         }
+    
+        public virtual ObjectResult<reparacionesEgresadasAnuales_Result> reparacionesEgresadasAnuales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<reparacionesEgresadasAnuales_Result>("reparacionesEgresadasAnuales");
+        }
+    
+        public virtual ObjectResult<reparacionesEgresadasMensuales_Result> reparacionesEgresadasMensuales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<reparacionesEgresadasMensuales_Result>("reparacionesEgresadasMensuales");
+        }
+    
+        public virtual ObjectResult<reparacionesIngresadasAnuales_Result> reparacionesIngresadasAnuales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<reparacionesIngresadasAnuales_Result>("reparacionesIngresadasAnuales");
+        }
+    
+        public virtual ObjectResult<reparacionesIngresadasMensuales_Result> reparacionesIngresadasMensuales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<reparacionesIngresadasMensuales_Result>("reparacionesIngresadasMensuales");
+        }
     }
 }
