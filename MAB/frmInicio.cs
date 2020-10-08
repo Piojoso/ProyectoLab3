@@ -64,11 +64,7 @@ namespace MAB.Forms
 
             ucBotonera.BotonInicial = 1;
 
-            cargarReporteStockEscaso();
-
-            cargarTablasDeEstadisticas();
-
-            cargarEstadisticasGenerales();
+            cargarTodasLasEstadisticas();
         }
 
         #region estadisticas
@@ -108,6 +104,7 @@ namespace MAB.Forms
 
                     if (reparaciones >= maxReparaciones)
                     {
+                        maxReparaciones = reparaciones;
                         idCliente = cliente.Id;
                     }
                 }
@@ -137,6 +134,7 @@ namespace MAB.Forms
 
                     if (lavarropas >= maxLavarropas)
                     {
+                        maxLavarropas = lavarropas;
                         idCliente = cliente.Id;
                     }
                 }
@@ -184,6 +182,7 @@ namespace MAB.Forms
 
                     if (reparaciones >= maxReparaciones)
                     {
+                        maxReparaciones = reparaciones;
                         idLavarropas = lavarropa.Id;
                     }
                 }
@@ -264,6 +263,13 @@ namespace MAB.Forms
             frm.Show();
         }
 
+        private void cargarTodasLasEstadisticas()
+        {
+            cargarEstadisticasGenerales();
+            cargarReporteStockEscaso();
+            //cargarTablasDeEstadisticas();
+        }
+
         #region Acciones Botones
 
         private void verInicio(object sender, EventArgs e)
@@ -272,6 +278,8 @@ namespace MAB.Forms
                 hijoActual.Close();
 
             ucTitleBar.TitleText = "MAB";
+            
+            cargarTodasLasEstadisticas();
         }
 
         private void verClientes(object sender, EventArgs e)

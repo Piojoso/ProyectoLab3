@@ -63,7 +63,7 @@ namespace MAB.Forms.CRUD.Telefonos
                     telefono = (from tel in db.Telefonos
                                 where tel.ClienteId == idCliente
                                 where tel.telefono == numTelefono
-                                select tel).First();
+                                select tel).FirstOrDefault();
                     
                     /**
                      * TODO: Tengo que revisar esto, porque mepa que telefono deberia preguntarse al verre. si es null, 

@@ -66,7 +66,7 @@ namespace MAB.Forms.Lavarropas
 
         private void btnVerCliente_Click(object sender, EventArgs e)
         {
-            frmDetalleCliente frm = new frmDetalleCliente(lavarropas.Cliente.Id);
+            frmDetalleCliente frm = new frmDetalleCliente(lavarropas.ClienteId);
             frm.ShowDialog();
         }
 

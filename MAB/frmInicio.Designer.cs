@@ -53,7 +53,6 @@
             this.cclblCliente1 = new ccLibrary.ccLabel();
             this.cclblTotalClientesGuardados = new ccLibrary.ccLabel();
             this.cclblCliente2 = new ccLibrary.ccLabel();
-            this.tpOtros = new System.Windows.Forms.TabPage();
             this.tpStockFaltante = new System.Windows.Forms.TabPage();
             this.crvRepuestos = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.pnlTituloEstadisticas = new System.Windows.Forms.Panel();
@@ -127,7 +126,6 @@
             // tcPrincipal
             // 
             this.tcPrincipal.Controls.Add(this.tpGeneral);
-            this.tcPrincipal.Controls.Add(this.tpOtros);
             this.tcPrincipal.Controls.Add(this.tpStockFaltante);
             this.tcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -355,16 +353,6 @@
             this.cclblCliente2.TabIndex = 0;
             this.cclblCliente2.Text = "Total de Clientes Guardados:";
             // 
-            // tpOtros
-            // 
-            this.tpOtros.Location = new System.Drawing.Point(4, 22);
-            this.tpOtros.Name = "tpOtros";
-            this.tpOtros.Padding = new System.Windows.Forms.Padding(3);
-            this.tpOtros.Size = new System.Drawing.Size(607, 458);
-            this.tpOtros.TabIndex = 2;
-            this.tpOtros.Text = "Otros";
-            this.tpOtros.UseVisualStyleBackColor = true;
-            // 
             // tpStockFaltante
             // 
             this.tpStockFaltante.Controls.Add(this.crvRepuestos);
@@ -524,7 +512,6 @@
         private ccLibrary.ccLabel cclblCliente1;
         private ccLibrary.ccLabel cclblTotalClientesGuardados;
         private ccLibrary.ccLabel cclblCliente2;
-        private System.Windows.Forms.TabPage tpOtros;
         private System.Windows.Forms.TabPage tpStockFaltante;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvRepuestos;
         private ccLibrary.ccLabel cclblModeloMasReparado;

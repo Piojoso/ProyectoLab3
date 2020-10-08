@@ -136,7 +136,6 @@
             // 
             this.cctbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbDescripcion.CaracterIncorrectErrorMessage = "";
-            this.cctbDescripcion.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbDescripcion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbDescripcion.Location = new System.Drawing.Point(258, 85);
             this.cctbDescripcion.Name = "cctbDescripcion";
@@ -147,7 +146,6 @@
             // 
             this.cctbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cctbNombre.CaracterIncorrectErrorMessage = "";
-            this.cctbNombre.DataType = ccLibrary.ccTextBox.dataType.Alfabetico;
             this.cctbNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
             this.cctbNombre.Location = new System.Drawing.Point(258, 35);
             this.cctbNombre.Name = "cctbNombre";
