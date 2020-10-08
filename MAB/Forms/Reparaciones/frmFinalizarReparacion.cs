@@ -104,8 +104,6 @@ namespace MAB.Forms.Reparaciones
         {
             frmRepuestos frm = new frmRepuestos(reparacion.Id);
             frm.ShowDialog();
-
-            cargarReparacion(reparacion.Id);
         }
     }
 }
