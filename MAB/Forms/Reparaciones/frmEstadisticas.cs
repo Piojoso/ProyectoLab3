@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using MAB.Models;
 
 namespace MAB.Forms.Reparaciones
@@ -22,19 +23,17 @@ namespace MAB.Forms.Reparaciones
 
             InitializeComponent();
 
+            ucBottom.NumButtons = 2;
+
             ucBottom.Accion1 = "Reparaciones";
-            ucBottom.Accion2 = "Ingresos";
-            ucBottom.Accion3 = "Repuestos";
+            ucBottom.Accion2 = "Repuestos";
+
 
             ucBottom.evAccion1 += verReparaciones;
-            ucBottom.evAccion2 += verIngresos;
-            ucBottom.evAccion3 += verRepuestos;
+            ucBottom.evAccion2 += verRepuestos;
 
             rbCantRepInMensual.Checked = true;
             rbCantRepOutMensual.Checked = true;
-
-            cargarInfoEnLabels();
-            rbIngresosMensuales.Checked = true;
 
             cargarCBO();
         }
@@ -48,11 +47,6 @@ namespace MAB.Forms.Reparaciones
             pnlNumeroReparaciones.BringToFront();
         }
 
-        private void verIngresos(object sender, EventArgs e)
-        {
-            pnlIngresosReparaciones.BringToFront();
-        }
-
         private void verRepuestos(object sender, EventArgs e)
         {
             pnlRepuestosUsados.BringToFront();
@@ -64,39 +58,26 @@ namespace MAB.Forms.Reparaciones
 
         private void rbCantRepInMensual_CheckedChanged(object sender, EventArgs e)
         {
-            using (MABEntities db = new MABEntities())
+            if(rbCantRepInMensual.Checked)
             {
-                /**
-                 * select COUNT(r.Id) 
-                 * from Reparaciones as r
-                 * group by MONTH(r.fechaIngreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                            group r by new { month = r.fechaIngreso.Month } into grouped
-                            select new { count = grouped.Count() }).ToList();
-
-                chartCantRepIn.DataSource = data;
+                using (MABEntities db = new MABEntities())
+                {
+                    // Revisar lo que el negro hiso en su .java
+                    chartCantRepIn.Series[0].Points.DataBind(db.reparacionesIngresadasMensuales().ToList(), "Reparaciones", "Mes", "");
+                }
             }
         }
 
         private void rbCantRepInAnual_CheckedChanged(object sender, EventArgs e)
         {
-            using (MABEntities db = new MABEntities())
+            if(rbCantRepInAnual.Checked)
             {
-                /**
-                 * select count(r.id)
-                 * from Reparaciones as r
-                 * group by YEAR(r.fechaIngreso);
-                 * 
-                 */
+                using (MABEntities db = new MABEntities())
+                {
+                    var data = db.reparacionesIngresadasAnuales().ToList();
 
-                var data = (from r in db.Reparaciones
-                            group r by new { year = r.fechaIngreso.Year } into grouped
-                            select new { count = grouped.Count() }).ToList();
-
-                chartCantRepIn.DataSource = data;
+                    chartCantRepIn.DataSource = data;
+                }
             }
         }
 
@@ -203,67 +184,6 @@ namespace MAB.Forms.Reparaciones
                 {
                     MessageBox.Show("Debe seleccionar primero un repuesto", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-        }
-
-        #endregion
-
-        private void cargarInfoEnLabels()
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                cclblTotalRep.Text = db.Reparaciones.Count().ToString();
-                cclblTotalEnCurso.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.EnCurso).Count().ToString();
-                cclblTotalFinalizadas.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.Finalizada).Count().ToString();
-                cclblTotalNoFinalizadas.Text = db.Reparaciones.Where(x => x.estadoReparacion == estadosReparacion.NoReparada).Count().ToString();
-            }
-        }
-
-        #region eventos de RadioButtons Ingresos
-
-        private void rbIngresosMensuales_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * Select sum(r.manoObra), sum(r.totalRepuestos)
-                 * from Reparaciones as r
-                 * gruop by MONTH(r.fechaEgreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                            group r by new { month = r.fechaEgreso.Value.Month } into grouped
-                            select new
-                            {
-                                ManoObra = grouped.Sum(x => x.manoDeObra),
-                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
-                            }).ToList();
-
-                chartIngresosReparaciones.DataSource = data;
-            }
-        }
-
-        private void rbIngresosAnuales_CheckedChanged(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                /**
-                 * Select sum(r.manoObra), sum(r.totalRepuestos)
-                 * from Reparaciones as r
-                 * gruop by YEAR(r.fechaEgreso);
-                 * 
-                 */
-
-                var data = (from r in db.Reparaciones
-                            group r by new { year = r.fechaEgreso.Value.Year } into grouped
-                            select new
-                            {
-                                ManoObra = grouped.Sum(x => x.manoDeObra),
-                                TotalRepuestos = grouped.Sum(x => x.totalRepuestos)
-                            }).ToList();
-
-                chartIngresosReparaciones.DataSource = data;
             }
         }
 
