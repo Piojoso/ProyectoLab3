@@ -17,46 +17,38 @@ namespace MAB.Forms.CRUD.Clientes
 
         public frmBuscarCliente()
         {
+            /**
+             * TODO: Revisar el correcto Funcionamiento
+             */
+
             InitializeComponent();
 
-            ucTop.Titulo = "Buscar Cliente";
-
-            ucBottom.NumButtons = 2;
-
+            Text = "Buscar Cliente";
+            
             ucBottom.Accion1 = "Buscar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += buscarCliente;
-            ucBottom.evAccion3 += cancelarBusqueda;
+            ucBottom.evAccion2 += cerrarBusqueda;
+
+            string messageError = "Solo se permiten Letras, no se permiten numeros.";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
         }
         
         private void buscarCliente(object sender, EventArgs e)
         {
             idClientes = buscar();
 
-            DialogResult respuesta;
-
             if (idClientes.Count > 0)
             {
-                respuesta = MessageBox.Show("Se encontraron un total de: " + idClientes.Count + " registros. \n ¿Desea ver los resultados?", "Encontrados", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                this.Close();
             }
             else
             {
-                respuesta = MessageBox.Show("No se encontraron registros. \n ¿Desea limpiar los campos para realizar una nueva busqueda?", "No hubo Resultados", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    cctbNombre.Clear();
-                    cctbApellido.Clear();
-                    cctbDireccion.Clear();
-
-                    cctbNombre.Focus();
-                }
+                MessageBox.Show("No se encontraron registros", "No hubo resultados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cctbNombre.Focus();
             }
         }
 
@@ -70,24 +62,40 @@ namespace MAB.Forms.CRUD.Clientes
 
             using (MABEntities db = new MABEntities())
             {
-                var clientes = db.Clientes;
-
-                foreach (Models.Clientes cliente in clientes)
+                if(nombre)
                 {
-                    if (nombre && cctbNombre.Text == cliente.nombre)
+                    var clientes = db.Clientes.Where(c => c.nombre.Contains(cctbNombre.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
-                    else if (apellido && cctbApellido.Text == cliente.apellido)
+                }
+                if (apellido)
+                {
+                    var clientes = db.Clientes.Where(c => c.apellido.Contains(cctbApellido.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
-                    else if (direccion && cctbDireccion.Text == cliente.direccion)
+                }
+                if (direccion)
+                {
+                    var clientes = db.Clientes.Where(c => c.direccion.Contains(cctbDireccion.Text));
+
+                    foreach (var cliente in clientes)
                     {
-                        resp.Add(cliente.Id);
-                        break;
+                        if (!resp.Contains(cliente.Id))
+                        {
+                            resp.Add(cliente.Id);
+                        }
                     }
                 }
             }
@@ -95,9 +103,8 @@ namespace MAB.Forms.CRUD.Clientes
             return resp;
         }
 
-        private void cancelarBusqueda(object sender, EventArgs e)
+        private void cerrarBusqueda(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

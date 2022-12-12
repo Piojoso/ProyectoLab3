@@ -9,48 +9,76 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
 using MAB.Forms.CRUD.Telefonos;
+using MAB.Forms.Lavarropas;
 
 namespace MAB.Forms.CRUD.Clientes
 {
     public partial class frmAgregarCliente : Form
     {
-        private Models.Clientes cliente;
-
         public frmAgregarCliente()
         {
+            /**
+             * TODO: Revisar el correcto funcionamiento
+             */
+
             InitializeComponent();
             
-            ucTop.Titulo = "Agregar Nuevo Cliente";
-
-            ucBottom.NumButtons = 2;
-
             ucBottom.Accion1 = "Crear";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += crearCliente;
-            ucBottom.evAccion3 += cancelarCreacion;
+            ucBottom.evAccion2 += cancelarCreacion;
+
+            string messageError = "Solo se permiten Letras, no se permiten numeros";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void crearCliente(object sender, EventArgs e)
         {
-            DialogResult resp = MessageBox.Show("¿Desea agregarle un telefono a este cliente?", "Agregar Telefonos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int idCliente = guardarCliente();
 
-            if (resp == DialogResult.Yes)
+            if(idCliente != -1)
             {
-                /**
-                 * Esta seccion sera la encargada de:
-                 * 1. Guardar el Cliente                --- HECHO
-                 * 2. Abrir el formulario de Telefono   --- HECHO
-                 */
+                DialogResult resp = MessageBox.Show(
+                    "¿Desea agregarle telefonos a este cliente?", 
+                    "¿Agregar Telefonos?", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning
+                );
 
-                guardarCliente();
+                if (resp == DialogResult.Yes)
+                {
+                    frmAgregarTelefono frm = new frmAgregarTelefono(idCliente);
+                    frm.ShowDialog();
+                }
 
-                frmAgregarTelefono frm = new frmAgregarTelefono(cliente.Id);
-                frm.ShowDialog();
-            }
-            else
-            {
-                guardarCliente();
+                resp = MessageBox.Show(
+                    "¿Desea registrar Lavarropas a este Cliente?", 
+                    "¿Agregar Lavarropas?", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning
+                );
+
+                if(resp == DialogResult.Yes)
+                {
+                    frmAgregarLavarropas frm = new frmAgregarLavarropas(idCliente);
+                    frm.ShowDialog();
+                }
+
+                resp = MessageBox.Show(
+                    "Cliente agregador correctamente",
+                    "Guardado Correctamente",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                
+                cctbNombre.Text = "";
+                cctbApellido.Text = "";
+                cctbDireccion.Text = "";
+
+                cctbNombre.Focus();
             }
         }
 
@@ -59,19 +87,32 @@ namespace MAB.Forms.CRUD.Clientes
             this.Close();
         }
 
-        private void guardarCliente()
+        private int guardarCliente()
         {
-            using (MABEntities db = new MABEntities())
+            Models.Clientes cliente;
+
+            if ((cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
-                cliente = new Models.Clientes();
+                using (MABEntities db = new MABEntities())
+                {
+                    cliente = new Models.Clientes();
 
-                cliente.nombre = cctbNombre.Text;
-                cliente.apellido = cctbApellido.Text;
-                cliente.direccion = cctbDireccion.Text;
+                    cliente.nombre = cctbNombre.Text;
+                    cliente.apellido = cctbApellido.Text;
+                    cliente.direccion = cctbDireccion.Text;
 
-                db.Clientes.Add(cliente);
-                db.SaveChanges();
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
+
+                    return cliente.Id;
+                }
             }
+            else
+            {
+                MessageBox.Show("Faltan campos por completar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return -1;
         }
     }
 }

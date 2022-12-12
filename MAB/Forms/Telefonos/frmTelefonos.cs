@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Telefonos;
 
 namespace MAB.Forms.CRUD.Telefonos
 {
@@ -17,19 +18,26 @@ namespace MAB.Forms.CRUD.Telefonos
 
         public frmTelefonos(int idCliente)
         {
+            /**
+             * TODO: Probar su correcto funcionamiento cuando ya cree clientes en la DB
+             */
+
             InitializeComponent();
 
             refrescarTelefonos(idCliente);
+
+            Text = "Telefonos del Cliente: " + cliente.nombre + " " + cliente.apellido;
+           
+            ucBottom.Accion1 = "Agregar";
+            ucBottom.Accion2 = "Modificar";
+            ucBottom.Accion3 = "Desactivar";
+
+            ucBottom.evAccion1 += agregarNuevo;
+            ucBottom.evAccion2 += modificarNumero;
+            ucBottom.evAccion3 += eliminarSeleccionado;
+
+            creacionCMS();
             
-            ucBackGround.Titulo = "Telefonos del Cliente: " + cliente.nombre + " " + cliente.apellido;
-
-            ucBackGround.numButtons(2);
-
-            ucBackGround.Accion1 = "Agregar";
-            ucBackGround.Accion3 = "Eliminar";
-
-            ucBackGround.evAccion1 += agregarNuevo;
-            ucBackGround.evAccion3 += eliminarSeleccionado;            
         }
 
         private void agregarNuevo(object sender, EventArgs e)
@@ -39,34 +47,47 @@ namespace MAB.Forms.CRUD.Telefonos
 
             refrescarTelefonos(cliente.Id);
         }
+
+        private void modificarNumero(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                long numTelefono = Convert.ToInt64(ucDGVTabla.selectedRow().Cells["telefono"].Value);
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["ClienteId"].Value);
+
+                frmModificarTelefono frm = new frmModificarTelefono(idCliente, numTelefono);
+                frm.ShowDialog();
+
+                refrescarTelefonos(idCliente);
+            }
+        }
         
         private void eliminarSeleccionado(object sender, EventArgs e)
         {
-            /**
-             * TODO: Provar si al no tener nada seleccionado fila es null o explota algo.
-             */
-
-            DataGridViewRow fila =  ucBackGround.getSelectedItem();
-            
-            using (MABEntities db = new MABEntities())
+            if (ucDGVTabla.selectedRow() != null)
             {
-                var telefono = (from tel in db.Telefonos
-                           where tel.telefono == Convert.ToInt64(fila.Cells["Telefono"].Value)
-                           where tel.estado != false
-                           select tel).First();
+                long telefono = Convert.ToInt64(ucDGVTabla.selectedRow().Cells["Telefono"].Value);
 
-                DialogResult resp = MessageBox.Show(
-                    "Esta a punto de eliminar el Telefono " + telefono.telefono + Environment.NewLine +
-                    "del Cliente " + telefono.Cliente.nombre + " " + telefono.Cliente.apellido + Environment.NewLine +
-                    "¿Quiere continuar con la eliminacion?", "Estas a Punto de eliminar un Telefono", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if(resp == DialogResult.Yes)
+                using (MABEntities db = new MABEntities())
                 {
-                    telefono.estado = false;
+                    var Telefono = (from tel in db.Telefonos
+                                    where tel.telefono == telefono
+                                    where tel.estado != false
+                                    select tel).First();
 
-                    db.Entry(telefono).State = System.Data.Entity.EntityState.Modified;
+                    DialogResult resp = MessageBox.Show(
+                        "Esta a punto de eliminar el Telefono " + Telefono.telefono + Environment.NewLine +
+                        "del Cliente " + Telefono.Cliente.nombre + " " + Telefono.Cliente.apellido + Environment.NewLine +
+                        "¿Quiere continuar con la eliminacion?", "Estas a Punto de eliminar un Telefono", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    db.SaveChanges();
+                    if (resp == DialogResult.Yes)
+                    {
+                        Telefono.estado = false;
+
+                        db.Entry(Telefono).State = System.Data.Entity.EntityState.Modified;
+
+                        db.SaveChanges();
+                    }
                 }
             }
 
@@ -81,11 +102,50 @@ namespace MAB.Forms.CRUD.Telefonos
 
                 var data = (from telefonos in db.Telefonos
                             where telefonos.ClienteId == cliente.Id
-                            where telefonos.estado == true
                             select telefonos);
 
-                ucBackGround.cargarDGV(data.ToList());
+                ucDGVTabla.dataSource(data.ToList());
             }
+
+            ucDGVTabla.Columns["ClienteId"].Visible = false;
+            ucDGVTabla.Columns["Cliente"].Visible = false;
+        }
+
+        private void creacionCMS()
+        {
+            ToolStripMenuItem tsmiAgregar = new ToolStripMenuItem();
+            tsmiAgregar.Name = "tsmiAgregar";
+            tsmiAgregar.Size = new Size(148, 22);
+            tsmiAgregar.Text = "Agregar Nuevo";
+            tsmiAgregar.Click += agregarNuevo;
+
+            ToolStripMenuItem tsmiModificar = new ToolStripMenuItem();
+            tsmiModificar.Name = "tsmiModificar";
+            tsmiModificar.Size = new Size(148, 22);
+            tsmiModificar.Text = "Modificar Numero";
+            tsmiModificar.Click += modificarNumero;
+
+            ToolStripSeparator tssSeparator = new ToolStripSeparator();
+            tssSeparator.Name = "tssSeparator";
+            tssSeparator.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsmiEliminar = new ToolStripMenuItem();
+            tsmiEliminar.Name = "tsmiEliminar";
+            tsmiEliminar.Size = new Size(148, 22);
+            tsmiEliminar.Text = "Eliminar Numero";
+            tsmiEliminar.Click += eliminarSeleccionado;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsmiAgregar,
+                tsmiModificar,
+                tssSeparator,
+                tsmiEliminar
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
         }
     }
 }

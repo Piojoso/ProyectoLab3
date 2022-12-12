@@ -18,19 +18,27 @@ namespace MAB.Forms.CRUD.Clientes
 
         public frmModificarCliente(int idCliente)
         {
+            /**
+             * TODO: Revisar el correcto funcionamiento
+             */
+
             InitializeComponent();
 
             cargarCliente(idCliente);
 
-            ucTop.Titulo = "Modificar Cliente";
+            Text = "Modificar al Cliente: " + cliente.nombre + " " + cliente.apellido;
 
-            ucBottom.NumButtons = 2;
-
-            ucBottom.Accion1 = "Confirmar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion1 = "Guardar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += confirmarCambios;
-            ucBottom.evAccion3 += cancelarModificacion;
+            ucBottom.evAccion2 += cerrarModificacion;
+
+            string messageError = "Solo se permiten Letras, no se permiten Numeros.";
+
+            cctbNombre.CaracterIncorrectErrorMessage = messageError;
+            cctbApellido.CaracterIncorrectErrorMessage = messageError;
+            cctbDireccion.CaracterIncorrectErrorMessage = messageError;
 
             cargarDatos();
         }
@@ -48,32 +56,32 @@ namespace MAB.Forms.CRUD.Clientes
             cctbNombre.Text = cliente.nombre;
             cctbApellido.Text = cliente.apellido;
             cctbDireccion.Text = cliente.direccion;
-            cclblNumTelefonos.Text = cliente.Telefonos.Count.ToString();
+            refreshNumTelefonos();
         }
 
         private void confirmarCambios(object sender, EventArgs e)
         {
-            /**
-             * TODO: Esta funcion no funciona:
-             * Va a guardar la misma informacion del cliente que se recupero al inicio del formulario.
-             * Porque no hice en ningun lado una modificacion de los datos.
-             */
-
-            DialogResult resp = MessageBox.Show("¿Desea continuar con la modificacion?" + Environment.NewLine +
-                "Tenga en cuenta que perdera la informacion anterior", "Modificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (resp == DialogResult.Yes)
+            if((cctbApellido.Text != string.Empty) && (cctbDireccion.Text != string.Empty))
             {
+                cliente.nombre = cctbNombre.Text;
+                cliente.apellido = cctbApellido.Text;
+                cliente.direccion = cctbDireccion.Text;
+
                 using (MABEntities db = new MABEntities())
                 {
                     db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
-
                     db.SaveChanges();
+
+                    MessageBox.Show("Cliente modificado Correctamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Faltan campos por completar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void cancelarModificacion(object sender, EventArgs e)
+        private void cerrarModificacion(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -90,7 +98,7 @@ namespace MAB.Forms.CRUD.Clientes
         {
             using (MABEntities db = new MABEntities())
             {
-                cclblNumTelefonos.Text = cliente.Telefonos.Count.ToString();
+                cclblNumTelefonos.Text = db.Clientes.Find(cliente.Id).Telefonos.Count.ToString();
             }
         }
     }

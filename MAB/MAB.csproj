@@ -36,6 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -48,8 +53,12 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,95 +70,211 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DataSets\dsStockEscaso.cs">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsStockEscaso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clientes\frmAgregarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmAgregarCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmAgregarCliente.Designer.cs">
+    <Compile Include="Forms\Clientes\frmAgregarCliente.Designer.cs">
       <DependentUpon>frmAgregarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmBuscarCliente.cs">
+    <Compile Include="Forms\Clientes\frmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmBuscarCliente.Designer.cs">
+    <Compile Include="Forms\Clientes\frmBuscarCliente.Designer.cs">
       <DependentUpon>frmBuscarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmClientes.cs">
+    <Compile Include="Forms\Clientes\frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmClientes.Designer.cs">
+    <Compile Include="Forms\Clientes\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmModificarCliente.cs">
+    <Compile Include="Forms\Clientes\frmDetalleCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmModificarCliente.Designer.cs">
+    <Compile Include="Forms\Clientes\frmDetalleCliente.Designer.cs">
+      <DependentUpon>frmDetalleCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clientes\frmModificarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes\frmModificarCliente.Designer.cs">
       <DependentUpon>frmModificarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmVerTodosCliente.cs">
+    <Compile Include="Forms\Clientes\frmSeleccionarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Clientes\frmVerTodosCliente.Designer.cs">
-      <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
+    <Compile Include="Forms\Clientes\frmSeleccionarCliente.Designer.cs">
+      <DependentUpon>frmSeleccionarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Lavarropas\frmLavarropas.cs">
+    <Compile Include="Forms\Entregas\frmAgregarEntrega.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Lavarropas\frmLavarropas.Designer.cs">
+    <Compile Include="Forms\Entregas\frmAgregarEntrega.Designer.cs">
+      <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmComprobanteDeRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmComprobanteDeRecibo.Designer.cs">
+      <DependentUpon>frmComprobanteDeRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmEntregas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmEntregas.Designer.cs">
+      <DependentUpon>frmEntregas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmModificarEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregas\frmModificarEntrega.Designer.cs">
+      <DependentUpon>frmModificarEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmAgregarLavarropas.Designer.cs">
+      <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmBuscarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmBuscarLavarropas.Designer.cs">
+      <DependentUpon>frmBuscarLavarropas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmDetalleLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmDetalleLavarropas.Designer.cs">
+      <DependentUpon>frmDetalleLavarropas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmLavarropas.Designer.cs">
       <DependentUpon>frmLavarropas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.cs">
+    <Compile Include="Forms\Lavarropas\frmModificarLavarropas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.Designer.cs">
+    <Compile Include="Forms\Lavarropas\frmModificarLavarropas.Designer.cs">
+      <DependentUpon>frmModificarLavarropas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmSeleccionarLavarropas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lavarropas\frmSeleccionarLavarropas.Designer.cs">
+      <DependentUpon>frmSeleccionarLavarropas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmAgregarReparaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmAgregarReparaciones.Designer.cs">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.cs">
+    <Compile Include="Forms\Reparaciones\frmBuscarReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.Designer.cs">
+    <Compile Include="Forms\Reparaciones\frmBuscarReparacion.Designer.cs">
       <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmModificarReparacion.cs">
+    <Compile Include="Forms\Reparaciones\frmDetalleReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmModificarReparacion.Designer.cs">
+    <Compile Include="Forms\Reparaciones\frmDetalleReparacion.Designer.cs">
+      <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmEstadisticas.Designer.cs">
+      <DependentUpon>frmEstadisticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmFinalizarReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmFinalizarReparacion.Designer.cs">
+      <DependentUpon>frmFinalizarReparacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmModificarReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reparaciones\frmModificarReparacion.Designer.cs">
       <DependentUpon>frmModificarReparacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmReparaciones.cs">
+    <Compile Include="Forms\Reparaciones\frmReparaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmReparaciones.Designer.cs">
+    <Compile Include="Forms\Reparaciones\frmReparaciones.Designer.cs">
       <DependentUpon>frmReparaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.cs">
+    <Compile Include="Forms\Reparaciones\frmSeleccionarReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.Designer.cs">
-      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
+    <Compile Include="Forms\Reparaciones\frmSeleccionarReparacion.Designer.cs">
+      <DependentUpon>frmSeleccionarReparacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Telefonos\frmAgregarTelefono.cs">
+    <Compile Include="Forms\Repuestos\frmAgregarRepuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Telefonos\frmAgregarTelefono.Designer.cs">
+    <Compile Include="Forms\Repuestos\frmAgregarRepuesto.Designer.cs">
+      <DependentUpon>frmAgregarRepuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmBuscarRepuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmBuscarRepuesto.Designer.cs">
+      <DependentUpon>frmBuscarRepuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmModificarRepuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmModificarRepuesto.Designer.cs">
+      <DependentUpon>frmModificarRepuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmRepuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmRepuestos.Designer.cs">
+      <DependentUpon>frmRepuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmSeleccionarRepuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Repuestos\frmSeleccionarRepuesto.Designer.cs">
+      <DependentUpon>frmSeleccionarRepuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Telefonos\frmAgregarTelefono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Telefonos\frmAgregarTelefono.Designer.cs">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CRUD\Telefonos\frmTelefonos.cs">
+    <Compile Include="Forms\Telefonos\frmModificarTelefono.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CRUD\Telefonos\frmTelefonos.Designer.cs">
+    <Compile Include="Forms\Telefonos\frmModificarTelefono.Designer.cs">
+      <DependentUpon>frmModificarTelefono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Telefonos\frmTelefonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Telefonos\frmTelefonos.Designer.cs">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInicial.cs">
+    <Compile Include="frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInicial.Designer.cs">
-      <DependentUpon>FormInicial.cs</DependentUpon>
+    <Compile Include="frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>Models.tt</DependentUpon>
@@ -181,6 +306,21 @@
     <Compile Include="Models\Reparaciones.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\reparacionesEgresadasAnuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesEgresadasMensuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesIngresadasAnuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reparacionesIngresadasMensuales_Result.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReparacionesRepuestos.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Repuestos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -189,57 +329,116 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tamañizador.cs" />
-    <Compile Include="UC\ucBackGround.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Reports\crComprobanteDeRecibo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crComprobanteDeRecibo.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UC\ucBackGround.Designer.cs">
-      <DependentUpon>ucBackGround.cs</DependentUpon>
+    <Compile Include="Reports\crStocks.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crStocks.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Clientes\frmAgregarCliente.resx">
+    <EmbeddedResource Include="Forms\Clientes\frmAgregarCliente.resx">
       <DependentUpon>frmAgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Clientes\frmBuscarCliente.resx">
+    <EmbeddedResource Include="Forms\Clientes\frmBuscarCliente.resx">
       <DependentUpon>frmBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Clientes\frmClientes.resx">
+    <EmbeddedResource Include="Forms\Clientes\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Clientes\frmModificarCliente.resx">
+    <EmbeddedResource Include="Forms\Clientes\frmDetalleCliente.resx">
+      <DependentUpon>frmDetalleCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Clientes\frmModificarCliente.resx">
       <DependentUpon>frmModificarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Clientes\frmVerTodosCliente.resx">
-      <DependentUpon>frmVerTodosCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Clientes\frmSeleccionarCliente.resx">
+      <DependentUpon>frmSeleccionarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Lavarropas\frmLavarropas.resx">
+    <EmbeddedResource Include="Forms\Entregas\frmAgregarEntrega.resx">
+      <DependentUpon>frmAgregarEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmComprobanteDeRecibo.resx">
+      <DependentUpon>frmComprobanteDeRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmEntregas.resx">
+      <DependentUpon>frmEntregas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregas\frmModificarEntrega.resx">
+      <DependentUpon>frmModificarEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmAgregarLavarropas.resx">
+      <DependentUpon>frmAgregarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmBuscarLavarropas.resx">
+      <DependentUpon>frmBuscarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmDetalleLavarropas.resx">
+      <DependentUpon>frmDetalleLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmLavarropas.resx">
       <DependentUpon>frmLavarropas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmAgregarReparaciones.resx">
+    <EmbeddedResource Include="Forms\Lavarropas\frmModificarLavarropas.resx">
+      <DependentUpon>frmModificarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lavarropas\frmSeleccionarLavarropas.resx">
+      <DependentUpon>frmSeleccionarLavarropas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmAgregarReparaciones.resx">
       <DependentUpon>frmAgregarReparaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmBuscarReparacion.resx">
+    <EmbeddedResource Include="Forms\Reparaciones\frmBuscarReparacion.resx">
       <DependentUpon>frmBuscarReparacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmModificarReparacion.resx">
+    <EmbeddedResource Include="Forms\Reparaciones\frmDetalleReparacion.resx">
+      <DependentUpon>frmDetalleReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmEstadisticas.resx">
+      <DependentUpon>frmEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmFinalizarReparacion.resx">
+      <DependentUpon>frmFinalizarReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reparaciones\frmModificarReparacion.resx">
       <DependentUpon>frmModificarReparacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmReparaciones.resx">
+    <EmbeddedResource Include="Forms\Reparaciones\frmReparaciones.resx">
       <DependentUpon>frmReparaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Reparaciones\frmVerTodosReparaciones.resx">
-      <DependentUpon>frmVerTodosReparaciones.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Reparaciones\frmSeleccionarReparacion.resx">
+      <DependentUpon>frmSeleccionarReparacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Telefonos\frmAgregarTelefono.resx">
+    <EmbeddedResource Include="Forms\Repuestos\frmAgregarRepuesto.resx">
+      <DependentUpon>frmAgregarRepuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Repuestos\frmBuscarRepuesto.resx">
+      <DependentUpon>frmBuscarRepuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Repuestos\frmModificarRepuesto.resx">
+      <DependentUpon>frmModificarRepuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Repuestos\frmRepuestos.resx">
+      <DependentUpon>frmRepuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Repuestos\frmSeleccionarRepuesto.resx">
+      <DependentUpon>frmSeleccionarRepuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Telefonos\frmAgregarTelefono.resx">
       <DependentUpon>frmAgregarTelefono.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CRUD\Telefonos\frmTelefonos.resx">
+    <EmbeddedResource Include="Forms\Telefonos\frmModificarTelefono.resx">
+      <DependentUpon>frmModificarTelefono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Telefonos\frmTelefonos.resx">
       <DependentUpon>frmTelefonos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInicial.resx">
-      <DependentUpon>FormInicial.cs</DependentUpon>
+    <EmbeddedResource Include="frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -250,13 +449,29 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UC\ucBackGround.resx">
-      <DependentUpon>ucBackGround.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\crComprobanteDeRecibo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crComprobanteDeRecibo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crStocks.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crStocks.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Models\MABModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MABModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DataSets\dsStockEscaso.xsc">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsStockEscaso.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsStockEscaso.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsStockEscaso.xss">
+      <DependentUpon>dsStockEscaso.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -269,7 +484,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\MABModel.edmx.sql" />
@@ -286,6 +503,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ccLibrary\ccLibrary.csproj">

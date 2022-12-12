@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.Repuestos;
 
 namespace MAB.Forms.CRUD.Reparaciones
 {
@@ -15,67 +16,33 @@ namespace MAB.Forms.CRUD.Reparaciones
     {
         Models.Reparaciones reparacion;
 
-        /**
-         * Aun no probado. Puede que traiga multiples errores
-         */
-
         public frmModificarReparacion(int idReparacion)
         {
-
             /**
-             * TODO: Posiblemente deba modificar todo esto cuando tenga entregas y repuestos.
-             * Sospecho que quizas debi dejar la reparacion para el final.
+             * TODO: Revisar su correcto funcionamiento
              */
 
             InitializeComponent();
 
-            ucTop.Titulo = "Modificar Reparacion";
-
-            ucBottom.NumButtons = 2;
-
-            ucBottom.Accion1 = "Confirmar";
-            ucBottom.Accion3 = "Cancelar";
-
-            ucBottom.evAccion1 += confirmarCambios;
-            ucBottom.evAccion3 += cancelarCambios;
-
             cargarCBOEstadoReparacion();
 
             cargarDatos(idReparacion);
-        }
 
-        private void confirmarCambios(object sender, EventArgs e)
-        {
-            using (MABEntities db = new MABEntities())
-            {
-                bool finalizado = (estadosReparacion)cboEstadoReparacion.SelectedItem == estadosReparacion.EnCurso ? true : false;
+            ucBottom.Accion1 = "Guardar";
+            ucBottom.Accion2 = "Cerrar";
 
-                reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
-                reparacion.fechaIngreso = dtpFechaIngreso.Value;
-                reparacion.errorAReparar = cctbFallaAReparar.Text == string.Empty ? reparacion.errorAReparar : cctbFallaAReparar.Text;
-                reparacion.reparacionRealizada = cctbReparacionRealizada.Text != string.Empty ? cctbReparacionRealizada.Text : null;
-                reparacion.manoDeObra = finalizado == false ? 0 : Convert.ToDouble(cctbManoObra.Text);
-                reparacion.totalRepuestos = finalizado == false ? 0 : Convert.ToDouble(cctbValorRepuestos.Text);
-                reparacion.fechaEgreso = finalizado == true ? dtpFechaEgreso?.Value : null;
-                reparacion.mesesGarantia = finalizado == false ? null : (int?)Convert.ToInt32(nudGarantia.Value);
+            ucBottom.evAccion1 += guardarCambios;
+            ucBottom.evAccion2 += cerrarVentana;
 
-                db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
+            string messageError = "Solo se permiten Numeros, no se permiten Letras.";
 
-                db.SaveChanges();
-            }
-        }
-
-        private void cancelarCambios(object sender, EventArgs e)
-        {
-            this.Close();
+            cctbManoObra.CaracterIncorrectErrorMessage = messageError;
+            cctbValorRepuestos.CaracterIncorrectErrorMessage = messageError;
         }
 
         private void cargarCBOEstadoReparacion()
         {
-            using (MABEntities db = new MABEntities())
-            {
-                cboEstadoReparacion.DataSource = Enum.GetValues(typeof(estadosReparacion));
-            }
+            cboEstadoReparacion.DataSource = Enum.GetValues(typeof(estadosReparacion));
         }
 
         private void cargarDatos(int idReparacion)
@@ -84,6 +51,7 @@ namespace MAB.Forms.CRUD.Reparaciones
             {
                 reparacion = db.Reparaciones.Find(idReparacion);
 
+                cclblNombreApellidoCliente.Text = reparacion.Lavarropas.Cliente.nombre + " " + reparacion.Lavarropas.Cliente.apellido;
                 cclblMarcaModelo.Text = reparacion.Lavarropas.marca + " " + reparacion.Lavarropas.modelo;
                 cboEstadoReparacion.SelectedItem = reparacion.estadoReparacion;
                 dtpFechaIngreso.Value = reparacion.fechaIngreso;
@@ -96,6 +64,60 @@ namespace MAB.Forms.CRUD.Reparaciones
                 nudGarantia.Value = (reparacion.mesesGarantia != null) ? Convert.ToDecimal(reparacion.mesesGarantia) : 0;
                 dtpGarantia.Value = (reparacion.fechaEgreso != null) ? reparacion.fechaEgreso.Value.AddMonths(Convert.ToInt32(nudGarantia.Value)) : DateTime.Now;
             }
+
+            Text = "Modificar la reparacion: " + reparacion.Id;
+        }
+
+        private void guardarCambios(object sender, EventArgs e)
+        {
+            if(cctbFallaAReparar.Text != string.Empty)
+            {
+                if (cctbReparacionRealizada.Text == string.Empty)
+                    cctbReparacionRealizada.Text = "";
+                if (cctbManoObra.Text == string.Empty)
+                    cctbManoObra.Text = "0";
+                if (cctbValorRepuestos.Text == string.Empty)
+                    cctbValorRepuestos.Text = "0";
+
+                if ((estadosReparacion)cboEstadoReparacion.SelectedItem == estadosReparacion.Finalizada)
+                {
+                    reparacion.fechaEgreso = dtpFechaEgreso.Value;
+                    reparacion.mesesGarantia = Convert.ToInt32(nudGarantia.Value);
+                }
+
+                using (MABEntities db = new MABEntities())
+                {
+                    reparacion.estadoReparacion = (estadosReparacion)cboEstadoReparacion.SelectedItem;
+                    reparacion.fechaIngreso = dtpFechaIngreso.Value;
+                    reparacion.errorAReparar = cctbFallaAReparar.Text;
+                    reparacion.reparacionRealizada = cctbReparacionRealizada.Text;
+                    reparacion.manoDeObra = Convert.ToDouble(cctbManoObra.Text);
+                    reparacion.totalRepuestos = Convert.ToDouble(cctbValorRepuestos.Text);
+
+                    db.Entry(reparacion).State = System.Data.Entity.EntityState.Modified;
+
+                    db.SaveChanges();
+
+                    MessageBox.Show("Reparacion Modificada correctamente");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hay campos que faltan completar", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cerrarVentana(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRepuestos_Click(object sender, EventArgs e)
+        {
+            frmRepuestos frm = new frmRepuestos(reparacion.Id);
+            frm.ShowDialog();
+
+            cargarDatos(reparacion.Id);
         }
     }
 }

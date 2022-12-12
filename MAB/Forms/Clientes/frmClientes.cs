@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAB.Models;
+using MAB.Forms.CRUD.Telefonos;
+using MAB.Forms.CRUD.Lavarropas;
+using MAB.Forms.Clientes;
 
 namespace MAB.Forms.CRUD.Clientes
 {
@@ -15,79 +18,196 @@ namespace MAB.Forms.CRUD.Clientes
     {
         public frmClientes()
         {
+            /**
+             * TODO: probar correcto funcionamiento
+             * 
+             */
+
             InitializeComponent();
+            
+            this.Text = "Clientes";
 
-            ucBG.Titulo = "Ultimos Clientes";
+            ucDGVTabla.click_btnAdd += btnAdd;
+            ucDGVTabla.click_btnModify += btnModificar;
+            ucDGVTabla.click_btnSearch += btnSearch;
 
-            ucBG.Accion1 = "Agregar";
-            ucBG.Accion2 = "Modificar";
-            ucBG.Accion3 = "Ver Todos";
+            ucDGVTabla.CellDoubleClick += dobleClick;
 
-            ucBG.evAccion1 += btnAgregar;
-            ucBG.evAccion2 += btnModificar;
-            ucBG.evAccion3 += btnVerTodos;
+            cargarDGV();
+
+            creacionCMS();
+        }
+
+        #region eventos de los botones;
+
+        private void btnAdd(object sender, EventArgs e)
+        {
+            frmAgregarCliente frm = new frmAgregarCliente();
+            frm.ShowDialog();
 
             cargarDGV();
         }
 
-        void btnAgregar(object sender, EventArgs e)
+        private void btnModificar(object sender, EventArgs e)
         {
-            frmAgregarCliente frm = new frmAgregarCliente();
-            frm.ShowDialog();
+            abrirFrmModificar();
+
+            cargarDGV();
         }
 
-        void btnModificar(object sender, EventArgs e)
+        private void btnSearch(object sender, EventArgs e)
         {
-            DataGridViewRow fila = ucBG.getSelectedItem();
-
-            using (MABEntities db = new MABEntities())
+            frmBuscarCliente frm = new frmBuscarCliente();
+            frm.ShowDialog();
+            
+            if (frm.idClientes != null && frm.idClientes.Count != 0)
             {
-                /**
-                 * TODO: Revisar el funcionamiento de esta funcion.
-                 * Puede que al mandarle un object, la funcion find, realize otra cosa que no sea la que yo deseo.
-                 * En tal caso, la posible solucion seria convetir el value a int. Para que asi busque por id.
-                 * 
-                 * -------------------------------------------------------------------------------------------------
-                 * // TAMBIEN TENGO ESTE POSIBLE PROBLEMA EN LOS TELEFONOS
-                 * Ese comentario lo puse hace un tiempo y no logro entender donde estaria el problema con el value. Luego debo revisarlo.
-                 * 
-                 */ 
-                Models.Clientes cliente = db.Clientes.Find(fila.Cells[0].Value);
+                using (MABEntities db = new MABEntities())
+                {
+                    List<Models.Clientes> c = new List<Models.Clientes>();
 
-                frmModificarCliente frm = new frmModificarCliente(cliente.Id);
-                frm.ShowDialog();
+                    foreach (int id in frm.idClientes)
+                    {
+                        var cliente = db.Clientes.Find(id);
 
-                cargarDGV();
+                        if (!c.Contains(cliente))
+                        {
+                            c.Add(cliente);
+                        }
+                    }
+
+                    ucDGVTabla.dataSource(c);
+                }
             }
         }
 
-        void btnVerTodos(object sender, EventArgs e)
-        {
-            frmVerTodosCliente frm = new frmVerTodosCliente();
-            frm.ShowDialog();
-        }
+        #endregion
 
         private void cargarDGV()
         {
             using (MABEntities db = new MABEntities())
             {
                 var clientes = db.Clientes;
-
                 var ultimo = clientes.ToList().LastOrDefault();
 
-                if(ultimo != null)
+                if (ultimo != null)
                 {
                     var data = from cliente in db.Clientes
-                           where cliente.Id < (ultimo.Id - 10)
-                           select cliente;
+                               where cliente.Id > (ultimo.Id - 10)
+                               select cliente;
 
-                    ucBG.cargarDGV(data.ToList());
+                    ucDGVTabla.ShortListData = clientes.ToList();
                 }
                 else
                 {
-                    ucBG.cargarDGV(clientes.ToList());
+                    ucDGVTabla.FullListData = clientes.ToList();
                 }
+
+                ucDGVTabla.Columns["Id"].Visible = false;
+                ucDGVTabla.Columns["Telefonos"].Visible = false;
+                ucDGVTabla.Columns["Lavarropas"].Visible = false;
+                ucDGVTabla.Columns["Entregas"].Visible = false;
             }
         }
+
+        private void abrirFrmModificar()
+        {
+            if (ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow()?.Cells["id"].Value);
+
+                frmModificarCliente frm = new frmModificarCliente(idCliente);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
+        }
+
+        #region DobleClick sobre una celda en DGV
+
+        private void dobleClick(object sender, EventArgs e)
+        {
+            abrirFrmModificar();
+        }
+
+        #endregion
+
+        private void creacionCMS()
+        {
+            ToolStripMenuItem tsiVerTelefonos = new ToolStripMenuItem();
+            tsiVerTelefonos.Name = "tsiVerTelefono";
+            tsiVerTelefonos.Size = new Size(148, 22);
+            tsiVerTelefonos.Text = "Ver Telefonos";
+            tsiVerTelefonos.Click += verTelefonos;
+
+            ToolStripMenuItem tsiVerLavarropas = new ToolStripMenuItem();
+            tsiVerLavarropas.Name = "tsiVerLavarropas";
+            tsiVerLavarropas.Size = new Size(148, 22);
+            tsiVerLavarropas.Text = "Ver Lavarropas";
+            tsiVerLavarropas.Click += verLavarropas;
+
+            ToolStripSeparator tssSeparador = new ToolStripSeparator();
+            tssSeparador.Name = "tssSeparador";
+            tssSeparador.Size = new Size(145, 6);
+
+            ToolStripMenuItem tsiVerDetalle = new ToolStripMenuItem();
+            tsiVerDetalle.Name = "tsiVerDetalle";
+            tsiVerDetalle.Size = new Size(148, 22);
+            tsiVerDetalle.Text = "Ver Detalle";
+            tsiVerDetalle.Click += verDetalle;
+
+            ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.AddRange(new ToolStripItem[]
+            {
+                tsiVerTelefonos,
+                tsiVerLavarropas,
+                tssSeparador,
+                tsiVerDetalle,
+            });
+            cms.Name = "cmsDGV";
+
+            ucDGVTabla.cargarCMS = cms;
+        }
+
+        #region Eventos CMS
+
+        private void verTelefonos(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmTelefonos frm = new frmTelefonos(idCliente);
+                frm.ShowDialog();
+            }            
+        }
+
+        private void verLavarropas(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmLavarropas frm = new frmLavarropas(idCliente);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
+        }
+
+        private void verDetalle(object sender, EventArgs e)
+        {
+            if(ucDGVTabla.selectedRow() != null)
+            {
+                int idCliente = Convert.ToInt32(ucDGVTabla.selectedRow().Cells["Id"].Value);
+
+                frmDetalleCliente frm = new frmDetalleCliente(idCliente);
+                frm.ShowDialog();
+
+                cargarDGV();
+            }
+        }
+
+        #endregion
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucTop = new ucLibrary.ucTop();
             this.ucBottom = new ucLibrary.ucBottom();
             this.cclblFechaIngreso = new ccLibrary.ccLabel();
             this.cclblFechaEgreso = new ccLibrary.ccLabel();
@@ -49,22 +48,16 @@
             this.cctbManoObra = new ccLibrary.ccTextBox();
             this.dtpFechaEgreso = new System.Windows.Forms.DateTimePicker();
             this.cctbValorRepuestos = new ccLibrary.ccTextBox();
-            this.btnCambiar = new System.Windows.Forms.Button();
             this.nudGarantia = new System.Windows.Forms.NumericUpDown();
             this.dtpGarantia = new System.Windows.Forms.DateTimePicker();
             this.cclblFinaliza = new ccLibrary.ccLabel();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.btnRepuestos = new System.Windows.Forms.Button();
+            this.cclblNombreApellidoCliente = new ccLibrary.ccLabel();
+            this.cclblCliente = new ccLibrary.ccLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudGarantia)).BeginInit();
+            this.pnlBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ucTop
-            // 
-            this.ucTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucTop.Location = new System.Drawing.Point(0, 0);
-            this.ucTop.MaximumSize = new System.Drawing.Size(3840, 82);
-            this.ucTop.Name = "ucTop";
-            this.ucTop.Size = new System.Drawing.Size(780, 82);
-            this.ucTop.TabIndex = 0;
-            this.ucTop.Titulo = null;
             // 
             // ucBottom
             // 
@@ -72,19 +65,18 @@
             this.ucBottom.Accion2 = null;
             this.ucBottom.Accion3 = null;
             this.ucBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucBottom.Location = new System.Drawing.Point(0, 364);
+            this.ucBottom.Location = new System.Drawing.Point(0, 344);
             this.ucBottom.MaximumSize = new System.Drawing.Size(3840, 82);
             this.ucBottom.Name = "ucBottom";
-            this.ucBottom.NumButtons = 0;
+            this.ucBottom.NumButtons = 2;
             this.ucBottom.Size = new System.Drawing.Size(780, 82);
             this.ucBottom.TabIndex = 1;
             // 
             // cclblFechaIngreso
             // 
-            this.cclblFechaIngreso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFechaIngreso.AutoSize = true;
             this.cclblFechaIngreso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblFechaIngreso.Location = new System.Drawing.Point(65, 164);
+            this.cclblFechaIngreso.Location = new System.Drawing.Point(371, 91);
             this.cclblFechaIngreso.Name = "cclblFechaIngreso";
             this.cclblFechaIngreso.Size = new System.Drawing.Size(108, 16);
             this.cclblFechaIngreso.TabIndex = 2;
@@ -92,10 +84,9 @@
             // 
             // cclblFechaEgreso
             // 
-            this.cclblFechaEgreso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFechaEgreso.AutoSize = true;
             this.cclblFechaEgreso.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblFechaEgreso.Location = new System.Drawing.Point(65, 317);
+            this.cclblFechaEgreso.Location = new System.Drawing.Point(60, 287);
             this.cclblFechaEgreso.Name = "cclblFechaEgreso";
             this.cclblFechaEgreso.Size = new System.Drawing.Size(105, 16);
             this.cclblFechaEgreso.TabIndex = 3;
@@ -103,10 +94,9 @@
             // 
             // cclblErrorReparar
             // 
-            this.cclblErrorReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblErrorReparar.AutoSize = true;
             this.cclblErrorReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblErrorReparar.Location = new System.Drawing.Point(385, 164);
+            this.cclblErrorReparar.Location = new System.Drawing.Point(60, 140);
             this.cclblErrorReparar.Name = "cclblErrorReparar";
             this.cclblErrorReparar.Size = new System.Drawing.Size(96, 16);
             this.cclblErrorReparar.TabIndex = 4;
@@ -114,10 +104,9 @@
             // 
             // cclblEstadoReparacion
             // 
-            this.cclblEstadoReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblEstadoReparacion.AutoSize = true;
             this.cclblEstadoReparacion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblEstadoReparacion.Location = new System.Drawing.Point(403, 113);
+            this.cclblEstadoReparacion.Location = new System.Drawing.Point(60, 91);
             this.cclblEstadoReparacion.Name = "cclblEstadoReparacion";
             this.cclblEstadoReparacion.Size = new System.Drawing.Size(151, 16);
             this.cclblEstadoReparacion.TabIndex = 5;
@@ -125,10 +114,9 @@
             // 
             // cclblMesesGarantia
             // 
-            this.cclblMesesGarantia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMesesGarantia.AutoSize = true;
             this.cclblMesesGarantia.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblMesesGarantia.Location = new System.Drawing.Point(382, 317);
+            this.cclblMesesGarantia.Location = new System.Drawing.Point(371, 287);
             this.cclblMesesGarantia.Name = "cclblMesesGarantia";
             this.cclblMesesGarantia.Size = new System.Drawing.Size(118, 16);
             this.cclblMesesGarantia.TabIndex = 6;
@@ -136,10 +124,9 @@
             // 
             // cclblReparacionRealizada
             // 
-            this.cclblReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblReparacionRealizada.AutoSize = true;
             this.cclblReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblReparacionRealizada.Location = new System.Drawing.Point(65, 215);
+            this.cclblReparacionRealizada.Location = new System.Drawing.Point(60, 189);
             this.cclblReparacionRealizada.Name = "cclblReparacionRealizada";
             this.cclblReparacionRealizada.Size = new System.Drawing.Size(134, 16);
             this.cclblReparacionRealizada.TabIndex = 7;
@@ -147,10 +134,9 @@
             // 
             // cclblManoObra
             // 
-            this.cclblManoObra.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblManoObra.AutoSize = true;
             this.cclblManoObra.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblManoObra.Location = new System.Drawing.Point(65, 266);
+            this.cclblManoObra.Location = new System.Drawing.Point(60, 238);
             this.cclblManoObra.Name = "cclblManoObra";
             this.cclblManoObra.Size = new System.Drawing.Size(95, 16);
             this.cclblManoObra.TabIndex = 8;
@@ -158,10 +144,9 @@
             // 
             // cclblTotalRepuestos
             // 
-            this.cclblTotalRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTotalRepuestos.AutoSize = true;
             this.cclblTotalRepuestos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTotalRepuestos.Location = new System.Drawing.Point(322, 266);
+            this.cclblTotalRepuestos.Location = new System.Drawing.Point(326, 238);
             this.cclblTotalRepuestos.Name = "cclblTotalRepuestos";
             this.cclblTotalRepuestos.Size = new System.Drawing.Size(121, 16);
             this.cclblTotalRepuestos.TabIndex = 9;
@@ -169,21 +154,19 @@
             // 
             // cclblLavarropa
             // 
-            this.cclblLavarropa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblLavarropa.AutoSize = true;
             this.cclblLavarropa.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblLavarropa.Location = new System.Drawing.Point(65, 113);
+            this.cclblLavarropa.Location = new System.Drawing.Point(371, 42);
             this.cclblLavarropa.Name = "cclblLavarropa";
-            this.cclblLavarropa.Size = new System.Drawing.Size(73, 16);
+            this.cclblLavarropa.Size = new System.Drawing.Size(76, 16);
             this.cclblLavarropa.TabIndex = 10;
-            this.cclblLavarropa.Text = "Lavarropas";
+            this.cclblLavarropa.Text = "Lavarropas:";
             // 
             // cclblTotal
             // 
-            this.cclblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTotal.AutoSize = true;
             this.cclblTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTotal.Location = new System.Drawing.Point(642, 266);
+            this.cclblTotal.Location = new System.Drawing.Point(645, 238);
             this.cclblTotal.Name = "cclblTotal";
             this.cclblTotal.Size = new System.Drawing.Size(40, 16);
             this.cclblTotal.TabIndex = 11;
@@ -191,10 +174,9 @@
             // 
             // cclblValorTotal
             // 
-            this.cclblValorTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblValorTotal.AutoSize = true;
             this.cclblValorTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblValorTotal.Location = new System.Drawing.Point(688, 266);
+            this.cclblValorTotal.Location = new System.Drawing.Point(691, 238);
             this.cclblValorTotal.Name = "cclblValorTotal";
             this.cclblValorTotal.Size = new System.Drawing.Size(15, 16);
             this.cclblValorTotal.TabIndex = 12;
@@ -203,26 +185,26 @@
             // cctbFallaAReparar
             // 
             this.cctbFallaAReparar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbFallaAReparar.CaracterIncorrectErrorMessage = "";
             this.cctbFallaAReparar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbFallaAReparar.Location = new System.Drawing.Point(486, 161);
+            this.cctbFallaAReparar.Location = new System.Drawing.Point(162, 137);
             this.cctbFallaAReparar.Name = "cctbFallaAReparar";
-            this.cctbFallaAReparar.Size = new System.Drawing.Size(231, 24);
+            this.cctbFallaAReparar.Size = new System.Drawing.Size(544, 24);
             this.cctbFallaAReparar.TabIndex = 13;
             // 
             // dtpFechaIngreso
             // 
             this.dtpFechaIngreso.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(179, 160);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(171, 286);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(194, 20);
             this.dtpFechaIngreso.TabIndex = 14;
             // 
             // cclblMarcaModelo
             // 
-            this.cclblMarcaModelo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblMarcaModelo.AutoSize = true;
             this.cclblMarcaModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblMarcaModelo.Location = new System.Drawing.Point(144, 113);
+            this.cclblMarcaModelo.Location = new System.Drawing.Point(453, 42);
             this.cclblMarcaModelo.Name = "cclblMarcaModelo";
             this.cclblMarcaModelo.Size = new System.Drawing.Size(0, 16);
             this.cclblMarcaModelo.TabIndex = 15;
@@ -231,57 +213,53 @@
             // 
             this.cboEstadoReparacion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboEstadoReparacion.FormattingEnabled = true;
-            this.cboEstadoReparacion.Location = new System.Drawing.Point(560, 111);
+            this.cboEstadoReparacion.Location = new System.Drawing.Point(217, 89);
             this.cboEstadoReparacion.Name = "cboEstadoReparacion";
-            this.cboEstadoReparacion.Size = new System.Drawing.Size(157, 21);
+            this.cboEstadoReparacion.Size = new System.Drawing.Size(133, 21);
             this.cboEstadoReparacion.TabIndex = 16;
             // 
             // cctbReparacionRealizada
             // 
             this.cctbReparacionRealizada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbReparacionRealizada.CaracterIncorrectErrorMessage = "";
             this.cctbReparacionRealizada.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbReparacionRealizada.Location = new System.Drawing.Point(205, 212);
+            this.cctbReparacionRealizada.Location = new System.Drawing.Point(200, 186);
             this.cctbReparacionRealizada.Name = "cctbReparacionRealizada";
-            this.cctbReparacionRealizada.Size = new System.Drawing.Size(512, 24);
+            this.cctbReparacionRealizada.Size = new System.Drawing.Size(374, 24);
             this.cctbReparacionRealizada.TabIndex = 17;
             // 
             // cctbManoObra
             // 
             this.cctbManoObra.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbManoObra.CaracterIncorrectErrorMessage = "";
+            this.cctbManoObra.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbManoObra.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbManoObra.Location = new System.Drawing.Point(163, 263);
+            this.cctbManoObra.Location = new System.Drawing.Point(161, 235);
             this.cctbManoObra.Name = "cctbManoObra";
             this.cctbManoObra.Size = new System.Drawing.Size(153, 24);
             this.cctbManoObra.TabIndex = 18;
             // 
             // dtpFechaEgreso
             // 
-            this.dtpFechaEgreso.Location = new System.Drawing.Point(173, 313);
+            this.dtpFechaEgreso.Location = new System.Drawing.Point(485, 89);
             this.dtpFechaEgreso.Name = "dtpFechaEgreso";
-            this.dtpFechaEgreso.Size = new System.Drawing.Size(203, 20);
+            this.dtpFechaEgreso.Size = new System.Drawing.Size(221, 20);
             this.dtpFechaEgreso.TabIndex = 19;
             // 
             // cctbValorRepuestos
             // 
             this.cctbValorRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbValorRepuestos.CaracterIncorrectErrorMessage = "";
+            this.cctbValorRepuestos.DataType = ccLibrary.ccTextBox.dataType.Numerico;
             this.cctbValorRepuestos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cctbValorRepuestos.Location = new System.Drawing.Point(449, 263);
+            this.cctbValorRepuestos.Location = new System.Drawing.Point(453, 235);
             this.cctbValorRepuestos.Name = "cctbValorRepuestos";
-            this.cctbValorRepuestos.Size = new System.Drawing.Size(187, 24);
+            this.cctbValorRepuestos.Size = new System.Drawing.Size(186, 24);
             this.cctbValorRepuestos.TabIndex = 20;
-            // 
-            // btnCambiar
-            // 
-            this.btnCambiar.Location = new System.Drawing.Point(322, 109);
-            this.btnCambiar.Name = "btnCambiar";
-            this.btnCambiar.Size = new System.Drawing.Size(75, 23);
-            this.btnCambiar.TabIndex = 22;
-            this.btnCambiar.Text = "Cambiar";
-            this.btnCambiar.UseVisualStyleBackColor = true;
             // 
             // nudGarantia
             // 
-            this.nudGarantia.Location = new System.Drawing.Point(506, 316);
+            this.nudGarantia.Location = new System.Drawing.Point(495, 286);
             this.nudGarantia.Name = "nudGarantia";
             this.nudGarantia.Size = new System.Drawing.Size(48, 20);
             this.nudGarantia.TabIndex = 23;
@@ -289,52 +267,91 @@
             // dtpGarantia
             // 
             this.dtpGarantia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpGarantia.Location = new System.Drawing.Point(619, 312);
+            this.dtpGarantia.Location = new System.Drawing.Point(608, 283);
             this.dtpGarantia.Name = "dtpGarantia";
             this.dtpGarantia.Size = new System.Drawing.Size(98, 20);
             this.dtpGarantia.TabIndex = 24;
             // 
             // cclblFinaliza
             // 
-            this.cclblFinaliza.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblFinaliza.AutoSize = true;
             this.cclblFinaliza.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblFinaliza.Location = new System.Drawing.Point(560, 317);
+            this.cclblFinaliza.Location = new System.Drawing.Point(549, 287);
             this.cclblFinaliza.Name = "cclblFinaliza";
             this.cclblFinaliza.Size = new System.Drawing.Size(53, 16);
             this.cclblFinaliza.TabIndex = 25;
             this.cclblFinaliza.Text = "Finaliza:";
             // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.btnRepuestos);
+            this.pnlBody.Controls.Add(this.cclblNombreApellidoCliente);
+            this.pnlBody.Controls.Add(this.cclblCliente);
+            this.pnlBody.Controls.Add(this.cclblLavarropa);
+            this.pnlBody.Controls.Add(this.cclblFinaliza);
+            this.pnlBody.Controls.Add(this.cclblFechaIngreso);
+            this.pnlBody.Controls.Add(this.dtpGarantia);
+            this.pnlBody.Controls.Add(this.cclblFechaEgreso);
+            this.pnlBody.Controls.Add(this.nudGarantia);
+            this.pnlBody.Controls.Add(this.cclblErrorReparar);
+            this.pnlBody.Controls.Add(this.cclblEstadoReparacion);
+            this.pnlBody.Controls.Add(this.cctbValorRepuestos);
+            this.pnlBody.Controls.Add(this.cclblMesesGarantia);
+            this.pnlBody.Controls.Add(this.dtpFechaEgreso);
+            this.pnlBody.Controls.Add(this.cclblReparacionRealizada);
+            this.pnlBody.Controls.Add(this.cctbManoObra);
+            this.pnlBody.Controls.Add(this.cclblManoObra);
+            this.pnlBody.Controls.Add(this.cctbReparacionRealizada);
+            this.pnlBody.Controls.Add(this.cclblTotalRepuestos);
+            this.pnlBody.Controls.Add(this.cboEstadoReparacion);
+            this.pnlBody.Controls.Add(this.cclblTotal);
+            this.pnlBody.Controls.Add(this.cclblMarcaModelo);
+            this.pnlBody.Controls.Add(this.cclblValorTotal);
+            this.pnlBody.Controls.Add(this.dtpFechaIngreso);
+            this.pnlBody.Controls.Add(this.cctbFallaAReparar);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(780, 344);
+            this.pnlBody.TabIndex = 26;
+            // 
+            // btnRepuestos
+            // 
+            this.btnRepuestos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepuestos.Location = new System.Drawing.Point(580, 185);
+            this.btnRepuestos.Name = "btnRepuestos";
+            this.btnRepuestos.Size = new System.Drawing.Size(126, 23);
+            this.btnRepuestos.TabIndex = 28;
+            this.btnRepuestos.Text = "Repuestos Usados";
+            this.btnRepuestos.UseVisualStyleBackColor = true;
+            this.btnRepuestos.Click += new System.EventHandler(this.btnRepuestos_Click);
+            // 
+            // cclblNombreApellidoCliente
+            // 
+            this.cclblNombreApellidoCliente.AutoSize = true;
+            this.cclblNombreApellidoCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblNombreApellidoCliente.Location = new System.Drawing.Point(116, 42);
+            this.cclblNombreApellidoCliente.Name = "cclblNombreApellidoCliente";
+            this.cclblNombreApellidoCliente.Size = new System.Drawing.Size(0, 16);
+            this.cclblNombreApellidoCliente.TabIndex = 27;
+            // 
+            // cclblCliente
+            // 
+            this.cclblCliente.AutoSize = true;
+            this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblCliente.Location = new System.Drawing.Point(60, 42);
+            this.cclblCliente.Name = "cclblCliente";
+            this.cclblCliente.Size = new System.Drawing.Size(50, 16);
+            this.cclblCliente.TabIndex = 26;
+            this.cclblCliente.Text = "Cliente:";
+            // 
             // frmModificarReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 446);
-            this.Controls.Add(this.cclblFinaliza);
-            this.Controls.Add(this.dtpGarantia);
-            this.Controls.Add(this.nudGarantia);
-            this.Controls.Add(this.btnCambiar);
-            this.Controls.Add(this.cctbValorRepuestos);
-            this.Controls.Add(this.dtpFechaEgreso);
-            this.Controls.Add(this.cctbManoObra);
-            this.Controls.Add(this.cctbReparacionRealizada);
-            this.Controls.Add(this.cboEstadoReparacion);
-            this.Controls.Add(this.cclblMarcaModelo);
-            this.Controls.Add(this.dtpFechaIngreso);
-            this.Controls.Add(this.cctbFallaAReparar);
-            this.Controls.Add(this.cclblValorTotal);
-            this.Controls.Add(this.cclblTotal);
-            this.Controls.Add(this.cclblLavarropa);
-            this.Controls.Add(this.cclblTotalRepuestos);
-            this.Controls.Add(this.cclblManoObra);
-            this.Controls.Add(this.cclblReparacionRealizada);
-            this.Controls.Add(this.cclblMesesGarantia);
-            this.Controls.Add(this.cclblEstadoReparacion);
-            this.Controls.Add(this.cclblErrorReparar);
-            this.Controls.Add(this.cclblFechaEgreso);
-            this.Controls.Add(this.cclblFechaIngreso);
+            this.ClientSize = new System.Drawing.Size(780, 426);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.ucBottom);
-            this.Controls.Add(this.ucTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -342,16 +359,15 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmModificarReparacion";
+            this.Text = "Modificar Reparacion";
             ((System.ComponentModel.ISupportInitialize)(this.nudGarantia)).EndInit();
+            this.pnlBody.ResumeLayout(false);
+            this.pnlBody.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private ucLibrary.ucTop ucTop;
         private ucLibrary.ucBottom ucBottom;
         private ccLibrary.ccLabel cclblFechaIngreso;
         private ccLibrary.ccLabel cclblFechaEgreso;
@@ -372,9 +388,12 @@
         private ccLibrary.ccTextBox cctbManoObra;
         private System.Windows.Forms.DateTimePicker dtpFechaEgreso;
         private ccLibrary.ccTextBox cctbValorRepuestos;
-        private System.Windows.Forms.Button btnCambiar;
         private System.Windows.Forms.NumericUpDown nudGarantia;
         private System.Windows.Forms.DateTimePicker dtpGarantia;
         private ccLibrary.ccLabel cclblFinaliza;
+        private System.Windows.Forms.Panel pnlBody;
+        private ccLibrary.ccLabel cclblNombreApellidoCliente;
+        private ccLibrary.ccLabel cclblCliente;
+        private System.Windows.Forms.Button btnRepuestos;
     }
 }

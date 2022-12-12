@@ -16,11 +16,6 @@ namespace ucLibrary
     {
         public ucTitleBar()
         {
-            /**
-             * TODO: Agregar Click Derecho (Maximizar, Minimizar, Cerrar y si se me ocurre algo mas de 10)
-             * --- HECHO
-             */
-
             InitializeComponent();
         }
 
@@ -293,14 +288,14 @@ namespace ucLibrary
 
         #region Funcion de los botones
 
-        private void iconBtnMinimizar_Click(object sender, EventArgs e)
+        private void Minimizar_Click(object sender, EventArgs e)
         {
             Form frm = buscarFormulario(this);
 
             frm.WindowState = FormWindowState.Minimized;
         }
 
-        private void iconBtnMaximizar_Click(object sender, EventArgs e)
+        private void Maximizar_Click(object sender, EventArgs e)
         {
             Form frm = buscarFormulario(this);
 
@@ -308,15 +303,21 @@ namespace ucLibrary
             {
                 frm.WindowState = FormWindowState.Normal;
                 iconBtnMaximizar.IconChar = iconMax;
+
+                cmsiRestaurar.Enabled = false;
+                cmsiMaximizar.Enabled = true;
             }
             else
             {
                 frm.WindowState = FormWindowState.Maximized;
                 iconBtnMaximizar.IconChar = iconNormal;
+
+                cmsiRestaurar.Enabled = true;
+                cmsiMaximizar.Enabled = false;
             }
         }
 
-        private void iconBtnCerrar_Click(object sender, EventArgs e)
+        private void Cerrar_Click(object sender, EventArgs e)
         {
             Form frm = buscarFormulario(this);
 
@@ -339,44 +340,6 @@ namespace ucLibrary
 
             ReleaseCapture();
             SendMessage(frm.Handle, 0x112, 0xf012, 0);
-        }
-
-        #endregion
-
-        #region cmsItems
-
-        private void cmsiRestaurar_Click(object sender, EventArgs e)
-        {
-            Form frm = buscarFormulario(this);
-
-            frm.WindowState = FormWindowState.Normal;
-
-            cmsiRestaurar.Enabled = false;
-            cmsiMaximizar.Enabled = true;
-        }
-
-        private void cmsiMinimizar_Click(object sender, EventArgs e)
-        {
-            Form frm = buscarFormulario(this);
-
-            frm.WindowState = FormWindowState.Minimized;
-        }
-
-        private void cmsiMaximizar_Click(object sender, EventArgs e)
-        {
-            Form frm = buscarFormulario(this);
-
-            frm.WindowState = FormWindowState.Maximized;
-
-            cmsiRestaurar.Enabled = true;
-            cmsiMaximizar.Enabled = false;
-        }
-
-        private void cmsiCerrar_Click(object sender, EventArgs e)
-        {
-            Form frm = buscarFormulario(this);
-
-            frm.Close();
         }
 
         #endregion

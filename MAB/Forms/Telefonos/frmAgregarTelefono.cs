@@ -13,56 +13,97 @@ namespace MAB.Forms.CRUD.Telefonos
 {
     public partial class frmAgregarTelefono : Form
     {
-
         Models.Clientes cliente;
 
         public frmAgregarTelefono(int idCliente)
         {
+            /**
+             * TODO: Comprobar el Correcto funcionamiento de todo el FRM cuando ya tenga Clientes en la DB.
+             */
             InitializeComponent();
 
+            cargarCliente(idCliente);
 
-            using (MABEntities db = new MABEntities())
-            {
-                cliente = db.Clientes.Find(idCliente);
-
-                cclblIdCliente.Text = idCliente.ToString();
-            }
-
-            ucTop.Titulo = "Agregar Telefono a " + cliente.nombre + " " + cliente.apellido;
+            Text = "Agregar Telefono a " + cliente.nombre + " " + cliente.apellido;
 
             ucBottom.NumButtons = 2;
 
             ucBottom.Accion1 = "Agregar";
-            ucBottom.Accion3 = "Cancelar";
+            ucBottom.Accion2 = "Cerrar";
 
             ucBottom.evAccion1 += agregarTelefono;
-            ucBottom.evAccion3 += cancelar;
+            ucBottom.evAccion2 += cerrar;
+
+            string messageError = "Solo se permiten Numeros, no se permiten Letras";
+
+            cctbTelefono.CaracterIncorrectErrorMessage = messageError;
+        }
+
+        private void cargarCliente(int id)
+        {
+            using (MABEntities db = new MABEntities())
+            {
+                cliente = db.Clientes.Find(id);
+
+                cclblNombreCliente.Text = cliente.nombre + " " + cliente.apellido;
+            }
         }
 
         private void agregarTelefono(object sender, EventArgs e)
         {
-            /**
-             * TODO: Tengo que agregarle un control, para que si el telefono ya existe, no agregarlo de nuevo, solamente cambiarle el estado.
-             * NOTA: El telefono se deberia de estar queriendo agregar al mismo cliente, Ya que en ese caso, si volviera a agregarlo se repetirian claves. Malo Malo.
-             */
+            int idCliente = cliente.Id;
+            long numTelefono = Convert.ToInt64(cctbTelefono.Text);
 
-            if(tbTelefono.Text != string.Empty)
+            if(cctbTelefono.Text != string.Empty && cctbTelefono.TextLength <= 10)
             {
+                Models.Telefonos telefono;
+
                 using (MABEntities db = new MABEntities())
                 {
-                    Models.Telefonos telefono = new Models.Telefonos();
+                    telefono = (from tel in db.Telefonos
+                                where tel.ClienteId == idCliente
+                                where tel.telefono == numTelefono
+                                select tel).FirstOrDefault();
+                    
+                    /**
+                     * TODO: Tengo que revisar esto, porque mepa que telefono deberia preguntarse al verre. si es null, 
+                     * dejarlo pasar por el if, sino por el else
+                     */
+                    if(telefono == null)
+                    {
+                        telefono = new Models.Telefonos();
 
-                    telefono.ClienteId = cliente.Id;
-                    telefono.telefono = Convert.ToInt64(tbTelefono.Text);
-                    telefono.estado = true;
+                        telefono.ClienteId = cliente.Id;
+                        telefono.telefono = Convert.ToInt64(cctbTelefono.Text);
+                        telefono.estado = true;
 
-                    db.Telefonos.Add(telefono);
-                    db.SaveChanges();
+                        db.Telefonos.Add(telefono);
+                        db.SaveChanges();
+
+                        MessageBox.Show("Telefono agregado correcamente", "Guardado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        cctbTelefono.Text = "";
+                        cctbTelefono.Focus();
+                    }
+                    else
+                    { 
+                        MessageBox.Show("Se a encontrado un numero igual que pertenecio a este cliente. \n" +
+                            "Se procedera a recuperar el telefono.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        telefono.estado = true;
+
+                        db.Entry(telefono).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un numero de telefono valido (Max: 10 Caracteres)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void cancelar(object sender, EventArgs e)
+        private void cerrar(object sender, EventArgs e)
         {
             this.Close();
         }

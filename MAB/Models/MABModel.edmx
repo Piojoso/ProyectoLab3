@@ -4,176 +4,206 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MABModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="MABModelStoreContainer">
-    <EntitySet Name="Clientes" EntityType="MABModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Telefonos" EntityType="MABModel.Store.Telefonos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Lavarropas" EntityType="MABModel.Store.Lavarropas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Reparaciones" EntityType="MABModel.Store.Reparaciones" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Repuestos" EntityType="MABModel.Store.Repuestos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Entregas" EntityType="MABModel.Store.Entregas" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ClienteTelefono" Association="MABModel.Store.ClienteTelefono">
-      <End Role="Cliente" EntitySet="Clientes" />
-      <End Role="Telefono" EntitySet="Telefonos" />
-    </AssociationSet>
-    <AssociationSet Name="ClienteLavarropas" Association="MABModel.Store.ClienteLavarropas">
-      <End Role="Cliente" EntitySet="Clientes" />
-      <End Role="Lavarropas" EntitySet="Lavarropas" />
-    </AssociationSet>
-    <AssociationSet Name="LavarropasReparacion" Association="MABModel.Store.LavarropasReparacion">
-      <End Role="Lavarropas" EntitySet="Lavarropas" />
-      <End Role="Reparacion" EntitySet="Reparaciones" />
-    </AssociationSet>
-    <AssociationSet Name="ReparacionRepuestos" Association="MABModel.Store.ReparacionRepuestos">
-      <End Role="Reparacion" EntitySet="Reparaciones" />
-      <End Role="Repuestos" EntitySet="Repuestos" />
-    </AssociationSet>
-    <AssociationSet Name="ReparacionesEntregas" Association="MABModel.Store.ReparacionesEntregas">
-      <End Role="Reparaciones" EntitySet="Reparaciones" />
-      <End Role="Entregas" EntitySet="Entregas" />
-    </AssociationSet>
-    <AssociationSet Name="ClientesEntregas" Association="MABModel.Store.ClientesEntregas">
-      <End Role="Clientes" EntitySet="Clientes" />
-      <End Role="Entregas" EntitySet="Entregas" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Clientes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Telefonos">
-    <Key>
-      <PropertyRef Name="telefono" />
-      <PropertyRef Name="ClienteId" />
-    </Key>
-    <Property Name="ClienteId" Type="int" Nullable="false" />
-    <Property Name="telefono" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Lavarropas">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="marca" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="modelo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="estadoGeneral" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ClienteId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Reparaciones">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
-    <Property Name="fechaEgreso" Type="datetime" Nullable="true" />
-    <Property Name="errorAReparar" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="estadoReparacion" Type="int" Nullable="false" />
-    <Property Name="mesesGarantia" Type="int" Nullable="true" />
-    <Property Name="reparacionRealizada" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="manoDeObra" Type="float" Nullable="false" />
-    <Property Name="totalRepuestos" Type="float" Nullable="false" />
-    <Property Name="LavarropasId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Repuestos">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="precio" Type="float" Nullable="false" />
-    <Property Name="stock" Type="int" Nullable="false" />
-    <Property Name="ReparacionId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Entregas">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="monto" Type="float" Nullable="false" />
-    <Property Name="ReparacionesId" Type="int" Nullable="false" />
-    <Property Name="ClientesId" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="ClienteTelefono">
-    <End Role="Cliente" Type="MABModel.Store.Clientes" Multiplicity="1" />
-    <End Role="Telefono" Type="MABModel.Store.Telefonos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Telefono">
-        <PropertyRef Name="ClienteId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ClienteLavarropas">
-    <End Role="Cliente" Type="MABModel.Store.Clientes" Multiplicity="1" />
-    <End Role="Lavarropas" Type="MABModel.Store.Lavarropas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Lavarropas">
-        <PropertyRef Name="ClienteId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="LavarropasReparacion">
-    <End Role="Lavarropas" Type="MABModel.Store.Lavarropas" Multiplicity="1" />
-    <End Role="Reparacion" Type="MABModel.Store.Reparaciones" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lavarropas">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reparacion">
-        <PropertyRef Name="LavarropasId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReparacionRepuestos">
-    <End Role="Reparacion" Type="MABModel.Store.Reparaciones" Multiplicity="1" />
-    <End Role="Repuestos" Type="MABModel.Store.Repuestos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reparacion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Repuestos">
-        <PropertyRef Name="ReparacionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReparacionesEntregas">
-    <End Role="Reparaciones" Type="MABModel.Store.Reparaciones" Multiplicity="1" />
-    <End Role="Entregas" Type="MABModel.Store.Entregas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reparaciones">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Entregas">
-        <PropertyRef Name="ReparacionesId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ClientesEntregas">
-    <End Role="Clientes" Type="MABModel.Store.Clientes" Multiplicity="1" />
-    <End Role="Entregas" Type="MABModel.Store.Entregas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Clientes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Entregas">
-        <PropertyRef Name="ClientesId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="MABModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" />
+          <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entregas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="monto" Type="float" Nullable="false" />
+          <Property Name="ReparacionesId" Type="int" Nullable="false" />
+          <Property Name="ClientesId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lavarropas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marca" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="modelo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="estadoGeneral" Type="nvarchar(max)" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reparaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="fechaEgreso" Type="datetime" />
+          <Property Name="errorAReparar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="estadoReparacion" Type="int" Nullable="false" />
+          <Property Name="mesesGarantia" Type="int" />
+          <Property Name="reparacionRealizada" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="manoDeObra" Type="float" Nullable="false" />
+          <Property Name="totalRepuestos" Type="float" Nullable="false" />
+          <Property Name="LavarropasId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReparacionesRepuestos">
+          <Key>
+            <PropertyRef Name="ReparacionesId" />
+            <PropertyRef Name="RepuestosId" />
+          </Key>
+          <Property Name="ReparacionesId" Type="int" Nullable="false" />
+          <Property Name="RepuestosId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repuestos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="disponibles" Type="int" Nullable="false" />
+          <Property Name="precio" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Telefonos">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+            <PropertyRef Name="telefono" />
+          </Key>
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="bigint" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClienteLavarropas">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Lavarropas" Type="Self.Lavarropas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lavarropas">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientesEntregas">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Entregas" Type="Self.Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entregas">
+              <PropertyRef Name="ClientesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteTelefono">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Telefonos" Type="Self.Telefonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Telefonos">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LavarropasReparacion">
+          <End Role="Lavarropas" Type="Self.Lavarropas" Multiplicity="1" />
+          <End Role="Reparaciones" Type="Self.Reparaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lavarropas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reparaciones">
+              <PropertyRef Name="LavarropasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReparacionesEntregas">
+          <End Role="Reparaciones" Type="Self.Reparaciones" Multiplicity="1" />
+          <End Role="Entregas" Type="Self.Entregas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reparaciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entregas">
+              <PropertyRef Name="ReparacionesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReparacionesReparacionesRepuestos">
+          <End Role="Reparaciones" Type="Self.Reparaciones" Multiplicity="1" />
+          <End Role="ReparacionesRepuestos" Type="Self.ReparacionesRepuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reparaciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReparacionesRepuestos">
+              <PropertyRef Name="ReparacionesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepuestosReparacionesRepuestos">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="ReparacionesRepuestos" Type="Self.ReparacionesRepuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReparacionesRepuestos">
+              <PropertyRef Name="RepuestosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="MarcaMasReparado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ModeloMasReparado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesEgresadasAnuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesEgresadasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesIngresadasAnuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reparacionesIngresadasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MABModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entregas" EntityType="Self.Entregas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lavarropas" EntityType="Self.Lavarropas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reparaciones" EntityType="Self.Reparaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReparacionesRepuestos" EntityType="Self.ReparacionesRepuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repuestos" EntityType="Self.Repuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telefonos" EntityType="Self.Telefonos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClienteLavarropas" Association="Self.FK_ClienteLavarropas">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Lavarropas" EntitySet="Lavarropas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientesEntregas" Association="Self.FK_ClientesEntregas">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Entregas" EntitySet="Entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteTelefono" Association="Self.FK_ClienteTelefono">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Telefonos" EntitySet="Telefonos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LavarropasReparacion" Association="Self.FK_LavarropasReparacion">
+            <End Role="Lavarropas" EntitySet="Lavarropas" />
+            <End Role="Reparaciones" EntitySet="Reparaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReparacionesEntregas" Association="Self.FK_ReparacionesEntregas">
+            <End Role="Reparaciones" EntitySet="Reparaciones" />
+            <End Role="Entregas" EntitySet="Entregas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReparacionesReparacionesRepuestos" Association="Self.FK_ReparacionesReparacionesRepuestos">
+            <End Role="Reparaciones" EntitySet="Reparaciones" />
+            <End Role="ReparacionesRepuestos" EntitySet="ReparacionesRepuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepuestosReparacionesRepuestos" Association="Self.FK_RepuestosReparacionesRepuestos">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="ReparacionesRepuestos" EntitySet="ReparacionesRepuestos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MABModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,10 +225,6 @@
             <End Role="Reparacion" EntitySet="Reparaciones" />
           </AssociationSet>
           <EntitySet Name="Repuestos" EntityType="MABModel.Repuestos" />
-          <AssociationSet Name="ReparacionRepuestos" Association="MABModel.ReparacionRepuestos">
-            <End Role="Reparacion" EntitySet="Reparaciones" />
-            <End Role="Repuestos" EntitySet="Repuestos" />
-          </AssociationSet>
           <EntitySet Name="Entregas" EntityType="MABModel.Entregas" />
           <AssociationSet Name="ReparacionesEntregas" Association="MABModel.ReparacionesEntregas">
             <End Role="Reparaciones" EntitySet="Reparaciones" />
@@ -208,15 +234,31 @@
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Entregas" EntitySet="Entregas" />
           </AssociationSet>
+          <EntitySet Name="ReparacionesRepuestos" EntityType="MABModel.ReparacionesRepuestos" />
+          <AssociationSet Name="ReparacionesReparacionesRepuestos" Association="MABModel.ReparacionesReparacionesRepuestos">
+            <End Role="Reparaciones" EntitySet="Reparaciones" />
+            <End Role="ReparacionesRepuestos" EntitySet="ReparacionesRepuestos" />
+          </AssociationSet>
+          <AssociationSet Name="RepuestosReparacionesRepuestos" Association="MABModel.RepuestosReparacionesRepuestos">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="ReparacionesRepuestos" EntitySet="ReparacionesRepuestos" />
+          </AssociationSet>
+          <FunctionImport Name="Procedure" ReturnType="Collection(String)" />
+          <FunctionImport Name="MarcaMasReparado" ReturnType="Collection(String)" />
+          <FunctionImport Name="ModeloMasReparado" ReturnType="Collection(String)" />
+          <FunctionImport Name="reparacionesEgresadasAnuales" ReturnType="Collection(MABModel.reparacionesEgresadasAnuales_Result)" />
+          <FunctionImport Name="reparacionesEgresadasMensuales" ReturnType="Collection(MABModel.reparacionesEgresadasMensuales_Result)" />
+          <FunctionImport Name="reparacionesIngresadasAnuales" ReturnType="Collection(MABModel.reparacionesIngresadasAnuales_Result)" />
+          <FunctionImport Name="reparacionesIngresadasMensuales" ReturnType="Collection(MABModel.reparacionesIngresadasMensuales_Result)" />
         </EntityContainer>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="true" />
-          <Property Name="apellido" Type="String" Nullable="false" />
-          <Property Name="direccion" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Telefonos" Relationship="MABModel.ClienteTelefono" FromRole="Cliente" ToRole="Telefono" />
           <NavigationProperty Name="Lavarropas" Relationship="MABModel.ClienteLavarropas" FromRole="Cliente" ToRole="Lavarropas" />
           <NavigationProperty Name="Entregas" Relationship="MABModel.ClientesEntregas" FromRole="Clientes" ToRole="Entregas" />
@@ -227,7 +269,7 @@
             <PropertyRef Name="ClienteId" />
           </Key>
           <Property Name="ClienteId" Type="Int32" Nullable="false" />
-          <Property Name="telefono" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="telefono" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="Cliente" Relationship="MABModel.ClienteTelefono" FromRole="Telefono" ToRole="Cliente" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
         </EntityType>
@@ -248,10 +290,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="marca" Type="String" Nullable="false" />
-          <Property Name="modelo" Type="String" Nullable="false" />
+          <Property Name="marca" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="modelo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Cliente" Relationship="MABModel.ClienteLavarropas" FromRole="Lavarropas" ToRole="Cliente" />
-          <Property Name="estadoGeneral" Type="String" Nullable="true" />
+          <Property Name="estadoGeneral" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ClienteId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Reparacion" Relationship="MABModel.LavarropasReparacion" FromRole="Lavarropas" ToRole="Reparacion" />
         </EntityType>
@@ -272,18 +314,18 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" />
-          <Property Name="fechaEgreso" Type="DateTime" Nullable="true" />
-          <Property Name="errorAReparar" Type="String" Nullable="false" />
+          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaEgreso" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="errorAReparar" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="estadoReparacion" Type="MABModel.estadosReparacion" Nullable="false" />
           <Property Name="mesesGarantia" Type="Int32" Nullable="true" />
-          <Property Name="reparacionRealizada" Type="String" Nullable="false" />
+          <Property Name="reparacionRealizada" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="manoDeObra" Type="Double" Nullable="false" />
           <Property Name="totalRepuestos" Type="Double" Nullable="false" />
           <NavigationProperty Name="Lavarropas" Relationship="MABModel.LavarropasReparacion" FromRole="Reparacion" ToRole="Lavarropas" />
           <Property Name="LavarropasId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Repuestos" Relationship="MABModel.ReparacionRepuestos" FromRole="Reparacion" ToRole="Repuestos" />
           <NavigationProperty Name="Entregas" Relationship="MABModel.ReparacionesEntregas" FromRole="Reparaciones" ToRole="Entregas" />
+          <NavigationProperty Name="Repuestos" Relationship="MABModel.ReparacionesReparacionesRepuestos" FromRole="Reparaciones" ToRole="ReparacionesRepuestos" />
         </EntityType>
         <EnumType Name="estadosReparacion" UnderlyingType="Int32" >
           <Member Name="EnCurso" />
@@ -307,31 +349,18 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="true" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Reparaciones" Relationship="MABModel.RepuestosReparacionesRepuestos" FromRole="Repuestos" ToRole="ReparacionesRepuestos" />
+          <Property Name="disponibles" Type="Int32" Nullable="false" />
           <Property Name="precio" Type="Double" Nullable="false" />
-          <Property Name="stock" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Reparacion" Relationship="MABModel.ReparacionRepuestos" FromRole="Repuestos" ToRole="Reparacion" />
-          <Property Name="ReparacionId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="ReparacionRepuestos">
-          <End Type="MABModel.Reparaciones" Role="Reparacion" Multiplicity="1" />
-          <End Type="MABModel.Repuestos" Role="Repuestos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reparacion">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repuestos">
-              <PropertyRef Name="ReparacionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Entregas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="monto" Type="Double" Nullable="false" />
           <NavigationProperty Name="Reparaciones" Relationship="MABModel.ReparacionesEntregas" FromRole="Entregas" ToRole="Reparaciones" />
           <Property Name="ReparacionesId" Type="Int32" Nullable="false" />
@@ -362,6 +391,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ReparacionesRepuestos">
+          <Key>
+            <PropertyRef Name="ReparacionesId" />
+            <PropertyRef Name="RepuestosId" />
+          </Key>
+          <Property Name="ReparacionesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Reparaciones" Relationship="MABModel.ReparacionesReparacionesRepuestos" FromRole="ReparacionesRepuestos" ToRole="Reparaciones" />
+          <NavigationProperty Name="Repuestos" Relationship="MABModel.RepuestosReparacionesRepuestos" FromRole="ReparacionesRepuestos" ToRole="Repuestos" />
+          <Property Name="RepuestosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <Association Name="ReparacionesReparacionesRepuestos">
+          <End Type="MABModel.Reparaciones" Role="Reparaciones" Multiplicity="1" />
+          <End Type="MABModel.ReparacionesRepuestos" Role="ReparacionesRepuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reparaciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReparacionesRepuestos">
+              <PropertyRef Name="ReparacionesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RepuestosReparacionesRepuestos">
+          <End Type="MABModel.Repuestos" Role="Repuestos" Multiplicity="1" />
+          <End Type="MABModel.ReparacionesRepuestos" Role="ReparacionesRepuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReparacionesRepuestos">
+              <PropertyRef Name="RepuestosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="reparacionesEgresadasAnuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Año" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesEgresadasMensuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Mes" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesIngresadasAnuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Año" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="reparacionesIngresadasMensuales_Result">
+          <Property Type="Int32" Name="Reparaciones" Nullable="true" />
+          <Property Type="Int32" Name="Mes" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -420,9 +499,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="disponibles" ColumnName="disponibles" />
           <ScalarProperty Name="precio" ColumnName="precio" />
-          <ScalarProperty Name="stock" ColumnName="stock" />
-          <ScalarProperty Name="ReparacionId" ColumnName="ReparacionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -437,6 +515,48 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ReparacionesRepuestos">
+      <EntityTypeMapping TypeName="IsTypeOf(MABModel.ReparacionesRepuestos)">
+        <MappingFragment StoreEntitySet="ReparacionesRepuestos">
+          <ScalarProperty Name="ReparacionesId" ColumnName="ReparacionesId" />
+          <ScalarProperty Name="RepuestosId" ColumnName="RepuestosId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MarcaMasReparado" FunctionName="MABModel.Store.MarcaMasReparado" />
+          <FunctionImportMapping FunctionImportName="ModeloMasReparado" FunctionName="MABModel.Store.ModeloMasReparado" />
+          <FunctionImportMapping FunctionImportName="reparacionesEgresadasAnuales" FunctionName="MABModel.Store.reparacionesEgresadasAnuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesEgresadasAnuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesEgresadasMensuales" FunctionName="MABModel.Store.reparacionesEgresadasMensuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesEgresadasMensuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesIngresadasAnuales" FunctionName="MABModel.Store.reparacionesIngresadasAnuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesIngresadasAnuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="reparacionesIngresadasMensuales" FunctionName="MABModel.Store.reparacionesIngresadasMensuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MABModel.reparacionesIngresadasMensuales_Result">
+                <ScalarProperty Name="Reparaciones" ColumnName="Reparaciones" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -458,20 +578,22 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="9c11d10b3a6c4626814d81d162fb7bac" Name="Diagram1">
-        <EntityTypeShape EntityType="MABModel.Clientes" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="MABModel.Telefonos" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MABModel.Lavarropas" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MABModel.Reparaciones" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MABModel.Repuestos" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MABModel.Entregas" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="9c11d10b3a6c4626814d81d162fb7bac" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="MABModel.Clientes" Width="1.5" PointX="1.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MABModel.Telefonos" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MABModel.Lavarropas" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MABModel.Reparaciones" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MABModel.Repuestos" Width="1.5" PointX="10.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MABModel.Entregas" Width="1.5" PointX="5.25" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="MABModel.ClienteTelefono" ManuallyRouted="false" />
         <AssociationConnector Association="MABModel.ClienteLavarropas" ManuallyRouted="false" />
         <AssociationConnector Association="MABModel.LavarropasReparacion" ManuallyRouted="false" />
-        <AssociationConnector Association="MABModel.ReparacionRepuestos" ManuallyRouted="false" />
         <AssociationConnector Association="MABModel.ReparacionesEntregas" ManuallyRouted="false" />
         <AssociationConnector Association="MABModel.ClientesEntregas" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="MABModel.ReparacionesRepuestos" Width="1.5" PointX="8.125" PointY="4.5" />
+        <AssociationConnector Association="MABModel.ReparacionesReparacionesRepuestos" />
+        <AssociationConnector Association="MABModel.RepuestosReparacionesRepuestos" />
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

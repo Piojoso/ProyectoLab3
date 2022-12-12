@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucTop = new ucLibrary.ucTop();
             this.ucBottom = new ucLibrary.ucBottom();
-            this.tbTelefono = new System.Windows.Forms.TextBox();
             this.cclblCliente = new ccLibrary.ccLabel();
-            this.cclblIdCliente = new ccLibrary.ccLabel();
+            this.cclblNombreCliente = new ccLibrary.ccLabel();
             this.cclblTelefono = new ccLibrary.ccLabel();
+            this.cctbTelefono = new ccLibrary.ccTextBox();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.pnlBody.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ucTop
-            // 
-            this.ucTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucTop.Location = new System.Drawing.Point(0, 0);
-            this.ucTop.MaximumSize = new System.Drawing.Size(3840, 82);
-            this.ucTop.Name = "ucTop";
-            this.ucTop.Size = new System.Drawing.Size(645, 82);
-            this.ucTop.TabIndex = 0;
-            this.ucTop.Titulo = null;
             // 
             // ucBottom
             // 
@@ -52,83 +43,93 @@
             this.ucBottom.Accion2 = null;
             this.ucBottom.Accion3 = null;
             this.ucBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucBottom.Location = new System.Drawing.Point(0, 258);
+            this.ucBottom.Location = new System.Drawing.Point(0, 156);
             this.ucBottom.MaximumSize = new System.Drawing.Size(3840, 82);
             this.ucBottom.Name = "ucBottom";
             this.ucBottom.NumButtons = 0;
-            this.ucBottom.Size = new System.Drawing.Size(645, 82);
+            this.ucBottom.Size = new System.Drawing.Size(563, 82);
             this.ucBottom.TabIndex = 1;
-            // 
-            // tbTelefono
-            // 
-            this.tbTelefono.Location = new System.Drawing.Point(265, 190);
-            this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(231, 20);
-            this.tbTelefono.TabIndex = 5;
             // 
             // cclblCliente
             // 
-            this.cclblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblCliente.AutoSize = true;
             this.cclblCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblCliente.Location = new System.Drawing.Point(149, 130);
+            this.cclblCliente.Location = new System.Drawing.Point(110, 42);
             this.cclblCliente.Name = "cclblCliente";
             this.cclblCliente.Size = new System.Drawing.Size(47, 16);
             this.cclblCliente.TabIndex = 0;
             this.cclblCliente.Text = "Cliente";
             // 
-            // cclblIdCliente
+            // cclblNombreCliente
             // 
-            this.cclblIdCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cclblIdCliente.AutoSize = true;
-            this.cclblIdCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblIdCliente.Location = new System.Drawing.Point(262, 130);
-            this.cclblIdCliente.Name = "cclblIdCliente";
-            this.cclblIdCliente.Size = new System.Drawing.Size(15, 16);
-            this.cclblIdCliente.TabIndex = 0;
-            this.cclblIdCliente.Text = "0";
+            this.cclblNombreCliente.AutoSize = true;
+            this.cclblNombreCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cclblNombreCliente.Location = new System.Drawing.Point(219, 42);
+            this.cclblNombreCliente.Name = "cclblNombreCliente";
+            this.cclblNombreCliente.Size = new System.Drawing.Size(15, 16);
+            this.cclblNombreCliente.TabIndex = 0;
+            this.cclblNombreCliente.Text = "0";
             // 
             // cclblTelefono
             // 
-            this.cclblTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cclblTelefono.AutoSize = true;
             this.cclblTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
-            this.cclblTelefono.Location = new System.Drawing.Point(149, 192);
+            this.cclblTelefono.Location = new System.Drawing.Point(110, 101);
             this.cclblTelefono.Name = "cclblTelefono";
             this.cclblTelefono.Size = new System.Drawing.Size(59, 16);
             this.cclblTelefono.TabIndex = 0;
             this.cclblTelefono.Text = "Telefono";
             // 
+            // cctbTelefono
+            // 
+            this.cctbTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cctbTelefono.CaracterIncorrectErrorMessage = "";
+            this.cctbTelefono.DataType = ccLibrary.ccTextBox.dataType.Numerico;
+            this.cctbTelefono.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F);
+            this.cctbTelefono.Location = new System.Drawing.Point(222, 101);
+            this.cctbTelefono.Name = "cctbTelefono";
+            this.cctbTelefono.Size = new System.Drawing.Size(231, 24);
+            this.cctbTelefono.TabIndex = 6;
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.cctbTelefono);
+            this.pnlBody.Controls.Add(this.cclblCliente);
+            this.pnlBody.Controls.Add(this.cclblNombreCliente);
+            this.pnlBody.Controls.Add(this.cclblTelefono);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(563, 156);
+            this.pnlBody.TabIndex = 7;
+            // 
             // frmAgregarTelefono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 340);
+            this.ClientSize = new System.Drawing.Size(563, 238);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.ucBottom);
-            this.Controls.Add(this.ucTop);
-            this.Controls.Add(this.cclblTelefono);
-            this.Controls.Add(this.cclblIdCliente);
-            this.Controls.Add(this.cclblCliente);
-            this.Controls.Add(this.tbTelefono);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAgregarTelefono";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agregar un nuevo Telefono";
+            this.pnlBody.ResumeLayout(false);
+            this.pnlBody.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private ucLibrary.ucTop ucTop;
         private ucLibrary.ucBottom ucBottom;
-        private System.Windows.Forms.TextBox tbTelefono;
         private ccLibrary.ccLabel cclblCliente;
-        private ccLibrary.ccLabel cclblIdCliente;
+        private ccLibrary.ccLabel cclblNombreCliente;
         private ccLibrary.ccLabel cclblTelefono;
+        private ccLibrary.ccTextBox cctbTelefono;
+        private System.Windows.Forms.Panel pnlBody;
     }
 }

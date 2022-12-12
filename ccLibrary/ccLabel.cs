@@ -22,5 +22,14 @@ namespace ccLibrary
             Name = "lblEtiqueta";
             Size = new System.Drawing.Size(100, 23);
         }
+
+        //private AnchorStyles anchor = AnchorStyles.None;
+
+        [DefaultValue(AnchorStyles.None)]
+        public override AnchorStyles Anchor
+        {
+            get => base.Anchor;
+            set => base.Anchor = value;
+        }
     }
 }

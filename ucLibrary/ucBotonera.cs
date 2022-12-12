@@ -26,6 +26,31 @@ namespace ucLibrary
             pnlBG.Controls.Add(pnlLeftBorderBtn);
         }
 
+        #region Boton seleccionado al Inicio
+
+        private int numBoton;
+
+        public int BotonInicial
+        {
+            get { return numBoton; }
+            set
+            {
+                numBoton = value;
+                
+                string nameButton = "ccbtnAccion" + numBoton;
+
+                pnlBG.Controls.OfType<ccButtom>().ToList().ForEach(btn =>
+                {
+                    if(btn.Name == nameButton)
+                    {
+                        btn.PerformClick();
+                    }
+                });
+            }
+        }
+
+        #endregion
+
         #region Eventos
 
         //Campos
@@ -36,10 +61,6 @@ namespace ucLibrary
         public event EventHandler evClickAccion5;
         public event EventHandler evClickAccion6;
         public event EventHandler evClickAccion7;
-
-        /**
-         * TODO: Probar a ver si al seleccionar un numero de botones menores se puede hacer que dejen de ser accesible el resto. Posiblemente cambiandole la accesibilidad
-         */
          
         //Funciones de eventos
 

@@ -28,35 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucBackGround1 = new MAB.UC.ucBackGround();
+            this.ucDGVTabla = new ucLibrary.ucDGVTabla();
             this.SuspendLayout();
             // 
-            // ucBackGround1
+            // ucDGVTabla
             // 
-            this.ucBackGround1.Accion1 = null;
-            this.ucBackGround1.Accion2 = null;
-            this.ucBackGround1.Accion3 = null;
-            this.ucBackGround1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucBackGround1.Location = new System.Drawing.Point(0, 0);
-            this.ucBackGround1.Name = "ucBackGround1";
-            this.ucBackGround1.Size = new System.Drawing.Size(800, 450);
-            this.ucBackGround1.TabIndex = 0;
-            this.ucBackGround1.Titulo = null;
+            this.ucDGVTabla.buttonAdd = System.Drawing.Color.ForestGreen;
+            this.ucDGVTabla.buttonDelete = System.Drawing.Color.IndianRed;
+            this.ucDGVTabla.buttonModify = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ucDGVTabla.buttonSearch = System.Drawing.Color.SteelBlue;
+            this.ucDGVTabla.buttonSeeAll = System.Drawing.Color.DarkGray;
+            this.ucDGVTabla.cargarCMS = null;
+            this.ucDGVTabla.ColumnHeaderStyle = null;
+            this.ucDGVTabla.DeleteVisibility = false;
+            this.ucDGVTabla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDGVTabla.FondoBotones = System.Drawing.Color.Teal;
+            this.ucDGVTabla.FullListData = null;
+            this.ucDGVTabla.Location = new System.Drawing.Point(0, 0);
+            this.ucDGVTabla.Name = "ucDGVTabla";
+            this.ucDGVTabla.RowsCellStyle = null;
+            this.ucDGVTabla.RowsHeaderStyle = null;
+            this.ucDGVTabla.ShortListData = null;
+            this.ucDGVTabla.Size = new System.Drawing.Size(806, 436);
+            this.ucDGVTabla.TabIndex = 0;
             // 
             // frmLavarropas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ucBackGround1);
+            this.ClientSize = new System.Drawing.Size(806, 436);
+            this.Controls.Add(this.ucDGVTabla);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLavarropas";
-            this.Text = "frmLavarropas";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UC.ucBackGround ucBackGround1;
+        private ucLibrary.ucDGVTabla ucDGVTabla;
     }
 }

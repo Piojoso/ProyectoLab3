@@ -15,11 +15,6 @@ namespace ucLibrary
     {
         public ucDGVTabla()
         {
-            /**
-             * TODO: Dado que realmente, el usuario del ucDGVTabla podria querer hacer otra cosa diferente que la de abrir un form,
-             *      voy a crear los eventos click para cada boton.
-             * --- HECHO
-             */
             InitializeComponent();
 
             dgvPrincipal.CellDoubleClick += dobleClickSobreItemDGV;
@@ -50,9 +45,13 @@ namespace ucLibrary
 
                 if (!fondoBotones.IsEmpty)
                 {
-                    foreach (IconButton btn in gbButtons.Controls)
+                    foreach (Control control in gbButtons.Controls)
                     {
-                        btn.BackColor = fondoBotones;
+                        if(control is IconButton)
+                        {
+                            IconButton btn = (control as IconButton);
+                            btn.BackColor = fondoBotones;
+                        }
                     }
                 }
                 else
@@ -180,25 +179,11 @@ namespace ucLibrary
 
         #endregion
 
-        public void dataSource(object data, bool shortList = true)
+        public void dataSource(object data)
         {
             dgvPrincipal.AutoGenerateColumns = true;
             dgvPrincipal.DataSource = data;
             this.columns = dgvPrincipal.Columns;
-
-            if (!shortList)
-            {
-                all = data;
-
-                btnSeeAll.IconChar = IconBtnSeeAll;
-            }
-            else
-            {
-                this.shortList = data;
-
-                btnSeeAll.IconChar = IconBtnSeeShort;
-            }
-            
         }
 
         #region DGVColumns
@@ -226,6 +211,35 @@ namespace ucLibrary
                 deleteVisibility = value;
 
                 btnDelete.Visible = deleteVisibility;
+
+                Point controlPointLocation = new Point();
+                controlPointLocation.X = 0;
+                if(btnDelete.Visible == true)
+                {
+                    controlPointLocation.Y = 165;
+                    pnlSeparator.Location = controlPointLocation;
+
+                    controlPointLocation.X = 6;
+
+                    controlPointLocation.Y = 172;
+                    btnSearch.Location = controlPointLocation;
+
+                    controlPointLocation.Y = 213;
+                    btnSeeAll.Location = controlPointLocation;
+                }
+                else
+                {
+                    controlPointLocation.Y = 124;
+                    pnlSeparator.Location = controlPointLocation;
+
+                    controlPointLocation.X = 6;
+
+                    controlPointLocation.Y = 131;
+                    btnSearch.Location = controlPointLocation;
+
+                    controlPointLocation.Y = 172;
+                    btnSeeAll.Location = controlPointLocation;
+                }
             }
         }
 
@@ -251,7 +265,7 @@ namespace ucLibrary
         [DefaultValue(IconChar.Plus)]
         public IconChar IconBtnAdd
         {
-            get { return IconBtnAdd; }
+            get { return iconBtnAdd; }
             set
             {
                 iconBtnAdd = value;
@@ -334,13 +348,23 @@ namespace ucLibrary
         public object FullListData
         {
             get { return all; }
-            set { all = value; }
+            set
+            {
+                all = value;
+
+                dataSource(all);
+            }
         }
 
         public object ShortListData
         {
             get { return shortList; }
-            set { shortList = value; }
+            set
+            {
+                shortList = value;
+
+                dataSource(shortList);
+            }
         }
 
         private bool cargadoShortList = true;
@@ -382,6 +406,33 @@ namespace ucLibrary
             {
                 cms = value;
                 dgvPrincipal.ContextMenuStrip = cms;
+            }
+        }
+
+        #endregion
+
+        #region ocultar/mostrar Botonera
+
+        private bool botonera = true;
+
+        [DefaultValue(true)]
+        public bool ButtonPadVisibility
+        {
+            get { return botonera; }
+            set
+            {
+                botonera = value;
+
+                if(botonera)
+                {
+                    pnlAside.Visible = true;
+                    pnlAside.Width = 200;
+                }
+                else
+                {
+                    pnlAside.Visible = false;
+                    pnlAside.Width = 0;
+                }
             }
         }
 

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/08/2020 20:23:02
--- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 4\MAB\Models\MABModel.edmx
+-- Date Created: 10/03/2020 20:10:10
+-- Generated from EDMX file: C:\Users\Piojoso\source\repos\Proyecto Lab 3\MAB\Models\MABModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -26,14 +26,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_LavarropasReparacion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reparaciones] DROP CONSTRAINT [FK_LavarropasReparacion];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ReparacionRepuestos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Repuestos] DROP CONSTRAINT [FK_ReparacionRepuestos];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ReparacionesEntregas]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Entregas] DROP CONSTRAINT [FK_ReparacionesEntregas];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClientesEntregas]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Entregas] DROP CONSTRAINT [FK_ClientesEntregas];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReparacionesReparacionesRepuestos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReparacionesRepuestos] DROP CONSTRAINT [FK_ReparacionesReparacionesRepuestos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RepuestosReparacionesRepuestos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReparacionesRepuestos] DROP CONSTRAINT [FK_RepuestosReparacionesRepuestos];
 GO
 
 -- --------------------------------------------------
@@ -58,6 +61,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Entregas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Entregas];
 GO
+IF OBJECT_ID(N'[dbo].[ReparacionesRepuestos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ReparacionesRepuestos];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -75,7 +81,7 @@ GO
 -- Creating table 'Telefonos'
 CREATE TABLE [dbo].[Telefonos] (
     [ClienteId] int  NOT NULL,
-    [telefono] bigint IDENTITY(1,1) NOT NULL,
+    [telefono] bigint  NOT NULL,
     [estado] bit  NOT NULL
 );
 GO
@@ -110,9 +116,8 @@ CREATE TABLE [dbo].[Repuestos] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NULL,
-    [precio] float  NOT NULL,
-    [stock] int  NOT NULL,
-    [ReparacionId] int  NOT NULL
+    [disponibles] int  NOT NULL,
+    [precio] float  NOT NULL
 );
 GO
 
@@ -123,6 +128,13 @@ CREATE TABLE [dbo].[Entregas] (
     [monto] float  NOT NULL,
     [ReparacionesId] int  NOT NULL,
     [ClientesId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ReparacionesRepuestos'
+CREATE TABLE [dbo].[ReparacionesRepuestos] (
+    [ReparacionesId] int  NOT NULL,
+    [RepuestosId] int  NOT NULL
 );
 GO
 
@@ -164,6 +176,12 @@ GO
 ALTER TABLE [dbo].[Entregas]
 ADD CONSTRAINT [PK_Entregas]
     PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [ReparacionesId], [RepuestosId] in table 'ReparacionesRepuestos'
+ALTER TABLE [dbo].[ReparacionesRepuestos]
+ADD CONSTRAINT [PK_ReparacionesRepuestos]
+    PRIMARY KEY CLUSTERED ([ReparacionesId], [RepuestosId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -215,21 +233,6 @@ ON [dbo].[Reparaciones]
     ([LavarropasId]);
 GO
 
--- Creating foreign key on [ReparacionId] in table 'Repuestos'
-ALTER TABLE [dbo].[Repuestos]
-ADD CONSTRAINT [FK_ReparacionRepuestos]
-    FOREIGN KEY ([ReparacionId])
-    REFERENCES [dbo].[Reparaciones]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ReparacionRepuestos'
-CREATE INDEX [IX_FK_ReparacionRepuestos]
-ON [dbo].[Repuestos]
-    ([ReparacionId]);
-GO
-
 -- Creating foreign key on [ReparacionesId] in table 'Entregas'
 ALTER TABLE [dbo].[Entregas]
 ADD CONSTRAINT [FK_ReparacionesEntregas]
@@ -258,6 +261,30 @@ GO
 CREATE INDEX [IX_FK_ClientesEntregas]
 ON [dbo].[Entregas]
     ([ClientesId]);
+GO
+
+-- Creating foreign key on [ReparacionesId] in table 'ReparacionesRepuestos'
+ALTER TABLE [dbo].[ReparacionesRepuestos]
+ADD CONSTRAINT [FK_ReparacionesReparacionesRepuestos]
+    FOREIGN KEY ([ReparacionesId])
+    REFERENCES [dbo].[Reparaciones]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [RepuestosId] in table 'ReparacionesRepuestos'
+ALTER TABLE [dbo].[ReparacionesRepuestos]
+ADD CONSTRAINT [FK_RepuestosReparacionesRepuestos]
+    FOREIGN KEY ([RepuestosId])
+    REFERENCES [dbo].[Repuestos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RepuestosReparacionesRepuestos'
+CREATE INDEX [IX_FK_RepuestosReparacionesRepuestos]
+ON [dbo].[ReparacionesRepuestos]
+    ([RepuestosId]);
 GO
 
 -- --------------------------------------------------
